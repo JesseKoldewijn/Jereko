@@ -1,6 +1,6 @@
-import { locales, matchedLang } from "@/utils/i18n";
-
 import { type NextRequest } from "next/server";
+
+import { locales, matchedLang } from "@/utils/i18n";
 
 const getLocale = (req: Request) => {
   const cookieLang = req.headers

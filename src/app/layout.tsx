@@ -1,9 +1,9 @@
-import { LocaleProvider } from "@/providers/LocaleProvider";
-import "@/styles/globals.css";
-import { matchedLang } from "@/utils/i18n";
+import { GeistMono, GeistSans } from "geist/font";
 
-import { GeistSans, GeistMono } from "geist/font";
-import { cookies, headers } from "next/headers";
+import Navbar from "@/components/layout/navbar";
+import NextThemeWrapper from "@/components/next-theme";
+import { Toaster } from "@/components/ui/toaster";
+import "@/styles/globals.css";
 
 export const metadata = {
   title: "JKinsight - My personal website | Jesse Koldewijn",
@@ -37,15 +37,14 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const requestLang = headers().get("accept-language");
-  const cookieLang = cookies().get("NEXT_LOCALE")?.value;
-
-  const language = matchedLang(cookieLang ?? requestLang ?? "en-US");
-
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable}`}>
-        <LocaleProvider defaultLang={language}>{children}</LocaleProvider>
+        <NextThemeWrapper>
+          <Navbar />
+          {children}
+          <Toaster />
+        </NextThemeWrapper>
       </body>
     </html>
   );
