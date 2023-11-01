@@ -1,9 +1,13 @@
+import { type ServerRuntime } from "next";
+
 import {
   Card,
   CardContent,
   CardDescription,
   CardTitle,
 } from "@/components/ui/card";
+
+export const runtime: ServerRuntime = "edge";
 
 const Home = () => {
   return (
