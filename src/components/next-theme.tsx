@@ -28,14 +28,6 @@ const NextThemeInner = ({ children }: { children: React.ReactNode }) => {
     if (themeRef.current && lastTheme !== theme?.toString()) {
       const refElem = themeRef.current;
 
-      if (
-        (lastTheme === "system" && theme === "dark") ||
-        (lastTheme === "dark" && theme === "system")
-      ) {
-        setLastTheme(() => theme?.toString() ?? "system");
-        return;
-      }
-
       animate(
         refElem,
         {
