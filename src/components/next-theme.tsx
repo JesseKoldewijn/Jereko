@@ -49,6 +49,7 @@ const NextThemeInner = ({ children }: { children: React.ReactNode }) => {
 
       setLastTheme(() => theme?.toString() ?? "system");
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [theme]);
 
   return <div ref={themeRef}>{children}</div>;
