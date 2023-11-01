@@ -42,9 +42,10 @@
     "node": "20.9.0"
   },
   "browserslist": [
-    ">0.3%",
+    ">0.2%",
     "defaults",
-    "fully supports es6-module",
+    "not dead",
+    "not op_mini all",
     "maintained node versions"
   ]
 }
