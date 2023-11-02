@@ -12,7 +12,6 @@ export const Projects = pgTable(
   {
     id: uuid("id").primaryKey().defaultRandom(),
     title: text("name"),
-    slug: text("slug"),
     sub_title: text("sub_title"),
     description: varchar("description"),
     tags: text("tags"),

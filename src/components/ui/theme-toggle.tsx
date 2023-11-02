@@ -6,7 +6,7 @@ import * as React from "react";
 
 import { Toggle } from "./toggle";
 
-export function ThemeToggle() {
+const ThemeToggle = () => {
   const { theme, systemTheme, setTheme } = useTheme();
 
   const toggleTheme = () => {
@@ -24,4 +24,5 @@ export function ThemeToggle() {
       <span className="sr-only">Toggle theme</span>
     </Toggle>
   );
-}
+};
+export default ThemeToggle;

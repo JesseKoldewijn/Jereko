@@ -9,7 +9,7 @@ import {
 
 import ListedNavSection from "./item-variants/listed";
 import ShowcaseNavSection from "./item-variants/showcase";
-import SingleItemSection from "./item-variants/signleItem";
+import SingleItemSection from "./item-variants/singleItem";
 
 const showcaseEntry = {
   triggerTitle: (

@@ -17,7 +17,7 @@ interface ListItemProps {
   }[];
 }
 
-const ListedNavSection = async ({ triggerTitle, links }: ListItemProps) => {
+const ListedNavSection = ({ triggerTitle, links }: ListItemProps) => {
   if (!links || links.length === 0) return null;
 
   return (
