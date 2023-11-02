@@ -22,7 +22,7 @@ const NextThemeInner = ({ children }: { children: React.ReactNode }) => {
 
   const [lastTheme, setLastTheme] = useState<string>();
 
-  const { theme, systemTheme } = useTheme();
+  const { theme } = useTheme();
 
   useEffect(() => {
     if (themeRef.current && lastTheme !== theme) {
