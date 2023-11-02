@@ -20,12 +20,12 @@ const NextThemeWrapper = ({ children }: { children: React.ReactNode }) => {
 const NextThemeInner = ({ children }: { children: React.ReactNode }) => {
   const themeRef = useRef<HTMLDivElement>(null);
 
-  const [lastTheme, setLastTheme] = useState<string>("system");
+  const [lastTheme, setLastTheme] = useState<string>();
 
-  const { theme } = useTheme();
+  const { theme, systemTheme } = useTheme();
 
   useEffect(() => {
-    if (themeRef.current && lastTheme !== theme?.toString()) {
+    if (themeRef.current && lastTheme !== theme) {
       const refElem = themeRef.current;
 
       animate(
@@ -39,7 +39,7 @@ const NextThemeInner = ({ children }: { children: React.ReactNode }) => {
         },
       );
 
-      setLastTheme(() => theme?.toString() ?? "system");
+      setLastTheme(() => theme ?? "system");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [theme]);

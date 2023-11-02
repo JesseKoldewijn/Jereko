@@ -32,9 +32,12 @@ const Navbar = () => {
 
   return (
     <div className={cn(getScrollPositionStyle(), "flex w-full py-4")}>
-      <Link href="#" aria-label="JKinsight logo" className="flex font-semibold">
-        <LucideOctagon className="my-auto" />
-        <span className="sr-only">JKinsight</span>
+      <Link
+        href="#"
+        aria-label="JKinsight logo"
+        className="flex font-semibold duration-500 hover:underline hover:underline-offset-4"
+      >
+        JKinsight
       </Link>
       <section className="ml-auto">
         <ThemeToggle />
