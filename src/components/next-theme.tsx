@@ -39,7 +39,7 @@ const NextThemeInner = ({ children }: { children: React.ReactNode }) => {
         },
       );
 
-      setLastTheme(() => theme ?? "system");
+      setLastTheme(() => theme ?? "dark");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [theme]);

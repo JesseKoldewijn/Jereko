@@ -15,9 +15,12 @@ const ProjectListerItem = ({ project }: { project: Project }) => {
       <CardDescription>{project.sub_title}</CardDescription>
       <CardContent className="px-2 pt-4">{project.description}</CardContent>
       <CardFooter className="flex gap-2 px-0 py-0">
-        {project.tags?.split(",").flatMap((tag) => {
+        {project.tags?.split(",").flatMap((tag, idx) => {
           return (
-            <div className="rounded-full border bg-gray-300 px-2 py-1 text-neutral-950">
+            <div
+              key={idx + tag}
+              className="rounded-full border bg-gray-300 px-2 py-1 text-neutral-950"
+            >
               {tag}
             </div>
           );

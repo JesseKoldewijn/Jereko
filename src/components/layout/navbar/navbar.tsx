@@ -1,13 +1,13 @@
 "use client";
 
-import { LucideOctagon } from "lucide-react";
 import React, { useEffect, useState } from "react";
 
 import Link from "next/link";
 
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { cn } from "@/lib/utils";
 
-import { ThemeToggle } from "../ui/theme-toggle";
+import NavbarMenu from "./navigationMenu";
 
 const Navbar = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -32,14 +32,19 @@ const Navbar = () => {
 
   return (
     <div className={cn(getScrollPositionStyle(), "flex w-full py-4")}>
-      <Link
-        href="#"
-        aria-label="JKinsight logo"
-        className="flex font-semibold duration-500 hover:underline hover:underline-offset-4"
-      >
-        JKinsight
-      </Link>
-      <section className="ml-auto">
+      <section className="my-auto mr-auto">
+        <Link
+          href="#"
+          aria-label="JKinsight logo"
+          className="flex font-semibold duration-500 hover:underline hover:underline-offset-4"
+        >
+          JKinsight
+        </Link>
+      </section>
+      <section className="my-auto flex flex-1 justify-center">
+        <NavbarMenu />
+      </section>
+      <section className="my-auto ml-auto">
         <ThemeToggle />
       </section>
     </div>

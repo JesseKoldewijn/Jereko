@@ -1,5 +1,3 @@
-import { Fragment } from "react";
-
 import { db } from "@/server/db/conn";
 import { Projects } from "@/server/db/schemas/projects";
 
@@ -11,13 +9,13 @@ const ProjectsLister = async () => {
   const projects = await db.select().from(Projects).execute();
 
   return (
-    <div className="flex flex-col gap-4 px-2">
+    <div className="flex flex-col gap-4">
       {projects && projects.length > 0 ? (
         projects.flatMap((project) => {
           return (
-            <Fragment key={project.id}>
+            <div key={project.id}>
               <ProjectListerItem project={project} />
-            </Fragment>
+            </div>
           );
         })
       ) : (

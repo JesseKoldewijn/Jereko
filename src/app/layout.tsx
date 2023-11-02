@@ -1,6 +1,6 @@
 import { GeistMono, GeistSans } from "geist/font";
 
-import Navbar from "@/components/layout/navbar";
+import Navbar from "@/components/layout/navbar/navbar";
 import NextThemeWrapper from "@/components/next-theme";
 import { Toaster } from "@/components/ui/toaster";
 import "@/styles/globals.css";
