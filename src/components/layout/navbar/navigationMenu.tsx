@@ -20,25 +20,25 @@ const showcaseEntry = {
   ),
   showcase: {
     title: "Jesse Koldewijn",
-    href: "/",
+    href: "https://www.linkedin.com/in/jesse-koldewijn-5914531a3",
     description:
       "Front-End Software Engineer, with a passion for software and tech.",
   },
   links: [
     {
       title: "Introduction",
-      href: "/intro",
+      href: "/about-me/intro",
       description:
         "Who am I? What are my goals and what do I want to achieve? Read more about it here.",
     },
     {
       title: "Hobbies",
-      href: "/hobbies",
+      href: "/about-me/hobbies",
       description: "What do I do in my spare time? Read more about it here.",
     },
     {
       title: "Volunteering",
-      href: "/volunteering",
+      href: "/about-me/volunteering",
       description:
         "I also volunteer as a GameLead for Stack Up. Read more about it here.",
     },
