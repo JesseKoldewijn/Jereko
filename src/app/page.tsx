@@ -1,7 +1,17 @@
+import { type Metadata } from "next";
+
 import HeroSection from "@/components/layout/sections/HeroSection";
 import Avatar from "@/images/avatar.webp";
 
 export const revalidate = 86400;
+
+export const metadata: Metadata = {
+  openGraph: {
+    title: "JKinsight",
+    description: "My personal website.",
+    url: "https://jkinsight.vercel.app",
+  },
+};
 
 const Home = async () => {
   return (
