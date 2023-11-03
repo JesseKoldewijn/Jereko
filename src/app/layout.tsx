@@ -33,6 +33,11 @@ export const metadata: Metadata = {
       url: "/favicons/favicon.ico",
     },
   ],
+  openGraph: {
+    title: "JKinsight",
+    description: "tbh idk what to put here yet",
+    url: "https://jkinsight.vercel.app",
+  },
 };
 
 export default function RootLayout({
