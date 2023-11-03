@@ -28,7 +28,7 @@ const ProjectsPage = () => {
           description: "A list of what I've done over the years.",
         }}
       />
-      <div className="mt-8 w-auto max-w-md px-4 md:mx-auto md:w-full md:px-0">
+      <div className="mx-auto mt-8 w-auto max-w-md px-4 md:w-full md:px-0">
         <section>
           <Suspense>
             <ExperienceLister />
