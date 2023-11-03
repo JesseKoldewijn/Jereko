@@ -6,8 +6,6 @@ import { YouTubeEmbed } from "@next/third-parties/google";
 import HeroSection from "@/components/layout/sections/HeroSection";
 import Avatar from "@/images/avatar.webp";
 
-export const runtime = "edge";
-
 export const metadata: Metadata = {
   openGraph: {
     title: "JKinsight",
