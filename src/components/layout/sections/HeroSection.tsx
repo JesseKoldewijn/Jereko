@@ -34,9 +34,9 @@ const HeroSection = ({
   bannerContent,
 }: HeroSectionProps) => {
   return (
-    <section className={cn(className, "mx-4 h-full max-h-[500px] md:mx-8")}>
+    <section className={cn(className, "mx-4 h-full md:mx-8")}>
       <div className="mx-auto grid max-w-screen-xl px-4 py-8 lg:grid-cols-12 lg:gap-8 lg:py-16 xl:gap-0">
-        <div className="mr-auto place-self-center lg:col-span-7">
+        <div className="mx-auto place-self-center text-center lg:col-span-7 lg:ml-0 lg:text-left">
           <h1 className="mb-4 max-w-2xl text-4xl font-extrabold leading-none tracking-tight dark:text-white md:text-5xl xl:text-6xl">
             {bannerContent.title}
           </h1>
@@ -73,16 +73,16 @@ const HeroSection = ({
             </>
           ) : null}
         </div>
-        <div className="hidden lg:col-span-5 lg:mt-0 lg:flex">
+        <div className="hidden max-h-[500px] lg:col-span-5 lg:mt-0 lg:flex">
           <Image
             src={bannerImage.light}
-            className="block rounded-full bg-neutral-200 bg-clip-content dark:!hidden"
+            className="-top-[0%] my-auto block scale-[calc(100%+2%)] rounded-full bg-neutral-200 bg-clip-content  dark:!hidden"
             alt="hero image"
             priority
           />
           <Image
             src={bannerImage.dark}
-            className="hidden rounded-full bg-neutral-900 bg-clip-content dark:!block"
+            className="relative -top-[0%] my-auto hidden scale-[calc(100%+2%)] rounded-full bg-neutral-900 bg-clip-content dark:!block"
             alt="hero image"
             priority
           />

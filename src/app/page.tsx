@@ -1,5 +1,5 @@
 import HeroSection from "@/components/layout/sections/HeroSection";
-import BannerProjects from "@/images/banner-programming.webp";
+import Avatar from "@/images/avatar.webp";
 
 export const revalidate = 86400;
 
@@ -8,8 +8,8 @@ const Home = () => {
     <>
       <HeroSection
         bannerImage={{
-          dark: BannerProjects,
-          light: BannerProjects,
+          dark: Avatar,
+          light: Avatar,
         }}
         bannerContent={{
           title: "JKinsight",
