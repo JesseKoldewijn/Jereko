@@ -12,7 +12,9 @@ export const metadata: Metadata = {
   metadataBase: new URL(
     typeof process.env.VERCEL_URL !== "undefined" &&
     process.env.VERCEL_URL !== ""
-      ? process.env.VERCEL_URL
+      ? process.env.VERCEL_URL.includes("localhost")
+        ? "http://localhost:3000"
+        : "https://" + process.env.VERCEL_URL
       : "http://localhost:3000",
   ),
   icons: [
