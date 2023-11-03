@@ -1,14 +1,10 @@
-import { type ServerRuntime } from "next";
 import React, { Suspense } from "react";
-
-import { type Revalidate } from "next/dist/server/lib/revalidate";
 
 import HeroSection from "@/components/layout/sections/HeroSection";
 import ExperienceLister from "@/components/listers/ExperienceLister";
 import BannerProjects from "@/images/banner-programming.webp";
 
-export const runtime: ServerRuntime = "edge";
-export const revalidate: Revalidate = 86400;
+export const revalidate = 86400;
 
 const ProjectsPage = () => {
   return (
