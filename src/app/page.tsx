@@ -3,7 +3,7 @@ import Avatar from "@/images/avatar.webp";
 
 export const revalidate = 86400;
 
-const Home = () => {
+const Home = async () => {
   return (
     <>
       <HeroSection

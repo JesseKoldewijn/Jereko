@@ -61,7 +61,7 @@ export default async function Image() {
             fontSize: 75,
           }}
         >
-          My Personal Website
+          Projects
         </h2>
       </div>
     ),

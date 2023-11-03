@@ -4,19 +4,13 @@ import { type Metadata } from "next";
 import Navbar from "@/components/layout/navbar/navbar";
 import NextThemeWrapper from "@/components/next-theme";
 import { Toaster } from "@/components/ui/toaster";
+import { base } from "@/lib/hostname";
 import "@/styles/globals.css";
 
 export const metadata: Metadata = {
   title: "JKinsight - My personal website | Jesse Koldewijn",
   description: "tbh idk what to put here yet",
-  metadataBase: new URL(
-    typeof process.env.VERCEL_URL !== "undefined" &&
-    process.env.VERCEL_URL !== ""
-      ? process.env.VERCEL_URL.includes("localhost")
-        ? "http://localhost:3000"
-        : "https://" + process.env.VERCEL_URL
-      : "http://localhost:3000",
-  ),
+  metadataBase: new URL(base),
   icons: [
     {
       rel: "apple-touch-icon",
