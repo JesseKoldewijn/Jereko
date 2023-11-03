@@ -5,6 +5,7 @@ import {
   NavigationMenuItem,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
+import { base } from "@/lib/hostname";
 
 import ListItem from "../_parts/listItem";
 
@@ -26,7 +27,18 @@ const ListedNavSection = ({ triggerTitle, links }: ListItemProps) => {
       <NavigationMenuContent>
         <ul className="grid w-[400px] gap-3 bg-neutral-100 p-4 dark:bg-neutral-900 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
           {links.map((link, idx) => (
-            <ListItem key={idx} title={link.title} href={link.href}>
+            <ListItem
+              key={idx}
+              title={link.title}
+              href={link.href}
+              target={
+                !link.href.startsWith("/")
+                  ? !link.href.includes(base)
+                    ? "_blank"
+                    : undefined
+                  : undefined
+              }
+            >
               {link.description}
             </ListItem>
           ))}

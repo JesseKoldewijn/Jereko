@@ -7,6 +7,7 @@ import {
   NavigationMenuLink,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
+import { base } from "@/lib/hostname";
 
 interface SingleItemSectionProps {
   children: React.ReactNode;
@@ -16,7 +17,18 @@ interface SingleItemSectionProps {
 const SingleItemSection = ({ children, href }: SingleItemSectionProps) => {
   return (
     <NavigationMenuItem>
-      <Link href={href} legacyBehavior passHref>
+      <Link
+        href={href}
+        target={
+          !href.startsWith("/")
+            ? !href.includes(base)
+              ? "_blank"
+              : undefined
+            : undefined
+        }
+        legacyBehavior
+        passHref
+      >
         <NavigationMenuLink className={navigationMenuTriggerStyle()}>
           {children}
         </NavigationMenuLink>

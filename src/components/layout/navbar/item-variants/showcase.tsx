@@ -6,6 +6,7 @@ import {
   NavigationMenuLink,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
+import { base } from "@/lib/hostname";
 
 import ListItem from "../_parts/listItem";
 
@@ -38,6 +39,13 @@ const ShowcaseNavSection = ({
               <a
                 className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
                 href={showcase.href}
+                target={
+                  !showcase.href.startsWith("/")
+                    ? !showcase.href.includes(base)
+                      ? "_blank"
+                      : undefined
+                    : undefined
+                }
               >
                 <div className="mb-2 mt-4 text-lg font-medium">
                   {showcase.title}
@@ -50,7 +58,18 @@ const ShowcaseNavSection = ({
           </li>
           {links && links.length > 0
             ? links.map((link, idx) => (
-                <ListItem key={idx} href={link.href} title={link.title}>
+                <ListItem
+                  key={idx}
+                  href={link.href}
+                  title={link.title}
+                  target={
+                    !link.href.startsWith("/")
+                      ? !link.href.includes(base)
+                        ? "_blank"
+                        : undefined
+                      : undefined
+                  }
+                >
                   {link.description}
                 </ListItem>
               ))
