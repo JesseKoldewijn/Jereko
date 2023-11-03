@@ -5,7 +5,7 @@ import HeroSection from "@/components/layout/sections/HeroSection";
 import ExperienceLister from "@/components/listers/ExperienceLister";
 import BannerProjects from "@/images/banner-programming.webp";
 
-export const revalidate = 86400;
+export const runtime = "edge";
 
 export const metadata: Metadata = {
   openGraph: {
