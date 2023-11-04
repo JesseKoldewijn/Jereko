@@ -1,11 +1,11 @@
 import { db } from "@/server/db/conn";
 import { Experiences } from "@/server/db/schemas/experience";
 
-import ProjectListerItem from "./ExperienceListerItem";
+import ExperienceListerItem from "./ExperienceListerItem";
 
 export const revalidate = 86400; // 1 day in seconds
 
-const ProjectsLister = async () => {
+const ExperienceLister = async () => {
   const experience = await db.select().from(Experiences).execute();
 
   return (
@@ -14,7 +14,7 @@ const ProjectsLister = async () => {
         experience.flatMap((exp) => {
           return (
             <div key={exp.id}>
-              <ProjectListerItem experience={exp} />
+              <ExperienceListerItem experience={exp} />
             </div>
           );
         })
@@ -25,4 +25,4 @@ const ProjectsLister = async () => {
   );
 };
 
-export default ProjectsLister;
+export default ExperienceLister;

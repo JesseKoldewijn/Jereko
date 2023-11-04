@@ -1,11 +1,22 @@
 import { GeistMono, GeistSans } from "geist/font";
 import { type Metadata } from "next";
 
-import Navbar from "@/components/layout/navbar/navbar";
-import NextThemeWrapper from "@/components/next-theme";
-import { Toaster } from "@/components/ui/toaster";
+import dynamic from "next/dynamic";
+
 import { base } from "@/lib/hostname";
 import "@/styles/globals.css";
+
+const Navbar = dynamic(() => import("@/components/layout/navbar/navbar"), {
+  ssr: true,
+});
+
+const NextThemeWrapper = dynamic(() => import("@/components/next-theme"), {
+  ssr: true,
+});
+
+const Toaster = dynamic(() => import("@/components/ui/toaster"), {
+  ssr: false,
+});
 
 export const metadata: Metadata = {
   title: "JKinsight - My personal website | Jesse Koldewijn",

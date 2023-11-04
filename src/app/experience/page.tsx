@@ -1,10 +1,22 @@
 import { type Metadata } from "next";
 
-import HeroSection from "@/components/layout/sections/HeroSection";
-import ExperienceLister from "@/components/listers/ExperienceLister";
+import dynamic from "next/dynamic";
+
 import BannerProjects from "@/images/banner-programming.webp";
 
-export const runtime = "edge";
+const HeroSection = dynamic(
+  () => import("@/components/layout/sections/HeroSection"),
+  {
+    ssr: true,
+  },
+);
+
+const ExperienceLister = dynamic(
+  () => import("@/components/listers/ExperienceLister"),
+  {
+    ssr: true,
+  },
+);
 
 export const metadata: Metadata = {
   openGraph: {

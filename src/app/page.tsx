@@ -1,7 +1,15 @@
 import { type Metadata } from "next";
 
-import HeroSection from "@/components/layout/sections/HeroSection";
+import dynamic from "next/dynamic";
+
 import Avatar from "@/images/avatar.webp";
+
+const HeroSection = dynamic(
+  () => import("@/components/layout/sections/HeroSection"),
+  {
+    ssr: true,
+  },
+);
 
 export const metadata: Metadata = {
   openGraph: {
