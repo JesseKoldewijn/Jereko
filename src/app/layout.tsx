@@ -61,7 +61,7 @@ export default function RootLayout({
       <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable}`}>
         <NextThemeWrapper>
           <Navbar />
-          {children}
+          <div className="pb-8">{children}</div>
           <Toaster />
         </NextThemeWrapper>
       </body>
