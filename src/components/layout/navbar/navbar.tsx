@@ -10,14 +10,15 @@ import { cn } from "@/lib/utils";
 import NavbarMenu from "./navigationMenu";
 
 const Navbar = () => {
-  const [scrollPositionStyle, setScrollPosition] = useState("");
+  const [scrollPositionStyle, setScrollPosition] =
+    useState("relative px-8 mb-4");
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
       const scrollTop = document.documentElement.scrollTop;
       setScrollPosition(
-        scrollTop > 1
-          ? "fixed left-4 right-4 top-0 px-6"
+        scrollTop > 40
+          ? "fixed pl-4 top-0 px-6 bg-[rgba(255,255,255,0.75)] dark:bg-[rgba(0,0,0,0.65)]"
           : "relative px-8 mb-4",
       );
     });
@@ -26,8 +27,8 @@ const Navbar = () => {
       window.removeEventListener("scroll", () => {
         const scrollTop = document.documentElement.scrollTop;
         setScrollPosition(
-          scrollTop > 1
-            ? "fixed left-4 right-4 top-0 px-6"
+          scrollTop > 40
+            ? "fixed pl-4 top-0 px-6 bg-[rgba(255,255,255,0.75)] dark:bg-[rgba(0,0,0,0.65)]"
             : "relative px-8 mb-4",
         );
       });
@@ -35,7 +36,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className={cn(scrollPositionStyle, "flex w-full px-6 py-4")}>
+    <nav className={cn(scrollPositionStyle, "flex w-full py-4")}>
       <section className="my-auto mr-auto">
         <Link
           href="/"
