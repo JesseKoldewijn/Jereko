@@ -7,6 +7,7 @@ import Link from "next/link";
 import ThemeToggle from "@/components/ui/theme-toggle";
 import { cn } from "@/lib/utils";
 
+import NavigationMenuMobile from "./mobile/navigationMenuMobile";
 import NavbarMenu from "./navigationMenu";
 
 const Navbar = () => {
@@ -49,7 +50,8 @@ const Navbar = () => {
       <section className="my-auto flex flex-1 justify-center">
         <NavbarMenu />
       </section>
-      <section className="my-auto ml-auto">
+      <section className="my-auto ml-auto flex gap-4">
+        <NavigationMenuMobile />
         <ThemeToggle />
       </section>
     </nav>
