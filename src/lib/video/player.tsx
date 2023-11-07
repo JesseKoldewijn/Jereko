@@ -1,5 +1,6 @@
-// @ts-ignore-next-line
-import { YouTubeEmbed } from "@next/third-parties/google";
+"use client";
+
+import YouTube from "react-youtube";
 
 import { Skeleton } from "@/components/ui/skeleton";
 
@@ -11,25 +12,33 @@ export const YoutubePlayer = ({ key, url }: { key?: string; url: string }) => {
     key !== undefined ? `-${key}` : ""
   }`;
 
+  const options = {
+    height: 182,
+    width: 322,
+    playerVars: {
+      // https://developers.google.com/youtube/player_parameters
+      controls: 0,
+    },
+  };
+
   return (
     <YoutubeVideoWrapper playerID={playerID}>
-      <div className="relative mx-auto flex">
+      <div key={playerID} className="relative mx-auto flex">
         <Skeleton
           id={playerID + "-skeleton"}
-          className="absolute mx-auto h-[175px] w-[300px] bg-neutral-300 dark:bg-neutral-700"
+          className="bg-neutral-322 absolute mx-auto h-[182px] w-[322px] dark:bg-neutral-700"
         />
         <div
           id={playerID}
-          className="-z-50 mx-auto h-[175px] w-[300px]"
+          className="-z-50 mx-auto h-[182px] w-[322px]"
           style={{ opacity: 0 }}
           data-elem-type="player-loader"
         >
-          <YouTubeEmbed
+          <YouTube
             key={youtubeVideoID}
-            videoid={youtubeVideoID}
-            height={175}
-            width={300}
-            params="controls=0"
+            videoId={youtubeVideoID}
+            className="mx-auto max-h-[182px] max-w-[322px]"
+            opts={options}
           />
         </div>
       </div>

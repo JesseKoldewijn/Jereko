@@ -13,19 +13,15 @@ const YoutubeVideoWrapper = ({
 }: YoutubeVideoWrapperProps) => {
   useEffect(() => {
     const player = document.getElementById(playerID);
-    const innerPlayerElem = player?.getElementsByTagName("lite-youtube")[0];
+    const skeleton = document.getElementById(playerID + "-skeleton");
 
-    if (innerPlayerElem) {
-      const skeleton = document.getElementById(playerID + "-skeleton");
+    if (!player || !skeleton) return;
 
-      if (!skeleton) return;
-
-      setTimeout(() => {
-        skeleton.style.display = "none";
-        player.style.opacity = "1";
-        player.style.zIndex = "0";
-      }, 1000);
-    }
+    setTimeout(() => {
+      skeleton.style.display = "none";
+      player.style.opacity = "1";
+      player.style.zIndex = "0";
+    }, 1000);
   }, [playerID]);
 
   return <>{children}</>;
