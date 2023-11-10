@@ -2,12 +2,18 @@ import { type Metadata } from "next";
 
 import dynamic from "next/dynamic";
 
-import EventItem from "@/components/events/event-item";
 import Avatar from "@/images/avatar.webp";
 import { mostRecentEvent } from "@/server/handlers/events/getLatest";
 
 const HeroSection = dynamic(
   () => import("@/components/layout/sections/HeroSection"),
+  {
+    ssr: true,
+  },
+);
+
+const EventItem = dynamic(
+  () => import("@/components/events/event-item"),
   {
     ssr: true,
   },

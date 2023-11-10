@@ -1,7 +1,5 @@
 "use client";
 
-import YouTube from "react-youtube";
-
 import { Skeleton } from "@/components/ui/skeleton";
 
 import YoutubeVideoWrapper from "./wrapper";
@@ -11,15 +9,6 @@ export const YoutubePlayer = ({ key, url }: { key?: string; url: string }) => {
   const playerID = `youtube-player-[${youtubeVideoID}]${
     key !== undefined ? `-${key}` : ""
   }`;
-
-  const options = {
-    height: 182,
-    width: 322,
-    playerVars: {
-      // https://developers.google.com/youtube/player_parameters
-      controls: 0,
-    },
-  };
 
   return (
     <YoutubeVideoWrapper playerID={playerID}>
@@ -34,11 +23,13 @@ export const YoutubePlayer = ({ key, url }: { key?: string; url: string }) => {
           style={{ opacity: 0 }}
           data-elem-type="player-loader"
         >
-          <YouTube
+          <embed
             key={youtubeVideoID}
-            videoId={youtubeVideoID}
+            src={`/api/remote/https://www.youtube.com/embed/${youtubeVideoID}?autoplay=1&mute=1&enablejsapi=1&controls=0&origin=https://jkinsight.vercel.app'`}
             className="mx-auto max-h-[182px] max-w-[322px]"
-            opts={options}
+            width={322}
+            height={182}
+            // opts={options}
           />
         </div>
       </div>
