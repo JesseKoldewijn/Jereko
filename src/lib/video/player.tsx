@@ -25,7 +25,7 @@ export const YoutubePlayer = ({ key, url }: { key?: string; url: string }) => {
         >
           <embed
             key={youtubeVideoID}
-            src={`/api/remote/https://www.youtube.com/embed/${youtubeVideoID}?autoplay=1&mute=1&enablejsapi=1&controls=0&origin=https://jkinsight.vercel.app'`}
+            src={`https://www.youtube.com/embed/${youtubeVideoID}?autoplay=0&mute=1&enablejsapi=1&controls=0&origin=https://jkinsight.vercel.app'`}
             className="mx-auto max-h-[182px] max-w-[322px]"
             width={322}
             height={182}

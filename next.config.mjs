@@ -5,7 +5,7 @@ const config = {
   experimental: {
     webVitalsAttribution: ["FCP", "LCP", "CLS", "FID", "TTFB", "INP"],
   },
-  poweredByHeader: false,
+  
 };
 
 export default config;
