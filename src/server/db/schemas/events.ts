@@ -19,6 +19,7 @@ export const Events = pgTable(
     url: text("url"),
     url_type: text("url_type").$type<UrlType>(),
     skills: text("skills"),
+    day: text("day"),
     month: text("month"),
     year: text("year"),
     created_at: date("created_at").defaultNow(),
@@ -26,7 +27,7 @@ export const Events = pgTable(
   },
   (projects) => {
     return {
-      uniqueIdx: uniqueIndex("unique_idx").on(projects.id),
+      uniqueIdx: uniqueIndex("unique_idx").on(projects.name),
     };
   },
 );
