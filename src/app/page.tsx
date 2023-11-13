@@ -1,5 +1,4 @@
 import { type Metadata } from "next";
-import { Suspense } from "react";
 
 import dynamic from "next/dynamic";
 
@@ -36,9 +35,28 @@ const Home = async () => {
           description: "My personal website.",
         }}
       />
-      <Suspense>
+      <section className="mx-auto flex max-w-lg flex-col items-center gap-8 px-4 pb-10 pt-20">
+        <h2 className="text-md font-semibold md:text-xl">
+          Thanks for visiting my personal website!
+        </h2>
+        <p className="text-center">
+          This website is used to showcase my projects, experience and
+          volunteering. I also use this website to showcase my skills in web
+          development, events I&apos;ve attended and possibly also a dev blog in
+          the future.
+        </p>
+      </section>
+      <section className="mx-auto flex max-w-lg flex-col items-center px-4 py-20">
+        <h3 className="text-md font-semibold md:text-xl">
+          Speaking about events I&apos;ve attended...
+        </h3>
+        <p className="mt-8">
+          Down below is the latest event I&apos;ve attended
+        </p>
         <LastAttendedEvent />
-      </Suspense>
+      </section>
+
+      <div className="py-20" data-tag="footersection-incoming"></div>
     </>
   );
 };

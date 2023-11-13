@@ -1,4 +1,5 @@
 import { type Metadata } from "next";
+import { Suspense } from "react";
 
 import dynamic from "next/dynamic";
 
@@ -43,7 +44,9 @@ const ProjectsPage = () => {
       />
       <div className="mx-auto mt-8 w-auto max-w-md px-4 md:w-full md:px-0">
         <section>
-          <ProjectsLister />
+          <Suspense>
+            <ProjectsLister />
+          </Suspense>
         </section>
       </div>
     </>

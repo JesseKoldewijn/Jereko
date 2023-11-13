@@ -39,9 +39,9 @@ const AboutMeLayout = ({ children }: LayoutProps) => {
           href="/about-me/intro"
           className={cn(
             linkActiveStatus["/about-me/intro"]
-              ? "bg-neutral-200 text-neutral-900 dark:hover:border-neutral-200 dark:hover:bg-transparent dark:hover:text-neutral-200"
-              : "hover:bg-neutral-200 hover:text-neutral-900",
-            "rounded-lg border border-neutral-200 px-3 py-2 hover:bg-neutral-200 hover:text-neutral-900",
+              ? "bg-neutral-200 text-neutral-900 sm:dark:hover:border-neutral-200 sm:dark:hover:bg-transparent sm:dark:hover:text-neutral-200"
+              : "sm:hover:bg-neutral-200 sm:hover:text-neutral-900",
+            "rounded-lg border border-neutral-200 px-3 py-2 sm:hover:bg-neutral-200 sm:hover:text-neutral-900",
           )}
         >
           Introduction
@@ -51,9 +51,9 @@ const AboutMeLayout = ({ children }: LayoutProps) => {
           href="/about-me/hobbies"
           className={cn(
             linkActiveStatus["/about-me/hobbies"]
-              ? "bg-neutral-200 text-neutral-900 dark:hover:border-neutral-200 dark:hover:bg-transparent dark:hover:text-neutral-200"
-              : "hover:bg-neutral-200 hover:text-neutral-900",
-            "rounded-lg border border-neutral-200 px-3 py-2 hover:bg-neutral-200 hover:text-neutral-900",
+              ? "bg-neutral-200 text-neutral-900 sm:dark:hover:border-neutral-200 sm:dark:hover:bg-transparent sm:dark:hover:text-neutral-200"
+              : "sm:hover:bg-neutral-200 sm:hover:text-neutral-900",
+            "rounded-lg border border-neutral-200 px-3 py-2 sm:hover:bg-neutral-200 sm:hover:text-neutral-900",
           )}
         >
           Hobbies
@@ -63,9 +63,9 @@ const AboutMeLayout = ({ children }: LayoutProps) => {
           href="/about-me/volunteering"
           className={cn(
             linkActiveStatus["/about-me/volunteering"]
-              ? "bg-neutral-200 text-neutral-900 dark:hover:border-neutral-200 dark:hover:bg-transparent dark:hover:text-neutral-200"
-              : "hover:bg-neutral-200 hover:text-neutral-900",
-            "rounded-lg border border-neutral-200 px-3 py-2 hover:bg-neutral-200 hover:text-neutral-900",
+              ? "bg-neutral-200 text-neutral-900 sm:dark:hover:border-neutral-200 sm:dark:hover:bg-transparent sm:dark:hover:text-neutral-200"
+              : "sm:hover:bg-neutral-200 sm:hover:text-neutral-900",
+            "rounded-lg border border-neutral-200 px-3 py-2 sm:hover:bg-neutral-200 sm:hover:text-neutral-900",
           )}
         >
           Volunteering

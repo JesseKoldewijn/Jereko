@@ -37,7 +37,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className={cn(scrollPositionStyle, "flex w-full py-4")}>
+    <nav className={cn(scrollPositionStyle, "z-50 flex w-full py-4")}>
       <section className="my-auto mr-auto">
         <Link
           href="/"

@@ -17,7 +17,7 @@ const LastAttendedEvent = async () => {
             id="last-event"
             className="my-4 flex flex-col gap-4 text-center"
           >
-            <EventItem title="Last Attended Event" event={latestEvent} />
+            <EventItem title="Latest Attended Event" event={latestEvent} />
           </section>
         </div>
       ) : null}
