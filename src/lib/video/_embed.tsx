@@ -32,6 +32,7 @@ const _Embed = ({ playerID, youtubeVideoID, srcUrl }: EmbedProps) => {
     setTimeout(() => {
       startShowing();
     }, 1000);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [playerID]);
 
   return (
