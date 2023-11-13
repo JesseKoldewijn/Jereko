@@ -10,7 +10,13 @@ interface EventItemProps {
   event: Event;
 }
 
-const EventItem = ({ title, event }: EventItemProps) => {
+const EventItem = async ({ title, event }: EventItemProps) => {
+  const origin = process.env.VERCEL_URL!;
+
+  if (!origin) {
+    console.error("event origin is undefined or invalid: ", origin);
+  }
+
   const eventDate =
     event.year !== null && event.month !== null
       ? " - " +
@@ -39,7 +45,7 @@ const EventItem = ({ title, event }: EventItemProps) => {
       )}
       <CardContent className="flex flex-1 flex-col">
         {event.url_type == "video" && event.url ? (
-          <YoutubePlayer url={event.url} />
+          <YoutubePlayer url={event.url} origin={origin} />
         ) : null}
       </CardContent>
     </Card>

@@ -41,7 +41,7 @@ const Navbar = () => {
       <section className="my-auto mr-auto">
         <Link
           href="/"
-          aria-label="JKinsight logo"
+          id="JKinsight logo"
           className="flex font-semibold duration-500 hover:underline hover:underline-offset-4"
         >
           JKinsight
