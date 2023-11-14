@@ -4,6 +4,7 @@ import { type Metadata } from "next";
 
 import dynamic from "next/dynamic";
 
+// import CommandMenuProvider from "@/components/command-menu";
 import Footer from "@/components/layout/footer/footer";
 import { base } from "@/lib/hostname";
 import "@/styles/globals.css";
@@ -63,9 +64,11 @@ export default function RootLayout({
       <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable}`}>
         <NextThemeWrapper>
           <Navbar />
+          {/* <CommandMenuProvider> */}
           <div className="pb-8">{children}</div>
           <Toaster />
           <Footer />
+          {/* </CommandMenuProvider> */}
         </NextThemeWrapper>
       </body>
     </html>
