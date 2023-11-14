@@ -47,12 +47,13 @@ const _Embed = ({ playerID, youtubeVideoID, srcUrl }: EmbedProps) => {
         style={{ opacity: 0 }}
         data-elem-type="player-loader"
       >
-        <embed
+        <iframe
           key={youtubeVideoID}
           src={srcUrl}
           className="mx-auto my-auto h-full max-h-[182px] min-h-[182px] w-full max-w-[322px]"
           width={322}
           height={182}
+          sandbox="allow-scripts allow-same-origin allow-presentation allow-fullscreen"
         />
       </div>
     </>

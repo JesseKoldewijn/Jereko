@@ -1,6 +1,20 @@
 "use client";
 
-import Embed from "./_embed";
+import { Suspense } from "react";
+
+import dynamic from "next/dynamic";
+
+import { Skeleton } from "@/components/ui/skeleton";
+
+const Embed = dynamic(() => import("./_embed"), {
+  ssr: false,
+  loading: () => (
+    <Skeleton
+      id="loading-skeleton"
+      className="bg-neutral-322 absolute mx-auto my-auto h-full max-h-[182px] w-full max-w-[322px] dark:bg-neutral-700"
+    />
+  ),
+});
 
 export const YoutubePlayer = ({
   key,
@@ -20,11 +34,20 @@ export const YoutubePlayer = ({
 
   return (
     <div key={playerID} className="relative mx-auto my-auto flex flex-1">
-      <Embed
-        playerID={playerID}
-        youtubeVideoID={youtubeVideoID}
-        srcUrl={srcUrl}
-      />
+      <Suspense
+        fallback={
+          <Skeleton
+            id="loading-skeleton"
+            className="bg-neutral-322 absolute mx-auto my-auto h-full max-h-[182px] w-full max-w-[322px] dark:bg-neutral-700"
+          />
+        }
+      >
+        <Embed
+          playerID={playerID}
+          youtubeVideoID={youtubeVideoID}
+          srcUrl={srcUrl}
+        />
+      </Suspense>
     </div>
   );
 };
