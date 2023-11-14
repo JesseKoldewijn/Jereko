@@ -19,7 +19,7 @@ export const YoutubePlayer = ({
   const srcUrl = `https://www.youtube.com/embed/${youtubeVideoID}?autoplay=0&mute=1&enablejsapi=0&controls=0&origin=${origin}'`;
 
   return (
-    <div key={playerID} className="relative mx-auto flex">
+    <div key={playerID} className="relative mx-auto my-auto flex flex-1">
       <Embed
         playerID={playerID}
         youtubeVideoID={youtubeVideoID}

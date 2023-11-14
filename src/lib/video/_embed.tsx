@@ -39,18 +39,18 @@ const _Embed = ({ playerID, youtubeVideoID, srcUrl }: EmbedProps) => {
     <>
       <Skeleton
         id={playerID + "-skeleton"}
-        className="bg-neutral-322 absolute mx-auto h-[182px] w-[322px] dark:bg-neutral-700"
+        className="bg-neutral-322 absolute mx-auto my-auto h-full max-h-[182px] w-full max-w-[322px] dark:bg-neutral-700"
       />
       <div
         id={playerID}
-        className="-z-50 mx-auto h-[182px] w-[322px]"
+        className="-z-50 mx-auto my-auto h-auto max-h-[182px] min-h-[182px] w-full max-w-[322px]"
         style={{ opacity: 0 }}
         data-elem-type="player-loader"
       >
         <embed
           key={youtubeVideoID}
           src={srcUrl}
-          className="mx-auto max-h-[182px] max-w-[322px]"
+          className="mx-auto my-auto h-full max-h-[182px] min-h-[182px] w-full max-w-[322px]"
           width={322}
           height={182}
         />

@@ -31,7 +31,7 @@ const EventItem = async ({ title, event }: EventItemProps) => {
       : null;
 
   return (
-    <Card className="bg-neutral-200 dark:bg-neutral-900">
+    <Card className="min-h-[18rem] bg-neutral-200 dark:bg-neutral-900">
       {title ? (
         <>
           <CardTitle className="pt-4">{title}</CardTitle>

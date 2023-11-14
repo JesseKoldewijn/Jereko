@@ -12,7 +12,7 @@ const LastAttendedEvent = async () => {
   return (
     <>
       {latestEvent ? (
-        <div className="mx-auto mt-8 w-auto max-w-md px-4 md:w-full md:px-0">
+        <div className="mx-auto mt-8 w-full max-w-md px-4 md:px-0">
           <section
             id="last-event"
             className="my-4 flex flex-col gap-4 text-center"

@@ -4,7 +4,7 @@ import { type Metadata } from "next";
 
 import dynamic from "next/dynamic";
 
-// import CommandMenuProvider from "@/components/command-menu";
+import CommandMenuProvider from "@/components/command-menu";
 import Footer from "@/components/layout/footer/footer";
 import { base } from "@/lib/hostname";
 import "@/styles/globals.css";
@@ -17,6 +17,10 @@ const NextThemeWrapper = dynamic(() => import("@/components/next-theme"), {
   ssr: true,
 });
 
+const NextPwaWrapper = dynamic(() => import("@/components/next-pwa"), {
+  ssr: false,
+});
+
 const Toaster = dynamic(() => import("@/components/ui/toaster"), {
   ssr: false,
 });
@@ -25,7 +29,18 @@ export const metadata: Metadata = {
   title: "JKinsight - My personal website | Jesse Koldewijn",
   description: "tbh idk what to put here yet",
   metadataBase: new URL(base),
+
   icons: [
+    {
+      rel: "icon",
+      sizes: "512x512",
+      url: "/favicons/favicon-512x512.png",
+    },
+    {
+      rel: "icon",
+      sizes: "192x192",
+      url: "/favicons/favicon-192x192.png",
+    },
     {
       rel: "apple-touch-icon",
       url: "/favicons/apple-touch-icon.png",
@@ -43,10 +58,10 @@ export const metadata: Metadata = {
     },
     {
       rel: "icon",
-
       url: "/favicons/favicon.ico",
     },
   ],
+  manifest: "/site.webmanifest",
   openGraph: {
     title: "JKinsight",
     description: "tbh idk what to put here yet",
@@ -61,15 +76,20 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <meta name="theme-color" content="#000" />
+      </head>
       <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable}`}>
-        <NextThemeWrapper>
-          <Navbar />
-          {/* <CommandMenuProvider> */}
-          <div className="pb-8">{children}</div>
-          <Toaster />
-          <Footer />
-          {/* </CommandMenuProvider> */}
-        </NextThemeWrapper>
+        <NextPwaWrapper>
+          <NextThemeWrapper>
+            <Navbar />
+            <CommandMenuProvider>
+              <div className="pb-8">{children}</div>
+              <Toaster />
+              <Footer />
+            </CommandMenuProvider>
+          </NextThemeWrapper>
+        </NextPwaWrapper>
       </body>
     </html>
   );

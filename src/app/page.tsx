@@ -35,27 +35,26 @@ const Home = async () => {
           description: "My personal website.",
         }}
       />
-      <section className="mx-auto flex max-w-lg flex-col items-center gap-8 px-4 pb-10 pt-20">
+      <section className="mx-auto flex w-full max-w-lg flex-col items-center gap-8 px-4 pb-10 pt-20 text-center">
         <h2 className="text-md font-semibold md:text-xl">
           Thanks for visiting my personal website!
         </h2>
-        <p className="text-center">
+        <p className="text-neutral-400">
           This website is used to showcase my projects, experience and
           volunteering. I also use this website to showcase my skills in web
           development, events I&apos;ve attended and possibly also a dev blog in
           the future.
         </p>
       </section>
-      <section className="mx-auto flex max-w-lg flex-col items-center px-4 py-20">
+      <section className="mx-auto flex w-full max-w-lg flex-col items-center py-20 text-center">
         <h3 className="text-md font-semibold md:text-xl">
           Speaking about events I&apos;ve attended...
         </h3>
-        <p className="mt-8">
+        <p className="mt-4 text-neutral-400">
           Down below is the latest event I&apos;ve attended
         </p>
         <LastAttendedEvent />
       </section>
-      <div className="py-20" data-tag="footersection-incoming"></div>
     </>
   );
 };
