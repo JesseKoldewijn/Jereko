@@ -1,10 +1,10 @@
-import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
-
+import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
 
 import dynamic from "next/dynamic";
 
+import Footer from "@/components/layout/footer/footer";
 import { base } from "@/lib/hostname";
 import "@/styles/globals.css";
 
@@ -65,6 +65,7 @@ export default function RootLayout({
           <Navbar />
           <div className="pb-8">{children}</div>
           <Toaster />
+          <Footer />
         </NextThemeWrapper>
       </body>
     </html>

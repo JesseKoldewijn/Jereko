@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 
 import ThemeToggle from "@/components/ui/theme-toggle";
+import { appConfig } from "@/config/app";
 import { cn } from "@/lib/utils";
 
 import NavigationMenuMobile from "./mobile/navigationMenuMobile";
@@ -18,9 +19,7 @@ const Navbar = () => {
     window.addEventListener("scroll", () => {
       const scrollTop = document.documentElement.scrollTop;
       setScrollPosition(
-        scrollTop > 40
-          ? "fixed pl-4 top-0 px-6 bg-[rgba(255,255,255,0.75)] dark:bg-[rgba(0,0,0,0.65)]"
-          : "relative px-8 mb-4",
+        cn(scrollTop > 40 ? "fixed top-0 px-6 pl-4" : "relative mb-4 px-8"),
       );
     });
 
@@ -28,23 +27,26 @@ const Navbar = () => {
       window.removeEventListener("scroll", () => {
         const scrollTop = document.documentElement.scrollTop;
         setScrollPosition(
-          scrollTop > 40
-            ? "fixed pl-4 top-0 px-6 bg-[rgba(255,255,255,0.75)] dark:bg-[rgba(0,0,0,0.65)]"
-            : "relative px-8 mb-4",
+          cn(scrollTop > 40 ? "fixed top-0 px-6 pl-4" : "relative mb-4 px-8"),
         );
       });
     };
   }, []);
 
   return (
-    <nav className={cn(scrollPositionStyle, "z-50 flex w-full py-4")}>
+    <nav
+      className={cn(
+        scrollPositionStyle,
+        "z-50 flex w-full bg-[rgba(255,255,255,0.75)] py-4 dark:bg-[rgba(18,18,18,0.65)]",
+      )}
+    >
       <section className="my-auto mr-auto">
         <Link
           href="/"
           id="JKinsight logo"
           className="flex font-semibold duration-500 hover:underline hover:underline-offset-4"
         >
-          JKinsight
+          {appConfig.branding.brandName}
         </Link>
       </section>
       <section className="my-auto flex flex-1 justify-center">

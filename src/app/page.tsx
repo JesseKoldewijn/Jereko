@@ -55,7 +55,6 @@ const Home = async () => {
         </p>
         <LastAttendedEvent />
       </section>
-
       <div className="py-20" data-tag="footersection-incoming"></div>
     </>
   );
