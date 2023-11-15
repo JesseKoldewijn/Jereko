@@ -1,7 +1,7 @@
 "use client";
 
 import { Play } from "lucide-react";
-import { Suspense, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 
 import dynamic from "next/dynamic";
 import Image from "next/image";
@@ -18,6 +18,7 @@ export const YoutubePlayer = ({
   origin: string;
 }) => {
   const [clicked, setClicked] = useState(false);
+
   const youtubeVideoID = url.split("v=")[1]!;
   const playerID = `youtube-player-[${youtubeVideoID}]${
     key !== undefined ? `-${key}` : ""
@@ -34,7 +35,9 @@ export const YoutubePlayer = ({
             className="sm mx-auto my-auto aspect-video h-full max-h-[182px] w-full max-w-[322px] object-cover"
             src={thumbnailUrl}
             alt="video thumbnail"
-            fill
+            loading="lazy"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            fill={true}
           />
           <div
             onClick={() => setClicked(true)}
