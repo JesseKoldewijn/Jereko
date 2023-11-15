@@ -45,7 +45,7 @@ const Home = async () => {
         </span>
         as a
         <span className={cn(animatedGradient, "font-bold")}>
-          {` ${latestExperience?.title}.`}
+          {` ${latestExperience?.title}`}.
         </span>
       </p>
     );
