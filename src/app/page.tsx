@@ -17,7 +17,6 @@ const HeroSection = dynamic(
   },
 );
 
-export const runtime = "edge"; // edge runtime
 export const revalidate = 86400; // 24 hours
 
 export const metadata: Metadata = {
@@ -35,8 +34,12 @@ const Home = async () => {
 
     return (
       <p className="text-neutral-600 dark:text-neutral-400">
-        My name is Jesse Koldewijn, I&apos;m a {myAge} year old gamer, software
-        engineer and tech enthusiast. I&apos;m currently working at
+        My name is{" "}
+        <span className={cn(animatedGradient, "font-bold")}>
+          Jesse Koldewijn
+        </span>
+        , I&apos;m a {myAge} year old gamer, software engineer and tech
+        enthusiast. I&apos;m currently working at
         <span className={cn(animatedGradient, "font-bold")}>
           {` ${latestExperience?.company_name} `}
         </span>

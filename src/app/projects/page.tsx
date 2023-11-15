@@ -19,7 +19,6 @@ const ProjectsLister = dynamic(
   },
 );
 
-export const runtime = "edge"; // edge runtime
 export const revalidate = 86400; // 24 hours
 
 export const metadata: Metadata = {

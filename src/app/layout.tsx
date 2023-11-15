@@ -20,9 +20,9 @@ const NextThemeWrapper = dynamic(
   },
 );
 
-const NextPwaWrapper = dynamic(() => import("@/components/next-pwa"), {
-  ssr: false,
-});
+// const NextPwaWrapper = dynamic(() => import("@/components/next-pwa"), {
+//   ssr: false,
+// });
 
 const Toaster = dynamic(() => import("@/components/ui/toaster"), {
   ssr: false,
@@ -36,7 +36,6 @@ export const metadata: Metadata = {
   title: "JKinsight - My personal website | Jesse Koldewijn",
   description: "tbh idk what to put here yet",
   metadataBase: new URL(base),
-
   icons: [
     {
       rel: "icon",
@@ -87,22 +86,23 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cookieJarTheme ? cookieJarTheme.value : "no-cookie"}
+      className={cookieJarTheme ? cookieJarTheme.value : ""}
+      suppressHydrationWarning
     >
       <head>
         <meta name="theme-color" content="#000" />
       </head>
       <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable}`}>
-        <NextPwaWrapper isProd={process.env.NODE_ENV == "production"}>
-          <NextThemeWrapper>
-            <Navbar />
-            <CommandMenuProvider>
-              <div className="pb-8">{children}</div>
-              <Toaster />
-              <Footer />
-            </CommandMenuProvider>
-          </NextThemeWrapper>
-        </NextPwaWrapper>
+        {/* <NextPwaWrapper isProd={process.env.NODE_ENV == "production"}> */}
+        <NextThemeWrapper>
+          <Navbar />
+          <CommandMenuProvider>
+            <div className="pb-8">{children}</div>
+            <Toaster />
+            <Footer />
+          </CommandMenuProvider>
+        </NextThemeWrapper>
+        {/* </NextPwaWrapper> */}
       </body>
     </html>
   );
