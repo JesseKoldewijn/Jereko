@@ -51,7 +51,6 @@ const Home = async () => {
   return (
     <>
       <HeroSection
-        gradientVariant="alt"
         bannerImage={{
           dark: Avatar,
           light: Avatar,
