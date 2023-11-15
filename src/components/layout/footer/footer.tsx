@@ -4,6 +4,8 @@ import { ArrowUp, Instagram, Linkedin, Twitter } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { appConfig } from "@/config/app";
+import { animatedGradient } from "@/lib/prog-classes";
+import { cn } from "@/lib/utils";
 
 const Footer = () => {
   const getYear = () => {
@@ -40,10 +42,10 @@ const Footer = () => {
         </a>
       </div>
       <div className="mb-4 mt-3 flex gap-2">
-        <span className="border-r-2 pr-2 text-neutral-800 hover:bg-neutral-400 hover:text-neutral-950 dark:text-neutral-300 dark:hover:bg-neutral-800 dark:hover:text-neutral-400">
+        <span className="border-r-2 pr-2 text-neutral-800 dark:text-neutral-300">
           {getYear()}
         </span>
-        <span>{appConfig.branding.brandName}</span>
+        <span className="font-semibold">{appConfig.branding.brandName}</span>
       </div>
       <Button
         className="flex text-neutral-800 hover:bg-neutral-400 hover:text-neutral-950 dark:text-neutral-300 dark:hover:bg-neutral-800 dark:hover:text-neutral-400"

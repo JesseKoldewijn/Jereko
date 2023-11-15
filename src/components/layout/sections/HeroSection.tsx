@@ -4,6 +4,7 @@ import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
+import { animatedGradient } from "@/lib/prog-classes";
 import { cn } from "@/lib/utils";
 
 interface HeroSectionProps {
@@ -37,7 +38,12 @@ const HeroSection = ({
     <section className={cn(className, "mx-4 h-full md:mx-8")}>
       <div className="mx-auto grid max-w-screen-xl px-4 py-8 lg:grid-cols-12 lg:gap-8 lg:py-16 xl:gap-0">
         <div className="mx-auto place-self-center text-center lg:col-span-7 lg:ml-0 lg:text-left">
-          <h1 className="mb-4 max-w-2xl text-4xl font-extrabold leading-none tracking-tight dark:text-white md:text-5xl xl:text-6xl">
+          <h1
+            className={cn(
+              animatedGradient,
+              "mb-4 max-w-2xl text-4xl font-extrabold leading-none tracking-tight md:text-5xl xl:text-6xl",
+            )}
+          >
             {bannerContent.title}
           </h1>
           <p className="mb-6 max-w-2xl font-light text-neutral-500 dark:text-neutral-400 md:text-lg lg:mb-8 lg:text-xl">
