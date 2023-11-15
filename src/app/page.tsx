@@ -1,9 +1,14 @@
 import { type Metadata } from "next";
+import { Suspense } from "react";
 
 import dynamic from "next/dynamic";
 
 import LastAttendedEvent from "@/components/events/last-attended";
 import Avatar from "@/images/avatar.webp";
+import { getAgeByDateString } from "@/lib/age";
+import { animatedGradient } from "@/lib/prog-classes";
+import { cn } from "@/lib/utils";
+import { mostRecentExp } from "@/server/handlers/exp/getLatest";
 
 const HeroSection = dynamic(
   () => import("@/components/layout/sections/HeroSection"),
@@ -12,6 +17,7 @@ const HeroSection = dynamic(
   },
 );
 
+export const runtime = "edge"; // edge runtime
 export const revalidate = 86400; // 24 hours
 
 export const metadata: Metadata = {
@@ -23,9 +29,29 @@ export const metadata: Metadata = {
 };
 
 const Home = async () => {
+  const IntroSection = async () => {
+    const myAge = getAgeByDateString("1999-02-15");
+    const latestExperience = await mostRecentExp();
+
+    return (
+      <p className="text-neutral-600 dark:text-neutral-400">
+        My name is Jesse Koldewijn, I&apos;m a {myAge} year old gamer, software
+        engineer and tech enthusiast. I&apos;m currently working at
+        <span className={cn(animatedGradient, "font-bold")}>
+          {` ${latestExperience?.company_name} `}
+        </span>
+        as a
+        <span className={cn(animatedGradient, "font-bold")}>
+          {` ${latestExperience?.title}.`}
+        </span>
+      </p>
+    );
+  };
+
   return (
     <>
       <HeroSection
+        gradientVariant="alt"
         bannerImage={{
           dark: Avatar,
           light: Avatar,
@@ -35,7 +61,7 @@ const Home = async () => {
           description: "My personal website.",
         }}
       />
-      <section className="mx-auto flex w-full max-w-lg flex-col items-center gap-8 px-4 pb-10 pt-5 text-center md:pt-20">
+      <section className="mx-auto flex w-full max-w-lg flex-col items-center gap-8 px-4 pt-5 text-center md:pt-20">
         <h2 className="text-md font-semibold md:text-xl">
           Thanks for visiting my personal website!
         </h2>
@@ -46,7 +72,15 @@ const Home = async () => {
           the future.
         </p>
       </section>
-      <section className="mx-auto flex w-full max-w-lg flex-col items-center py-20 text-center">
+      <section className="mx-auto flex w-full max-w-lg flex-col items-center gap-8 px-4 py-20 text-center">
+        <h2 className="text-md font-semibold md:text-xl">
+          A short introduction about me
+        </h2>
+        <Suspense>
+          <IntroSection />
+        </Suspense>
+      </section>
+      <section className="mx-auto flex w-full max-w-lg flex-col items-center pb-20 text-center">
         <h3 className="text-md font-semibold md:text-xl">
           Speaking about events I&apos;ve attended...
         </h3>

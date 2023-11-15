@@ -1,3 +1,5 @@
+export const runtime = "edge"; // edge runtime
+
 const NotFound = () => {
   return (
     <div className="flex flex-1 flex-col items-center justify-center">

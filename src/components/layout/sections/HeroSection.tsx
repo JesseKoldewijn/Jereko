@@ -1,5 +1,6 @@
 import React from "react";
 
+import { headers } from "next/headers";
 import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
 
@@ -30,10 +31,24 @@ interface HeroSectionProps {
 }
 
 const HeroSection = ({
-  className,
   bannerImage,
   bannerContent,
+  className,
 }: HeroSectionProps) => {
+  const headersList = headers();
+
+  const isWindows =
+    headersList.get("user-agent") !== null
+      ? headersList.get("user-agent")!.includes("Windows")
+      : false;
+
+  const isMacos =
+    headersList.get("user-agent") !== null
+      ? headersList.get("user-agent")!.includes("Macintosh")
+      : false;
+
+  const isDesktop = isWindows || isMacos ? true : false;
+
   return (
     <section className={cn(className, "mx-4 h-full md:mx-8")}>
       <div className="mx-auto grid max-w-screen-xl px-4 py-8 lg:grid-cols-12 lg:gap-8 lg:py-16 xl:gap-0">
@@ -79,20 +94,22 @@ const HeroSection = ({
             </>
           ) : null}
         </div>
-        <div className="hidden max-h-[500px] lg:col-span-5 lg:mt-0 lg:flex">
-          <Image
-            src={bannerImage.light}
-            className="-top-[0%] my-auto block scale-[calc(100%+2%)] rounded-full bg-neutral-200 bg-clip-content  dark:!hidden"
-            alt="hero image"
-            priority
-          />
-          <Image
-            src={bannerImage.dark}
-            className="relative -top-[0%] my-auto hidden scale-[calc(100%+2%)] rounded-full bg-neutral-900 bg-clip-content dark:!block"
-            alt="hero image"
-            priority
-          />
-        </div>
+        {isDesktop ? (
+          <div className="max-h-[500px] lg:col-span-5 lg:mt-0 lg:flex">
+            <Image
+              src={bannerImage.light}
+              className="-top-[0%] my-auto block scale-[calc(100%+2%)] rounded-full bg-neutral-200 bg-clip-content  dark:!hidden"
+              alt="hero image"
+              priority
+            />
+            <Image
+              src={bannerImage.dark}
+              className="relative -top-[0%] my-auto hidden scale-[calc(100%+2%)] rounded-full bg-neutral-900 bg-clip-content dark:!block"
+              alt="hero image"
+              priority
+            />
+          </div>
+        ) : null}
       </div>
     </section>
   );

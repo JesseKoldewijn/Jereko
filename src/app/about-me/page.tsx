@@ -11,6 +11,8 @@ const HeroSection = dynamic(
   },
 );
 
+export const runtime = "edge"; // edge runtime
+
 const Hobbies = () => {
   return (
     <div className="flex flex-col items-center justify-center gap-8">
