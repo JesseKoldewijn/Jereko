@@ -20,10 +20,6 @@ const NextThemeWrapper = dynamic(
   },
 );
 
-// const NextPwaWrapper = dynamic(() => import("@/components/next-pwa"), {
-//   ssr: false,
-// });
-
 const Toaster = dynamic(() => import("@/components/ui/toaster"), {
   ssr: false,
 });
@@ -93,7 +89,6 @@ export default function RootLayout({
         <meta name="theme-color" content="#000" />
       </head>
       <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable}`}>
-        {/* <NextPwaWrapper isProd={process.env.NODE_ENV == "production"}> */}
         <NextThemeWrapper>
           <Navbar />
           <CommandMenuProvider>
@@ -102,7 +97,6 @@ export default function RootLayout({
             <Footer />
           </CommandMenuProvider>
         </NextThemeWrapper>
-        {/* </NextPwaWrapper> */}
       </body>
     </html>
   );
