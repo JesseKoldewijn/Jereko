@@ -35,7 +35,7 @@ const Home = async () => {
           description: "My personal website.",
         }}
       />
-      <section className="mx-auto flex w-full max-w-lg flex-col items-center gap-8 px-4 pb-10 pt-20 text-center">
+      <section className="mx-auto flex w-full max-w-lg flex-col items-center gap-8 px-4 pb-10 pt-5 text-center md:pt-20">
         <h2 className="text-md font-semibold md:text-xl">
           Thanks for visiting my personal website!
         </h2>

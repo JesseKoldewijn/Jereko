@@ -3,9 +3,9 @@ import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
 
 import dynamic from "next/dynamic";
+import { cookies } from "next/headers";
 
 import CommandMenuProvider from "@/components/command-menu";
-import Footer from "@/components/layout/footer/footer";
 import { base } from "@/lib/hostname";
 import "@/styles/globals.css";
 
@@ -13,15 +13,22 @@ const Navbar = dynamic(() => import("@/components/layout/navbar/navbar"), {
   ssr: true,
 });
 
-const NextThemeWrapper = dynamic(() => import("@/components/next-theme"), {
-  ssr: true,
-});
+const NextThemeWrapper = dynamic(
+  () => import("@/components/next-theme/provider"),
+  {
+    ssr: true,
+  },
+);
 
 const NextPwaWrapper = dynamic(() => import("@/components/next-pwa"), {
   ssr: false,
 });
 
 const Toaster = dynamic(() => import("@/components/ui/toaster"), {
+  ssr: false,
+});
+
+const Footer = dynamic(() => import("@/components/layout/footer"), {
   ssr: false,
 });
 
@@ -74,8 +81,14 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const cookieJar = cookies();
+  const cookieJarTheme = cookieJar.get("theme");
+
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html
+      lang="en"
+      className={cookieJarTheme ? cookieJarTheme.value : "no-cookie"}
+    >
       <head>
         <meta name="theme-color" content="#000" />
       </head>
