@@ -80,7 +80,7 @@ export default function RootLayout({
         <meta name="theme-color" content="#000" />
       </head>
       <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable}`}>
-        <NextPwaWrapper>
+        <NextPwaWrapper isProd={process.env.NODE_ENV == "production"}>
           <NextThemeWrapper>
             <Navbar />
             <CommandMenuProvider>

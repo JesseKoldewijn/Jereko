@@ -13,6 +13,9 @@ const withPWA = NextPWA({
 const config = {
   reactStrictMode: true,
   compress: true,
+  images: {
+    domains: ["img.youtube.com"],
+  },
   experimental: {
     ppr: true,
   },

@@ -22,6 +22,9 @@ module.exports = {
         sans: ["var(--font-geist-sans)", ...fontFamily.sans],
         mono: ["var(--font-geist-mono)", ...fontFamily.mono],
       },
+      screens: {
+        xs: "440px",
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
