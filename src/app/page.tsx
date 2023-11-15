@@ -39,7 +39,7 @@ const Home = async () => {
         <h2 className="text-md font-semibold md:text-xl">
           Thanks for visiting my personal website!
         </h2>
-        <p className="text-neutral-400">
+        <p className="text-neutral-600 dark:text-neutral-400">
           This website is used to showcase my projects, experience and
           volunteering. I also use this website to showcase my skills in web
           development, events I&apos;ve attended and possibly also a dev blog in
@@ -50,7 +50,7 @@ const Home = async () => {
         <h3 className="text-md font-semibold md:text-xl">
           Speaking about events I&apos;ve attended...
         </h3>
-        <p className="mt-4 text-neutral-400">
+        <p className="mt-4 text-neutral-600 dark:text-neutral-400">
           Down below is the latest event I&apos;ve attended
         </p>
         <LastAttendedEvent />
