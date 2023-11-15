@@ -1,17 +1,11 @@
 "use client";
 
-import {
-  Github,
-  Linkedin,
-  List,
-  ListChecks,
-  Twitter,
-  User,
-} from "lucide-react";
+import { Github, Linkedin, List, ListChecks, User } from "lucide-react";
 import { createContext, useContext, useEffect, useState } from "react";
 
 import { useRouter } from "next/navigation";
 
+import X from "./icons/Twitter-X";
 import {
   CommandDialog,
   CommandEmpty,
@@ -71,23 +65,25 @@ const CommandMenuProvider = ({ children }: { children: React.ReactNode }) => {
           break;
         }
         case "o": {
-          e.preventDefault();
-          window.open("https://github.com/JesseKoldewijn/JKinsight");
+          window.open("https://github.com/JesseKoldewijn/JKinsight", "_blank");
           setOpen(false);
           break;
         }
-        case "t": {
-          window.open("https://twitter.com/dull_joker");
+        case "x": {
+          window.open("https://x.com/dull_joker", "_blank");
           setOpen(false);
           break;
         }
         case "g": {
-          window.open("https://github.com/JesseKoldewijn");
+          window.open("https://github.com/JesseKoldewijn", "_blank");
           setOpen(false);
           break;
         }
         case "l": {
-          window.open("https://www.linkedin.com/in/jesse-koldewijn-5914531a3");
+          window.open(
+            "https://www.linkedin.com/in/jesse-koldewijn-5914531a3",
+            "_blank",
+          );
           setOpen(false);
           break;
         }
@@ -139,9 +135,9 @@ const CommandMenuProvider = ({ children }: { children: React.ReactNode }) => {
           <CommandSeparator />
           <CommandGroup heading="Socials">
             <CommandItem>
-              <Twitter className="mr-2 h-4 w-4" />
-              <span>Twitter</span>
-              <CommandShortcut>⌘T</CommandShortcut>
+              <X className="ml-[.15rem] mr-2 !h-4 !w-4" />
+              <span>X/Twitter</span>
+              <CommandShortcut>⌘X</CommandShortcut>
             </CommandItem>
             <CommandItem>
               <Github className="mr-2 h-4 w-4" />
