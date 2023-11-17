@@ -40,6 +40,9 @@ const HeroSection = ({
   const { systemTheme, theme } = useTheme();
   const actualCurrentTheme = theme == "system" ? systemTheme : theme;
 
+  const bannerID =
+    "banner-image" + String(bannerContent.title).replace(" ", "-");
+
   const [currentBannerImage, setCurrentBannerImage] = useState<StaticImageData>(
     actualCurrentTheme == "dark"
       ? bannerImage.dark
@@ -104,12 +107,13 @@ const HeroSection = ({
             </>
           ) : null}
         </div>
-        <div className="order-first mb-8 flex max-h-[300px] md:mb-16 md:max-h-[500px] lg:order-last lg:col-span-5 lg:mb-0 lg:mt-0">
+        <div className="order-first mb-8 flex max-h-[300px]  transition-opacity md:mb-16 md:max-h-[500px] lg:order-last lg:col-span-5 lg:mb-0 lg:mt-0">
           <Image
+            id={bannerID}
             src={currentBannerImage}
             className="-top-[0%] my-auto ml-auto mr-auto block max-h-[300px] w-auto scale-[calc(100%+2%)] rounded-full bg-neutral-200 bg-clip-content dark:bg-neutral-900 lg:mr-0 lg:max-h-[500px]"
             alt="hero image"
-            priority
+            loading="eager"
           />
         </div>
       </div>
