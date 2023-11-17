@@ -19,8 +19,6 @@ const ProjectsLister = dynamic(
   },
 );
 
-export const revalidate = 86400; // 24 hours
-
 export const metadata: Metadata = {
   openGraph: {
     title: "Projects | JKinsight",

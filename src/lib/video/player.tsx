@@ -30,7 +30,7 @@ export const YoutubePlayer = ({
   const LazyPlayer = () => {
     if (clicked === false)
       return (
-        <div className="xs:min-w-[350px] relative flex max-h-[182px] min-h-[182px] w-full min-w-[calc(100svw-6rem)] max-w-[322px] items-center">
+        <div className="relative flex max-h-[182px] min-h-[182px] w-full min-w-[calc(100svw-6rem)] max-w-[322px] items-center xs:min-w-[350px]">
           <Image
             className="sm mx-auto my-auto aspect-video h-full max-h-[182px] w-full max-w-[322px] object-cover"
             src={thumbnailUrl}

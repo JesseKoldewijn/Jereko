@@ -6,6 +6,7 @@ import dynamic from "next/dynamic";
 import { cookies } from "next/headers";
 
 import CommandMenuProvider from "@/components/command-menu";
+import QuadSection from "@/components/layout/footer/quad-section";
 import { base } from "@/lib/hostname";
 import "@/styles/globals.css";
 
@@ -25,7 +26,7 @@ const Toaster = dynamic(() => import("@/components/ui/toaster"), {
 });
 
 const Footer = dynamic(() => import("@/components/layout/footer"), {
-  ssr: false,
+  ssr: true,
 });
 
 export const metadata: Metadata = {
@@ -94,7 +95,7 @@ export default function RootLayout({
           <CommandMenuProvider>
             <div className="pb-8">{children}</div>
             <Toaster />
-            <Footer />
+            <Footer QuadSlot={<QuadSection />} />
           </CommandMenuProvider>
         </NextThemeWrapper>
       </body>

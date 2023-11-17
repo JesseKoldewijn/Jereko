@@ -1,6 +1,5 @@
 import { ImageResponse } from "next/og";
 
-import bgImage from "@/images/og-bg.png";
 import { base } from "@/lib/hostname";
 
 // Route segment config
@@ -29,10 +28,8 @@ export default async function Image() {
       <div
         style={{
           fontSize: 85,
-          backgroundImage: `url(${base + bgImage.src})`,
-          backgroundPosition: "center",
-          backgroundSize: "1200px 630px",
-          backgroundRepeat: "no-repeat",
+          backgroundImage:
+            "linear-gradient(to left bottom, #303030, #101010, #303030)",
           color: "#f8f8f8",
           width: "100%",
           height: "100%",
@@ -45,16 +42,21 @@ export default async function Image() {
       >
         <h1
           style={{
+            backgroundImage:
+              "linear-gradient(to left bottom, #f87171, #9333ea, #93c5fd)",
+            backgroundClip: "text",
+            color: "transparent",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
             marginTop: 0,
             marginBottom: 0,
-            textShadow: "0 0 15px #000000",
           }}
         >
           JKinsight
         </h1>
         <h2
           style={{
-            color: "#141414",
+            color: "#fff",
             textShadow: "0 0 5px #f8f8f8b5",
             marginTop: 0,
             marginBottom: 0,

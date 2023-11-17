@@ -20,7 +20,7 @@ const showcaseEntry = {
   ),
   showcase: {
     title: "Jesse Koldewijn",
-    href: "https://www.linkedin.com/in/jesse-koldewijn-5914531a3",
+    href: "/about-me",
     description:
       "Front-End Software Engineer, with a passion for software and tech.",
   },

@@ -19,7 +19,13 @@ const config = {
   reactStrictMode: true,
   compress: true,
   images: {
-    remotePatterns: [{ hostname: "img.youtube.com", protocol: "https" }],
+    remotePatterns: [
+      { hostname: "img.youtube.com", protocol: "https" },
+      {
+        hostname: "via.placeholder.com",
+        protocol: "https",
+      },
+    ],
   },
   experimental: {
     ppr: true,

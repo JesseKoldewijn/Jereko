@@ -14,7 +14,7 @@ const HeroSection = dynamic(
   },
 );
 
-const Hobbies = () => {
+const AboutMe = () => {
   const pathName = usePathname();
 
   return (
@@ -70,4 +70,4 @@ const Hobbies = () => {
   );
 };
 
-export default Hobbies;
+export default AboutMe;
