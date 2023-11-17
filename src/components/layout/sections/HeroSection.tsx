@@ -1,4 +1,7 @@
-import React from "react";
+"use client";
+
+import { useTheme } from "next-themes";
+import React, { useEffect, useState } from "react";
 
 import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
@@ -34,6 +37,29 @@ const HeroSection = ({
   bannerContent,
   className,
 }: HeroSectionProps) => {
+  const { systemTheme, theme } = useTheme();
+  const actualCurrentTheme = theme == "system" ? systemTheme : theme;
+
+  const [currentBannerImage, setCurrentBannerImage] = useState<StaticImageData>(
+    actualCurrentTheme == "dark"
+      ? bannerImage.dark
+      : actualCurrentTheme == "light"
+        ? bannerImage.light
+        : bannerImage.dark,
+  );
+
+  useEffect(() => {
+    const actualCurrentTheme = theme == "system" ? systemTheme : theme;
+
+    setCurrentBannerImage(
+      actualCurrentTheme == "dark"
+        ? bannerImage.dark
+        : actualCurrentTheme == "light"
+          ? bannerImage.light
+          : bannerImage.dark,
+    );
+  }, [theme]);
+
   return (
     <section className={cn(className, "mx-4 h-full md:mx-8")}>
       <div className="mx-auto grid max-w-screen-xl px-4 py-8 lg:grid-cols-12 lg:gap-8 lg:pt-16 xl:gap-0">
@@ -78,17 +104,10 @@ const HeroSection = ({
             </>
           ) : null}
         </div>
-
         <div className="order-first mb-8 flex max-h-[300px] md:mb-16 md:max-h-[500px] lg:order-last lg:col-span-5 lg:mb-0 lg:mt-0">
           <Image
-            src={bannerImage.light}
-            className="-top-[0%] my-auto ml-auto mr-auto block max-h-[300px] w-auto scale-[calc(100%+2%)] rounded-full bg-neutral-200 bg-clip-content dark:!hidden lg:mr-0 lg:max-h-[500px]"
-            alt="hero image"
-            priority
-          />
-          <Image
-            src={bannerImage.dark}
-            className="relative -top-[0%] my-auto ml-auto mr-auto hidden max-h-[300px] w-auto scale-[calc(100%+2%)] rounded-full bg-neutral-900 bg-clip-content dark:!block lg:mr-0 lg:max-h-[500px]"
+            src={currentBannerImage}
+            className="-top-[0%] my-auto ml-auto mr-auto block max-h-[300px] w-auto scale-[calc(100%+2%)] rounded-full bg-neutral-200 bg-clip-content dark:bg-neutral-900 lg:mr-0 lg:max-h-[500px]"
             alt="hero image"
             priority
           />
