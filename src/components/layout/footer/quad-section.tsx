@@ -43,7 +43,7 @@ const QuadSection = async () => {
         </div>
         <div>
           <span className="text-lg font-bold">Pages</span>
-          <ul className="mt-2 flex list-inside list-disc flex-col gap-1 text-sm text-neutral-600 dark:text-neutral-300">
+          <ul className="mt-2 flex list-inside list-disc flex-col gap-1 text-lg text-neutral-600 dark:text-neutral-300">
             <li>
               <Link href="/about-me">About Me</Link>
             </li>
