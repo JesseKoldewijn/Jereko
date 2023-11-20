@@ -1,8 +1,8 @@
 {
-  "id": "57744ce9-fa34-4de7-b24a-f859d768b4b5",
-  "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "5",
   "dialect": "pg",
+  "id": "b10aa339-9b44-4f6a-9d98-1ad43963b95a",
+  "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "events": {
       "name": "events",
@@ -87,7 +87,9 @@
       "indexes": {
         "unique_idx": {
           "name": "unique_idx",
-          "columns": ["name"],
+          "columns": [
+            "name"
+          ],
           "isUnique": true
         }
       },
@@ -178,7 +180,9 @@
       "indexes": {
         "unique_idx": {
           "name": "unique_idx",
-          "columns": ["job_title"],
+          "columns": [
+            "job_title"
+          ],
           "isUnique": true
         }
       },
@@ -239,10 +243,67 @@
       "indexes": {
         "unique_idx": {
           "name": "unique_idx",
-          "columns": ["name"],
+          "columns": [
+            "name"
+          ],
           "isUnique": true
         }
       },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "socials": {
+      "name": "socials",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "label": {
+          "name": "label",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "platform": {
+          "name": "platform",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "username": {
+          "name": "username",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "link": {
+          "name": "link",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
       "foreignKeys": {},
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}

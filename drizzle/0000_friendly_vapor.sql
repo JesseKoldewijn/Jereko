@@ -38,6 +38,16 @@ CREATE TABLE IF NOT EXISTS "projects" (
 	"updated_at" date DEFAULT now()
 );
 --> statement-breakpoint
+CREATE TABLE IF NOT EXISTS "socials" (
+	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+	"label" text,
+	"platform" text,
+	"username" text,
+	"link" text,
+	"created_at" date DEFAULT now(),
+	"updated_at" date DEFAULT now()
+);
+--> statement-breakpoint
 CREATE UNIQUE INDEX IF NOT EXISTS "unique_idx" ON "events" ("name");--> statement-breakpoint
 CREATE UNIQUE INDEX IF NOT EXISTS "unique_idx" ON "experiences" ("job_title");--> statement-breakpoint
 CREATE UNIQUE INDEX IF NOT EXISTS "unique_idx" ON "projects" ("name");

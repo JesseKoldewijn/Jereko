@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import AnimatedGradientText from "@/components/animated/animated-grad-text";
 import Avatar from "@/images/profile.webp";
 import { getAgeByDateString } from "@/lib/age";
 import { mostRecentExp } from "@/server/handlers/exp/getLatest";
@@ -15,12 +14,9 @@ const QuadSection = async () => {
       <div className="container grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
         <div className="flex flex-col-reverse gap-4 lg:flex-col lg:items-center lg:gap-8">
           <div className="flex w-full flex-col justify-center">
-            <AnimatedGradientText
-              variant="span"
-              className="text-lg font-bold [background-size:30%]"
-              text="JKinsight"
-              noSplit
-            />
+            <span className="text-lg font-bold [background-size:30%]">
+              JKinsight
+            </span>
             <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-300">
               My personal website. Wan&apos;t to know more about my projects,
               work experience, hobbies and more? Feel free to take a look

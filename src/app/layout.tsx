@@ -8,6 +8,7 @@ import { cookies } from "next/headers";
 import CommandMenuProvider from "@/components/command-menu";
 import QuadSection from "@/components/layout/footer/quad-section";
 import { base } from "@/lib/hostname";
+import { getByPlatform } from "@/server/handlers/socials/getByPlatform";
 import "@/styles/globals.css";
 
 const Navbar = dynamic(() => import("@/components/layout/navbar/navbar"), {
@@ -72,13 +73,11 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+const RootLayout = async ({ children }: { children: React.ReactNode }) => {
   const cookieJar = cookies();
   const cookieJarTheme = cookieJar.get("theme");
+
+  const socials = await getByPlatform("twitter", "github", "linkedin");
 
   return (
     <html
@@ -95,10 +94,11 @@ export default function RootLayout({
           <CommandMenuProvider>
             <div className="pb-8">{children}</div>
             <Toaster />
-            <Footer QuadSlot={<QuadSection />} />
+            <Footer QuadSlot={<QuadSection />} socials={socials} />
           </CommandMenuProvider>
         </NextThemeWrapper>
       </body>
     </html>
   );
-}
+};
+export default RootLayout;
