@@ -56,6 +56,9 @@ dependencies:
   next-themes:
     specifier: ^0.2.1
     version: 0.2.1(next@14.0.4-canary.5)(react-dom@18.2.0)(react@18.2.0)
+  platformicons:
+    specifier: ^5.8.1
+    version: 5.8.1(react@18.2.0)
   react:
     specifier: 18.2.0
     version: 18.2.0
@@ -7274,6 +7277,16 @@ packages:
   /pirates@4.0.6:
     resolution: {integrity: sha512-saLsH7WeYYPiD25LDuLRRY/i+6HaPYr6G1OUlN39otzkSTxKnubR9RTxS3/Kk50s1g2JTgFwWQDQyplC5/SHZg==}
     engines: {node: '>= 6'}
+
+  /platformicons@5.8.1(react@18.2.0):
+    resolution: {integrity: sha512-/89WN1dJCqL4kK+ddblpHEQ1Z6jkLXM1PSV3zOT/dhfDDp+BhLwE1Wf72qOQ3HrHXsQTYlpybw3xrxjPUknBwg==}
+    peerDependencies:
+      react: '*'
+    dependencies:
+      '@types/node': 20.9.2
+      '@types/react': 18.2.37
+      react: 18.2.0
+    dev: false
 
   /postcss-attribute-case-insensitive@6.0.2(postcss@8.4.31):
     resolution: {integrity: sha512-IRuCwwAAQbgaLhxQdQcIIK0dCVXg3XDUnzgKD8iwdiYdwU4rMWRWyl/W9/0nA4ihVpq5pyALiHB2veBJ0292pw==}

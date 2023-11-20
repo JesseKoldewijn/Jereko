@@ -7,6 +7,8 @@ import { cookies } from "next/headers";
 
 import CommandMenuProvider from "@/components/command-menu";
 import QuadSection from "@/components/layout/footer/quad-section";
+import TechUsedSection from "@/components/layout/footer/tech-used";
+import { usedTechnologies } from "@/config/tech";
 import { base } from "@/lib/hostname";
 import { getByPlatform } from "@/server/handlers/socials/getByPlatform";
 import "@/styles/globals.css";
@@ -94,7 +96,11 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
           <CommandMenuProvider>
             <div className="pb-8">{children}</div>
             <Toaster />
-            <Footer QuadSlot={<QuadSection />} socials={socials} />
+            <Footer
+              topSlot={<TechUsedSection techUsed={usedTechnologies} />}
+              innerSlot={<QuadSection />}
+              socials={socials}
+            />
           </CommandMenuProvider>
         </NextThemeWrapper>
       </body>
