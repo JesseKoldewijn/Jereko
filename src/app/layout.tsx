@@ -30,7 +30,7 @@ const Footer = dynamic(() => import("@/components/layout/footer"), {
 const TechUsedSection = dynamic(
   () => import("@/components/layout/footer/tech-used"),
   {
-    ssr: false,
+    ssr: true,
   },
 );
 
