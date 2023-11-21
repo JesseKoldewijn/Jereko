@@ -112,3 +112,35 @@
     rgba(0, 0, 0, 0) 100%
   );
 }
+
+.scroller {
+  --gap: 0.05rem !important;
+  display: flex !important;
+  overflow: hidden !important;
+  user-select: none !important;
+  gap: var(--gap) !important;
+}
+
+.scroll-content {
+  flex-shrink: 0 !important;
+  display: flex !important;
+  justify-content: space-around !important;
+  min-width: 100% !important;
+  gap: var(--gap) !important;
+  animation: scroller-slide-loop 10s linear infinite !important;
+}
+
+@media only screen and (max-width: 600px) {
+  .scroller {
+    --gap: 0.5rem !important;
+  }
+}
+
+@keyframes scroller-slide-loop {
+  from {
+    transform: translateX(0 - var(--gap));
+  }
+  to {
+    transform: translateX(calc(-100% - var(--gap)));
+  }
+}
