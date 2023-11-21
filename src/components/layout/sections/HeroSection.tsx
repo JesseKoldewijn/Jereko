@@ -61,6 +61,7 @@ const HeroSection = ({
           ? bannerImage.light
           : bannerImage.dark,
     );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [theme]);
 
   return (

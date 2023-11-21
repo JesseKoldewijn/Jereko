@@ -7,7 +7,7 @@ import Link from "next/link";
 import ThemeToggle from "@/components/ui/theme-toggle";
 import { appConfig } from "@/config/app";
 import { cn } from "@/lib/utils";
-import { Socials } from "@/server/db/schemas/socials";
+import { type Socials } from "@/server/db/schemas/socials";
 
 import NavMenuMobile from "./mobile/navMenuMobile";
 import NavbarMenu from "./navigationMenu";

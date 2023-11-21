@@ -9,7 +9,7 @@ import Link from "next/link";
 import AppIcons from "@/components/icons/AppIcons";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { Socials } from "@/server/db/schemas/socials";
+import { type Socials } from "@/server/db/schemas/socials";
 
 import { listedEntry, showcaseEntry } from "../navigationMenu";
 
