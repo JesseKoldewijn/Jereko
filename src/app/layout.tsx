@@ -23,10 +23,6 @@ const NextThemeWrapper = dynamic(
   },
 );
 
-const Toaster = dynamic(() => import("@/components/ui/toaster"), {
-  ssr: false,
-});
-
 const Footer = dynamic(() => import("@/components/layout/footer"), {
   ssr: true,
 });
@@ -101,7 +97,7 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
           <Navbar socials={socials} />
           <CommandMenuProvider>
             <div className="pb-8">{children}</div>
-            <Toaster />
+
             <Footer
               topSlot={<TechUsedSection techUsed={usedTechnologies} />}
               innerSlot={<QuadSection />}
