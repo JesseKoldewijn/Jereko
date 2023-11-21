@@ -25,15 +25,15 @@ export const usedTechnologies = [
     icon: V0,
   },
   {
-    name: "DrizzleORM",
-    icon: DrizzleIcon,
-  },
-  {
     name: "Tailwind CSS",
     icon: TailwindIcon,
   },
   {
     name: "TypeScript",
     icon: TypescriptIcon,
+  },
+  {
+    name: "DrizzleORM",
+    icon: DrizzleIcon,
   },
 ];
