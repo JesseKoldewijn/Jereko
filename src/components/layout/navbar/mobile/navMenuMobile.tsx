@@ -21,15 +21,16 @@ const NavMenuMobile = ({ socials }: { socials: Socials | null }) => {
   const openMenu = () => {
     if (!menuRef.current || transitioning) return;
     setTransitioning(true);
+    setShowMenu(true);
+    menuRef.current!.style.display = "flex";
     motionAnimate(
-      menuRef.current,
-      { opacity: 1, display: "flex" },
+      menuRef.current!,
+      { opacity: 1 },
       { duration: 0.7, easing: "ease-in" },
     );
     setTimeout(() => {
       setTransitioning(false);
-    }, 700);
-    setShowMenu(true);
+    }, 500);
   };
 
   const closeMenu = () => {
@@ -44,7 +45,7 @@ const NavMenuMobile = ({ socials }: { socials: Socials | null }) => {
     setTimeout(() => {
       menuRef.current!.style.display = "none";
       setTransitioning(false);
-    }, 700);
+    }, 500);
     setShowMenu(false);
   };
 
@@ -66,14 +67,14 @@ const NavMenuMobile = ({ socials }: { socials: Socials | null }) => {
       <div
         ref={menuRef}
         className={cn(
-          showMenu ? "z-10" : "-z-10 !hidden",
-          "fixed bottom-0 left-0 right-0 top-16 mt-2 flex bg-neutral-300 !bg-opacity-30 opacity-0 transition-opacity duration-1000 dark:bg-neutral-950",
+          showMenu ? "-left-full !z-10 !flex" : "!-left-0 -z-10 !hidden",
+          "fixed bottom-0 left-0 right-0 top-16 mt-2 flex bg-neutral-300 !bg-opacity-50 opacity-0 transition-opacity duration-1000 dark:bg-neutral-950",
         )}
       >
         <div
           className={cn(
             showMenu ? "z-10" : "-z-10 !hidden",
-            "absolute inset-0 bottom-0 left-0 right-0 top-0 h-full w-auto bg-neutral-950 bg-opacity-80 blur-3xl",
+            "absolute inset-0 bottom-0 left-0 right-0 top-0 h-full w-auto bg-neutral-950 bg-opacity-90 blur-3xl",
           )}
         ></div>
         <div
