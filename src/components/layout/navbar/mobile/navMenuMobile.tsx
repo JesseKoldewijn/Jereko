@@ -28,6 +28,7 @@ const NavMenuMobile = ({ socials }: { socials: Socials | null }) => {
       { opacity: 1 },
       { duration: 0.7, easing: "ease-in" },
     );
+    document.body.style.overflowY = "hidden";
     setTimeout(() => {
       setTransitioning(false);
     }, 500);
@@ -46,6 +47,8 @@ const NavMenuMobile = ({ socials }: { socials: Socials | null }) => {
       menuRef.current!.style.display = "none";
       setTransitioning(false);
     }, 500);
+
+    document.body.style.overflowY = "auto";
     setShowMenu(false);
   };
 
