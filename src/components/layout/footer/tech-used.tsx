@@ -28,7 +28,8 @@ const TechUsed = ({ techUsed }: { techUsed: typeof usedTechnologies }) => {
                     key={tech.name + "row-1"}
                     typeof="img"
                     className={cn(
-                      isDarkLogo && "rounded-lg dark:bg-neutral-300",
+                      isDarkLogo &&
+                        "rounded-lg bg-neutral-900 dark:bg-neutral-300",
                       isTwLogo && "rounded-lg bg-neutral-300",
                       isDrizzleORM && "inset-0 rounded-lg bg-lime-300",
                       "relative",
@@ -36,7 +37,10 @@ const TechUsed = ({ techUsed }: { techUsed: typeof usedTechnologies }) => {
                   >
                     <Image
                       alt={`${tech.name} Logo`}
-                      className="h-[60px] w-auto overflow-hidden rounded-lg object-contain object-center md:h-[80px]"
+                      className={cn(
+                        isDarkLogo && "invert dark:invert-0",
+                        "h-[60px] w-auto overflow-hidden rounded-lg object-contain object-center md:h-[80px]",
+                      )}
                       src={tech.icon}
                       loading="lazy"
                     />
@@ -59,7 +63,8 @@ const TechUsed = ({ techUsed }: { techUsed: typeof usedTechnologies }) => {
                     key={tech.name + "row-3"}
                     typeof="img"
                     className={cn(
-                      isDarkLogo && "rounded-lg dark:bg-neutral-300",
+                      isDarkLogo &&
+                        "rounded-lg bg-neutral-900 dark:bg-neutral-300",
                       isTwLogo && "rounded-lg bg-neutral-300",
                       isDrizzleORM && "inset-0 rounded-lg bg-lime-300",
                       "relative",
@@ -67,7 +72,10 @@ const TechUsed = ({ techUsed }: { techUsed: typeof usedTechnologies }) => {
                   >
                     <Image
                       alt={`${tech.name} Logo`}
-                      className="h-[60px] w-auto overflow-hidden rounded-lg object-contain object-center md:h-[80px]"
+                      className={cn(
+                        isDarkLogo && "invert dark:invert-0",
+                        "h-[60px] w-auto overflow-hidden rounded-lg object-contain object-center md:h-[80px]",
+                      )}
                       src={tech.icon}
                       loading="lazy"
                     />
