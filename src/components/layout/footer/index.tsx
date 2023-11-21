@@ -39,7 +39,7 @@ const Footer = ({
 
   return (
     <div className="mt-20">
-      {/* {topSlot} */}
+      {topSlot}
       <footer className="mx-4 flex w-auto flex-col gap-10 rounded-2xl bg-neutral-300 !bg-opacity-70 px-4 py-10 backdrop-blur-md dark:bg-neutral-800 md:px-6 lg:mx-8 lg:gap-20 lg:py-16">
         {innerSlot}
         <div className="mx-5 flex flex-col items-center justify-center px-8 text-sm">

@@ -7,13 +7,14 @@ import Link from "next/link";
 import ThemeToggle from "@/components/ui/theme-toggle";
 import { appConfig } from "@/config/app";
 import { cn } from "@/lib/utils";
+import { Socials } from "@/server/db/schemas/socials";
 
-import NavigationMenuMobile from "./mobile/navigationMenuMobile";
+import NavMenuMobile from "./mobile/navMenuMobile";
 import NavbarMenu from "./navigationMenu";
 
-const Navbar = () => {
+const Navbar = ({ socials }: { socials: Socials | null }) => {
   const [scrollPositionStyle, setScrollPosition] =
-    useState("relative px-8 mb-4");
+    useState("relative mb-4 px-8");
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
@@ -37,7 +38,7 @@ const Navbar = () => {
     <nav
       className={cn(
         scrollPositionStyle,
-        "z-50 flex w-full bg-[rgba(255,255,255,0.75)] py-4 dark:bg-[rgba(18,18,18,0.65)]",
+        "max-w-auto z-50 flex w-full bg-[rgba(255,255,255,0.75)] py-4 dark:bg-[rgba(18,18,18,0.65)]",
       )}
     >
       <section className="my-auto mr-auto">
@@ -53,7 +54,7 @@ const Navbar = () => {
         <NavbarMenu />
       </section>
       <section className="my-auto ml-auto flex gap-4">
-        <NavigationMenuMobile />
+        <NavMenuMobile socials={socials} />
         <ThemeToggle />
       </section>
     </nav>

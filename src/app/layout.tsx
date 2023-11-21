@@ -7,7 +7,6 @@ import { cookies } from "next/headers";
 
 import CommandMenuProvider from "@/components/command-menu";
 import QuadSection from "@/components/layout/footer/quad-section";
-import TechUsedSection from "@/components/layout/footer/tech-used";
 import { usedTechnologies } from "@/config/tech";
 import { base } from "@/lib/hostname";
 import { getByPlatform } from "@/server/handlers/socials/getByPlatform";
@@ -31,6 +30,13 @@ const Toaster = dynamic(() => import("@/components/ui/toaster"), {
 const Footer = dynamic(() => import("@/components/layout/footer"), {
   ssr: true,
 });
+
+const TechUsedSection = dynamic(
+  () => import("@/components/layout/footer/tech-used"),
+  {
+    ssr: true,
+  },
+);
 
 export const metadata: Metadata = {
   title: "JKinsight - My personal website | Jesse Koldewijn",
@@ -92,7 +98,7 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
       </head>
       <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable}`}>
         <NextThemeWrapper>
-          <Navbar />
+          <Navbar socials={socials} />
           <CommandMenuProvider>
             <div className="pb-8">{children}</div>
             <Toaster />

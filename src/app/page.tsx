@@ -41,14 +41,14 @@ const Home = async () => {
         enthusiast and currently working at
         <AnimatedGradientText
           variant="span"
-          className="font-bold"
-          text={` ${latestExperience?.company_name} `}
+          className="px-1 font-bold"
+          text={latestExperience?.company_name ?? ""}
         />
         as a<br />
         <AnimatedGradientText
           variant="span"
           className="font-bold [background-size:105%]"
-          text={` ${latestExperience?.title}`}
+          text={latestExperience?.title ?? ""}
         />
       </p>
     );

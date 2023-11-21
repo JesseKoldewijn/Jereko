@@ -1,5 +1,5 @@
 /** @type {import('prettier').Config & import('prettier-plugin-tailwindcss').options} */
-const config = {
+module.exports = {
   plugins: [
     "@trivago/prettier-plugin-sort-imports",
     "prettier-plugin-tailwindcss",
@@ -20,5 +20,3 @@ const config = {
   tailwindFunctions: ["clsx", "cn", "twMerge"],
   tailwindConfig: "./tailwind.config.ts",
 };
-
-export default config;

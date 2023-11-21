@@ -11,7 +11,7 @@ import ListedNavSection from "./item-variants/listed";
 import ShowcaseNavSection from "./item-variants/showcase";
 import SingleItemSection from "./item-variants/singleItem";
 
-const showcaseEntry = {
+export const showcaseEntry = {
   triggerTitle: (
     <>
       <UserIcon className="mr-2" />
@@ -45,7 +45,7 @@ const showcaseEntry = {
   ],
 };
 
-const listedEntry = {
+export const listedEntry = {
   triggerTitle: (
     <>
       <List className="mr-2" />

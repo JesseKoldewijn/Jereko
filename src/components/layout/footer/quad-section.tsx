@@ -1,3 +1,5 @@
+import { ArrowRightCircleIcon } from "lucide-react";
+
 import Image from "next/image";
 import Link from "next/link";
 
@@ -12,7 +14,7 @@ const QuadSection = async () => {
   return (
     <>
       <div className="container grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
-        <div className="flex flex-col-reverse gap-4 lg:flex-col lg:items-center lg:gap-8">
+        <div className="flex flex-col-reverse justify-start gap-4 sm:justify-end lg:flex-col lg:items-center lg:justify-start lg:gap-8">
           <div className="flex w-full flex-col justify-center">
             <span className="text-lg font-bold [background-size:30%]">
               JKinsight
@@ -23,7 +25,7 @@ const QuadSection = async () => {
               around!
             </p>
           </div>
-          <div className="relative mx-auto mb-4 h-24 w-24 rounded-full object-cover lg:mx-0 lg:mb-0">
+          <div className="relative mx-auto mb-4 block h-24 w-24 rounded-full object-cover sm:hidden lg:mx-0 lg:mb-0">
             <div className="absolute inset-0 -z-50 rotate-90 rounded-full bg-[rgba(0,0,0,0.5)] opacity-0 transition-all hover:rotate-0 hover:opacity-100 md:z-10">
               <div className="inset-0 flex h-full w-full select-none items-center justify-center">
                 Peekaboo!
@@ -37,23 +39,24 @@ const QuadSection = async () => {
             />
           </div>
         </div>
-        <div>
+        <div className="flex flex-col justify-start sm:justify-end lg:justify-start">
           <span className="text-lg font-bold">Pages</span>
-          <ul className="mt-2 flex list-inside list-disc flex-col gap-1 text-lg text-neutral-600 dark:text-neutral-300">
-            <li>
-              <Link href="/about-me">About Me</Link>
-            </li>
-            <li>
-              <Link href="/experience">Experience</Link>
-            </li>
-            <li>
-              <Link href="/projects">Projects</Link>
-            </li>
-            <li>
-              <Link href="https://github.com/JesseKoldewijn/JKinsight">
-                OpenSource
-              </Link>
-            </li>
+          <ul className="mt-2 flex list-inside list-disc flex-col gap-1 text-base text-neutral-600 dark:text-neutral-300 md:text-sm">
+            <Link href="/about-me" className="list-item">
+              About Me
+            </Link>
+            <Link href="/experience" className="list-item">
+              Experience
+            </Link>
+            <Link href="/projects" className="list-item">
+              Projects
+            </Link>
+            <Link
+              href="https://github.com/JesseKoldewijn/JKinsight"
+              className="list-item"
+            >
+              OpenSource
+            </Link>
           </ul>
         </div>
         <div>
