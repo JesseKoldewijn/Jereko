@@ -32,7 +32,4 @@ const config = {
   },
 };
 
-/** @type {any} */
-const nextConfigUntyped = config;
-
-export default withPWA(nextConfigUntyped);
+export default withPWA(config);
