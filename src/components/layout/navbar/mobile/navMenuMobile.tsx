@@ -1,6 +1,7 @@
 "use client";
 
 import { X as CloseIcon, List, MenuIcon } from "lucide-react";
+import { useTheme } from "next-themes";
 import React, { useEffect, useRef, useState } from "react";
 
 import Link from "next/link";
@@ -15,6 +16,7 @@ import { listedEntry, showcaseEntry } from "../navigationMenu";
 
 const NavMenuMobile = ({ socials }: { socials: Socials | null }) => {
   const pathName = usePathname();
+  const { theme } = useTheme();
   const [showMenu, setShowMenu] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
@@ -72,16 +74,19 @@ const NavMenuMobile = ({ socials }: { socials: Socials | null }) => {
       >
         {showMenu && (
           <div
+            key={`nav-menu-${theme ?? "default"}`}
             className={cn(
               "opacity-1 fixed bottom-0 left-0 right-0 top-[4.5rem] flex bg-neutral-300 !bg-opacity-70 transition-opacity duration-1000 dark:bg-neutral-950",
             )}
           >
             <div
+              key={`overlay-${theme ?? "default"}`}
               className={cn(
                 "absolute inset-0 bottom-0 left-0 right-0 top-0 h-full w-auto bg-neutral-300 bg-opacity-80 blur-3xl dark:bg-neutral-950",
               )}
             ></div>
             <div
+              key={`nav-menu-inner-${theme ?? "default"}`}
               className={cn(
                 "relative mx-0 my-auto mb-auto mt-2 flex max-h-[calc(100vh-4rem)] w-full flex-col items-center gap-4 overflow-y-auto px-4 pb-8 pt-6",
               )}
