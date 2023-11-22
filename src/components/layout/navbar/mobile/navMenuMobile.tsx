@@ -65,7 +65,7 @@ const NavMenuMobile = ({ socials }: { socials: Socials | null }) => {
       </Button>
       <div
         ref={menuRef}
-        className="transition-opacity duration-1000"
+        className="transition-all duration-1000"
         style={{
           opacity: 0,
           userSelect: "none",
