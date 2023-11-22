@@ -73,7 +73,7 @@ const NavMenuMobile = ({ socials }: { socials: Socials | null }) => {
         {showMenu && (
           <div
             className={cn(
-              "opacity-1 fixed bottom-0 left-0 right-0 top-12 mt-2 flex bg-neutral-300 !bg-opacity-50 transition-opacity duration-1000 dark:bg-neutral-950",
+              "opacity-1 fixed bottom-0 left-0 right-0 top-14 flex bg-neutral-300 !bg-opacity-70 transition-opacity duration-1000 dark:bg-neutral-950",
             )}
           >
             <div
@@ -83,7 +83,7 @@ const NavMenuMobile = ({ socials }: { socials: Socials | null }) => {
             ></div>
             <div
               className={cn(
-                "relative mx-0 my-auto mb-auto mt-8 flex max-h-[calc(100vh-4rem)] w-full flex-col items-center gap-4 overflow-y-auto px-4 pb-8 pt-6",
+                "relative mx-0 my-auto mb-auto mt-2 flex max-h-[calc(100vh-4rem)] w-full flex-col items-center gap-4 overflow-y-auto px-4 pb-8 pt-6",
               )}
             >
               <strong>General Pages</strong>
