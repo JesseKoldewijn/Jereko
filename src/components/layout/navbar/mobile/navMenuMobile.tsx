@@ -69,19 +69,18 @@ const NavMenuMobile = ({ socials }: { socials: Socials | null }) => {
       </Button>
       <div
         ref={menuRef}
+        style={{ display: "none", opacity: 0 }}
         className={cn(
           "fixed bottom-0 left-0 right-0 top-12 mt-2 flex bg-neutral-300 !bg-opacity-50 opacity-0 transition-opacity duration-1000 dark:bg-neutral-950",
         )}
       >
         <div
           className={cn(
-            showMenu ? "z-10" : "-z-10 !hidden",
             "absolute inset-0 bottom-0 left-0 right-0 top-0 h-full w-auto bg-neutral-950 bg-opacity-90 blur-3xl",
           )}
         ></div>
         <div
           className={cn(
-            showMenu ? "z-10" : "-z-10 !hidden",
             "relative mx-0 my-auto mb-auto mt-8 flex max-h-[calc(100vh-4rem)] w-full flex-col items-center gap-4 overflow-y-auto px-4 pb-8 pt-6",
           )}
         >
