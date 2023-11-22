@@ -82,7 +82,7 @@ const NavMenuMobile = ({ socials }: { socials: Socials | null }) => {
             <div
               key={`overlay-${theme ?? "default"}`}
               className={cn(
-                "absolute inset-0 bottom-0 left-0 right-0 top-0 h-full w-auto bg-neutral-300 bg-opacity-80 blur-3xl dark:bg-neutral-950",
+                "absolute inset-0 bottom-0 left-0 right-0 top-0 h-full w-auto bg-neutral-400 bg-opacity-80 blur-3xl dark:bg-neutral-950",
               )}
             ></div>
             <div
