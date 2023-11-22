@@ -70,7 +70,6 @@ const NavMenuMobile = ({ socials }: { socials: Socials | null }) => {
       <div
         ref={menuRef}
         className={cn(
-          showMenu ? "-left-full !z-10 !flex" : "!-left-0 -z-10 !hidden",
           "fixed bottom-0 left-0 right-0 top-12 mt-2 flex bg-neutral-300 !bg-opacity-50 opacity-0 transition-opacity duration-1000 dark:bg-neutral-950",
         )}
       >
