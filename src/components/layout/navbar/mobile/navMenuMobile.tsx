@@ -73,12 +73,12 @@ const NavMenuMobile = ({ socials }: { socials: Socials | null }) => {
         {showMenu && (
           <div
             className={cn(
-              "opacity-1 fixed bottom-0 left-0 right-0 top-14 flex bg-neutral-300 !bg-opacity-70 transition-opacity duration-1000 dark:bg-neutral-950",
+              "opacity-1 fixed bottom-0 left-0 right-0 top-[4.5rem] flex bg-neutral-300 !bg-opacity-70 transition-opacity duration-1000 dark:bg-neutral-950",
             )}
           >
             <div
               className={cn(
-                "absolute inset-0 bottom-0 left-0 right-0 top-0 h-full w-auto bg-neutral-950 bg-opacity-90 blur-3xl",
+                "absolute inset-0 bottom-0 left-0 right-0 top-0 h-full w-auto bg-neutral-300 bg-opacity-90 blur-3xl dark:bg-neutral-950",
               )}
             ></div>
             <div
