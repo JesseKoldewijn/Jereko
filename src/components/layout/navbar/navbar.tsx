@@ -24,8 +24,8 @@ const Navbar = ({ socials }: { socials: Socials | null }) => {
       );
     };
 
+    setScrollPositionHandler();
     window.addEventListener("scroll", setScrollPositionHandler);
-
     return () => {
       window.removeEventListener("scroll", setScrollPositionHandler);
     };
