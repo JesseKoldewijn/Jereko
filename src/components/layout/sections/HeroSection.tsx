@@ -1,7 +1,8 @@
 "use client";
 
+import { useMotionAnimate as motionAnimate } from "@glitchtech-dev/react-motion";
 import { useTheme } from "next-themes";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
@@ -40,6 +41,8 @@ const HeroSection = ({
   const { systemTheme, theme } = useTheme();
   const actualCurrentTheme = theme == "system" ? systemTheme : theme;
 
+  const bannerLoaderRef = useRef<HTMLDivElement>(null);
+
   const bannerID =
     "banner-image" + String(bannerContent.title).replace(" ", "-");
 
@@ -63,6 +66,25 @@ const HeroSection = ({
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [theme]);
+
+  useEffect(() => {
+    const bannerLoader = bannerLoaderRef.current;
+
+    if (bannerLoader) {
+      motionAnimate(
+        bannerLoader,
+        {
+          opacity: 0,
+          z: -100,
+        },
+        {
+          duration: 0.5,
+          easing: "ease-out",
+          delay: 0.25,
+        },
+      );
+    }
+  }, [bannerLoaderRef]);
 
   return (
     <section className={cn(className, "mx-4 h-full md:mx-8")}>
@@ -108,7 +130,11 @@ const HeroSection = ({
             </>
           ) : null}
         </div>
-        <div className="order-first mb-8 flex max-h-[300px]  transition-opacity md:mb-16 md:max-h-[500px] lg:order-last lg:col-span-5 lg:mb-0 lg:mt-0">
+        <div className="order-first mb-8 flex max-h-[300px] transition-opacity md:mb-16 md:max-h-[500px] lg:order-last lg:col-span-5 lg:mb-0 lg:mt-0">
+          <div
+            ref={bannerLoaderRef}
+            className="absolute left-0 right-0 top-0 z-10 mx-0 block h-full max-h-[532px] bg-white dark:bg-[rgba(18,18,18,1)] lg:max-h-[500px]"
+          ></div>
           <Image
             id={bannerID}
             src={currentBannerImage}
