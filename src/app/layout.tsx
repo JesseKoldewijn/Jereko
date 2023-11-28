@@ -39,7 +39,7 @@ const QuadSection = dynamic(
 const TechUsedSection = dynamic(
   () => import("@/components/layout/footer/tech-used"),
   {
-    ssr: true,
+    ssr: false,
   },
 );
 
@@ -109,7 +109,6 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
           <Navbar socials={socials} />
           <CommandMenuProvider>
             <div className="pb-8">{children}</div>
-
             <Footer
               topSlot={<TechUsedSection techUsed={usedTechnologies} />}
               innerSlot={<QuadSection />}

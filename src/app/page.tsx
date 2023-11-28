@@ -3,16 +3,18 @@ import { Suspense } from "react";
 
 import dynamic from "next/dynamic";
 
-import AnimatedGradientText from "@/components/animated/animated-grad-text";
-import LastAttendedEvent from "@/components/events/last-attended";
+import { LatestAttendedEventLazy } from "@/components/events/last-attended";
 import Avatar from "@/images/avatar.webp";
-import { getAgeByDateString } from "@/lib/age";
-import { animatedGradient } from "@/lib/prog-classes";
-import { cn } from "@/lib/utils";
-import { mostRecentExp } from "@/server/handlers/exp/getLatest";
 
 const HeroSection = dynamic(
   () => import("@/components/layout/sections/HeroSection"),
+  {
+    ssr: true,
+  },
+);
+
+const IntroSection = dynamic(
+  () => import("@/components/layout/sections/IntroSection"),
   {
     ssr: true,
   },
@@ -27,33 +29,6 @@ export const metadata: Metadata = {
 };
 
 const Home = async () => {
-  const IntroSection = async () => {
-    const myAge = getAgeByDateString("1999-02-15");
-    const latestExperience = await mostRecentExp();
-
-    return (
-      <p className="text-neutral-600 dark:text-neutral-400">
-        My name is{" "}
-        <span className={cn(animatedGradient(), "font-bold")}>
-          Jesse Koldewijn
-        </span>
-        , I&apos;m a {myAge} year old gamer, software engineer and tech
-        enthusiast and currently working at
-        <AnimatedGradientText
-          variant="span"
-          className="px-1 font-bold"
-          text={latestExperience?.company_name ?? ""}
-        />
-        as a<br />
-        <AnimatedGradientText
-          variant="span"
-          className="font-bold [background-size:105%]"
-          text={latestExperience?.title ?? ""}
-        />
-      </p>
-    );
-  };
-
   return (
     <>
       <HeroSection
@@ -92,7 +67,9 @@ const Home = async () => {
         <p className="mt-4 text-neutral-600 dark:text-neutral-400">
           Down below is the latest event I&apos;ve attended
         </p>
-        <LastAttendedEvent />
+        <Suspense>
+          <LatestAttendedEventLazy />
+        </Suspense>
       </section>
     </>
   );

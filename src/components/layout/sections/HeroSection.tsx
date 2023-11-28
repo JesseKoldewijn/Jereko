@@ -2,7 +2,7 @@
 
 import { useMotionAnimate as motionAnimate } from "@glitchtech-dev/react-motion";
 import { useTheme } from "next-themes";
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
