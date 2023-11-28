@@ -1,8 +1,6 @@
 import NextPWA from "@ducanh2912/next-pwa";
 
 const prod = process.env.NODE_ENV === "production";
-const analyze =
-  process.env.ANALYZE !== undefined && process.env.ANALYZE !== "false";
 
 const withPWA = NextPWA({
   dest: "public",
