@@ -137,7 +137,6 @@ const HeroSection = ({
             style={{ opacity: 0 }}
             className="-top-[0%] my-auto ml-auto mr-auto block max-h-[300px] w-auto scale-[calc(100%+2%)] rounded-full bg-neutral-200 bg-clip-content dark:bg-neutral-900 lg:mr-0 lg:max-h-[500px]"
             alt="hero image"
-            loading="eager"
             priority
           />
         </div>

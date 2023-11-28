@@ -40,7 +40,6 @@ const QuadSection = async () => {
           "sm:list-item sm:h-auto sm:border-0 sm:p-0 sm:hover:underline",
         )}
         target={isExternalLink ? "_blank" : undefined}
-        role="listitem"
       >
         <span className="mx-auto my-auto sm:mx-0 sm:my-0">{name}</span>
       </Link>
@@ -79,7 +78,6 @@ const QuadSection = async () => {
           <span className="text-lg font-bold">Pages</span>
           <div
             className="mt-4 flex flex-col gap-4 text-base text-neutral-600 dark:text-neutral-300 sm:mt-2 sm:list-inside sm:gap-2"
-            role="list"
             data-device="desktop"
           >
             {pagesLinks.map((page) => (
