@@ -86,7 +86,7 @@ const HeroSection = ({
   }, [bannerLoaderRef]);
 
   return (
-    <section className={cn(className, "mx-4 h-full md:mx-8")}>
+    <section className={cn(className, "mx-4 h-full min-h-[495px] md:mx-8")}>
       <div className="mx-auto grid max-w-screen-xl px-4 py-8 lg:grid-cols-12 lg:gap-8 lg:pt-16 xl:gap-0">
         <div className="mx-auto place-self-center text-center lg:col-span-7 lg:ml-0 lg:text-left">
           <AnimatedGradientText
