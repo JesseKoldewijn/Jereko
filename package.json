@@ -29,11 +29,11 @@
     "drizzle-orm": "0.28.6",
     "geist": "^1.1.0",
     "js-cookie": "^3.0.5",
-    "lucide-react": "^0.292.0",
+    "lucide-react": "^0.293.0",
     "motion": "^10.16.4",
     "next": "14.0.4-canary.6",
     "next-themes": "^0.2.1",
-    "platformicons": "^5.8.1",
+    "platformicons": "^5.8.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "server-only": "^0.0.1",
@@ -47,11 +47,11 @@
     "@types/http-proxy": "^1.17.14",
     "@types/js-cookie": "^3.0.6",
     "@types/next-pwa": "^5.6.9",
-    "@types/node": "^20.9.2",
-    "@types/react": "^18.2.37",
-    "@types/react-dom": "^18.2.15",
-    "@typescript-eslint/eslint-plugin": "^6.11.0",
-    "@typescript-eslint/parser": "^6.11.0",
+    "@types/node": "^20.10.0",
+    "@types/react": "^18.2.39",
+    "@types/react-dom": "^18.2.17",
+    "@typescript-eslint/eslint-plugin": "^6.13.1",
+    "@typescript-eslint/parser": "^6.13.1",
     "autoprefixer": "^10.4.16",
     "cssnano": "^6.0.1",
     "dotenv": "^16.3.1",
@@ -64,12 +64,12 @@
     "prettier": "^3.1.0",
     "prettier-plugin-tailwindcss": "^0.5.7",
     "tailwindcss": "^3.3.5",
-    "typescript": "^5.2.2",
-    "vercel": "^32.5.5"
+    "typescript": "^5.3.2",
+    "vercel": "^32.5.6"
   },
   "packageManager": "pnpm@8.10.0",
   "volta": {
-    "node": "20.9.0"
+    "node": "20.10.0"
   },
   "browserslist": [
     ">0.2%",

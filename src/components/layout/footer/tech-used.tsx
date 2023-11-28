@@ -16,7 +16,7 @@ const TechUsed = ({ techUsed }: { techUsed: typeof usedTechnologies }) => {
             </strong>
           </div>
           <div className="infinite-scroll-mask scroller w-full">
-            <ul className="scroll-content relative flex animate-infinite-scroll items-center justify-center md:justify-start">
+            <div className="scroll-content animate-infinite-scroll relative flex items-center justify-center md:justify-start">
               {techUsed.flatMap((tech) => {
                 const isDarkLogo =
                   tech.name === "v0 (by Vercel)" || tech.name === "Vercel";
@@ -47,9 +47,9 @@ const TechUsed = ({ techUsed }: { techUsed: typeof usedTechnologies }) => {
                   </div>
                 );
               })}
-            </ul>
-            <ul
-              className="scroll-content relative flex animate-infinite-scroll items-center justify-center md:justify-start [&_img]:max-w-none [&_li]:px-8"
+            </div>
+            <div
+              className="scroll-content animate-infinite-scroll relative flex items-center justify-center md:justify-start [&_img]:max-w-none [&_li]:px-8"
               aria-hidden="true"
             >
               {techUsed.flatMap((tech) => {
@@ -82,7 +82,7 @@ const TechUsed = ({ techUsed }: { techUsed: typeof usedTechnologies }) => {
                   </div>
                 );
               })}
-            </ul>
+            </div>
           </div>
         </div>
       </section>

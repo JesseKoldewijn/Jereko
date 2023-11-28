@@ -92,7 +92,10 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
       <head>
         <meta name="theme-color" content="#000" />
       </head>
-      <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable}`}>
+      <body
+        className={`font-sans ${GeistSans.variable} ${GeistMono.variable}`}
+        suppressHydrationWarning
+      >
         <NextThemeWrapper>
           <Navbar socials={socials} />
           <CommandMenuProvider>

@@ -3,11 +3,48 @@ import Link from "next/link";
 
 import Avatar from "@/images/profile.webp";
 import { getAgeByDateString } from "@/lib/age";
+import { cn } from "@/lib/utils";
 import { mostRecentExp } from "@/server/handlers/exp/getLatest";
 
 const QuadSection = async () => {
   const latestExp = await mostRecentExp();
   const isLatestExpCurrent = latestExp?.end_month == "current";
+
+  const pagesLinks = [
+    {
+      href: "/about-me",
+      name: "About Me",
+    },
+    {
+      href: "/experience",
+      name: "Experience",
+    },
+    {
+      href: "/projects",
+      name: "Projects",
+    },
+    {
+      href: "https://github.com/JesseKoldewijn/JKinsight",
+      name: "OpenSource",
+    },
+  ];
+
+  const PageListItem = ({ href, name }: (typeof pagesLinks)[number]) => {
+    const isExternalLink = !href.startsWith("/");
+
+    return (
+      <Link
+        href={href}
+        className={cn(
+          "flex h-[48px] rounded-md border border-neutral-200 p-2 dark:border-neutral-500",
+          "sm:list-item sm:h-auto sm:border-0 sm:p-0 sm:hover:underline",
+        )}
+        target={isExternalLink ? "_blank" : undefined}
+      >
+        <span className="mx-auto my-auto sm:mx-0 sm:my-0">{name}</span>
+      </Link>
+    );
+  };
 
   return (
     <>
@@ -39,23 +76,15 @@ const QuadSection = async () => {
         </div>
         <div className="flex flex-col justify-start sm:justify-end lg:justify-start">
           <span className="text-lg font-bold">Pages</span>
-          <ul className="mt-2 flex list-inside list-disc flex-col gap-1 text-base text-neutral-600 dark:text-neutral-300 md:text-sm">
-            <Link href="/about-me" className="list-item">
-              About Me
-            </Link>
-            <Link href="/experience" className="list-item">
-              Experience
-            </Link>
-            <Link href="/projects" className="list-item">
-              Projects
-            </Link>
-            <Link
-              href="https://github.com/JesseKoldewijn/JKinsight"
-              className="list-item"
-            >
-              OpenSource
-            </Link>
-          </ul>
+          <div
+            className="mt-4 flex flex-col gap-4 text-base text-neutral-600 dark:text-neutral-300 sm:mt-2 sm:list-inside sm:gap-2"
+            role="list"
+            data-device="desktop"
+          >
+            {pagesLinks.map((page) => (
+              <PageListItem href={page.href} name={page.name} key={page.href} />
+            ))}
+          </div>
         </div>
         <div>
           <span className="mb-4 text-lg font-bold">What&apos;s My Name?!</span>
