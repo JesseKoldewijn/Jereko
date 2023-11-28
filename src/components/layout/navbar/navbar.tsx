@@ -17,20 +17,17 @@ const Navbar = ({ socials }: { socials: Socials | null }) => {
     useState("relative mb-4 px-8");
 
   useEffect(() => {
-    window.addEventListener("scroll", () => {
+    const setScrollPositionHandler = () => {
       const scrollTop = document.documentElement.scrollTop;
       setScrollPosition(
         cn(scrollTop > 40 ? "fixed top-0 px-6 pl-4" : "relative mb-4 px-8"),
       );
-    });
+    };
 
+    setScrollPositionHandler();
+    window.addEventListener("scroll", setScrollPositionHandler);
     return () => {
-      window.removeEventListener("scroll", () => {
-        const scrollTop = document.documentElement.scrollTop;
-        setScrollPosition(
-          cn(scrollTop > 40 ? "fixed top-0 px-6 pl-4" : "relative mb-4 px-8"),
-        );
-      });
+      window.removeEventListener("scroll", setScrollPositionHandler);
     };
   }, []);
 
