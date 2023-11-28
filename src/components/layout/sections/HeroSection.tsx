@@ -41,7 +41,7 @@ const HeroSection = ({
   const { systemTheme, theme } = useTheme();
   const actualCurrentTheme = theme == "system" ? systemTheme : theme;
 
-  const bannerLoaderRef = useRef<HTMLDivElement>(null);
+  const bannerLoaderRef = useRef<HTMLImageElement>(null);
 
   const bannerID =
     "banner-image" + String(bannerContent.title).replace(" ", "-");
@@ -74,12 +74,11 @@ const HeroSection = ({
       motionAnimate(
         bannerLoader,
         {
-          opacity: 0,
-          z: -100,
+          opacity: 1,
         },
         {
           duration: 0.5,
-          easing: "ease-out",
+          easing: "ease-in",
           delay: 0.25,
         },
       );
@@ -131,13 +130,11 @@ const HeroSection = ({
           ) : null}
         </div>
         <div className="order-first mb-8 flex max-h-[300px] transition-opacity md:mb-16 md:max-h-[500px] lg:order-last lg:col-span-5 lg:mb-0 lg:mt-0">
-          <div
-            ref={bannerLoaderRef}
-            className="absolute left-0 right-0 top-0 z-10 mx-0 block h-full max-h-[532px] bg-white dark:bg-[rgba(18,18,18,1)] lg:max-h-[500px]"
-          ></div>
           <Image
             id={bannerID}
             src={currentBannerImage}
+            ref={bannerLoaderRef}
+            style={{ opacity: 0 }}
             className="-top-[0%] my-auto ml-auto mr-auto block max-h-[300px] w-auto scale-[calc(100%+2%)] rounded-full bg-neutral-200 bg-clip-content dark:bg-neutral-900 lg:mr-0 lg:max-h-[500px]"
             alt="hero image"
             loading="eager"
