@@ -9,7 +9,7 @@
   </a>
 </p>
 
-> Blazingly fast App Router based Next.js application used as my personal portfolio
+> Blazingly fast App Router based Next.js application used as my personal (portfolio) website.
 
 ## Install
 
