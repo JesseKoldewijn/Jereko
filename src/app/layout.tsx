@@ -5,12 +5,14 @@ import { type Metadata } from "next";
 import dynamic from "next/dynamic";
 import { cookies } from "next/headers";
 
-import CommandMenuProvider from "@/components/command-menu";
-import QuadSection from "@/components/layout/footer/quad-section";
 import { usedTechnologies } from "@/config/tech";
 import { base } from "@/lib/hostname";
 import { getByPlatform } from "@/server/handlers/socials/getByPlatform";
 import "@/styles/globals.css";
+
+const CommandMenuProvider = dynamic(() => import("@/components/command-menu"), {
+  ssr: true,
+});
 
 const Navbar = dynamic(() => import("@/components/layout/navbar/navbar"), {
   ssr: true,
@@ -26,6 +28,13 @@ const NextThemeWrapper = dynamic(
 const Footer = dynamic(() => import("@/components/layout/footer"), {
   ssr: true,
 });
+
+const QuadSection = dynamic(
+  () => import("@/components/layout/footer/quad-section"),
+  {
+    ssr: true,
+  },
+);
 
 const TechUsedSection = dynamic(
   () => import("@/components/layout/footer/tech-used"),
