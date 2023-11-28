@@ -40,6 +40,7 @@ const QuadSection = async () => {
           "sm:list-item sm:h-auto sm:border-0 sm:p-0 sm:hover:underline",
         )}
         target={isExternalLink ? "_blank" : undefined}
+        role="listitem"
       >
         <span className="mx-auto my-auto sm:mx-0 sm:my-0">{name}</span>
       </Link>
