@@ -1,6 +1,10 @@
 import NextPWA from "@ducanh2912/next-pwa";
 
+import withAnalyzer from "@next/bundle-analyzer";
+
 const prod = process.env.NODE_ENV === "production";
+const analyze =
+  process.env.ANALYZE !== undefined && process.env.ANALYZE !== "false";
 
 const withPWA = NextPWA({
   dest: "public",
@@ -27,9 +31,26 @@ const config = {
       },
     ],
   },
+  transpilePackages: ["lucide-react"], // add this
   experimental: {
     ppr: true,
   },
 };
 
-export default withPWA(config);
+const withAnalyzerConf = analyze
+  ? withAnalyzer({
+      enabled: true,
+    })(config)
+  : config;
+
+if (analyze) {
+  const fs = await import("fs");
+  const doesDirExist = fs.existsSync("./analyze");
+  if (!doesDirExist) {
+    fs.mkdirSync("./analyze");
+  }
+  fs.copyFileSync("./.next/analyze/client.html", "./analyze/client.html");
+  fs.copyFileSync("./.next/analyze/edge.html", "./analyze/edge.html");
+}
+
+export default withPWA(withAnalyzerConf);
