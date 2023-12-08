@@ -8,6 +8,7 @@ const config = {
   extends: [
     "next/core-web-vitals",
     "plugin:@typescript-eslint/stylistic-type-checked",
+    "plugin:storybook/recommended"
   ],
   rules: {
     // These opinionated rules are enabled in stylistic-type-checked above.

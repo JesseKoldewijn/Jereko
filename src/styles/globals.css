@@ -114,7 +114,7 @@
 }
 
 .scroller {
-  --gap: 0.05rem !important;
+  --gap: 0.5rem !important;
   display: flex !important;
   overflow: hidden !important;
   user-select: none !important;
