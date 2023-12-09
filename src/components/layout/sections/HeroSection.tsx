@@ -1,8 +1,7 @@
 "use client";
 
-import { useMotionAnimate as motionAnimate } from "@glitchtech-dev/react-motion";
 import { useTheme } from "next-themes";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
@@ -41,8 +40,6 @@ const HeroSection = ({
   const { systemTheme, theme } = useTheme();
   const actualCurrentTheme = theme == "system" ? systemTheme : theme;
 
-  const bannerLoaderRef = useRef<HTMLImageElement>(null);
-
   const bannerID =
     "banner-image" + String(bannerContent.title).replace(" ", "-");
 
@@ -66,24 +63,6 @@ const HeroSection = ({
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [theme]);
-
-  useEffect(() => {
-    const bannerLoader = bannerLoaderRef.current;
-
-    if (bannerLoader) {
-      motionAnimate(
-        bannerLoader,
-        {
-          opacity: 1,
-        },
-        {
-          duration: 0.5,
-          easing: "ease-in",
-          delay: 0.25,
-        },
-      );
-    }
-  }, [bannerLoaderRef]);
 
   return (
     <section className={cn(className, "mx-4 h-full min-h-[495px] md:mx-8")}>
@@ -133,8 +112,6 @@ const HeroSection = ({
           <Image
             id={bannerID}
             src={currentBannerImage}
-            ref={bannerLoaderRef}
-            style={{ opacity: 0 }}
             className="-top-[0%] my-auto ml-auto mr-auto block max-h-[300px] w-auto scale-[calc(100%+2%)] rounded-full bg-neutral-200 bg-clip-content dark:bg-neutral-900 lg:mr-0 lg:max-h-[500px]"
             alt="hero image"
             priority

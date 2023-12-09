@@ -37,7 +37,6 @@ export const LatestAttendedEventLazy = dynamic(
             className="my-4 flex flex-col gap-4 text-center"
           >
             <EventItem title="Latest Attended Event" isSkeleton />
-            <div className="h-14 w-full py-14"></div>
           </section>
         </div>
       </>

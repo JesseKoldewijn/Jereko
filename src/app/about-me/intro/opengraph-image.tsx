@@ -6,7 +6,7 @@ import { base } from "@/lib/hostname";
 export const runtime = "edge";
 
 // Image metadata
-export const alt = "About Acme";
+export const alt = "Who am I - by Jesse Koldewijn";
 export const size = {
   width: 1200,
   height: 630,

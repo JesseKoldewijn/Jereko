@@ -1,9 +1,9 @@
-import { type Metadata, ServerRuntime } from "next";
+import type { Metadata, ServerRuntime } from "next";
 import { Suspense } from "react";
 
 import dynamic from "next/dynamic";
 
-import { LatestAttendedEventLazy } from "@/components/events/last-attended";
+import LatestAttEvent from "@/components/events/last-attended";
 import Avatar from "@/images/avatar.webp";
 
 const HeroSection = dynamic(
@@ -70,7 +70,7 @@ const Home = async () => {
           Down below is the latest event I&apos;ve attended
         </p>
         <Suspense>
-          <LatestAttendedEventLazy />
+          <LatestAttEvent />
         </Suspense>
       </section>
     </>

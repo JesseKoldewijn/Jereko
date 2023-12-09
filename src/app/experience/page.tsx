@@ -1,4 +1,4 @@
-import { type Metadata, ServerRuntime } from "next";
+import type { Metadata, ServerRuntime } from "next";
 import { Suspense } from "react";
 
 import dynamic from "next/dynamic";

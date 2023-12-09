@@ -7,6 +7,7 @@ import dynamic from "next/dynamic";
 import Image from "next/image";
 
 import { Skeleton } from "@/components/ui/skeleton";
+import PlaceholderImage from "@/images/player-placeholder.webp";
 
 export const YoutubePlayer = ({
   key,
@@ -35,8 +36,11 @@ export const YoutubePlayer = ({
             className="sm mx-auto my-auto aspect-video h-full max-h-[182px] w-full max-w-[322px] object-cover"
             src={thumbnailUrl}
             alt="video thumbnail"
-            loading="lazy"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            onError={(e) => {
+              e.currentTarget.src = PlaceholderImage.src;
+            }}
+            priority={true}
             fill={true}
           />
           <div
