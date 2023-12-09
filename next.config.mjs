@@ -28,9 +28,6 @@ const config = {
     ],
   },
   transpilePackages: ["lucide-react"], // add this
-  experimental: {
-    ppr: true,
-  },
 };
 
 export default withPWA(config);
