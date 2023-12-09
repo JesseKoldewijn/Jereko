@@ -1,4 +1,4 @@
-import { type Metadata } from "next";
+import { type Metadata, ServerRuntime } from "next";
 import { Suspense } from "react";
 
 import dynamic from "next/dynamic";
@@ -18,6 +18,8 @@ const ExperienceLister = dynamic(
     ssr: true,
   },
 );
+
+export const runtime: ServerRuntime = "edge";
 
 export const metadata: Metadata = {
   openGraph: {

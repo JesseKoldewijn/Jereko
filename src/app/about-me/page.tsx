@@ -1,5 +1,9 @@
+import { type ServerRuntime } from "next";
+
 import AnimatedGradientText from "@/components/animated/animated-grad-text";
 import GoToHeading from "@/components/page-elements/about-me/go-to-heading";
+
+export const runtime: ServerRuntime = "edge";
 
 const AboutMe = () => {
   return (
