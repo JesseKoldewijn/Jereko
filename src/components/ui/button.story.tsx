@@ -19,7 +19,9 @@ export const ButtonDark: Story = {
     children: "Hello I'm a button!",
     variant: "outline",
     size: "sm",
-    className: cn("bg-neutral-900 px-3 py-2 dark:hover:bg-neutral-900"),
+    className: cn(
+      "inline-flex items-center justify-center rounded-lg border px-5 py-3 text-center text-base font-medium hover:bg-neutral-900 hover:text-neutral-100 focus:ring-4 dark:hover:bg-neutral-100 dark:hover:text-neutral-900",
+    ),
   },
   decorators: [StorybookThemeWrapper("dark")],
 };
@@ -30,7 +32,9 @@ export const ButtonLight: Story = {
     children: "Hello I'm a button!",
     variant: "outline",
     size: "sm",
-    className: cn("bg-neutral-900 px-3 py-2 dark:hover:bg-neutral-900"),
+    className: cn(
+      "inline-flex items-center justify-center rounded-lg border px-5 py-3 text-center text-base font-medium hover:bg-neutral-900 hover:text-neutral-100 focus:ring-4 dark:hover:bg-neutral-100 dark:hover:text-neutral-900",
+    ),
   },
   decorators: [StorybookThemeWrapper("light")],
 };
