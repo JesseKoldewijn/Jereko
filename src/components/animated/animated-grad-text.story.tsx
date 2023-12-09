@@ -18,5 +18,5 @@ export const AnimatedTextElem: Story = {
     text: "Hello I'm a gradient text!",
     variant: "span",
   },
-  decorators: [StorybookThemeWrapper],
+  decorators: [StorybookThemeWrapper("dark")],
 };

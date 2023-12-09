@@ -1,5 +1,5 @@
+import { withThemeByDataAttribute } from "@storybook/addon-styling";
 import type { Preview } from "@storybook/react";
-import React from "react";
 
 const preview: Preview = {
   parameters: {
@@ -11,15 +11,6 @@ const preview: Preview = {
         date: /Date$/i,
       },
     },
-    decorators: [
-      (Story) => {
-        return (
-          <div className="inset-0 flex h-full w-full items-center justify-center">
-            <Story />
-          </div>
-        );
-      },
-    ],
   },
 };
 

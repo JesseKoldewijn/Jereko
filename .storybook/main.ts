@@ -9,6 +9,7 @@ const config: StorybookConfig = {
         postcss: {
           implementation: require("postcss")({
             plugins: [require("tailwindcss"), require("autoprefixer")],
+            tailwindConfig: "../tailwind.config.js",
           }),
         },
       },
