@@ -1,13 +1,9 @@
-import { type ServerRuntime } from "next";
-
 import AnimatedGradientText from "@/components/animated/animated-grad-text";
 import GoToHeading from "@/components/page-elements/about-me/go-to-heading";
 
-export const runtime: ServerRuntime = "edge";
-
 const AboutMe = () => {
   return (
-    <div className="flex flex-col items-center justify-center gap-8 px-4 xs:flex-row xs:px-0">
+    <div className="mx-4 flex flex-col items-center justify-center gap-8 lg:mx-2 lg:flex-row">
       <section
         id="about-me-overview"
         className="flex w-auto max-w-md flex-col gap-4 text-center"

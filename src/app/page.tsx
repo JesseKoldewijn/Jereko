@@ -1,4 +1,4 @@
-import type { Metadata, ServerRuntime } from "next";
+import type { Metadata } from "next";
 import { Suspense } from "react";
 
 import dynamic from "next/dynamic";
@@ -19,8 +19,6 @@ const IntroSection = dynamic(
     ssr: true,
   },
 );
-
-export const runtime: ServerRuntime = "edge";
 
 export const metadata: Metadata = {
   openGraph: {
