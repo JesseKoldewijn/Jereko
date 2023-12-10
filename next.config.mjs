@@ -9,6 +9,9 @@ const withPWA = NextPWA({
   reloadOnOnline: true,
   swcMinify: true,
   disable: !prod,
+  fallbacks: {
+    document: "/offline",
+  },
   workboxOptions: {
     disableDevLogs: true,
   },
