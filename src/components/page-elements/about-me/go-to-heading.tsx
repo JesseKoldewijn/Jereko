@@ -1,6 +1,6 @@
 "use client";
 
-interface GoToHeadingProps extends React.HTMLAttributes<HTMLDivElement> {
+interface GoToHeadingProps extends React.HTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
 }
 
@@ -15,9 +15,9 @@ const GoToHeading = ({ children, ...rest }: GoToHeadingProps) => {
   };
 
   return (
-    <span onClick={goToNavigation} {...rest}>
+    <button onClick={goToNavigation} {...rest}>
       {children}
-    </span>
+    </button>
   );
 };
 

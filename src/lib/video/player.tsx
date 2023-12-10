@@ -43,12 +43,12 @@ export const YoutubePlayer = ({
             priority={true}
             fill={true}
           />
-          <div
+          <button
             onClick={() => setClicked(true)}
             className="absolute left-1/2 top-1/2 z-10 flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 transform items-center justify-items-center rounded-full bg-[rgba(255,0,0,0.75)] align-middle hover:bg-[rgba(0,0,0,0.75)]"
           >
             <Play className="ml-[calc(30%-2px)] mr-auto fill-white text-white" />
-          </div>
+          </button>
         </div>
       );
 
