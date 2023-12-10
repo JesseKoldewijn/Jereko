@@ -9,7 +9,7 @@ const IntroSection = async () => {
   const latestExperience = await mostRecentExp();
 
   return (
-    <p className="text-neutral-600 dark:text-neutral-300">
+    <p className="text-neutral-600 dark:text-neutral-200">
       My name is{" "}
       <span className={cn(animatedGradient(), "font-bold")}>
         Jesse Koldewijn

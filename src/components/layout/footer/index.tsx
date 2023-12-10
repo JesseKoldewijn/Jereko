@@ -47,7 +47,7 @@ const Footer = ({
             {twitter && (
               <Link
                 aria-label="X (Twitter)"
-                className="flex rounded-lg p-1 text-neutral-800 hover:bg-neutral-300 dark:text-neutral-300 dark:hover:bg-neutral-700 dark:hover:text-neutral-400"
+                className="flex rounded-lg p-1 text-neutral-800 hover:bg-neutral-300 dark:text-neutral-200 dark:hover:bg-neutral-700 dark:hover:text-neutral-300"
                 href={twitter.link ?? "#"}
                 target="_blank"
                 data-link-label={twitter.label ?? "twitter-link-footer"}
