@@ -2,9 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 
 import Avatar from "@/images/profile.webp";
-import { getAgeByDateString } from "@/lib/age";
 import { cn } from "@/lib/utils";
 import { mostRecentExp } from "@/server/handlers/exp/getLatest";
+import { getAgeByDateString } from "@/utils/age";
 
 const QuadSection = async () => {
   const latestExp = await mostRecentExp();

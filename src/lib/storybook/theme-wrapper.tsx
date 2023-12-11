@@ -1,12 +1,9 @@
 import { type StoryFn } from "@storybook/react";
 import { ThemeProvider, useTheme } from "next-themes";
 
+import GeistMono from "@/fonts/geist-mono/GeistMono-Variable.woff2";
+import GeistSans from "@/fonts/geist-sans/Geist-Variable.woff2";
 import "@/styles/globals.css";
-
-// @ts-ignore-next-line
-import GeistMono from "../../../node_modules/geist/dist/fonts/geist-mono/GeistMono-Variable.woff2";
-// @ts-ignore-next-line
-import GeistSans from "../../../node_modules/geist/dist/fonts/geist-sans/Geist-Variable.woff2";
 
 const FontLoader = () => {
   return (

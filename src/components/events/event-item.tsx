@@ -18,7 +18,7 @@ type EventItemProps =
       isSkeleton: true;
     };
 
-const EventItem = async ({ title, event, isSkeleton }: EventItemProps) => {
+const EventItem = ({ title, event, isSkeleton }: EventItemProps) => {
   if (isSkeleton) {
     return (
       <Card className="min-h-[18rem] bg-neutral-200 !pb-8 dark:bg-neutral-900">

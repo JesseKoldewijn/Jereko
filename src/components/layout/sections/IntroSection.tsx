@@ -1,8 +1,8 @@
 import AnimatedGradientText from "@/components/animated/animated-grad-text";
-import { getAgeByDateString } from "@/lib/age";
-import { animatedGradient } from "@/lib/prog-classes";
 import { cn } from "@/lib/utils";
 import { mostRecentExp } from "@/server/handlers/exp/getLatest";
+import { getAgeByDateString } from "@/utils/age";
+import { animatedGradient } from "@/utils/prog-classes";
 
 const IntroSection = async () => {
   const myAge = getAgeByDateString("1999-02-15");

@@ -76,6 +76,9 @@ dependencies:
     version: 0.33.0
 
 devDependencies:
+  '@axe-core/react':
+    specifier: ^4.8.2
+    version: 4.8.2
   '@storybook/addon-essentials':
     specifier: ^7.6.4
     version: 7.6.4(@types/react-dom@18.2.17)(@types/react@18.2.42)(react-dom@18.2.0)(react@18.2.0)
@@ -227,6 +230,13 @@ packages:
     hasBin: true
     dependencies:
       default-browser-id: 3.0.0
+    dev: true
+
+  /@axe-core/react@4.8.2:
+    resolution: {integrity: sha512-FwDtrUuKOyeorrpxhU9n1TK6Lh/LWeRuBk9Ym4JoH5cTISvifcqYfVV2fEc3vnUFABvsjBxfBGsfJdUiKTqE8w==}
+    dependencies:
+      axe-core: 4.8.2
+      requestidlecallback: 0.3.0
     dev: true
 
   /@babel/code-frame@7.22.13:
@@ -6504,6 +6514,11 @@ packages:
 
   /axe-core@4.7.0:
     resolution: {integrity: sha512-M0JtH+hlOL5pLQwHOLNYZaXuhqmvS8oExsqB1SBYgA4Dk7u/xx+YdGHXaK5pyUfed5mYXdlYiphWq3G8cRi5JQ==}
+    engines: {node: '>=4'}
+    dev: true
+
+  /axe-core@4.8.2:
+    resolution: {integrity: sha512-/dlp0fxyM3R8YW7MFzaHWXrf4zzbr0vaYb23VBFCl83R7nWNPg/yaQw2Dc8jzCMmDVLhSdzH8MjrsuIUuvX+6g==}
     engines: {node: '>=4'}
     dev: true
 
@@ -13249,6 +13264,10 @@ packages:
       htmlparser2: 6.1.0
       lodash: 4.17.21
       strip-ansi: 6.0.1
+    dev: true
+
+  /requestidlecallback@0.3.0:
+    resolution: {integrity: sha512-TWHFkT7S9p7IxLC5A1hYmAYQx2Eb9w1skrXmQ+dS1URyvR8tenMLl4lHbqEOUnpEYxNKpkVMXUgknVpBZWXXfQ==}
     dev: true
 
   /require-from-string@2.0.2:

@@ -1,5 +1,5 @@
-import { animatedGradient } from "@/lib/prog-classes";
 import { cn } from "@/lib/utils";
+import { animatedGradient } from "@/utils/prog-classes";
 
 type UnionTextHtmlAttrs = React.HTMLAttributes<
   HTMLHeadingElement | HTMLSpanElement | HTMLParagraphElement

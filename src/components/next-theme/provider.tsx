@@ -8,7 +8,7 @@ const NextThemeWrapper = ({ children }: { children: React.ReactNode }) => {
   return (
     <ThemeProvider
       attribute="class"
-      defaultTheme="dark"
+      defaultTheme="system"
       disableTransitionOnChange
     >
       <NextThemeHandler>{children}</NextThemeHandler>

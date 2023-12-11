@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   },
 };
 
-const Home = async () => {
+const Home = () => {
   return (
     <>
       <HeroSection

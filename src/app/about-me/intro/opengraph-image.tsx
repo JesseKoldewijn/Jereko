@@ -18,7 +18,7 @@ export const contentType = "image/png";
 export default async function Image() {
   // Font
   const geistVariableFontFetch = await fetch(
-    new URL(`${base}/fonts/Geist-Regular.otf`),
+    new URL(`${base}/fonts/geist-sans/Geist-Regular.woff2`),
   );
   const fontData = await geistVariableFontFetch.arrayBuffer();
 

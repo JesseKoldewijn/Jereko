@@ -41,6 +41,7 @@
     "sharp": "^0.33.0"
   },
   "devDependencies": {
+    "@axe-core/react": "^4.8.2",
     "@storybook/addon-essentials": "^7.6.4",
     "@storybook/addon-interactions": "^7.6.4",
     "@storybook/addon-links": "^7.6.4",

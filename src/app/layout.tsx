@@ -2,14 +2,16 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
+import React from "react";
 
 import dynamic from "next/dynamic";
 import { cookies } from "next/headers";
 
 import { usedTechnologies } from "@/config/tech";
-import { base } from "@/lib/hostname";
 import { getByPlatform } from "@/server/handlers/socials/getByPlatform";
 import "@/styles/globals.css";
+import { base } from "@/utils/hostname";
+import reportAccessibility from "@/utils/reportAccessibility";
 
 const CommandMenuProvider = dynamic(() => import("@/components/command-menu"), {
   ssr: true,
@@ -122,4 +124,7 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
     </html>
   );
 };
+
+reportAccessibility(React).catch((err) => console.error(err));
+
 export default RootLayout;
