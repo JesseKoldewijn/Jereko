@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-import { base } from "@/lib/hostname";
+import { base } from "@/utils/hostname";
 
 // Route segment config
 export const runtime = "edge";
