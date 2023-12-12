@@ -5,7 +5,8 @@ import { createContext, useContext, useEffect, useState } from "react";
 
 import { useRouter } from "next/navigation";
 
-import X from "./icons/Twitter-X";
+import X from "@/components/icons/Twitter-X";
+
 import {
   CommandDialog,
   CommandEmpty,
@@ -15,7 +16,7 @@ import {
   CommandList,
   CommandSeparator,
   CommandShortcut,
-} from "./ui/command";
+} from "./command";
 
 const CommandMenuContext = createContext<{
   open: boolean;

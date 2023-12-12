@@ -27,7 +27,7 @@ const config = {
       },
     ],
   },
-  transpilePackages: ["lucide-react"], // add this
+  transpilePackages: ["@ducanh2912/next-pwa", "lucide-react", "next-themes"],
 };
 
 export default withPWA(config);

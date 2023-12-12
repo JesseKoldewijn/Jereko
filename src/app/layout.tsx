@@ -11,9 +11,12 @@ import { base } from "@/lib/hostname";
 import { getByPlatform } from "@/server/handlers/socials/getByPlatform";
 import "@/styles/globals.css";
 
-const CommandMenuProvider = dynamic(() => import("@/components/command-menu"), {
-  ssr: true,
-});
+const CommandMenuProvider = dynamic(
+  () => import("@/components/ui/command-menu"),
+  {
+    ssr: true,
+  },
+);
 
 const Navbar = dynamic(() => import("@/components/layout/navbar/navbar"), {
   ssr: true,
