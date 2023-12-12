@@ -1,15 +1,15 @@
 import AnimatedGradientText from "@/components/animated/animated-grad-text";
-import { getAgeByDateString } from "@/lib/age";
-import { animatedGradient } from "@/lib/prog-classes";
 import { cn } from "@/lib/utils";
 import { mostRecentExp } from "@/server/handlers/exp/getLatest";
+import { getAgeByDateString } from "@/utils/age";
+import { animatedGradient } from "@/utils/prog-classes";
 
 const IntroSection = async () => {
   const myAge = getAgeByDateString("1999-02-15");
   const latestExperience = await mostRecentExp();
 
   return (
-    <p className="text-neutral-600 dark:text-neutral-400">
+    <p className="text-neutral-600 dark:text-neutral-200">
       My name is{" "}
       <span className={cn(animatedGradient(), "font-bold")}>
         Jesse Koldewijn

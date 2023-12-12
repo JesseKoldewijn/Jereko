@@ -2,9 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 
 import Avatar from "@/images/profile.webp";
-import { getAgeByDateString } from "@/lib/age";
 import { cn } from "@/lib/utils";
 import { mostRecentExp } from "@/server/handlers/exp/getLatest";
+import { getAgeByDateString } from "@/utils/age";
 
 const QuadSection = async () => {
   const latestExp = await mostRecentExp();
@@ -54,7 +54,7 @@ const QuadSection = async () => {
             <span className="text-lg font-bold [background-size:30%]">
               JKinsight
             </span>
-            <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-300">
+            <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-200">
               My personal website. Wan&apos;t to know more about my projects,
               work experience, hobbies and more? Feel free to take a look
               around!
@@ -77,7 +77,7 @@ const QuadSection = async () => {
         <div className="flex flex-col justify-start sm:justify-end lg:justify-start">
           <span className="text-lg font-bold">Pages</span>
           <div
-            className="mt-4 flex flex-col gap-4 text-base text-neutral-600 dark:text-neutral-300 sm:mt-2 sm:list-inside sm:gap-2"
+            className="mt-4 flex flex-col gap-4 text-base text-neutral-600 dark:text-neutral-200 sm:mt-2 sm:list-inside sm:gap-2"
             data-device="desktop"
           >
             {pagesLinks.map((page) => (
@@ -87,7 +87,7 @@ const QuadSection = async () => {
         </div>
         <div>
           <span className="mb-4 text-lg font-bold">What&apos;s My Name?!</span>
-          <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-300">
+          <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-200">
             Hey there! My name is Jesse Koldewijn, I&apos;m a{" "}
             {getAgeByDateString("1999-02-15")} year old{" "}
             {latestExp ? latestExp.title : "Tech Enthusiast"} from The
@@ -99,7 +99,7 @@ const QuadSection = async () => {
             <span className="mb-4 text-lg font-bold">
               {isLatestExpCurrent ? "Current Job" : "Most Recent Job"}
             </span>
-            <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-300">
+            <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-200">
               {`${isLatestExpCurrent ? "Currently working at" : "Worked at"} ${
                 latestExp.company_name
               } in ${latestExp.location} as ${latestExp.title}`}

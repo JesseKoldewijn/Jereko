@@ -7,7 +7,7 @@ import {
   NavigationMenuLink,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-import { base } from "@/lib/hostname";
+import { base } from "@/utils/hostname";
 
 interface SingleItemSectionProps {
   children: React.ReactNode;

@@ -75,7 +75,7 @@ const HeroSection = ({
               "mb-4 max-w-2xl text-4xl font-extrabold leading-none tracking-tight md:text-5xl xl:text-6xl",
             )}
           />
-          <p className="mb-6 max-w-2xl font-light text-neutral-500 dark:text-neutral-400 md:text-lg lg:mb-8 lg:text-xl">
+          <p className="mb-6 max-w-2xl font-light text-neutral-500 dark:text-neutral-200 md:text-lg lg:mb-8 lg:text-xl">
             {bannerContent.description}
           </p>
           {bannerContent.ctas && bannerContent.ctas.length == 2 ? (

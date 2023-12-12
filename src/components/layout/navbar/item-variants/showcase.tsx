@@ -6,7 +6,7 @@ import {
   NavigationMenuLink,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
-import { base } from "@/lib/hostname";
+import { base } from "@/utils/hostname";
 
 import ListItem from "../_parts/listItem";
 
