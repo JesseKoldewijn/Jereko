@@ -1,9 +1,57 @@
-"use client";
+import { Suspense } from "react";
 
 import Image from "next/image";
 
 import { type usedTechnologies } from "@/config/tech";
 import { cn } from "@/lib/utils";
+
+const _TechMapping = ({
+  mapKey,
+  techUsed,
+}: {
+  mapKey: string;
+  techUsed: typeof usedTechnologies;
+}) => {
+  return (
+    <>
+      {techUsed.flatMap((tech) => {
+        const isDarkLogo =
+          tech.name === "v0 (by Vercel)" || tech.name === "Vercel";
+        const isDrizzleORM = tech.name === "DrizzleORM";
+        const isTwLogo = tech.name === "Tailwind CSS";
+        const isStorybook = tech.name === "Storybook";
+        const lightLogo = isStorybook || isTwLogo;
+
+        return (
+          <div
+            key={tech.name + "row-1" + `${mapKey ? `-${mapKey}` : ""}`}
+            typeof="img"
+            className={cn(
+              isDarkLogo
+                ? "rounded-lg bg-neutral-900 dark:bg-neutral-200"
+                : lightLogo
+                  ? "rounded-lg bg-neutral-100"
+                  : isDrizzleORM
+                    ? "inset-0 rounded-lg bg-lime-300"
+                    : "",
+              "relative",
+            )}
+          >
+            <Image
+              alt={`${tech.name} Logo`}
+              className={cn(
+                isDarkLogo && "invert dark:invert-0",
+                "h-[60px] w-auto overflow-hidden rounded-lg object-contain object-center md:h-[80px]",
+              )}
+              src={tech.icon}
+              loading="lazy"
+            />
+          </div>
+        );
+      })}
+    </>
+  );
+};
 
 const TechUsed = ({ techUsed }: { techUsed: typeof usedTechnologies }) => {
   return (
@@ -17,75 +65,17 @@ const TechUsed = ({ techUsed }: { techUsed: typeof usedTechnologies }) => {
           </div>
           <div className="infinite-scroll-mask scroller w-full">
             <div className="scroll-content animate-infinite-scroll relative flex items-center justify-center md:justify-start">
-              {techUsed.flatMap((tech) => {
-                const isDarkLogo =
-                  tech.name === "v0 (by Vercel)" || tech.name === "Vercel";
-                const isDrizzleORM = tech.name === "DrizzleORM";
-                const isTwLogo = tech.name === "Tailwind CSS";
-                const isStorybook = tech.name === "Storybook";
-                const lightLogo = isStorybook || isTwLogo;
-
-                return (
-                  <div
-                    key={tech.name + "row-1"}
-                    typeof="img"
-                    className={cn(
-                      isDarkLogo &&
-                        "rounded-lg bg-neutral-900 dark:bg-neutral-300",
-                      lightLogo && "rounded-lg bg-neutral-300",
-                      isDrizzleORM && "inset-0 rounded-lg bg-lime-300",
-                      "relative",
-                    )}
-                  >
-                    <Image
-                      alt={`${tech.name} Logo`}
-                      className={cn(
-                        isDarkLogo && "invert dark:invert-0",
-                        "h-[60px] w-auto overflow-hidden rounded-lg object-contain object-center md:h-[80px]",
-                      )}
-                      src={tech.icon}
-                      loading="lazy"
-                    />
-                  </div>
-                );
-              })}
+              <Suspense>
+                <_TechMapping mapKey="main" techUsed={techUsed} />
+              </Suspense>
             </div>
             <div
               className="scroll-content animate-infinite-scroll relative flex items-center justify-center md:justify-start"
               aria-hidden="true"
             >
-              {techUsed.flatMap((tech) => {
-                const isDarkLogo =
-                  tech.name === "v0 (by Vercel)" || tech.name === "Vercel";
-                const isDrizzleORM = tech.name === "DrizzleORM";
-                const isTwLogo = tech.name === "Tailwind CSS";
-                const isStorybook = tech.name === "Storybook";
-                const lightLogo = isStorybook || isTwLogo;
-
-                return (
-                  <div
-                    key={tech.name + "row-3"}
-                    typeof="img"
-                    className={cn(
-                      isDarkLogo &&
-                        "rounded-lg bg-neutral-900 dark:bg-neutral-300",
-                      lightLogo && "rounded-lg bg-neutral-300",
-                      isDrizzleORM && "inset-0 rounded-lg bg-lime-300",
-                      "relative",
-                    )}
-                  >
-                    <Image
-                      alt={`${tech.name} Logo`}
-                      className={cn(
-                        isDarkLogo && "invert dark:invert-0",
-                        "h-[60px] w-auto overflow-hidden rounded-lg object-contain object-center md:h-[80px]",
-                      )}
-                      src={tech.icon}
-                      loading="lazy"
-                    />
-                  </div>
-                );
-              })}
+              <Suspense>
+                <_TechMapping mapKey="clone" techUsed={techUsed} />
+              </Suspense>
             </div>
           </div>
         </div>

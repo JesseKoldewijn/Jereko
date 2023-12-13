@@ -36,7 +36,7 @@ const QuadSection = async () => {
       <Link
         href={href}
         className={cn(
-          "flex h-[48px] rounded-md border border-neutral-200 p-2 dark:border-neutral-500",
+          "flex h-[48px] rounded-md border border-neutral-500 p-2",
           "sm:list-item sm:h-auto sm:border-0 sm:p-0 sm:hover:underline",
         )}
         target={isExternalLink ? "_blank" : undefined}
