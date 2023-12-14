@@ -48,3 +48,5 @@ swe-worker-*
 
 # Analyze files
 ./analyze
+
+.vercel

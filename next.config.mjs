@@ -22,17 +22,7 @@ const config = {
   reactStrictMode: true,
   compress: true,
   images: {
-    remotePatterns: [
-      { hostname: "img.youtube.com", protocol: "https" },
-      {
-        hostname: "via.placeholder.com",
-        protocol: "https",
-      },
-    ],
-  },
-  transpilePackages: ["@ducanh2912/next-pwa", "lucide-react", "next-themes"],
-  experimental: {
-    webpackBuildWorker: true,
+    remotePatterns: [{ hostname: "img.youtube.com", protocol: "https" }],
   },
 };
 

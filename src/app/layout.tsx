@@ -8,7 +8,6 @@ import dynamic from "next/dynamic";
 import { cookies } from "next/headers";
 
 import { usedTechnologies } from "@/config/tech";
-import PWA_Provider from "@/providers/PWA";
 import { getByPlatform } from "@/server/handlers/socials/getByPlatform";
 import "@/styles/globals.css";
 import { base } from "@/utils/hostname";
@@ -113,17 +112,15 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
         suppressHydrationWarning
       >
         <NextThemeWrapper>
-          <PWA_Provider>
-            <Navbar socials={socials} />
-            <CommandMenuProvider>
-              <div className="pb-8">{children}</div>
-              <Footer
-                topSlot={<TechUsedSection techUsed={usedTechnologies} />}
-                innerSlot={<QuadSection />}
-                socials={socials}
-              />
-            </CommandMenuProvider>
-          </PWA_Provider>
+          <Navbar socials={socials} />
+          <CommandMenuProvider>
+            <div className="pb-8">{children}</div>
+            <Footer
+              topSlot={<TechUsedSection techUsed={usedTechnologies} />}
+              innerSlot={<QuadSection />}
+              socials={socials}
+            />
+          </CommandMenuProvider>
         </NextThemeWrapper>
         <SpeedInsights />
       </body>

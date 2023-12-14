@@ -3,17 +3,11 @@ import { Suspense } from "react";
 
 import dynamic from "next/dynamic";
 
+import ExperienceLister from "@/components/listers/ExperienceLister";
 import BannerProjects from "@/images/banner-programming.webp";
 
 const HeroSection = dynamic(
   () => import("@/components/layout/sections/HeroSection"),
-  {
-    ssr: true,
-  },
-);
-
-const ExperienceLister = dynamic(
-  () => import("@/components/listers/ExperienceLister"),
   {
     ssr: true,
   },
