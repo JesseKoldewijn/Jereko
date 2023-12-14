@@ -31,6 +31,9 @@ const config = {
     ],
   },
   transpilePackages: ["@ducanh2912/next-pwa", "lucide-react", "next-themes"],
+  experimental: {
+    webpackBuildWorker: true,
+  },
 };
 
 export default withPWA(config);
