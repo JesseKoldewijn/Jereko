@@ -3,8 +3,6 @@ import { Experiences } from "@/server/db/schemas/experience";
 
 import ExperienceListerItem from "./ExperienceListerItem";
 
-export const revalidate = 86400; // 1 day in seconds
-
 const ExperienceLister = async () => {
   const experience = await db.select().from(Experiences).execute();
 

@@ -1,11 +1,11 @@
+import { usePWA } from "@/providers/PWA";
 import { db } from "@/server/db/conn";
 import { Projects } from "@/server/db/schemas/projects";
 
 import ProjectListerItem from "./ProjectListerItem";
 
-export const revalidate = 86400; // 1 day in seconds
-
 const ProjectsLister = async () => {
+  const { isPWA } = usePWA();
   const projects = await db.select().from(Projects).execute();
 
   return (
