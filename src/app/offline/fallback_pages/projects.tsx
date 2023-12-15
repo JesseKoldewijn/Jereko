@@ -30,8 +30,8 @@ const OfflineProjectsPage = () => {
 
   useEffect(() => {
     const getProjects = async () => {
-      const response = await getStore("projects");
-      setLocalProjects(response);
+      const store = await getStore("projects");
+      setLocalProjects(store.data);
     };
 
     getProjects();
