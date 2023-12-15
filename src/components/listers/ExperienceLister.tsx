@@ -1,11 +1,16 @@
 import { db } from "@/server/db/conn";
-import { Experiences } from "@/server/db/schemas/experience";
+import { type Experience, Experiences } from "@/server/db/schemas/experience";
 
 import { StoreInjector } from "../store-injector";
 import ExperienceListerItem from "./ExperienceListerItem";
 
-const ExperienceLister = async () => {
-  const experience = await db.select().from(Experiences).execute();
+const ExperienceLister = async ({
+  experienceOverride,
+}: {
+  experienceOverride?: Experience[];
+}) => {
+  const experience =
+    experienceOverride ?? (await db.select().from(Experiences).execute());
 
   return (
     <div className="flex flex-col gap-4">

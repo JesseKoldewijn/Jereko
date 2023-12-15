@@ -1,10 +1,14 @@
+"use client";
+
 import type { Metadata } from "next";
-import { Suspense } from "react";
+import { Suspense, useEffect, useState } from "react";
 
 import dynamic from "next/dynamic";
 
 import ExperienceLister from "@/components/listers/ExperienceLister";
 import BannerProjects from "@/images/banner-programming.webp";
+import { type Experience } from "@/server/db/schemas/experience";
+import { getStore } from "@/store/local-store";
 
 const HeroSection = dynamic(
   () => import("@/components/layout/sections/HeroSection"),
@@ -21,7 +25,18 @@ export const metadata: Metadata = {
   },
 };
 
-const ExperiencePage = () => {
+const OfflineExperiencePage = () => {
+  const [localExperience, setLocalExperience] = useState<Experience[]>([]);
+
+  useEffect(() => {
+    const getExperience = async () => {
+      const store = await getStore("experience");
+      setLocalExperience(store.data);
+    };
+
+    getExperience();
+  }, []);
+
   return (
     <>
       <HeroSection
@@ -37,7 +52,7 @@ const ExperiencePage = () => {
       <div className="mx-auto mt-8 w-auto max-w-md px-4 md:w-full md:px-0">
         <section>
           <Suspense>
-            <ExperienceLister />
+            <ExperienceLister experienceOverride={localExperience} />
           </Suspense>
         </section>
       </div>
@@ -45,4 +60,4 @@ const ExperiencePage = () => {
   );
 };
 
-export default ExperiencePage;
+export default OfflineExperiencePage;
