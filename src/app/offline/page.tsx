@@ -1,9 +1,18 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { usePathname } from "next/navigation";
 
-import OfflineExperiencePage from "./fallback_pages/experience";
-import OfflineProjectsPage from "./fallback_pages/projects";
+const OfflineExperiencePage = dynamic(
+  () => import("./fallback_pages/experience"),
+  {
+    ssr: true,
+  },
+);
+
+const OfflineProjectsPage = dynamic(() => import("./fallback_pages/projects"), {
+  ssr: true,
+});
 
 const OfflineRoutes = ({ pathName }: { pathName: string }) => {
   switch (pathName) {
