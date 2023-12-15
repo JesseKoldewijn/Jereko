@@ -2,7 +2,20 @@
 
 import { usePathname } from "next/navigation";
 
-const OfflineRoot = () => {
+import OfflineProjectsPage from "./fallback_pages/projects";
+
+const OfflineRoutes = ({ pathName }: { pathName: string }) => {
+  switch (pathName) {
+    case "/projects":
+      return <OfflineProjectsPage />;
+    // case "/experience":
+    //   return <OfflineBlogPage />;
+    default:
+      return <DefaultFallback />;
+  }
+};
+
+const DefaultFallback = () => {
   const pathName = usePathname();
 
   return (
@@ -20,6 +33,12 @@ const OfflineRoot = () => {
       </div>
     </div>
   );
+};
+
+const OfflineRoot = () => {
+  const pathName = usePathname();
+  if (!pathName) return <DefaultFallback />;
+  return <OfflineRoutes pathName={pathName} />;
 };
 
 export default OfflineRoot;
