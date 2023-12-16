@@ -122,7 +122,7 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
             />
           </CommandMenuProvider>
         </NextThemeWrapper>
-        <SpeedInsights />
+        {process.env.NODE_ENV !== "development" && <SpeedInsights />}
       </body>
     </html>
   );
