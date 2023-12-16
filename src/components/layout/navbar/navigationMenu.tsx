@@ -26,12 +26,6 @@ export const showcaseEntry = {
   },
   links: [
     {
-      title: "Introduction",
-      href: "/about-me/intro",
-      description:
-        "Who am I? What are my goals and what do I want to achieve? Read more about it here.",
-    },
-    {
       title: "Hobbies",
       href: "/about-me/hobbies",
       description: "What do I do in my spare time? Read more about it here.",

@@ -19,10 +19,6 @@ const pageHeadings = {
     title: "About Me",
     description: "Who am I? And what do I do?",
   },
-  "/intro": {
-    title: "Introduction",
-    description: "A little bit about myself, and my background.",
-  },
   "/hobbies": {
     title: "Hobbies",
     description: "What do I do in my free time?",
@@ -73,17 +69,6 @@ const AboutMeContent = () => {
           )}
         >
           About Me
-        </Link>
-        <Link
-          href="/about-me/intro"
-          className={cn(
-            pathName == "/about-me/intro"
-              ? "bg-neutral-200 text-neutral-900 sm:dark:hover:border-neutral-200 sm:dark:hover:bg-transparent sm:dark:hover:text-neutral-200"
-              : "sm:hover:bg-neutral-200 sm:hover:text-neutral-900",
-            "w-full rounded-lg border border-neutral-200 px-3 py-2 text-center xs:w-auto sm:hover:bg-neutral-200 sm:hover:text-neutral-900",
-          )}
-        >
-          Introduction
         </Link>
         <Link
           href="/about-me/hobbies"
