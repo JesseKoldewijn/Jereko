@@ -45,6 +45,7 @@ yarn-error.log*
 sw.*
 workbox-*
 swe-worker-*
+fallback-*
 
 # Analyze files
 ./analyze
