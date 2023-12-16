@@ -2,20 +2,6 @@
 
 import { usePathname } from "next/navigation";
 
-import OfflineExperiencePage from "./fallback_pages/experience";
-import OfflineProjectsPage from "./fallback_pages/projects";
-
-const OfflineRoutes = ({ pathName }: { pathName: string }) => {
-  switch (pathName) {
-    case "/projects":
-      return <OfflineProjectsPage />;
-    case "/experience":
-      return <OfflineExperiencePage />;
-    default:
-      return <DefaultFallback />;
-  }
-};
-
 const DefaultFallback = () => {
   const pathName = usePathname();
 
@@ -37,9 +23,7 @@ const DefaultFallback = () => {
 };
 
 const OfflineRoot = () => {
-  const pathName = usePathname();
-  if (!pathName) return <DefaultFallback />;
-  return <OfflineRoutes pathName={pathName} />;
+  return <DefaultFallback />;
 };
 
 export default OfflineRoot;

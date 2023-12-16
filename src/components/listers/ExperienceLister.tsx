@@ -1,7 +1,6 @@
 import { db } from "@/server/db/conn";
 import { type Experience, Experiences } from "@/server/db/schemas/experience";
 
-import { StoreInjector } from "../store-injector";
 import ExperienceListerItem from "./ExperienceListerItem";
 
 const ExperienceLister = async ({
@@ -16,7 +15,6 @@ const ExperienceLister = async ({
     <div className="flex flex-col gap-4">
       {experience && experience.length > 0 ? (
         <>
-          <StoreInjector namespace="experience" data={experience} />
           {experience
             .sort((a, b) => {
               const aDate = new Date(
