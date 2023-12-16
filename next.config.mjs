@@ -1,5 +1,7 @@
 import NextPWA from "@ducanh2912/next-pwa";
 
+import "@/env.mjs";
+
 const prod = process.env.NODE_ENV === "production";
 
 const withPWA = NextPWA({

@@ -8,6 +8,7 @@ import dynamic from "next/dynamic";
 import { cookies } from "next/headers";
 
 import { usedTechnologies } from "@/config/tech";
+import { env } from "@/env.mjs";
 import { getByPlatform } from "@/server/handlers/socials/getByPlatform";
 import "@/styles/globals.css";
 import { base } from "@/utils/hostname";
@@ -122,7 +123,7 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
             />
           </CommandMenuProvider>
         </NextThemeWrapper>
-        {process.env.NODE_ENV !== "development" && <SpeedInsights />}
+        {env.NODE_ENV !== "development" && <SpeedInsights />}
       </body>
     </html>
   );

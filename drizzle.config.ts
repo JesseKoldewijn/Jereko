@@ -1,14 +1,13 @@
-import dotEnv from "dotenv";
 import type { Config } from "drizzle-kit";
 
-dotEnv.config();
+import { env } from "./src/env.mjs";
 
 const config = {
   schema: "./src/server/db/schemas/*.ts",
   out: "./drizzle",
   driver: "pg",
   dbCredentials: {
-    connectionString: process.env.POSTGRES_URL + "?sslmode=require",
+    connectionString: env.POSTGRES_URL + "?sslmode=require",
     ssl: true,
   },
 } satisfies Config;
