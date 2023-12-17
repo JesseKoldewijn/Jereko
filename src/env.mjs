@@ -11,7 +11,7 @@ export const env = createEnv({
     WP_API_USER: z.string(),
     WP_API_KEY: z.string(),
     POSTGRES_URL: z.string().url(),
-    VERCEL_URL: z.string().url(),
+    VERCEL_URL: z.string().optional(),
     NODE_ENV: z.string().optional(),
   },
   /*
