@@ -1,3 +1,4 @@
+import { type Metadata } from "next";
 import { Suspense } from "react";
 
 const date = new Date(2021, 6, 1);
@@ -28,6 +29,16 @@ const volunteeringForMonths = () => {
   }
 
   return difference;
+};
+
+export const metadata: Metadata = {
+  title: "Volunteering",
+  description: "A page about my volunteering experience.",
+  openGraph: {
+    title: "Volunteering | JKinsight",
+    description: "A page about my volunteering.",
+    url: "https://jkinsight.nl",
+  },
 };
 
 const Volunteering = () => {

@@ -1,5 +1,16 @@
+import { type Metadata } from "next";
+
 import AnimatedGradientText from "@/components/animated/animated-grad-text";
 import GoToHeading from "@/components/page-elements/about-me/go-to-heading";
+
+export const metadata: Metadata = {
+  title: "About me",
+  openGraph: {
+    title: "About me | JKinsight",
+    description: "A page about me.",
+    url: "https://jkinsight.nl",
+  },
+};
 
 const AboutMe = () => {
   return (

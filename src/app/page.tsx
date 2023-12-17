@@ -4,14 +4,8 @@ import { Suspense } from "react";
 import dynamic from "next/dynamic";
 
 import LatestAttEvent from "@/components/events/last-attended";
+import HeroSection from "@/components/layout/sections/HeroSection";
 import Avatar from "@/images/avatar.webp";
-
-const HeroSection = dynamic(
-  () => import("@/components/layout/sections/HeroSection"),
-  {
-    ssr: true,
-  },
-);
 
 const IntroSection = dynamic(
   () => import("@/components/layout/sections/IntroSection"),
@@ -21,10 +15,13 @@ const IntroSection = dynamic(
 );
 
 export const metadata: Metadata = {
+  title: "JKinsight - My personal website | Jesse Koldewijn",
+  description:
+    "My personal website. This website is used to showcase my projects, experience and volunteering. I also use this website to showcase my skills in web development, events I've attended and possibly also a dev blog in the future.",
   openGraph: {
     title: "JKinsight",
     description: "My personal website.",
-    url: "https://jkinsight.vercel.app",
+    url: "https://jkinsight.nl",
   },
 };
 

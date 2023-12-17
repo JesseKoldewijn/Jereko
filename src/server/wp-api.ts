@@ -2,10 +2,26 @@ import "server-only";
 
 import { env } from "@/env.mjs";
 
-export const fetchWP = async <T>(path: string, regInit: RequestInit) => {
-  const endpoint = `${env.WP_API_URL}${path}`;
+import { type paths } from "./wp-types";
 
-  const { method, headers, body, ...rest } = regInit;
+const wpPrefix = "/wp/v2";
+type wpPathRaw = keyof paths;
+type wpPath = wpPathRaw extends `${typeof wpPrefix}${infer T}` ? T : never;
+
+export const fetchWP = async (path: wpPath, regInit?: RequestInit) => {
+  const endpoint = `${env.WP_API_URL}${path}`;
+  const basicAuth = btoa(`${env.WP_API_USER}:${env.WP_API_KEY}`);
+
+  const {
+    method,
+    headers,
+    body = undefined,
+    ...rest
+  } = regInit ?? {
+    method: undefined,
+    headers: {},
+    body: undefined,
+  };
 
   const requestInit = {
     method: method ?? "GET",
@@ -13,6 +29,7 @@ export const fetchWP = async <T>(path: string, regInit: RequestInit) => {
       ...headers,
       "Content-Type": "application/json",
       Accept: "application/json",
+      Authorization: "Basic " + basicAuth,
     },
     body: JSON.stringify(body) ?? undefined,
     ...rest,
@@ -26,7 +43,7 @@ export const fetchWP = async <T>(path: string, regInit: RequestInit) => {
       return null;
     }
 
-    return (await res.json()) as T;
+    return (await res.json()) as any[];
   } catch (error) {
     console.error(error);
     return null;

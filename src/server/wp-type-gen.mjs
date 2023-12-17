@@ -9,26 +9,13 @@ export const typegenWP = async (/** @type {string} */ pathRoot) => {
 
   const schemaUrlObj = new URL(schemaUrl);
 
-  console.log("Fetching schema from", schemaUrlObj);
-  const schemaFetch = await fetch(schemaUrlObj, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-    },
-  });
+  console.log("Fetching schema from", schemaUrlObj.href);
 
-  if (!schemaFetch.ok) {
-    console.error(`Error fetching ${schemaUrl}`, schemaFetch);
-    return null;
-  }
-
-  const schemaJson = await schemaFetch.json();
-  const schemaJsonString = JSON.stringify(schemaJson);
-
-  const schema = await openApiTS(schemaJsonString);
+  const schema = await openApiTS(schemaUrlObj);
   const writePath = `${pathRoot ? pathRoot : "."}/wp-types.ts`;
   const fs = await import("fs");
+
+  console.log("Writing schema to", writePath);
 
   fs.writeFileSync(writePath, schema);
 };

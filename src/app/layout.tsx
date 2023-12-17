@@ -51,7 +51,10 @@ const TechUsedSection = dynamic(
 );
 
 export const metadata: Metadata = {
-  title: "JKinsight - My personal website | Jesse Koldewijn",
+  title: {
+    absolute: "JKinsight - My personal website | Jesse Koldewijn",
+    template: "%s | JKinsight - My personal website | Jesse Koldewijn",
+  },
   description: "tbh idk what to put here yet",
   metadataBase: new URL(base),
   icons: [
@@ -89,7 +92,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "JKinsight",
     description: "tbh idk what to put here yet",
-    url: "https://jkinsight.vercel.app",
+    url: "https://jkinsight.nl",
   },
 };
 

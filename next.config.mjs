@@ -1,6 +1,6 @@
 import NextPWA from "@ducanh2912/next-pwa";
 
-import "@/env.mjs";
+import "./src/env.mjs";
 
 const prod = process.env.NODE_ENV === "production";
 
@@ -21,9 +21,11 @@ const withPWA = NextPWA({
 /** @type {import("next").NextConfig} */
 const config = {
   reactStrictMode: true,
-  compress: true,
   images: {
     remotePatterns: [{ hostname: "img.youtube.com", protocol: "https" }],
+  },
+  experimental: {
+    ppr: true,
   },
 };
 

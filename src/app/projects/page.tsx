@@ -1,23 +1,17 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 
-import dynamic from "next/dynamic";
-
+import HeroSection from "@/components/layout/sections/HeroSection";
 import ProjectsLister from "@/components/listers/ProjectsLister";
 import BannerProjects from "@/images/banner-programming.webp";
 
-const HeroSection = dynamic(
-  () => import("@/components/layout/sections/HeroSection"),
-  {
-    ssr: true,
-  },
-);
-
 export const metadata: Metadata = {
+  title: "Projects",
+  description: "A list of projects I've worked on.",
   openGraph: {
     title: "Projects | JKinsight",
     description: "A list of projects I've worked on.",
-    url: "https://jkinsight.vercel.app",
+    url: "https://jkinsight.nl",
   },
 };
 

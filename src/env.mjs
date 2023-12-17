@@ -8,6 +8,8 @@ export const env = createEnv({
    */
   server: {
     WP_API_URL: z.string().url(),
+    WP_API_USER: z.string(),
+    WP_API_KEY: z.string(),
     POSTGRES_URL: z.string().url(),
     VERCEL_URL: z.string().url(),
     NODE_ENV: z.string().optional(),
@@ -26,6 +28,8 @@ export const env = createEnv({
    */
   runtimeEnv: {
     WP_API_URL: process.env.WP_API_URL,
+    WP_API_USER: process.env.WP_API_USER,
+    WP_API_KEY: process.env.WP_API_KEY,
     POSTGRES_URL: process.env.POSTGRES_URL,
     VERCEL_URL: process.env.VERCEL_URL,
     NODE_ENV: process.env.NODE_ENV,
