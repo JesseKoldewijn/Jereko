@@ -65,6 +65,12 @@ const CommandMenuProvider = ({ children }: { children: React.ReactNode }) => {
           setOpen(false);
           break;
         }
+        case "b": {
+          e.preventDefault();
+          router.push("/blog");
+          setOpen(false);
+          break;
+        }
         case "o": {
           window.open("https://github.com/JesseKoldewijn/JKinsight", "_blank");
           setOpen(false);
@@ -126,6 +132,11 @@ const CommandMenuProvider = ({ children }: { children: React.ReactNode }) => {
               <ListChecks className="mr-2 h-4 w-4" />
               <span>My Experience</span>
               <CommandShortcut>⌘E</CommandShortcut>
+            </CommandItem>
+            <CommandItem>
+              <ListChecks className="mr-2 h-4 w-4" />
+              <span>My Blog</span>
+              <CommandShortcut>⌘B</CommandShortcut>
             </CommandItem>
             <CommandItem>
               <ListChecks className="mr-2 h-4 w-4" />
