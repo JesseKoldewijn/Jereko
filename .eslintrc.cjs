@@ -13,6 +13,11 @@ const config = {
     "plugin:jsx-a11y/strict",
   ],
   rules: {
+    // These rules are only disabled because of the openapi-typescript schema gen output.
+    "@typescript-eslint/consistent-indexed-object-style": 0,
+    "@typescript-eslint/no-empty-interface": 0,
+    // --- END ---
+
     // These opinionated rules are enabled in stylistic-type-checked above.
     "@typescript-eslint/array-type": "off",
     "@typescript-eslint/consistent-type-definitions": "off",

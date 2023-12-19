@@ -1,3 +1,15 @@
+import { type Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Volunteering",
+  description: "A page about my hobbies.",
+  openGraph: {
+    title: "Volunteering | JKinsight",
+    description: "A page about my hobbies.",
+    url: "https://jkinsight.nl",
+  },
+};
+
 const Hobbies = () => {
   return (
     <div className="mx-4 flex flex-col items-center justify-center gap-8 lg:mx-2 lg:flex-row">
