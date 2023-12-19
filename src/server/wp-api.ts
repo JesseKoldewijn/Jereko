@@ -1,16 +1,31 @@
 import "server-only";
 
 import { env } from "@/env.mjs";
-
-import { type paths } from "./wp-types";
+import { type paths } from "@/types/wp-types";
 
 const wpPrefix = "/wp/v2";
 type wpPathRaw = keyof paths;
 type wpPath = wpPathRaw extends `${typeof wpPrefix}${infer T}` ? T : never;
 
-export const fetchWP = async (path: wpPath, regInit?: RequestInit) => {
+type PostsParams = paths["/wp/v2/posts"]["get"]["parameters"]["query"];
+type PostParams = paths["/wp/v2/posts/{id}"]["get"]["parameters"]["path"];
+
+type Params<T extends wpPath> = T extends "/posts/{id}"
+  ? PostParams
+  : T extends "/posts"
+    ? PostsParams
+    : never;
+
+export const fetchWP = async (
+  path: wpPath,
+  params: any = {},
+  regInit?: RequestInit,
+) => {
   const endpoint = `${env.WP_API_URL}${path}`;
   const basicAuth = btoa(`${env.WP_API_USER}:${env.WP_API_KEY}`);
+
+  const paramsObjAsString = Object.entries(params).toString();
+  const paramsString = new URLSearchParams(paramsObjAsString).toString();
 
   const {
     method,
@@ -34,6 +49,10 @@ export const fetchWP = async (path: wpPath, regInit?: RequestInit) => {
     body: JSON.stringify(body) ?? undefined,
     ...rest,
   };
+
+  if (params && Object.keys(params).length > 0) {
+    endpoint.concat(`?${paramsString}`);
+  }
 
   try {
     const res = await fetch(endpoint, requestInit);
