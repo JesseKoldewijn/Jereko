@@ -108,7 +108,7 @@ const HeroSection = ({
             </>
           ) : null}
         </div>
-        <div className="order-first mb-8 flex max-h-[300px] transition-opacity md:mb-16 md:max-h-[500px] lg:order-last lg:col-span-5 lg:mb-0 lg:mt-0">
+        <div className="order-first mb-8 flex max-h-[300px] min-h-[300px] transition-opacity md:mb-16 md:max-h-[500px] lg:order-last lg:col-span-5 lg:mb-0 lg:mt-0">
           <Image
             id={bannerID}
             src={currentBannerImage}
