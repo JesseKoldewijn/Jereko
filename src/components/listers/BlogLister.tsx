@@ -1,9 +1,13 @@
-import { fetchWP } from "@/server/wp-api";
+import { type PostsParams, fetchWP } from "@/server/wp-api";
 
 import BlogListerItem from "./BlogListerItem";
 
 const BlogLister = async () => {
-  const WpPosts = await fetchWP("/posts");
+  const wpPostsParams = {
+    status: ["publish"],
+  } satisfies PostsParams;
+
+  const WpPosts = await fetchWP("/posts", wpPostsParams);
 
   return (
     <div className="flex flex-col gap-4 px-4">

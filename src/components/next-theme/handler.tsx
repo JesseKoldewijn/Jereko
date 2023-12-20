@@ -5,13 +5,13 @@ import { useTheme } from "next-themes";
 import React, { useEffect } from "react";
 
 const NextThemeHandler = ({ children }: { children: React.ReactNode }) => {
-  const { theme } = useTheme();
+  const { theme, systemTheme } = useTheme();
 
   useEffect(() => {
     const cookieTheme = cookies.get("theme");
 
     if (theme !== cookieTheme) {
-      cookies.set("theme", theme ?? "system");
+      cookies.set("theme", theme ?? systemTheme ?? "dark");
     }
   }, [theme]);
 

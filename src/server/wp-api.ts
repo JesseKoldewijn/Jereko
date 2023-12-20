@@ -7,14 +7,9 @@ const wpPrefix = "/wp/v2";
 type wpPathRaw = keyof paths;
 type wpPath = wpPathRaw extends `${typeof wpPrefix}${infer T}` ? T : never;
 
-type PostsParams = paths["/wp/v2/posts"]["get"]["parameters"]["query"];
-type PostParams = paths["/wp/v2/posts/{id}"]["get"]["parameters"]["path"];
-
-type Params<T extends wpPath> = T extends "/posts/{id}"
-  ? PostParams
-  : T extends "/posts"
-    ? PostsParams
-    : never;
+export type PostsParams = paths["/wp/v2/posts"]["get"]["parameters"]["query"];
+export type PostParams =
+  paths["/wp/v2/posts/{id}"]["get"]["parameters"]["path"];
 
 export const fetchWP = async (
   path: wpPath,
