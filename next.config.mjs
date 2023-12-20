@@ -26,7 +26,10 @@ const config = {
   },
   experimental: {
     ppr: true,
+    webpackBuildWorker: true,
   },
+  optimizeFonts: true,
+  transpilePackages: ["@ducanh2912/next-pwa", "lucide-react"],
 };
 
 export default withPWA(config);

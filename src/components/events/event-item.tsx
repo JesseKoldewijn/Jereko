@@ -21,7 +21,7 @@ type EventItemProps =
 const EventItem = ({ title, event, isSkeleton }: EventItemProps) => {
   if (isSkeleton) {
     return (
-      <Card className="min-h-[18rem] bg-neutral-200 !pb-8 dark:bg-neutral-900">
+      <Card className="min-h-[18rem] bg-neutral-100 !pb-8 dark:bg-neutral-900">
         <CardTitle className="my-3 !mb-1 mt-2 flex flex-col gap-6 !pt-3">
           <Skeleton className="bg-neutral-322 mx-auto my-auto h-4 w-4/6 dark:bg-neutral-700" />
           <Skeleton className="bg-neutral-322 relative mx-auto my-auto h-3 w-5/6 dark:bg-neutral-700" />
@@ -58,7 +58,7 @@ const EventItem = ({ title, event, isSkeleton }: EventItemProps) => {
       : null;
 
   return (
-    <Card className="min-h-[18rem] bg-neutral-200 dark:bg-neutral-900">
+    <Card className="min-h-[18rem] bg-neutral-100 dark:bg-neutral-900">
       {title ? (
         <>
           <CardTitle className="pt-4">{title}</CardTitle>

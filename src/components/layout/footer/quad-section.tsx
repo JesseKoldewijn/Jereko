@@ -64,7 +64,7 @@ const QuadSection = async () => {
               around!
             </p>
           </div>
-          <div className="relative mx-auto mb-4 block h-24 w-24 rounded-full object-cover sm:hidden lg:mx-0 lg:mb-0">
+          <div className="relative mx-auto mb-4 block h-24 w-24 rounded-full object-cover lg:mx-0 lg:mb-0">
             <div className="absolute inset-0 -z-50 rotate-90 rounded-full bg-[rgba(0,0,0,0.5)] opacity-0 transition-all hover:rotate-0 hover:opacity-100 md:z-10">
               <div className="inset-0 flex h-full w-full select-none items-center justify-center">
                 Peekaboo!

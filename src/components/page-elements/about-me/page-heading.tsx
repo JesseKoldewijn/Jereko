@@ -63,9 +63,9 @@ const AboutMeContent = () => {
           href="/about-me"
           className={cn(
             pathName == "/about-me"
-              ? "bg-neutral-200 text-neutral-900 sm:dark:hover:border-neutral-200 sm:dark:hover:bg-transparent sm:dark:hover:text-neutral-200"
-              : "sm:hover:bg-neutral-200 sm:hover:text-neutral-900",
-            "w-full rounded-lg border border-neutral-200 px-3 py-2 text-center xs:w-auto sm:hover:bg-neutral-200 sm:hover:text-neutral-900",
+              ? "bg-neutral-100 text-neutral-900 sm:dark:hover:border-neutral-200 sm:dark:hover:bg-transparent sm:dark:hover:text-neutral-200"
+              : "sm:hover:bg-neutral-100 sm:hover:text-neutral-900",
+            "w-full rounded-lg border border-neutral-200 px-3 py-2 text-center xs:w-auto sm:hover:bg-neutral-100 sm:hover:text-neutral-900",
           )}
         >
           About Me
@@ -74,9 +74,9 @@ const AboutMeContent = () => {
           href="/about-me/hobbies"
           className={cn(
             pathName == "/about-me/hobbies"
-              ? "bg-neutral-200 text-neutral-900 sm:dark:hover:border-neutral-200 sm:dark:hover:bg-transparent sm:dark:hover:text-neutral-200"
-              : "sm:hover:bg-neutral-200 sm:hover:text-neutral-900",
-            "w-full rounded-lg border border-neutral-200 px-3 py-2 text-center xs:w-auto sm:hover:bg-neutral-200 sm:hover:text-neutral-900",
+              ? "bg-neutral-100 text-neutral-900 sm:dark:hover:border-neutral-200 sm:dark:hover:bg-transparent sm:dark:hover:text-neutral-200"
+              : "sm:hover:bg-neutral-100 sm:hover:text-neutral-900",
+            "w-full rounded-lg border border-neutral-200 px-3 py-2 text-center xs:w-auto sm:hover:bg-neutral-100 sm:hover:text-neutral-900",
           )}
         >
           Hobbies
@@ -85,9 +85,9 @@ const AboutMeContent = () => {
           href="/about-me/volunteering"
           className={cn(
             pathName == "/about-me/volunteering"
-              ? "bg-neutral-200 text-neutral-900 sm:dark:hover:border-neutral-200 sm:dark:hover:bg-transparent sm:dark:hover:text-neutral-200"
-              : "sm:hover:bg-neutral-200 sm:hover:text-neutral-900",
-            "w-full rounded-lg border border-neutral-200 px-3 py-2 text-center xs:w-auto sm:hover:bg-neutral-200 sm:hover:text-neutral-900",
+              ? "bg-neutral-100 text-neutral-900 sm:dark:hover:border-neutral-200 sm:dark:hover:bg-transparent sm:dark:hover:text-neutral-200"
+              : "sm:hover:bg-neutral-100 sm:hover:text-neutral-900",
+            "w-full rounded-lg border border-neutral-200 px-3 py-2 text-center xs:w-auto sm:hover:bg-neutral-100 sm:hover:text-neutral-900",
           )}
         >
           Volunteering

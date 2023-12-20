@@ -75,7 +75,7 @@ const BlogPage = async ({ params: { slug } }: BlogPageArgs) => {
           description: postDescWithoutHtml,
         }}
       />
-      <section className="mx-auto flex w-full max-w-lg flex-col items-center text-center">
+      <section className="mx-auto flex w-full max-w-lg flex-col items-center px-4 text-center md:px-0">
         <Suspense fallback={<p>Loading...</p>}>
           <span className="pb-6 text-neutral-800 dark:text-neutral-200">
             Posted on: {new Date(post.data.date).toLocaleDateString()}

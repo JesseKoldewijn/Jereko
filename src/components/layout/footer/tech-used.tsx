@@ -28,7 +28,7 @@ const _TechMapping = ({
             typeof="img"
             className={cn(
               isDarkLogo
-                ? "rounded-lg bg-neutral-900 dark:bg-neutral-200"
+                ? "rounded-lg bg-neutral-900 dark:bg-neutral-100"
                 : lightLogo
                   ? "rounded-lg bg-neutral-100"
                   : isDrizzleORM
@@ -55,7 +55,7 @@ const _TechMapping = ({
 
 const TechUsed = ({ techUsed }: { techUsed: typeof usedTechnologies }) => {
   return (
-    <div className="mx-4 mb-4 w-auto rounded-xl bg-neutral-300 !bg-opacity-70 py-2 backdrop-blur-md dark:bg-neutral-800 md:mx-8 md:mb-8">
+    <div className="mx-4 mb-4 w-auto rounded-xl border bg-neutral-100 py-2 dark:bg-neutral-900 md:mx-4 md:mb-8">
       <section className="w-auto py-4 md:py-10 lg:py-12">
         <div className="container grid gap-4 px-4 text-center md:gap-5 md:px-6 lg:gap-10">
           <div className="space-y-3">

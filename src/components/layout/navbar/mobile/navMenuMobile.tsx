@@ -76,13 +76,13 @@ const NavMenuMobile = ({ socials }: { socials: Socials | null }) => {
           <div
             key={`nav-menu-${theme ?? "default"}`}
             className={cn(
-              "opacity-1 fixed bottom-0 left-0 right-0 top-[4.5rem] flex bg-neutral-300 !bg-opacity-70 transition-opacity duration-1000 dark:bg-neutral-950",
+              "opacity-1 fixed bottom-0 left-0 right-0 top-[4.5rem] flex bg-neutral-100 !bg-opacity-70 transition-opacity duration-1000 dark:bg-neutral-950 dark:!bg-opacity-80",
             )}
           >
             <div
               key={`overlay-${theme ?? "default"}`}
               className={cn(
-                "absolute inset-0 bottom-0 left-0 right-0 top-0 h-full w-auto bg-neutral-400 bg-opacity-80 blur-3xl dark:bg-neutral-950",
+                "absolute inset-0 bottom-0 left-0 right-0 top-0 h-full w-auto bg-neutral-100 bg-opacity-80 blur-xl dark:bg-neutral-950",
               )}
             ></div>
             <div
@@ -107,7 +107,7 @@ const NavMenuMobile = ({ socials }: { socials: Socials | null }) => {
                   <Link
                     href={entry.href}
                     key={entry.title}
-                    className="flex w-full items-center justify-center gap-2 rounded-lg border p-2"
+                    className="flex w-full items-center justify-center gap-2 rounded-lg border border-foreground p-2"
                   >
                     <Icon className="h5" />
                     {entry.title}
@@ -116,7 +116,7 @@ const NavMenuMobile = ({ socials }: { socials: Socials | null }) => {
               })}
               <Link
                 href="https://github.com/JesseKoldewijn/JKinsight"
-                className="flex w-full items-center justify-center gap-2 rounded-lg border p-2"
+                className="flex w-full items-center justify-center gap-2 rounded-lg border border-foreground p-2"
               >
                 <AppIcons.socials.github className="h-5" />
                 OpenSource
@@ -137,7 +137,7 @@ const NavMenuMobile = ({ socials }: { socials: Socials | null }) => {
                   <Link
                     href={entry.href}
                     key={entry.title}
-                    className="flex w-full items-center justify-center gap-2 rounded-lg border p-2"
+                    className="flex w-full items-center justify-center gap-2 rounded-lg border border-foreground p-2"
                   >
                     <Icon className="h-5" />
                     {entry.title}
@@ -157,7 +157,7 @@ const NavMenuMobile = ({ socials }: { socials: Socials | null }) => {
                       <Link
                         href={social.link ?? "#"}
                         key={social.label ?? `social-${idx}`}
-                        className="flex w-full items-center justify-center gap-2 rounded-lg border p-2"
+                        className="flex w-full items-center justify-center gap-2 rounded-lg border border-foreground p-2"
                       >
                         <Icon className="h-5" />
                         {social.label}

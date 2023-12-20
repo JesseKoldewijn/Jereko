@@ -37,7 +37,7 @@ const ShowcaseNavSection = ({
           <li className="row-span-3 rounded-lg bg-black text-white dark:bg-neutral-100 dark:text-neutral-900">
             <NavigationMenuLink asChild>
               <a
-                className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
+                className="from-muted/50 flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b to-muted p-6 no-underline outline-none focus:shadow-md"
                 href={showcase.href}
                 target={
                   !showcase.href.startsWith("/")

@@ -3,9 +3,15 @@ import { Suspense } from "react";
 
 import dynamic from "next/dynamic";
 
-import LatestAttEvent from "@/components/events/last-attended";
 import HeroSection from "@/components/layout/sections/HeroSection";
 import Avatar from "@/images/avatar.webp";
+
+const LatestAttEvent = dynamic(
+  () => import("@/components/events/last-attended"),
+  {
+    ssr: true,
+  },
+);
 
 const IntroSection = dynamic(
   () => import("@/components/layout/sections/IntroSection"),
