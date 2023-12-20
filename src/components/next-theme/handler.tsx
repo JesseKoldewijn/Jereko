@@ -13,7 +13,7 @@ const NextThemeHandler = ({ children }: { children: React.ReactNode }) => {
     if (theme !== cookieTheme) {
       cookies.set("theme", theme ?? systemTheme ?? "dark");
     }
-  }, [theme]);
+  }, [systemTheme, theme]);
 
   return <>{children}</>;
 };

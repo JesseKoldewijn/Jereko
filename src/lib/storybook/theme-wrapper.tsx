@@ -1,5 +1,5 @@
 import { type StoryFn } from "@storybook/react";
-import FontLoader from "fontLoader";
+import FontLoader from "./fontLoader";
 import { ThemeProvider, useTheme } from "next-themes";
 
 import "@/styles/globals.css";

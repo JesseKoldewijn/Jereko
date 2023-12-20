@@ -18,5 +18,5 @@ module.exports = {
   // Tailwind
   tailwindAttributes: ["className"],
   tailwindFunctions: ["clsx", "cn", "twMerge"],
-  tailwindConfig: "./tailwind.config.ts",
+  tailwindConfig: "./tailwind.config.cjs",
 };
