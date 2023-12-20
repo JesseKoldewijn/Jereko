@@ -8,7 +8,7 @@ import { notFound } from "next/navigation";
 import HeroSection from "@/components/layout/sections/HeroSection";
 import { Button } from "@/components/ui/button";
 import Avatar from "@/images/avatar.webp";
-import { type PostsParams, fetchWP } from "@/server/wp-api";
+import { getPostBySlug } from "@/server/handlers/post/getBySlug";
 
 export type BlogPageArgs = {
   params: {
@@ -17,38 +17,6 @@ export type BlogPageArgs = {
 };
 
 export const revalidate = 3600; // revalidate at most every hour
-
-export const getPostBySlug = async (slug: string[]) => {
-  const wpPostsParams = {
-    status: ["publish"],
-    slug: Array.isArray(slug) ? slug : Array(slug),
-  } satisfies PostsParams;
-
-  const WpPosts = await fetchWP("/posts", wpPostsParams, {
-    next: {
-      tags: [`blog-${slug}`],
-    },
-  });
-
-  if (!WpPosts) return null;
-  else {
-    const post = WpPosts[0];
-
-    const postTitle = String(parse(post.title.rendered));
-    const postContent = String(parse(post.content.rendered));
-
-    const prettyTitle =
-      postTitle.length > 20 ? postTitle.slice(0, 60) + "..." : postTitle;
-    const prettyContent =
-      postContent.length > 60 ? postContent.slice(0, 60) + "..." : postContent;
-
-    return {
-      prettyTitle,
-      prettyContentShort: prettyContent,
-      data: post,
-    };
-  }
-};
 
 export const generateMetadata = async ({ params: { slug } }: BlogPageArgs) => {
   const wpPost = await getPostBySlug(Array.isArray(slug) ? slug : Array(slug));

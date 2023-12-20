@@ -36,7 +36,7 @@
   }
 
   .dark {
-    --background: rgba(56, 56, 56, 1);
+    --background: rgba(15, 15, 15, 1);
     --foreground: rgba(255, 255, 255, 1);
 
     --card: rgba(56, 56, 56, 1);

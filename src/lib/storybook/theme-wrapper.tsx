@@ -1,40 +1,8 @@
 import { type StoryFn } from "@storybook/react";
+import FontLoader from "fontLoader";
 import { ThemeProvider, useTheme } from "next-themes";
 
-import GeistMono from "@/fonts/geist-mono/GeistMono-Variable.woff2";
-import GeistSans from "@/fonts/geist-sans/Geist-Variable.woff2";
 import "@/styles/globals.css";
-
-const FontLoader = () => {
-  return (
-    <>
-      <link rel="prefetch" href={GeistSans} as="font" crossOrigin="anonymous" />
-      <link rel="prefetch" href={GeistMono} as="font" crossOrigin="anonymous" />
-      <style
-        dangerouslySetInnerHTML={{
-          __html: `
-            @font-face {
-              font-family: 'Geist';
-              font-display: swap;
-              src: url(${GeistSans}) format('woff2-variations');
-            }
-            @font-face {
-              font-family: 'Geist Mono';
-              font-display: swap;
-              src: url(${GeistMono}) format('woff2-variations');
-            }
-            :root {
-              --font-sans: 'Geist', Roboto, "Helvetica Neue", sans-serif;
-              --font-mono: 'Geist Mono', monospace;
-
-              font-family: var(--font-sans)!important;
-            }
-          `,
-        }}
-      ></style>
-    </>
-  );
-};
 
 export const StorybookThemeWrapper = (theme?: "light" | "dark" | "system") => {
   const s = (Story: StoryFn) => {

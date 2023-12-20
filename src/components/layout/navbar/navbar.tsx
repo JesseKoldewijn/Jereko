@@ -23,12 +23,15 @@ const Navbar = ({ socials }: { socials: Socials | null }) => {
     const setScrollPositionHandler = () => {
       const scrollTop = document.documentElement.scrollTop;
       setScrollPosition(
-        cn(scrollTop > 40 ? "fixed top-0 px-6 pl-4" : "relative mb-4 px-8"),
+        cn(scrollTop > 15 ? "fixed top-0 px-8" : "relative mb-4 px-8"),
       );
     };
 
     setScrollPositionHandler();
     window.addEventListener("scroll", setScrollPositionHandler);
+    window.addEventListener("loadstart", () => {
+      console.log("loadstart");
+    });
     return () => {
       window.removeEventListener("scroll", setScrollPositionHandler);
     };

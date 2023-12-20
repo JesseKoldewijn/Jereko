@@ -1,8 +1,9 @@
 import { ImageResponse } from "next/og";
 
+import { getPostBySlug } from "@/server/handlers/post/getBySlug";
 import { base } from "@/utils/hostname";
 
-import { type BlogPageArgs, getPostBySlug } from "./page";
+import { type BlogPageArgs } from "./page";
 
 // Route segment config
 export const runtime = "edge";

@@ -47,10 +47,10 @@ const ShowcaseNavSection = ({
                     : undefined
                 }
               >
-                <div className="mb-2 mt-4 text-lg font-medium">
+                <div className="mb-2 mt-4 text-base font-semibold">
                   {showcase.title}
                 </div>
-                <p className="text-sm leading-tight text-muted-foreground">
+                <p className="text-sm leading-tight opacity-90">
                   {showcase.description}
                 </p>
               </a>
