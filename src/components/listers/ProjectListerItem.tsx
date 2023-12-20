@@ -10,7 +10,7 @@ import {
 
 const ProjectListerItem = ({ project }: { project: Project }) => {
   return (
-    <Card className="w-full max-w-md bg-neutral-100 p-5 dark:bg-transparent">
+    <Card className="w-full max-w-md bg-neutral-100 p-5 dark:bg-neutral-900">
       <CardTitle>{project.title}</CardTitle>
       <CardDescription>{project.sub_title}</CardDescription>
       <CardContent className="px-2 pt-4">{project.description}</CardContent>

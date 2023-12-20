@@ -1,7 +1,8 @@
 import { ImageResponse } from "next/og";
 
 import { base } from "@/utils/hostname";
-import { BlogPageArgs } from "./page";
+
+import { type BlogPageArgs, getPostBySlug } from "./page";
 
 // Route segment config
 export const runtime = "edge";
@@ -15,10 +16,14 @@ export const size = {
 
 export const contentType = "image/png";
 
+export const revalidate = 3600; // revalidate at most every hour
+
 // Image generation
-export default async function Image({ params: {
-  slug
-}}: BlogPageArgs) {
+export default async function Image({ params: { slug } }: BlogPageArgs) {
+  const post = await getPostBySlug(Array.isArray(slug) ? slug : Array(slug));
+
+  const title = post?.prettyTitle ?? "Blog";
+
   // Font
   const geistVariableFontFetch = await fetch(
     new URL(`${base}/fonts/geist-sans/Geist-Regular.woff2`),
@@ -66,7 +71,7 @@ export default async function Image({ params: {
             fontSize: 75,
           }}
         >
-          Blog
+          {title}
         </h2>
       </div>
     ),

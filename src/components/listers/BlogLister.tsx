@@ -7,7 +7,11 @@ const BlogLister = async () => {
     status: ["publish"],
   } satisfies PostsParams;
 
-  const WpPosts = await fetchWP("/posts", wpPostsParams);
+  const WpPosts = await fetchWP("/posts", wpPostsParams, {
+    next: {
+      tags: ["blog-lister"],
+    },
+  });
 
   return (
     <div className="flex flex-col gap-4 px-4">

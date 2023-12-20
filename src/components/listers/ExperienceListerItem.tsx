@@ -30,7 +30,7 @@ const ExperienceListerItem = ({ experience }: { experience: Experience }) => {
       : "Current";
 
   return (
-    <Card className="w-full max-w-md bg-neutral-100 p-5 dark:bg-transparent">
+    <Card className="w-full max-w-md bg-neutral-100 p-5 dark:bg-neutral-900">
       <CardTitle>{experience.title}</CardTitle>
       <CardDescription>
         {experience.company_name} | {experience.location}

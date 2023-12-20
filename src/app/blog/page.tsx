@@ -5,6 +5,8 @@ import HeroSection from "@/components/layout/sections/HeroSection";
 import BlogLister from "@/components/listers/BlogLister";
 import Avatar from "@/images/avatar.webp";
 
+export const revalidate = 3600; // revalidate at most every hour
+
 export const metadata: Metadata = {
   title: "Blog",
   description: "An overview of my blog posts.",

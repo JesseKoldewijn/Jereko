@@ -24,11 +24,13 @@ export const fetchWP = async (
     method,
     headers,
     body = undefined,
+    next = { tags: ["wp-api"] },
     ...rest
   } = regInit ?? {
     method: undefined,
     headers: {},
     body: undefined,
+    next: undefined,
   };
 
   const requestInit = {
@@ -41,6 +43,7 @@ export const fetchWP = async (
     },
     body: JSON.stringify(body) ?? undefined,
     ...rest,
+    next,
   };
 
   if (params && Object.keys(params).length > 0) {

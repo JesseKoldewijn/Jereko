@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 import ThemeToggle from "@/components/ui/theme-toggle";
 import { appConfig } from "@/config/app";
@@ -13,6 +14,8 @@ import NavMenuMobile from "./mobile/navMenuMobile";
 import NavbarMenu from "./navigationMenu";
 
 const Navbar = ({ socials }: { socials: Socials | null }) => {
+  const router = useRouter();
+
   const [scrollPositionStyle, setScrollPosition] =
     useState("relative mb-4 px-8");
 
@@ -43,6 +46,9 @@ const Navbar = ({ socials }: { socials: Socials | null }) => {
           href="/"
           id="JKinsight logo"
           className="flex font-semibold duration-500 hover:underline hover:underline-offset-4"
+          onClick={() => {
+            router.push("/");
+          }}
         >
           {appConfig.branding.brandName}
         </Link>

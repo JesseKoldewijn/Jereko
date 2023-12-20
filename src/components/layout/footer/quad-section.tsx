@@ -24,6 +24,10 @@ const QuadSection = async () => {
       name: "Projects",
     },
     {
+      href: "/blog",
+      name: "Blog",
+    },
+    {
       href: "https://github.com/JesseKoldewijn/JKinsight",
       name: "OpenSource",
     },
@@ -48,7 +52,7 @@ const QuadSection = async () => {
 
   return (
     <>
-      <div className="container grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+      <div className="container grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4">
         <div className="flex flex-col-reverse justify-start gap-4 sm:justify-end lg:flex-col lg:items-center lg:justify-start lg:gap-8">
           <div className="flex w-full flex-col justify-center">
             <span className="text-lg font-bold [background-size:30%]">
