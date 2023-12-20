@@ -1,6 +1,7 @@
 import { ImageResponse } from "next/og";
 
 import { base } from "@/utils/hostname";
+import { BlogPageArgs } from "./page";
 
 // Route segment config
 export const runtime = "edge";
@@ -15,7 +16,9 @@ export const size = {
 export const contentType = "image/png";
 
 // Image generation
-export default async function Image() {
+export default async function Image({ params: {
+  slug
+}}: BlogPageArgs) {
   // Font
   const geistVariableFontFetch = await fetch(
     new URL(`${base}/fonts/geist-sans/Geist-Regular.woff2`),

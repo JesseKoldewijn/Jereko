@@ -87,9 +87,7 @@
       "indexes": {
         "unique_idx": {
           "name": "unique_idx",
-          "columns": [
-            "name"
-          ],
+          "columns": ["name"],
           "isUnique": true
         }
       },
@@ -180,9 +178,7 @@
       "indexes": {
         "unique_idx": {
           "name": "unique_idx",
-          "columns": [
-            "job_title"
-          ],
+          "columns": ["job_title"],
           "isUnique": true
         }
       },
@@ -243,9 +239,7 @@
       "indexes": {
         "unique_idx": {
           "name": "unique_idx",
-          "columns": [
-            "name"
-          ],
+          "columns": ["name"],
           "isUnique": true
         }
       },
@@ -306,9 +300,7 @@
       "indexes": {
         "unique_idx": {
           "name": "unique_idx",
-          "columns": [
-            "label"
-          ],
+          "columns": ["label"],
           "isUnique": true
         }
       },
@@ -357,9 +349,7 @@
       "indexes": {
         "unique_idx": {
           "name": "unique_idx",
-          "columns": [
-            "name"
-          ],
+          "columns": ["name"],
           "isUnique": true
         }
       },
