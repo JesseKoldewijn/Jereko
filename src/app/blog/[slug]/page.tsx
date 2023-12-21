@@ -9,6 +9,7 @@ import HeroSection from "@/components/layout/sections/HeroSection";
 import { Button } from "@/components/ui/button";
 import Avatar from "@/images/avatar.webp";
 import { getPostBySlug } from "@/server/handlers/post/getBySlug";
+import { fetchWP } from "@/server/wp-api";
 
 export type BlogPageArgs = {
   params: {
@@ -17,6 +18,17 @@ export type BlogPageArgs = {
 };
 
 export const revalidate = 3600; // revalidate at most every hour
+export const dynamicParams = true; // enable dynamic params gen if not generated on build time
+
+export async function generateStaticParams() {
+  const wpPosts = await fetchWP("/posts");
+
+  if (!wpPosts || wpPosts.length == 0) return [];
+
+  return wpPosts.map((post) => ({
+    slug: post.slug,
+  }));
+}
 
 export const generateMetadata = async ({ params: { slug } }: BlogPageArgs) => {
   const wpPost = await getPostBySlug(Array.isArray(slug) ? slug : Array(slug));
