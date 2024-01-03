@@ -1,7 +1,7 @@
-import React from "react";
+import { Suspense } from "react";
 
 const BlogLayout = async ({ route }: { route: React.ReactNode }) => {
-  return <>{route}</>;
+  return <Suspense>{route}</Suspense>;
 };
 
 export default BlogLayout;
