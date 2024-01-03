@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 const Hobbies = () => {
   return (
-    <div className="mx-4 flex flex-col items-center justify-center gap-8 lg:mx-2 lg:flex-row">
+    <>
       <section
         id="about-me-overview"
         className="flex w-auto max-w-md flex-col gap-4 text-center xs:mb-auto"
@@ -69,7 +69,7 @@ const Hobbies = () => {
           </p>
         </div>
       </section>
-    </div>
+    </>
   );
 };
 

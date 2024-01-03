@@ -8,15 +8,11 @@ export const getPostBySlug = async (slug: string[]) => {
     slug: Array.isArray(slug) ? slug : Array(slug),
   } satisfies PostsParams;
 
-  const WpPosts = await fetchWP("/posts", wpPostsParams, {
-    next: {
-      tags: [`blog-${slug}`],
-    },
-  });
+  const WpPosts = await fetchWP("/posts", wpPostsParams);
 
   if (!WpPosts) return null;
   else {
-    const post = WpPosts[0];
+    const post = WpPosts.find((post) => post.slug === slug[0]);
 
     const postTitle = String(parse(post.title.rendered));
     const postContent = String(parse(post.content.rendered));
