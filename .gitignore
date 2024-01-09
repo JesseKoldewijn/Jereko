@@ -51,3 +51,6 @@ fallback-*
 ./analyze
 
 .vercel
+
+# Sentry Config File
+.sentryclirc
