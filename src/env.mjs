@@ -19,7 +19,9 @@ export const env = createEnv({
    *
    * 💡 You'll get type errors if these are not prefixed with NEXT_PUBLIC_.
    */
-  client: {},
+  client: {
+    NEXT_PUBLIC_NODE_ENV: z.string().optional(),
+  },
   /*
    * Due to how Next.js bundles environment variables on Edge and Client,
    * we need to manually destructure them to make sure all are included in bundle.
@@ -33,6 +35,7 @@ export const env = createEnv({
     POSTGRES_URL: process.env.POSTGRES_URL,
     VERCEL_URL: process.env.VERCEL_URL,
     NODE_ENV: process.env.NODE_ENV,
+    NEXT_PUBLIC_NODE_ENV: process.env.NODE_ENV,
   },
   skipValidation: process.env.SKIP_ENV_VALIDATION !== undefined,
 });

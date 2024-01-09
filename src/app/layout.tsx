@@ -12,7 +12,6 @@ import { env } from "@/env.mjs";
 import { getByPlatform } from "@/server/handlers/socials/getByPlatform";
 import "@/styles/globals.css";
 import { base } from "@/utils/hostname";
-import reportAccessibility from "@/utils/reportAccessibility";
 
 const CommandMenuProvider = dynamic(
   () => import("@/components/ui/command-menu"),
@@ -131,7 +130,5 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
     </html>
   );
 };
-
-reportAccessibility(React).catch((err) => console.error(err));
 
 export default RootLayout;
