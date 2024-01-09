@@ -16,14 +16,12 @@ const GlobalError = ({
   error: Error & { digest?: string };
   reset: () => void;
 }) => {
-  const isDev = env.NEXT_PUBLIC_NODE_ENV !== "production";
-
   useEffect(() => {
     const isLocalhost = window.location.hostname === "localhost";
-    if (!isLocalhost && !isDev) {
+    if (!isLocalhost) {
       Sentry.captureException(error);
     }
-  }, [error, isDev]);
+  }, [error]);
 
   return (
     <html lang="en" className="" suppressHydrationWarning>
