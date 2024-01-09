@@ -2,13 +2,9 @@ import type { Metadata } from "next";
 import React, { Suspense } from "react";
 
 import dynamic from "next/dynamic";
-import { headers } from "next/headers";
 
 import HeroSection from "@/components/layout/sections/HeroSection";
-import { env } from "@/env.mjs";
 import Avatar from "@/images/avatar.webp";
-
-import DebugThrowButton from "./debug-throw-button";
 
 const LatestAttEvent = dynamic(
   () => import("@/components/events/last-attended"),
@@ -78,7 +74,6 @@ const Home = async () => {
           <LatestAttEvent />
         </Suspense>
       </section>
-      <DebugThrowButton messageOnError="Test error" />
     </>
   );
 };
