@@ -27,9 +27,6 @@ const config = {
   images: {
     remotePatterns: [{ hostname: "img.youtube.com", protocol: "https" }],
   },
-  experimental: {
-    ppr: true,
-  },
   optimizeFonts: true,
   transpilePackages: ["@ducanh2912/next-pwa", "lucide-react"],
 };
