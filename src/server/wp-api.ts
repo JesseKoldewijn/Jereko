@@ -1,4 +1,4 @@
-import { setTags } from "@sentry/nextjs";
+import { setContext, setTags } from "@sentry/nextjs";
 import "server-only";
 
 import { env } from "@/env.mjs";
@@ -32,13 +32,6 @@ export const fetchWP = async (
     body: undefined,
   };
 
-  setTags({
-    operationType: "wp-api",
-    wpPath: path,
-    wpParams: paramsString,
-    wpMethod: method ?? "GET",
-  });
-
   const requestInit = {
     method: method ?? "GET",
     headers: {
@@ -54,6 +47,16 @@ export const fetchWP = async (
   if (params && Object.keys(params).length > 0) {
     endpoint.concat(`?${paramsString}`);
   }
+
+  setContext("wp-api", {
+    fetchEndpoint: endpoint,
+    fetchQueryParams: paramsString,
+    fetchMethod: method ?? "GET",
+  });
+
+  setTags({
+    operationType: "wp-api",
+  });
 
   try {
     const res = await fetch(endpoint, requestInit);
