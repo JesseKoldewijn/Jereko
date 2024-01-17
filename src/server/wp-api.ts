@@ -1,3 +1,4 @@
+import { setTags } from "@sentry/nextjs";
 import "server-only";
 
 import { env } from "@/env.mjs";
@@ -30,6 +31,13 @@ export const fetchWP = async (
     headers: {},
     body: undefined,
   };
+
+  setTags({
+    operationType: "wp-api",
+    wpPath: path,
+    wpParams: paramsString,
+    wpMethod: method ?? "GET",
+  });
 
   const requestInit = {
     method: method ?? "GET",
