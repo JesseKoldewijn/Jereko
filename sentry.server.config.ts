@@ -2,9 +2,7 @@
 // The config you add here will be used whenever the server handles a request.
 // https://docs.sentry.io/platforms/javascript/guides/nextjs/
 import * as Sentry from "@sentry/nextjs";
-
-// disabled for now to to arch detection issue: https://github.com/getsentry/profiling-node/issues/170
-// import { ProfilingIntegration } from "@sentry/profiling-node";
+import { ProfilingIntegration } from "@sentry/profiling-node";
 
 Sentry.init({
   dsn: "https://6ba8f2825c3c927c7d25f02a4bf3dd36@o4506540526731264.ingest.sentry.io/4506540535250944",
@@ -20,7 +18,7 @@ Sentry.init({
 
   // This is an optional setting that allows you to sample traces by a given percentage.
   integrations: [
-    // disabled for now to to arch detection issue: https://github.com/getsentry/profiling-node/issues/170
-    // new ProfilingIntegration(), // Add profiling integration to list of integrations
+    // Add profiling integration to list of integrations
+    new ProfilingIntegration(),
   ],
 });
