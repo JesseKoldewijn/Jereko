@@ -29,9 +29,6 @@ const config = {
   },
   optimizeFonts: true,
   transpilePackages: ["@ducanh2912/next-pwa", "lucide-react"],
-  experimental: {
-    serverComponentsExternalPackages: ["@sentry/profiling-node"],
-  },
 };
 
 const withBundleAnalyzer = BundleAnalyzer({
