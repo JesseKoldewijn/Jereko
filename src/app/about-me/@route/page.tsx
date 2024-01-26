@@ -6,9 +6,9 @@ import GoToHeading from "@/components/page-elements/about-me/go-to-heading";
 export const metadata: Metadata = {
   title: "About me",
   openGraph: {
-    title: "About me | JKinsight",
+    title: "About me | Jereko",
     description: "A page about me.",
-    url: "https://jkinsight.nl",
+    url: "https://jereko.nl",
   },
 };
 

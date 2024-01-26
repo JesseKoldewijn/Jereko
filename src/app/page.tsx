@@ -21,13 +21,13 @@ const IntroSection = dynamic(
 );
 
 export const metadata: Metadata = {
-  title: "JKinsight - My personal website | Jesse Koldewijn",
+  title: "Jereko - My personal website | Jesse Koldewijn",
   description:
     "My personal website. This website is used to showcase my projects, experience and volunteering. I also use this website to showcase my skills in web development, events I've attended and possibly also a dev blog in the future.",
   openGraph: {
-    title: "JKinsight",
+    title: "Jereko",
     description: "My personal website.",
-    url: "https://jkinsight.nl",
+    url: "https://jereko.nl",
   },
 };
 
@@ -40,7 +40,7 @@ const Home = async () => {
           light: Avatar,
         }}
         bannerContent={{
-          title: "JKinsight",
+          title: "Jereko",
           description: "My personal website.",
         }}
       />

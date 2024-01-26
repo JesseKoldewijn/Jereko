@@ -51,8 +51,8 @@ const TechUsedSection = dynamic(
 
 export const metadata: Metadata = {
   title: {
-    absolute: "JKinsight - My personal website | Jesse Koldewijn",
-    template: "%s | JKinsight - My personal website | Jesse Koldewijn",
+    absolute: "Jereko - My personal website | Jesse Koldewijn",
+    template: "%s | Jereko - My personal website | Jesse Koldewijn",
   },
   description: "tbh idk what to put here yet",
   metadataBase: new URL(base),
@@ -89,9 +89,9 @@ export const metadata: Metadata = {
   ],
   manifest: "/site.webmanifest",
   openGraph: {
-    title: "JKinsight",
+    title: "Jereko",
     description: "tbh idk what to put here yet",
-    url: "https://jkinsight.nl",
+    url: "https://jereko.nl",
   },
 };
 

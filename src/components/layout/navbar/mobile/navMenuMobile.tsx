@@ -115,7 +115,7 @@ const NavMenuMobile = ({ socials }: { socials: Socials | null }) => {
                 );
               })}
               <Link
-                href="https://github.com/JesseKoldewijn/JKinsight"
+                href="https://github.com/JesseKoldewijn/Jereko"
                 className="flex w-full items-center justify-center gap-2 rounded-lg border border-foreground p-2"
               >
                 <AppIcons.socials.github className="h-5" />

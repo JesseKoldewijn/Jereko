@@ -45,7 +45,7 @@ export default withSentryConfig(
     // Suppresses source map uploading logs during build
     silent: true,
     org: "hardwarehulp",
-    project: "jkinsight",
+    project: "jereko",
   },
   {
     // For all available options, see:

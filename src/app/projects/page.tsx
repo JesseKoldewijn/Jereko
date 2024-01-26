@@ -9,9 +9,9 @@ export const metadata: Metadata = {
   title: "Projects",
   description: "A list of projects I've worked on.",
   openGraph: {
-    title: "Projects | JKinsight",
+    title: "Projects | Jereko",
     description: "A list of projects I've worked on.",
-    url: "https://jkinsight.nl",
+    url: "https://jereko.nl",
   },
 };
 

@@ -4,9 +4,9 @@ export const metadata: Metadata = {
   title: "Offline",
   description: "You are currently offline.",
   openGraph: {
-    title: "Offline | JKinsight",
+    title: "Offline | Jereko",
     description: "You are currently offline.",
-    url: "https://jkinsight.nl",
+    url: "https://jereko.nl",
   },
 };
 

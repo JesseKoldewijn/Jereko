@@ -47,7 +47,7 @@ const Navbar = ({ socials }: { socials: Socials | null }) => {
       <section className="my-auto mr-auto">
         <Link
           href="/"
-          id="JKinsight logo"
+          id="Jereko logo"
           className="flex font-semibold duration-500 hover:underline hover:underline-offset-4"
           onClick={() => {
             router.push("/");

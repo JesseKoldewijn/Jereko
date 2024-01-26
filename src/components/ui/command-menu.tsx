@@ -72,7 +72,7 @@ const CommandMenuProvider = ({ children }: { children: React.ReactNode }) => {
           break;
         }
         case "o": {
-          window.open("https://github.com/JesseKoldewijn/JKinsight", "_blank");
+          window.open("https://github.com/JesseKoldewijn/Jereko", "_blank");
           setOpen(false);
           break;
         }

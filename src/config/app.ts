@@ -1,5 +1,5 @@
 export const appConfig = {
   branding: {
-    brandName: "JKinsight",
+    brandName: "Jereko",
   },
 } as const;

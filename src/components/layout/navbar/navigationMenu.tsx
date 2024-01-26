@@ -83,7 +83,7 @@ const NavbarMenu = () => {
       <NavigationMenuList>
         <ShowcaseNavSection {...showcaseEntry} />
         <ListedNavSection {...listedEntry} />
-        <SingleItemSection href="https://github.com/JesseKoldewijn/JKinsight">
+        <SingleItemSection href="https://github.com/JesseKoldewijn/Jereko">
           <GithubIcon className="mr-2" />
           OpenSource
         </SingleItemSection>

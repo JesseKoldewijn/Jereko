@@ -52,7 +52,7 @@ export default async function Image() {
             marginBottom: 0,
           }}
         >
-          JKinsight
+          Jereko
         </h1>
         <h2
           style={{

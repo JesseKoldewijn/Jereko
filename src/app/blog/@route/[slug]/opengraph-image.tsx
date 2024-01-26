@@ -61,7 +61,7 @@ export default async function Image({ params: { slug } }: BlogPageArgs) {
             marginBottom: 0,
           }}
         >
-          JKinsight
+          Jereko
         </h1>
         <h2
           style={{

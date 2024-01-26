@@ -28,7 +28,7 @@ const QuadSection = async () => {
       name: "Blog",
     },
     {
-      href: "https://github.com/JesseKoldewijn/JKinsight",
+      href: "https://github.com/JesseKoldewijn/Jereko",
       name: "OpenSource",
     },
   ];
@@ -56,7 +56,7 @@ const QuadSection = async () => {
         <div className="flex flex-col-reverse justify-start gap-4 sm:justify-end lg:flex-col lg:items-center lg:justify-start lg:gap-8">
           <div className="flex w-full flex-col justify-center">
             <span className="text-lg font-bold [background-size:30%]">
-              JKinsight
+              Jereko
             </span>
             <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-200">
               My personal website. Wan&apos;t to know more about my projects,
@@ -81,7 +81,7 @@ const QuadSection = async () => {
         <div className="flex flex-col justify-start sm:justify-end lg:justify-start">
           <span className="text-lg font-bold">Pages</span>
           <div
-            className="mt-4 flex flex-col gap-4 text-base text-neutral-600 dark:text-neutral-200 sm:mt-2 sm:list-inside sm:gap-2"
+            className="mt-4 flex flex-col gap-4 text-base text-neutral-600 sm:mt-2 sm:list-inside sm:gap-2 dark:text-neutral-200"
             data-device="desktop"
           >
             {pagesLinks.map((page) => (
