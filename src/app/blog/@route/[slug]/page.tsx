@@ -40,7 +40,7 @@ export const generateMetadata = async ({ params: { slug } }: BlogPageArgs) => {
       openGraph: {
         title: "Blog | Jereko",
         description: "An overview of my blog posts.",
-        url: "https://jereko.nl",
+        url: "https://jereko.dev",
       },
     } satisfies Metadata;
 
@@ -60,7 +60,7 @@ export const generateMetadata = async ({ params: { slug } }: BlogPageArgs) => {
     openGraph: {
       title: `${prettyTitle} | Jereko`,
       description: prettyContent,
-      url: `https://jereko.nl/blog/${post.slug}`,
+      url: `https://jereko.dev/blog/${post.slug}`,
     },
   } satisfies Metadata;
 };

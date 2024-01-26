@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Volunteering | Jereko",
     description: "A page about my volunteering.",
-    url: "https://jereko.nl",
+    url: "https://jereko.dev",
   },
 };
 

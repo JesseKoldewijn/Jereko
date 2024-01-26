@@ -27,7 +27,7 @@ pnpm run dev
 
 👤 **Jesse Koldewijn**
 
-- Website: https://jereko.nl
+- Website: https://jereko.dev
 - Twitter: [@dull_joker](https://twitter.com/dull_joker)
 - Github: [@JesseKoldewijn](https://github.com/JesseKoldewijn)
 - LinkedIn: [@jesse-koldewijn-5914531a3](https://linkedin.com/in/jesse-koldewijn-5914531a3)

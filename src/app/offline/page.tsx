@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Offline | Jereko",
     description: "You are currently offline.",
-    url: "https://jereko.nl",
+    url: "https://jereko.dev",
   },
 };
 

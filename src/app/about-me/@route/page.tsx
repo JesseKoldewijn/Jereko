@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "About me | Jereko",
     description: "A page about me.",
-    url: "https://jereko.nl",
+    url: "https://jereko.dev",
   },
 };
 
