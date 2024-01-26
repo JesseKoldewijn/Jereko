@@ -25,8 +25,9 @@ export const env = createEnv({
   /*
    * Due to how Next.js bundles environment variables on Edge and Client,
    * we need to manually destructure them to make sure all are included in bundle.
-   *
+   * ---
    * 💡 You'll get type errors if not all variables from `server` & `client` are included here.
+   * ---
    */
   runtimeEnv: {
     WP_API_URL: process.env.WP_API_URL,
