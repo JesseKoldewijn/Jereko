@@ -4,15 +4,17 @@
 // https://docs.sentry.io/platforms/javascript/guides/nextjs/
 import * as Sentry from "@sentry/nextjs";
 
-Sentry.init({
-  dsn: "https://6ba8f2825c3c927c7d25f02a4bf3dd36@o4506540526731264.ingest.sentry.io/4506540535250944",
+if (process.env.NODE_ENV !== "development") {
+  Sentry.init({
+    dsn: "https://6ba8f2825c3c927c7d25f02a4bf3dd36@o4506540526731264.ingest.sentry.io/4506540535250944",
 
-  // Adjust this value in production, or use tracesSampler for greater control
-  tracesSampleRate: 1,
+    // Adjust this value in production, or use tracesSampler for greater control
+    tracesSampleRate: 1,
 
-  // Profiling sample rate is relative to tracesSampleRate
-  profilesSampleRate: 1.0,
+    // Profiling sample rate is relative to tracesSampleRate
+    profilesSampleRate: 1.0,
 
-  // Setting this option to true will print useful information to the console while you're setting up Sentry.
-  debug: false,
-});
+    // Setting this option to true will print useful information to the console while you're setting up Sentry.
+    debug: false,
+  });
+}

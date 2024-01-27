@@ -3,31 +3,33 @@
 // https://docs.sentry.io/platforms/javascript/guides/nextjs/
 import * as Sentry from "@sentry/nextjs";
 
-Sentry.init({
-  dsn: "https://6ba8f2825c3c927c7d25f02a4bf3dd36@o4506540526731264.ingest.sentry.io/4506540535250944",
+if (process.env.NODE_ENV !== "development") {
+  Sentry.init({
+    dsn: "https://6ba8f2825c3c927c7d25f02a4bf3dd36@o4506540526731264.ingest.sentry.io/4506540535250944",
 
-  // Adjust this value in production, or use tracesSampler for greater control
-  tracesSampleRate: 1.0,
+    // Adjust this value in production, or use tracesSampler for greater control
+    tracesSampleRate: 1.0,
 
-  // Setting this option to true will print useful information to the console while you're setting up Sentry.
-  debug: false,
+    // Setting this option to true will print useful information to the console while you're setting up Sentry.
+    debug: false,
 
-  // This is an optional setting that allows you to sample traces by a given percentage.
-  replaysOnErrorSampleRate: 1.0,
+    // This is an optional setting that allows you to sample traces by a given percentage.
+    replaysOnErrorSampleRate: 1.0,
 
-  // This sets the sample rate to be 10%. You may want this to be 100% while
-  // in development and sample at a lower rate in production
-  replaysSessionSampleRate: 0.1,
+    // This sets the sample rate to be 10%. You may want this to be 100% while
+    // in development and sample at a lower rate in production
+    replaysSessionSampleRate: 0.1,
 
-  // This enables automatic instrumentation on the client. Currently only
-  profilesSampleRate: 1.0,
+    // This enables automatic instrumentation on the client. Currently only
+    profilesSampleRate: 1.0,
 
-  // You can remove this option if you're not planning to use the Sentry Session Replay feature:
-  integrations: [
-    new Sentry.Replay({
-      // Additional Replay configuration goes in here, for example:
-      maskAllText: false,
-      blockAllMedia: true,
-    }),
-  ],
-});
+    // You can remove this option if you're not planning to use the Sentry Session Replay feature:
+    integrations: [
+      new Sentry.Replay({
+        // Additional Replay configuration goes in here, for example:
+        maskAllText: false,
+        blockAllMedia: true,
+      }),
+    ],
+  });
+}
