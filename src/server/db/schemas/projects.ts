@@ -1,4 +1,5 @@
 import {
+  boolean,
   date,
   pgTable,
   text,
@@ -14,7 +15,9 @@ export const Projects = pgTable(
     title: text("name"),
     sub_title: text("sub_title"),
     description: varchar("description"),
+    link: text("link"),
     tags: text("tags"),
+    draft: boolean("draft").default(true),
     created_at: date("created_at").defaultNow(),
     updated_at: date("updated_at").defaultNow(),
   },
