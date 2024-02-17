@@ -1,7 +1,8 @@
-import { type Metadata } from "next";
+import type { Metadata, ServerRuntime } from "next";
 import { parse } from "node-html-parser";
 import { Suspense } from "react";
 
+import type { Revalidate } from "next/dist/server/lib/revalidate";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -17,7 +18,8 @@ export type BlogPageArgs = {
   };
 };
 
-export const revalidate = 3600; // revalidate at most every hour
+export const runtime: ServerRuntime = "edge"; // edge runtime for faster startup time
+export const revalidate: Revalidate = 172800000; // 2 days in ms
 export const dynamicParams = true; // enable dynamic params gen if not generated on build time
 
 export async function generateStaticParams() {

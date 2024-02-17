@@ -1,9 +1,14 @@
-import type { Metadata } from "next";
+import type { Metadata, ServerRuntime } from "next";
 import { Suspense } from "react";
+
+import type { Revalidate } from "next/dist/server/lib/revalidate";
 
 import HeroSection from "@/components/layout/sections/HeroSection";
 import ProjectsLister from "@/components/listers/ProjectsLister";
 import BannerProjects from "@/images/banner-programming.webp";
+
+export const runtime: ServerRuntime = "edge"; // edge runtime for faster startup time
+export const revalidate: Revalidate = 172800000; // 2 days in ms
 
 export const metadata: Metadata = {
   title: "Projects",

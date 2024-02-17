@@ -2,7 +2,6 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
-import React from "react";
 
 import dynamic from "next/dynamic";
 import { cookies } from "next/headers";
@@ -54,7 +53,8 @@ export const metadata: Metadata = {
     absolute: "Jereko - My personal website | Jesse Koldewijn",
     template: "%s | Jereko - My personal website | Jesse Koldewijn",
   },
-  description: "tbh idk what to put here yet",
+  description:
+    "Jereko - My personal website | build and developed by Jesse Koldewijn",
   metadataBase: new URL(base),
   icons: [
     {

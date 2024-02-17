@@ -1,5 +1,3 @@
-import React from "react";
-
 interface XProps {
   height?: number;
   width?: number;

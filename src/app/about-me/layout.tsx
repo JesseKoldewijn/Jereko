@@ -1,5 +1,3 @@
-import React from "react";
-
 import AboutMeHeader from "@/components/page-elements/about-me/page-heading";
 
 const AboutMeLayout = ({

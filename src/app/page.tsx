@@ -1,6 +1,7 @@
-import type { Metadata } from "next";
+import type { Metadata, ServerRuntime } from "next";
 import React, { Suspense } from "react";
 
+import type { Revalidate } from "next/dist/server/lib/revalidate";
 import dynamic from "next/dynamic";
 
 import HeroSection from "@/components/layout/sections/HeroSection";
@@ -19,6 +20,9 @@ const IntroSection = dynamic(
     ssr: true,
   },
 );
+
+export const runtime: ServerRuntime = "edge";
+export const revalidate: Revalidate = 172800000; // 2 days in ms
 
 export const metadata: Metadata = {
   title: "Jereko - My personal website | Jesse Koldewijn",
@@ -64,10 +68,10 @@ const Home = async () => {
         </Suspense>
       </section>
       <section className="mx-auto flex w-full max-w-lg flex-col items-center text-center">
-        <h3 className="text-md font-semibold md:text-xl">
+        <h3 className="text-md px-2 font-semibold md:text-xl">
           Speaking about events I&apos;ve attended...
         </h3>
-        <p className="mt-4 text-neutral-600 dark:text-neutral-200">
+        <p className="mt-4 px-2 text-neutral-600 dark:text-neutral-200">
           Down below is the latest event I&apos;ve attended
         </p>
         <Suspense>

@@ -22,9 +22,7 @@ const Navbar = ({ socials }: { socials: Socials | null }) => {
   useEffect(() => {
     const setScrollPositionHandler = () => {
       const scrollTop = document.documentElement.scrollTop;
-      setScrollPosition(
-        cn(scrollTop > 15 ? "fixed top-0 px-8" : "relative mb-4 px-8"),
-      );
+      setScrollPosition(cn(scrollTop > 15 ? "fixed top-0" : "relative mb-4"));
     };
 
     setScrollPositionHandler();
@@ -41,7 +39,7 @@ const Navbar = ({ socials }: { socials: Socials | null }) => {
     <nav
       className={cn(
         scrollPositionStyle,
-        "max-w-auto z-50 flex w-full bg-[rgba(255,255,255,0.75)] py-4 dark:bg-[rgba(18,18,18,0.65)]",
+        "max-w-auto z-50 flex w-full bg-[rgba(255,255,255,0.75)] px-6 py-4 dark:bg-[rgba(18,18,18,0.65)]",
       )}
     >
       <section className="my-auto mr-auto">
@@ -59,7 +57,7 @@ const Navbar = ({ socials }: { socials: Socials | null }) => {
       <section className="my-auto flex flex-1 justify-center">
         <NavbarMenu />
       </section>
-      <section className="my-auto ml-auto flex gap-4">
+      <section className="my-auto ml-auto mr-0 flex gap-4">
         <NavMenuMobile socials={socials} />
         <ThemeToggle />
       </section>

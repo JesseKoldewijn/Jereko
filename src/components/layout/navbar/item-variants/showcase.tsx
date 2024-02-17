@@ -1,5 +1,3 @@
-import React from "react";
-
 import {
   NavigationMenuContent,
   NavigationMenuItem,
@@ -33,7 +31,7 @@ const ShowcaseNavSection = ({
     <NavigationMenuItem>
       <NavigationMenuTrigger>{triggerTitle}</NavigationMenuTrigger>
       <NavigationMenuContent>
-        <ul className="grid gap-3 bg-neutral-100 p-6 dark:bg-neutral-900 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+        <ul className="grid gap-3 bg-neutral-100 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr] dark:bg-neutral-900">
           <li className="row-span-3 rounded-lg bg-black text-white dark:bg-neutral-100 dark:text-neutral-900">
             <NavigationMenuLink asChild>
               <a

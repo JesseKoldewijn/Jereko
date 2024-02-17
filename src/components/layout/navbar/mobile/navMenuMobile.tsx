@@ -2,7 +2,7 @@
 
 import { X as CloseIcon, List, MenuIcon } from "lucide-react";
 import { useTheme } from "next-themes";
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";

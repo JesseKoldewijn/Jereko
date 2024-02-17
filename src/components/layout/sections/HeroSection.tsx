@@ -7,6 +7,7 @@ import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
 
 import AnimatedGradientText from "@/components/animated/animated-grad-text";
+import { TextGen } from "@/components/animated/text-gen";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -75,9 +76,10 @@ const HeroSection = ({
               "mb-4 max-w-2xl text-4xl font-extrabold leading-none tracking-tight md:text-5xl xl:text-6xl",
             )}
           />
-          <p className="mb-6 max-w-2xl font-light text-neutral-500 dark:text-neutral-200 md:text-lg lg:mb-8 lg:text-xl">
-            {bannerContent.description}
-          </p>
+          <TextGen
+            words={bannerContent.description}
+            className="mb-6 max-w-2xl font-light text-neutral-500 md:text-lg lg:mb-8 lg:text-xl dark:text-neutral-200"
+          />
           {bannerContent.ctas && bannerContent.ctas.length == 2 ? (
             <>
               <Button className="mr-4 inline-flex items-center justify-center rounded-lg border px-5 py-3 text-center text-base font-medium hover:bg-neutral-900 hover:text-neutral-100 focus:ring-4 dark:hover:bg-neutral-100 dark:hover:text-neutral-900">
@@ -112,7 +114,7 @@ const HeroSection = ({
           <Image
             id={bannerID}
             src={currentBannerImage}
-            className="-top-[0%] my-auto ml-auto mr-auto block max-h-[300px] w-auto scale-[calc(100%+2%)] rounded-full bg-neutral-100 bg-clip-content dark:bg-neutral-900 lg:mr-0 lg:max-h-[500px]"
+            className="-top-[0%] my-auto ml-auto mr-auto block max-h-[300px] w-auto scale-[calc(100%+2%)] rounded-full bg-neutral-100 bg-clip-content lg:mr-0 lg:max-h-[500px] dark:bg-neutral-900"
             alt="hero image"
             priority
           />

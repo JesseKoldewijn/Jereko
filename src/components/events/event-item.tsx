@@ -1,5 +1,4 @@
-import React from "react";
-
+import { env } from "@/env.mjs";
 import { YoutubePlayer } from "@/lib/video/player";
 import { type Event } from "@/server/db/schemas/events";
 
@@ -37,7 +36,7 @@ const EventItem = ({ title, event, isSkeleton }: EventItemProps) => {
     );
   }
 
-  const origin = process.env.VERCEL_URL!;
+  const origin = env.VERCEL_URL;
 
   if (!origin || !event) {
     console.error("event origin is undefined or invalid: ", origin);
