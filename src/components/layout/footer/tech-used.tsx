@@ -15,12 +15,14 @@ const _TechMapping = ({
   return (
     <>
       {techUsed.flatMap((tech) => {
-        const isDarkLogo =
-          tech.name === "v0 (by Vercel)" || tech.name === "Vercel";
+        const isVercel = tech.name === "Vercel";
+        const isDarkLogo = tech.name === "v0 (by Vercel)" || isVercel;
         const isDrizzleORM = tech.name === "DrizzleORM";
         const isTwLogo = tech.name === "Tailwind CSS";
         const isStorybook = tech.name === "Storybook";
         const lightLogo = isStorybook || isTwLogo;
+        const isShadcn = tech.name === "Shadcn UI";
+        const isAceternity = tech.name === "Aceternity UI";
 
         return (
           <div
@@ -30,10 +32,14 @@ const _TechMapping = ({
               isDarkLogo
                 ? "rounded-lg bg-neutral-900 dark:bg-neutral-100"
                 : lightLogo
-                  ? "rounded-lg bg-neutral-100"
+                  ? "rounded-lg bg-neutral-950 dark:bg-neutral-100"
                   : isDrizzleORM
                     ? "inset-0 rounded-lg bg-lime-300"
-                    : "",
+                    : isShadcn
+                      ? "rounded-lg bg-neutral-300"
+                      : isAceternity
+                        ? "rounded-lg bg-neutral-950 dark:bg-neutral-100"
+                        : "",
               "relative",
             )}
           >
@@ -41,6 +47,12 @@ const _TechMapping = ({
               alt={`${tech.name} Logo`}
               className={cn(
                 isDarkLogo && "invert dark:invert-0",
+                isShadcn &&
+                  "bg-neutral-950 invert-0 dark:bg-neutral-100 dark:invert",
+                isAceternity && "invert-0 dark:invert",
+                isVercel && "pl-1",
+                lightLogo &&
+                  "hue-rotate-180 invert dark:hue-rotate-0 dark:invert-0",
                 "h-[60px] w-auto overflow-hidden rounded-lg object-contain object-center md:h-[80px]",
               )}
               src={tech.icon}
@@ -55,7 +67,7 @@ const _TechMapping = ({
 
 const TechUsed = ({ techUsed }: { techUsed: typeof usedTechnologies }) => {
   return (
-    <div className="mx-4 mb-4 w-auto rounded-xl border bg-neutral-100 py-2 dark:bg-neutral-900 md:mx-8 md:mb-8">
+    <div className="mx-4 mb-4 w-auto rounded-xl border bg-neutral-100 py-2 md:mx-8 md:mb-8 dark:bg-neutral-900">
       <section className="w-auto py-4 md:py-10 lg:py-12">
         <div className="container grid gap-4 px-4 text-center md:gap-5 md:px-6 lg:gap-10">
           <div className="space-y-3">
