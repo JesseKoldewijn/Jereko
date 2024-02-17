@@ -1,5 +1,5 @@
-import type { Metadata, ServerRuntime } from "next";
-import React, { Suspense } from "react";
+import type { Metadata } from "next";
+import { Suspense } from "react";
 
 import type { Revalidate } from "next/dist/server/lib/revalidate";
 import dynamic from "next/dynamic";
@@ -21,7 +21,6 @@ const IntroSection = dynamic(
   },
 );
 
-export const runtime: ServerRuntime = "edge";
 export const revalidate: Revalidate = 172800000; // 2 days in ms
 
 export const metadata: Metadata = {
@@ -63,7 +62,7 @@ const Home = async () => {
         <h2 className="text-md font-semibold md:text-xl">
           A short introduction about me
         </h2>
-        <Suspense>
+        <Suspense fallback={<></>}>
           <IntroSection />
         </Suspense>
       </section>
@@ -74,7 +73,7 @@ const Home = async () => {
         <p className="mt-4 px-2 text-neutral-600 dark:text-neutral-200">
           Down below is the latest event I&apos;ve attended
         </p>
-        <Suspense>
+        <Suspense fallback={<></>}>
           <LatestAttEvent />
         </Suspense>
       </section>

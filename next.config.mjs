@@ -1,25 +1,8 @@
-import NextPWA from "@ducanh2912/next-pwa";
 import { withSentryConfig } from "@sentry/nextjs";
 
 import BundleAnalyzer from "@next/bundle-analyzer";
 
 import "./src/env.mjs";
-
-const prod = process.env.NODE_ENV === "production";
-
-const withPWA = NextPWA({
-  dest: "public",
-  cacheOnFrontEndNav: true,
-  aggressiveFrontEndNavCaching: true,
-  reloadOnOnline: true,
-  disable: !prod,
-  fallbacks: {
-    document: "/offline",
-  },
-  workboxOptions: {
-    disableDevLogs: true,
-  },
-});
 
 /** @type {import("next").NextConfig} */
 const config = {
@@ -28,7 +11,9 @@ const config = {
     remotePatterns: [{ hostname: "img.youtube.com", protocol: "https" }],
   },
   optimizeFonts: true,
-  transpilePackages: ["@ducanh2912/next-pwa", "lucide-react"],
+  experimental: {
+    ppr: true,
+  },
 };
 
 const withBundleAnalyzer = BundleAnalyzer({
@@ -37,7 +22,7 @@ const withBundleAnalyzer = BundleAnalyzer({
 });
 
 export default withSentryConfig(
-  withPWA(withBundleAnalyzer(config)),
+  withBundleAnalyzer(config),
   {
     // For all available options, see:
     // https://github.com/getsentry/sentry-webpack-plugin#options

@@ -9,12 +9,12 @@ const IntroSection = async () => {
   const latestExperience = await mostRecentExp();
 
   return (
-    <p className="text-neutral-600 dark:text-neutral-200">
-      My name is{" "}
+    <p className="w-full text-balance text-neutral-600 dark:text-neutral-200">
+      {"My name is "}
       <span className={cn(animatedGradient(), "font-bold")}>
         Jesse Koldewijn
       </span>
-      , I&apos;m a {myAge} year old gamer, software engineer and tech enthusiast
+      {`, I'm a ${myAge} year old gamer, software engineer and tech enthusiast `}
       and currently working at
       <AnimatedGradientText
         variant="span"

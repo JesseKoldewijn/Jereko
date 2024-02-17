@@ -1,9 +1,7 @@
 "use client";
 
-import { motion, stagger, useAnimate } from "framer-motion";
+import { m, stagger, useAnimate } from "framer-motion";
 import { memo, useEffect } from "react";
-
-import { cn } from "@/lib/utils";
 
 export const TextGen = memo(
   ({ words, className }: { words: string; className?: string }) => {
@@ -51,18 +49,18 @@ const RenderWords = memo(
     scope: React.RefObject<HTMLDivElement>;
   }) => {
     return (
-      <motion.div ref={scope}>
+      <m.div ref={scope}>
         {wordsArray.map((word, idx) => {
           return (
-            <motion.span
+            <m.span
               key={word + idx}
               className="text-black opacity-0 dark:text-white"
             >
               {`${word} `}
-            </motion.span>
+            </m.span>
           );
         })}
-      </motion.div>
+      </m.div>
     );
   },
   (prevProps, nextProps) => {

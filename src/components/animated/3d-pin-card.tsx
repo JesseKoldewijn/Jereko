@@ -1,7 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
-import React, { useState } from "react";
+import { m } from "framer-motion";
+import { useState } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -69,7 +69,7 @@ export const PinPerspective = ({
   href?: string;
 }) => {
   return (
-    <motion.div className="pointer-events-none z-[60] flex h-80 w-96 items-center justify-center opacity-0 transition duration-500 group-hover/pin:opacity-100">
+    <m.div className="pointer-events-none z-[60] flex h-80 w-96 items-center justify-center opacity-0 transition duration-500 group-hover/pin:opacity-100">
       <div className="inset-0 -mt-7 h-full w-full flex-none">
         <div className="absolute inset-x-0 top-0 flex justify-center">
           <a
@@ -94,7 +94,7 @@ export const PinPerspective = ({
           className="absolute left-1/2 top-1/2 ml-[0.09375rem] mt-4 -translate-x-1/2 -translate-y-1/2"
         >
           <>
-            <motion.div
+            <m.div
               initial={{
                 opacity: 0,
                 scale: 0,
@@ -113,8 +113,8 @@ export const PinPerspective = ({
                 delay: 0,
               }}
               className="absolute left-1/2 top-1/2 h-[11.25rem] w-[11.25rem] rounded-[50%] bg-purple-500/[0.08] shadow-[0_8px_16px_rgb(0_0_0/0.4)]"
-            ></motion.div>
-            <motion.div
+            ></m.div>
+            <m.div
               initial={{
                 opacity: 0,
                 scale: 0,
@@ -133,8 +133,8 @@ export const PinPerspective = ({
                 delay: 2,
               }}
               className="absolute left-1/2 top-1/2 h-[11.25rem] w-[11.25rem] rounded-[50%] bg-purple-500/[0.08] shadow-[0_8px_16px_rgb(0_0_0/0.4)]"
-            ></motion.div>
-            <motion.div
+            ></m.div>
+            <m.div
               initial={{
                 opacity: 0,
                 scale: 0,
@@ -153,17 +153,17 @@ export const PinPerspective = ({
                 delay: 4,
               }}
               className="absolute left-1/2 top-1/2 h-[11.25rem] w-[11.25rem] rounded-[50%] bg-purple-500/[0.08] shadow-[0_8px_16px_rgb(0_0_0/0.4)]"
-            ></motion.div>
+            ></m.div>
           </>
         </div>
 
         <>
-          <motion.div className="absolute bottom-1/2 right-1/2 h-20 w-px translate-y-[14px] bg-gradient-to-b from-transparent to-purple-500 blur-[2px] group-hover/pin:h-40" />
-          <motion.div className="absolute bottom-1/2 right-1/2 h-20 w-px translate-y-[14px] bg-gradient-to-b from-transparent to-purple-500 group-hover/pin:h-40 " />
-          <motion.div className="absolute bottom-1/2 right-1/2 z-40 h-[4px] w-[4px] translate-x-[1.5px] translate-y-[14px] rounded-full bg-purple-600 blur-[3px]" />
-          <motion.div className="absolute bottom-1/2 right-1/2 z-40 h-[2px] w-[2px] translate-x-[0.5px] translate-y-[14px] rounded-full bg-purple-300 " />
+          <m.div className="absolute bottom-1/2 right-1/2 h-20 w-px translate-y-[14px] bg-gradient-to-b from-transparent to-purple-500 blur-[2px] group-hover/pin:h-40" />
+          <m.div className="absolute bottom-1/2 right-1/2 h-20 w-px translate-y-[14px] bg-gradient-to-b from-transparent to-purple-500 group-hover/pin:h-40 " />
+          <m.div className="absolute bottom-1/2 right-1/2 z-40 h-[4px] w-[4px] translate-x-[1.5px] translate-y-[14px] rounded-full bg-purple-600 blur-[3px]" />
+          <m.div className="absolute bottom-1/2 right-1/2 z-40 h-[2px] w-[2px] translate-x-[0.5px] translate-y-[14px] rounded-full bg-purple-300 " />
         </>
       </div>
-    </motion.div>
+    </m.div>
   );
 };

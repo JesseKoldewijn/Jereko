@@ -1,4 +1,4 @@
-import type { Metadata, ServerRuntime } from "next";
+import type { Metadata } from "next";
 import { parse } from "node-html-parser";
 import { Suspense } from "react";
 
@@ -18,7 +18,6 @@ export type BlogPageArgs = {
   };
 };
 
-export const runtime: ServerRuntime = "edge"; // edge runtime for faster startup time
 export const revalidate: Revalidate = 172800000; // 2 days in ms
 export const dynamicParams = true; // enable dynamic params gen if not generated on build time
 

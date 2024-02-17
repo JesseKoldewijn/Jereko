@@ -19,7 +19,6 @@
     "analyze": "ANALYZE=true next build"
   },
   "dependencies": {
-    "@ducanh2912/next-pwa": "^10.2.5",
     "@next/bundle-analyzer": "^14.1.0",
     "@radix-ui/react-dialog": "^1.0.5",
     "@radix-ui/react-dropdown-menu": "^2.0.6",
@@ -45,8 +44,8 @@
     "next-themes": "^0.2.1",
     "node-html-parser": "^6.1.12",
     "platformicons": "^5.10.2",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
+    "react": "0.0.0-experimental-a9cc32511-20240215",
+    "react-dom": "0.0.0-experimental-a9cc32511-20240215",
     "server-only": "^0.0.1",
     "sharp": "^0.33.2",
     "zod": "^3.22.4"
