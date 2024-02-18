@@ -62,7 +62,7 @@ const Home = async () => {
         <h2 className="text-md font-semibold md:text-xl">
           A short introduction about me
         </h2>
-        <Suspense fallback={<></>}>
+        <Suspense>
           <IntroSection />
         </Suspense>
       </section>
