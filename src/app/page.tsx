@@ -4,6 +4,7 @@ import { Suspense } from "react";
 import type { Revalidate } from "next/dist/server/lib/revalidate";
 import dynamic from "next/dynamic";
 
+import { LatestAttendedEventLazy } from "@/components/events/last-attended";
 import HeroSection from "@/components/layout/sections/HeroSection";
 import Avatar from "@/images/avatar.webp";
 
@@ -73,7 +74,7 @@ const Home = async () => {
         <p className="mt-4 px-2 text-neutral-600 dark:text-neutral-200">
           Down below is the latest event I&apos;ve attended
         </p>
-        <Suspense fallback={<></>}>
+        <Suspense fallback={<LatestAttendedEventLazy />}>
           <LatestAttEvent />
         </Suspense>
       </section>

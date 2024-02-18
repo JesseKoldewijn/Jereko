@@ -60,12 +60,12 @@ export const metadata: Metadata = {
     {
       rel: "icon",
       sizes: "512x512",
-      url: "/favicons/favicon-512x512.png",
+      url: "/favicons/android-chrome-512x512.png",
     },
     {
       rel: "icon",
       sizes: "192x192",
-      url: "/favicons/favicon-192x192.png",
+      url: "/favicons/android-chrome-192x192.png",
     },
     {
       rel: "apple-touch-icon",
