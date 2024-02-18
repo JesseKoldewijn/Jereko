@@ -65,9 +65,6 @@ dependencies:
   js-cookie:
     specifier: ^3.0.5
     version: 3.0.5
-  lucide-react:
-    specifier: ^0.331.0
-    version: 0.331.0(react@0.0.0-experimental-a9cc32511-20240215)
   next:
     specifier: 14.1.1-canary.58
     version: 14.1.1-canary.58(@babel/core@7.23.3)(react-dom@0.0.0-experimental-a9cc32511-20240215)(react@0.0.0-experimental-a9cc32511-20240215)
@@ -86,6 +83,9 @@ dependencies:
   react-dom:
     specifier: 0.0.0-experimental-a9cc32511-20240215
     version: 0.0.0-experimental-a9cc32511-20240215(react@0.0.0-experimental-a9cc32511-20240215)
+  react-icons:
+    specifier: ^5.0.1
+    version: 5.0.1(react@0.0.0-experimental-a9cc32511-20240215)
   server-only:
     specifier: ^0.0.1
     version: 0.0.1
@@ -11302,14 +11302,6 @@ packages:
       es5-ext: 0.10.62
     dev: true
 
-  /lucide-react@0.331.0(react@0.0.0-experimental-a9cc32511-20240215):
-    resolution: {integrity: sha512-CHFJ0ve9vaZ7bB2VRAl27SlX1ELh6pfNC0jS96qGpPEEzLkLDGq4pDBFU8RhOoRMqsjXqTzLm9U6bZ1OcIHq7Q==}
-    peerDependencies:
-      react: ^16.5.1 || ^17.0.0 || ^18.0.0
-    dependencies:
-      react: 0.0.0-experimental-a9cc32511-20240215
-    dev: false
-
   /lz-string@1.5.0:
     resolution: {integrity: sha512-h5bgJWpxJNswbU7qCrV0tIKQCaS3blPDrqKWx+QxzuzL1zGUzij9XCWLrSLsJPu5t+eWA/ycetzYAO5IOMcWAQ==}
     hasBin: true
@@ -13598,6 +13590,14 @@ packages:
       react-dom: 0.0.0-experimental-a9cc32511-20240215(react@0.0.0-experimental-a9cc32511-20240215)
       react-is: 18.1.0
     dev: true
+
+  /react-icons@5.0.1(react@0.0.0-experimental-a9cc32511-20240215):
+    resolution: {integrity: sha512-WqLZJ4bLzlhmsvme6iFdgO8gfZP17rfjYEJ2m9RsZjZ+cc4k1hTzknEz63YS1MeT50kVzoa1Nz36f4BEx+Wigw==}
+    peerDependencies:
+      react: '*'
+    dependencies:
+      react: 0.0.0-experimental-a9cc32511-20240215
+    dev: false
 
   /react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}

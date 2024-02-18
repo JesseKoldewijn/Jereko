@@ -1,7 +1,13 @@
 "use client";
 
-import { Github, Linkedin, List, ListChecks, User } from "lucide-react";
 import { createContext, useContext, useEffect, useState } from "react";
+import {
+  LuGithub,
+  LuLinkedin,
+  LuList,
+  LuListChecks,
+  LuUser,
+} from "react-icons/lu";
 
 import { useRouter } from "next/navigation";
 
@@ -114,32 +120,32 @@ const CommandMenuProvider = ({ children }: { children: React.ReactNode }) => {
           <CommandEmpty>No results found.</CommandEmpty>
           <CommandGroup heading="Pages">
             <CommandItem>
-              <User className="mr-2 h-4 w-4" />
+              <LuUser className="mr-2 h-4 w-4" />
               <span>Home page</span>
               <CommandShortcut>⌘H</CommandShortcut>
             </CommandItem>
             <CommandItem>
-              <User className="mr-2 h-4 w-4" />
+              <LuUser className="mr-2 h-4 w-4" />
               <span>About Me</span>
               <CommandShortcut>⌘M</CommandShortcut>
             </CommandItem>
             <CommandItem>
-              <List className="mr-2 h-4 w-4" />
+              <LuList className="mr-2 h-4 w-4" />
               <span>My Projects</span>
               <CommandShortcut>⌘P</CommandShortcut>
             </CommandItem>
             <CommandItem>
-              <ListChecks className="mr-2 h-4 w-4" />
+              <LuListChecks className="mr-2 h-4 w-4" />
               <span>My Experience</span>
               <CommandShortcut>⌘E</CommandShortcut>
             </CommandItem>
             <CommandItem>
-              <ListChecks className="mr-2 h-4 w-4" />
+              <LuListChecks className="mr-2 h-4 w-4" />
               <span>My Blog</span>
               <CommandShortcut>⌘B</CommandShortcut>
             </CommandItem>
             <CommandItem>
-              <ListChecks className="mr-2 h-4 w-4" />
+              <LuListChecks className="mr-2 h-4 w-4" />
               <span>OpenSource</span>
               <CommandShortcut>⌘O</CommandShortcut>
             </CommandItem>
@@ -152,12 +158,12 @@ const CommandMenuProvider = ({ children }: { children: React.ReactNode }) => {
               <CommandShortcut>⌘X</CommandShortcut>
             </CommandItem>
             <CommandItem>
-              <Github className="mr-2 h-4 w-4" />
+              <LuGithub className="mr-2 h-4 w-4" />
               <span>Github</span>
               <CommandShortcut>⌘G</CommandShortcut>
             </CommandItem>
             <CommandItem>
-              <Linkedin className="mr-2 h-4 w-4" />
+              <LuLinkedin className="mr-2 h-4 w-4" />
               <span>LinkedIn</span>
               <CommandShortcut>⌘L</CommandShortcut>
             </CommandItem>

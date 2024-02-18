@@ -1,8 +1,8 @@
 "use client";
 
-import { X as CloseIcon, List, MenuIcon } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useEffect, useRef, useState } from "react";
+import { LuList, LuMenu, LuX } from "react-icons/lu";
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -60,7 +60,7 @@ const NavMenuMobile = ({ socials }: { socials: Socials | null }) => {
           }
         }}
       >
-        {showMenu ? <CloseIcon /> : <MenuIcon />}
+        {showMenu ? <LuX /> : <LuMenu />}
         <span className="sr-only">Open mobile navigation menu</span>
       </Button>
       <div
@@ -101,7 +101,7 @@ const NavMenuMobile = ({ socials }: { socials: Socials | null }) => {
                 const Icon =
                   Object.entries(AppIcons.internal).find(
                     (icon) => icon[0] === pathName,
-                  )?.[1] ?? List;
+                  )?.[1] ?? LuList;
 
                 return (
                   <Link
@@ -131,7 +131,7 @@ const NavMenuMobile = ({ socials }: { socials: Socials | null }) => {
                 const Icon =
                   Object.entries(AppIcons.aboutMe).find(
                     (icon) => icon[0] === pathName,
-                  )?.[1] ?? List;
+                  )?.[1] ?? LuList;
 
                 return (
                   <Link
@@ -151,7 +151,7 @@ const NavMenuMobile = ({ socials }: { socials: Socials | null }) => {
                     const Icon =
                       Object.entries(AppIcons.socials).find(
                         (icon) => icon[0] === social.platform,
-                      )?.[1] ?? List;
+                      )?.[1] ?? LuList;
 
                     return (
                       <Link

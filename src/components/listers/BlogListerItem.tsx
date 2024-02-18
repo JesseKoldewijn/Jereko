@@ -1,5 +1,5 @@
-import { MouseIcon } from "lucide-react";
 import { parse } from "node-html-parser";
+import { LuMouse } from "react-icons/lu";
 
 import Link from "next/link";
 
@@ -47,7 +47,7 @@ const ProjectListerItem = ({ blog }: { blog: any }) => {
     <Link href={`/blog/${blog.slug}`}>
       <Card className="pointer-events-none relative flex w-full max-w-md cursor-pointer flex-col bg-neutral-100 px-4 py-5 hover:!bg-neutral-100 hover:invert dark:bg-neutral-900 hover:dark:!bg-neutral-900">
         <span className="absolute left-2 top-2 animate-pulse text-muted-foreground">
-          <MouseIcon />
+          <LuMouse />
           <span className="sr-only">click to read more</span>
         </span>
         <CardTitle>{blog.title.rendered}</CardTitle>

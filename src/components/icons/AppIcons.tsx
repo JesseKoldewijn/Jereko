@@ -1,39 +1,32 @@
-import dynamic from "next/dynamic";
+import { type IconType } from "react-icons";
+import {
+  LuComputer,
+  LuGithub,
+  LuHand,
+  LuHeartHandshake,
+  LuHome,
+  LuLinkedin,
+  LuList,
+  LuListChecks,
+} from "react-icons/lu";
 
-const X = dynamic(() => import("@/components/icons/Twitter-X"));
-const Home = dynamic(() => import("lucide-react").then((mod) => mod.Home));
-const ListIcon = dynamic(() => import("lucide-react").then((mod) => mod.List));
-const ListChecks = dynamic(() =>
-  import("lucide-react").then((mod) => mod.ListChecks),
-);
-const Linkedin = dynamic(() =>
-  import("lucide-react").then((mod) => mod.Linkedin),
-);
-const Github = dynamic(() => import("lucide-react").then((mod) => mod.Github));
-
-const HandIcon = dynamic(() => import("lucide-react").then((mod) => mod.Hand));
-const LucideComputer = dynamic(() =>
-  import("lucide-react").then((mod) => mod.Computer),
-);
-const LucideHeartHandshake = dynamic(() =>
-  import("lucide-react").then((mod) => mod.HeartHandshake),
-);
+import X from "@/components/icons/Twitter-X";
 
 const AppIcons = {
   socials: {
-    github: Github,
-    linkedin: Linkedin,
-    twitter: X,
+    github: LuGithub,
+    linkedin: LuLinkedin,
+    twitter: X as IconType,
   },
   internal: {
-    home: Home,
-    projects: ListIcon,
-    experience: ListChecks,
+    home: LuHome,
+    projects: LuList,
+    experience: LuListChecks,
   },
   aboutMe: {
-    intro: HandIcon,
-    hobbies: LucideComputer,
-    volunteering: LucideHeartHandshake,
+    intro: LuHand,
+    hobbies: LuComputer,
+    volunteering: LuHeartHandshake,
   },
 };
 export default AppIcons;

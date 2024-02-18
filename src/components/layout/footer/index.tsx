@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowUp, Github, Linkedin } from "lucide-react";
+import { LuArrowUp, LuGithub, LuLinkedin } from "react-icons/lu";
 
 import Link from "next/link";
 
@@ -64,7 +64,7 @@ const Footer = ({
                 target="_blank"
                 data-link-label={github.label ?? "github-link-footer"}
               >
-                <Github />
+                <LuGithub />
                 <span className="sr-only">Link to Github profile</span>
               </Link>
             )}
@@ -76,7 +76,7 @@ const Footer = ({
                 target="_blank"
                 data-link-label={linkedin.label ?? "linkedin-link-footer"}
               >
-                <Linkedin />
+                <LuLinkedin />
                 <span className="sr-only">Link to LinkedIn profile</span>
               </Link>
             )}
@@ -96,7 +96,7 @@ const Footer = ({
               typeof window && window.scrollTo({ top: 0, behavior: "smooth" })
             }
           >
-            <ArrowUp className="m-auto h-5 w-5" height={5} width={5} />
+            <LuArrowUp className="m-auto h-5 w-5" height={5} width={5} />
             <span className="sr-only">Back to top</span>
           </Button>
         </div>

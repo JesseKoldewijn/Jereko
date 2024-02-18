@@ -1,4 +1,4 @@
-import { MouseIcon } from "lucide-react";
+import { LuMouse } from "react-icons/lu";
 
 import Link from "next/link";
 
@@ -38,7 +38,7 @@ const ProjectListerItem = ({ project }: { project: Project }) => {
             {project.title}
           </span>
           {project.link !== null && (
-            <MouseIcon
+            <LuMouse
               size={24}
               className="animate-pulse text-muted-foreground"
             />

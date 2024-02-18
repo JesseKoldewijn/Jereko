@@ -1,20 +1,30 @@
 "use client";
 
-import { GithubIcon, List, UserIcon } from "lucide-react";
+import { LuGithub, LuList, LuUser } from "react-icons/lu";
 
-import {
-  NavigationMenu,
-  NavigationMenuList,
-} from "@/components/ui/navigation-menu";
+import dynamic from "next/dynamic";
 
 import ListedNavSection from "./item-variants/listed";
 import ShowcaseNavSection from "./item-variants/showcase";
 import SingleItemSection from "./item-variants/singleItem";
 
+const NavigationMenu = dynamic(
+  () =>
+    import("@/components/ui/navigation-menu").then((mod) => mod.NavigationMenu),
+  { ssr: true },
+);
+const NavigationMenuList = dynamic(
+  () =>
+    import("@/components/ui/navigation-menu").then(
+      (mod) => mod.NavigationMenuList,
+    ),
+  { ssr: true },
+);
+
 export const showcaseEntry = {
   triggerTitle: (
     <>
-      <UserIcon className="mr-2" />
+      <LuUser className="mr-2" />
       About me
     </>
   ),
@@ -47,7 +57,7 @@ export const showcaseEntry = {
 export const listedEntry = {
   triggerTitle: (
     <>
-      <List className="mr-2" />
+      <LuList className="mr-2" />
       Pages
     </>
   ),
@@ -84,7 +94,7 @@ const NavbarMenu = () => {
         <ShowcaseNavSection {...showcaseEntry} />
         <ListedNavSection {...listedEntry} />
         <SingleItemSection href="https://github.com/JesseKoldewijn/Jereko">
-          <GithubIcon className="mr-2" />
+          <LuGithub className="mr-2" />
           OpenSource
         </SingleItemSection>
       </NavigationMenuList>
