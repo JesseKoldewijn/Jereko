@@ -54,3 +54,6 @@ fallback-*
 
 # Sentry Config File
 .sentryclirc
+
+# Storybook build output
+public/_storybook
