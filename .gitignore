@@ -41,12 +41,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 
-# Auto Generated PWA files
-sw.*
-workbox-*
-swe-worker-*
-fallback-*
-
 # Analyze files
 ./analyze
 
