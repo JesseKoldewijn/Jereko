@@ -2,24 +2,11 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 
 import type { Revalidate } from "next/dist/server/lib/revalidate";
-import dynamic from "next/dynamic";
 
+import LastAttendedEvent from "@/components/events/last-attended";
 import HeroSection from "@/components/layout/sections/HeroSection";
+import IntroSection from "@/components/layout/sections/IntroSection";
 import Avatar from "@/images/avatar.webp";
-
-const LatestAttEvent = dynamic(
-  () => import("@/components/events/last-attended"),
-  {
-    ssr: true,
-  },
-);
-
-const IntroSection = dynamic(
-  () => import("@/components/layout/sections/IntroSection"),
-  {
-    ssr: true,
-  },
-);
 
 export const revalidate: Revalidate = 172800000; // 2 days in ms
 
@@ -73,7 +60,7 @@ const Home = async () => {
         <p className="mt-4 px-2 text-neutral-600 dark:text-neutral-200">
           Down below is the latest event I&apos;ve attended
         </p>
-        <LatestAttEvent />
+        <LastAttendedEvent />
       </section>
     </>
   );
