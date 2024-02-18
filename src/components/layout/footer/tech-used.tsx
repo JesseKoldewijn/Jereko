@@ -1,5 +1,3 @@
-import { Suspense } from "react";
-
 import Image from "next/image";
 
 import { type usedTechnologies } from "@/config/tech";
@@ -67,7 +65,7 @@ const _TechMapping = ({
 
 const TechUsed = ({ techUsed }: { techUsed: typeof usedTechnologies }) => {
   return (
-    <div className="mx-4 mb-4 w-auto rounded-xl border bg-neutral-100 py-2 md:mx-8 md:mb-8 dark:bg-neutral-900">
+    <div className="mx-4 mb-4 w-auto rounded-xl border bg-neutral-100 py-2 dark:bg-neutral-900 md:mx-8 md:mb-8">
       <section className="w-auto py-4 md:py-10 lg:py-12">
         <div className="container grid gap-4 px-4 text-center md:gap-5 md:px-6 lg:gap-10">
           <div className="space-y-3">
@@ -77,17 +75,13 @@ const TechUsed = ({ techUsed }: { techUsed: typeof usedTechnologies }) => {
           </div>
           <div className="infinite-scroll-mask scroller w-full">
             <div className="scroll-content animate-infinite-scroll relative flex items-center justify-center md:justify-start">
-              <Suspense>
-                <_TechMapping mapKey="main" techUsed={techUsed} />
-              </Suspense>
+              <_TechMapping mapKey="main" techUsed={techUsed} />
             </div>
             <div
               className="scroll-content animate-infinite-scroll relative flex items-center justify-center md:justify-start"
               aria-hidden="true"
             >
-              <Suspense>
-                <_TechMapping mapKey="clone" techUsed={techUsed} />
-              </Suspense>
+              <_TechMapping mapKey="clone" techUsed={techUsed} />
             </div>
           </div>
         </div>
