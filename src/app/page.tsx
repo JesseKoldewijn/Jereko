@@ -4,9 +4,7 @@ import { Suspense } from "react";
 import type { Revalidate } from "next/dist/server/lib/revalidate";
 import dynamic from "next/dynamic";
 
-import LastAttendedEvent, {
-  LatestAttendedEventLazy,
-} from "@/components/events/last-attended";
+import { LatestAttendedEventLazy } from "@/components/events/last-attended";
 import IntroSection from "@/components/layout/sections/IntroSection";
 import Avatar from "@/images/avatar.webp";
 
