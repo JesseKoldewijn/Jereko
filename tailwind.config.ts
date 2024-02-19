@@ -1,5 +1,26 @@
 const { fontFamily } = require("tailwindcss/defaultTheme");
 
+const {
+  default: flattenColorPalette
+} = require("tailwindcss/lib/util/flattenColorPalette");
+
+const addVariablesForColors = ({
+  addBase,
+  theme,
+}: {
+  addBase: (styles: Record<string, any>) => void;
+  theme: (path: string) => any;
+}) => {
+  const allColors = flattenColorPalette(theme("colors"));
+  const newVars = Object.fromEntries(
+    Object.entries(allColors).map(([key, val]) => [`--${key}`, val]),
+  );
+
+  addBase({
+    ":root": newVars,
+  });
+};
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class"],
@@ -80,13 +101,20 @@ module.exports = {
             backgroundPosition: "0% 50%",
           },
         },
+        "scroll-x": {
+          to: {
+            transform: "translate(calc(-50% - 0.5rem))",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "moving-bg": "moving-background 0.2s ease-in-out infinite",
+        "scroll-x":
+          "scroll-x var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite",
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"), addVariablesForColors],
 };
