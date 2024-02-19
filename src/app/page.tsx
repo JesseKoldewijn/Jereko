@@ -2,11 +2,18 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 
 import type { Revalidate } from "next/dist/server/lib/revalidate";
+import dynamic from "next/dynamic";
 
 import LastAttendedEvent from "@/components/events/last-attended";
-import HeroSection from "@/components/layout/sections/HeroSection";
 import IntroSection from "@/components/layout/sections/IntroSection";
 import Avatar from "@/images/avatar.webp";
+
+const HeroSection = dynamic(
+  () => import("@/components/layout/sections/HeroSection"),
+  {
+    ssr: true,
+  },
+);
 
 export const revalidate: Revalidate = 172800000; // 2 days in ms
 

@@ -3,14 +3,21 @@ import { parse } from "node-html-parser";
 import { Suspense } from "react";
 
 import type { Revalidate } from "next/dist/server/lib/revalidate";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import HeroSection from "@/components/layout/sections/HeroSection";
 import { Button } from "@/components/ui/button";
 import Avatar from "@/images/avatar.webp";
 import { getPostBySlug } from "@/server/handlers/post/getBySlug";
 import { fetchWP } from "@/server/wp-api";
+
+const HeroSection = dynamic(
+  () => import("@/components/layout/sections/HeroSection"),
+  {
+    ssr: true,
+  },
+);
 
 export type BlogPageArgs = {
   params: {
