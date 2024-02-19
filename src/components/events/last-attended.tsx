@@ -2,9 +2,7 @@ import dynamic from "next/dynamic";
 
 import { mostRecentEvent } from "@/server/handlers/events/getLatest";
 
-const EventItem = dynamic(() => import("@/components/events/event-item"), {
-  ssr: true,
-});
+import EventItem from "./event-item";
 
 const LastAttendedEvent = async () => {
   const latestEvent = await mostRecentEvent();
