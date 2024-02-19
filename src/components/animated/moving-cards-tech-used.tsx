@@ -2,10 +2,10 @@
 
 import React, { useEffect, useState } from "react";
 
-import { cn } from "@/lib/utils";
-
 import Image from "next/image";
+
 import { type usedTechnologies } from "@/config/tech";
+import { cn } from "@/lib/utils";
 
 export const InfiniteMovingCardsTechUsed = ({
   items,
@@ -110,15 +110,20 @@ export const InfiniteMovingCardsTechUsed = ({
                   : lightLogo
                     ? "rounded-lg bg-neutral-950 dark:bg-neutral-100"
                     : isDrizzleORM
-                      ? "inset-0 rounded-lg bg-lime-300"
-                      : isShadcn
-                        ? "rounded-lg bg-neutral-300"
-                        : isAceternity
-                          ? "rounded-lg bg-neutral-950 dark:bg-neutral-100"
-                          : "",
-                "relative min-h-[60px] md:min-h-[80px] h-[60px] md:h-[80px]",
+                      ? "inset-0 rounded-lg"
+                      : isVercel
+                        ? "pl-2"
+                        : isShadcn
+                          ? "rounded-lg bg-neutral-300"
+                          : isAceternity
+                            ? "rounded-lg bg-neutral-950 dark:bg-neutral-100"
+                            : "",
+                "relative h-[60px] md:h-[80px]",
               )}
             >
+              {isDrizzleORM && (
+                <div className="absolute -inset-0 rounded-lg bg-lime-400" />
+              )}
               <Image
                 alt={`${item.name} Logo`}
                 className={cn(
@@ -126,20 +131,19 @@ export const InfiniteMovingCardsTechUsed = ({
                   isShadcn &&
                     "bg-neutral-950 invert-0 dark:bg-neutral-100 dark:invert",
                   isAceternity && "invert-0 dark:invert",
-                  isVercel && "pl-1",
+                  isVercel && "aspect-square",
                   lightLogo &&
                     "hue-rotate-180 invert dark:hue-rotate-0 dark:invert-0",
-                    !isStorybook && !isTwLogo && "aspect-square",
-                  "min-h-60 h-[60px] w-auto min-w-[60px] md:min-w-[80px] relative flex-shrink-0 overflow-hidden rounded-lg object-cover object-center md:min-h-[80px] md:h-[80px]",
+                  !isStorybook && !isTwLogo && "aspect-square",
+                  isDrizzleORM ? "z-30 rounded-md" : "rounded-lg",
+                  "relative h-[60px] w-auto flex-shrink-0 overflow-hidden object-cover object-center md:h-[80px] md:min-h-[80px] md:w-auto",
                 )}
                 src={item.icon}
                 loading="lazy"
               />
             </li>
-          )})}
-  
-
-      
+          );
+        })}
       </ul>
     </div>
   );
