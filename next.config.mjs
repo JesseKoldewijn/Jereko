@@ -11,9 +11,6 @@ const config = {
     remotePatterns: [{ hostname: "img.youtube.com", protocol: "https" }],
   },
   optimizeFonts: true,
-  experimental: {
-    ppr: true,
-  },
 };
 
 const withBundleAnalyzer = BundleAnalyzer({
