@@ -76,8 +76,17 @@ const ClientListerRefreshing = <T,>({
         x && listerItemArrayPointer
           ? (x[listerItemArrayPointer as keyof T] as unknown as any[])
           : (x as unknown as any[]);
+      const initialDataMapped =
+        initialData && listerItemArrayPointer
+          ? (initialData[listerItemArrayPointer as keyof T] as unknown as any[])
+          : (initialData as unknown as any[]);
 
-      return mapped.flatMap((item, index) => {
+      const initialIsSameAsMapped =
+        JSON.stringify(initialDataMapped) === JSON.stringify(mapped);
+
+      const dataMapped = initialIsSameAsMapped ? initialDataMapped : mapped;
+
+      return dataMapped.flatMap((item, index) => {
         if (!item) return null;
 
         const args = ListerItem.itemArgs;
