@@ -1,5 +1,3 @@
-import React, { Suspense } from "react";
-
 import { type ClientListItems } from "./_helpers/ClientItems";
 import ClientListerRefreshing from "./_helpers/ClientLister";
 import { ClientWrapper } from "./_helpers/ClientWrapper";
