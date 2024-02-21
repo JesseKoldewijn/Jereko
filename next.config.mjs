@@ -11,6 +11,15 @@ const config = {
     remotePatterns: [{ hostname: "img.youtube.com", protocol: "https" }],
   },
   optimizeFonts: true,
+  redirects: async () => {
+    return [
+      {
+        source: "/_storybook",
+        destination: "/_storybook/index.html",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 const withBundleAnalyzer = BundleAnalyzer({
