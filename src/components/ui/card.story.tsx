@@ -5,7 +5,7 @@ import { StorybookThemeWrapper } from "@/lib/storybook/theme-wrapper";
 import { cn } from "@/lib/utils";
 
 import {
-  Card,
+  Card as CardComponent,
   CardContent,
   CardDescription,
   CardFooter,
@@ -21,7 +21,7 @@ interface CardArgs {
 }
 
 const ComponentTemplate = (args: CardArgs) => (
-  <Card
+  <CardComponent
     className={cn(
       "w-full max-w-md bg-neutral-100 p-5 dark:bg-transparent",
       "min-w-[300px]",
@@ -42,7 +42,7 @@ const ComponentTemplate = (args: CardArgs) => (
         );
       })}
     </CardFooter>
-  </Card>
+  </CardComponent>
 );
 
 //👇 This default export determines where your story goes in the story list
@@ -53,7 +53,7 @@ const meta: Meta<typeof ComponentTemplate> = {
 export default meta;
 type Story = StoryObj<typeof ComponentTemplate>;
 
-export const ButtonDark: Story = {
+export const Card: Story = {
   args: {
     //👇 The args you need here will depend on your component
     id: String(crypto.randomBytes(20).toString("hex")),
@@ -62,17 +62,5 @@ export const ButtonDark: Story = {
     description: "Hey there! I'm a card.",
     tags: "tag1,tag2,tag3",
   },
-  decorators: [StorybookThemeWrapper("dark")],
-};
-
-export const ButtonLight: Story = {
-  args: {
-    //👇 The args you need here will depend on your component
-    id: String(crypto.randomBytes(20).toString("hex")),
-    title: "Title",
-    sub_title: "Subtitle",
-    description: "Hey there! I'm a card.",
-    tags: "tag1,tag2,tag3",
-  },
-  decorators: [StorybookThemeWrapper("light")],
+  decorators: [StorybookThemeWrapper()],
 };

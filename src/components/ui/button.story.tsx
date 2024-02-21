@@ -13,7 +13,7 @@ const meta: Meta<typeof ButtonComponent> = {
 export default meta;
 type Story = StoryObj<typeof ButtonComponent>;
 
-export const ButtonDark: Story = {
+export const Button: Story = {
   args: {
     //👇 The args you need here will depend on your component
     children: "Hello I'm a button!",
@@ -23,18 +23,5 @@ export const ButtonDark: Story = {
       "inline-flex items-center justify-center rounded-lg border px-5 py-3 text-center text-base font-medium hover:bg-neutral-900 hover:text-neutral-100 focus:ring-4 dark:hover:bg-neutral-100 dark:hover:text-neutral-900",
     ),
   },
-  decorators: [StorybookThemeWrapper("dark")],
-};
-
-export const ButtonLight: Story = {
-  args: {
-    //👇 The args you need here will depend on your component
-    children: "Hello I'm a button!",
-    variant: "outline",
-    size: "sm",
-    className: cn(
-      "inline-flex items-center justify-center rounded-lg border px-5 py-3 text-center text-base font-medium hover:bg-neutral-900 hover:text-neutral-100 focus:ring-4 dark:hover:bg-neutral-100 dark:hover:text-neutral-900",
-    ),
-  },
-  decorators: [StorybookThemeWrapper("light")],
+  decorators: [StorybookThemeWrapper()],
 };

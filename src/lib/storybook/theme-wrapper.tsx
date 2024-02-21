@@ -1,10 +1,11 @@
 import { type StoryFn } from "@storybook/react";
-import FontLoader from "./fontLoader";
 import { ThemeProvider, useTheme } from "next-themes";
 
 import "@/styles/globals.css";
 
-export const StorybookThemeWrapper = (theme?: "light" | "dark" | "system") => {
+import FontLoader from "./fontLoader";
+
+export const StorybookThemeWrapper = () => {
   const s = (Story: StoryFn) => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     useTheme();
@@ -14,7 +15,7 @@ export const StorybookThemeWrapper = (theme?: "light" | "dark" | "system") => {
         <FontLoader />
         <ThemeProvider
           attribute="class"
-          defaultTheme={theme ?? "dark"}
+          defaultTheme="system"
           disableTransitionOnChange
         >
           <div className="relative inset-0 flex h-full w-full items-center justify-center bg-background  text-foreground">
