@@ -46,11 +46,9 @@ export const RefreshingList = async <T,>({
   };
 
   return (
-    <Suspense>
-      <ClientWrapper>
-        <ListComponent {...sharedProps} />
-      </ClientWrapper>
-    </Suspense>
+    <ClientWrapper>
+      <ListComponent {...sharedProps} />
+    </ClientWrapper>
   );
 };
 
