@@ -48,7 +48,7 @@ const BlogPage = async () => {
             queryKey={["blog"]}
             showRefrashedAt={true}
             emptyListMessage="No blog posts found."
-            className="w-full"
+            className="flex flex-col gap-4 px-4"
             ssr
           />
         </Suspense>

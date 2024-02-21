@@ -12,7 +12,7 @@ const TechUsed = ({ techUsed }: { techUsed: typeof usedTechnologies }) => {
             </strong>
           </div>
           <div className="infinite-scroll-mask scroller w-full">
-            <InfiniteMovingCardsTechUsed speed="slow" items={techUsed} />
+            <InfiniteMovingCardsTechUsed speed="normal" items={techUsed} />
           </div>
         </div>
       </section>
