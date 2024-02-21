@@ -58,7 +58,7 @@ const ClientListerRefreshing = <T,>({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
 
-  if (!data && !isPending) {
+  if (!data && !isPending && !initialData) {
     return <div>{emptyListMessage}</div>;
   }
 
