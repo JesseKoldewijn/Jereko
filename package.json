@@ -30,6 +30,7 @@
     "@sentry/nextjs": "^7.101.1",
     "@sentry/profiling-node": "^7.101.1",
     "@t3-oss/env-nextjs": "^0.7.3",
+    "@tanstack/react-query": "^5.22.2",
     "@vercel/postgres": "^0.7.2",
     "@vercel/speed-insights": "^1.0.10",
     "class-variance-authority": "^0.7.0",

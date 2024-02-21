@@ -4,8 +4,9 @@ import { Suspense } from "react";
 import type { Revalidate } from "next/dist/server/lib/revalidate";
 import dynamic from "next/dynamic";
 
-import BlogLister from "@/components/listers/BlogLister";
+import { RefreshingList } from "@/components/listers/refreshing/Root";
 import Avatar from "@/images/avatar.webp";
+import { getAllWpPosts } from "@/server/actions/wp-fetch";
 
 const HeroSection = dynamic(
   () => import("@/components/layout/sections/HeroSection"),
@@ -40,8 +41,16 @@ const BlogPage = async () => {
         }}
       />
       <section className="mx-auto flex w-full max-w-lg flex-col items-center text-center">
-        <Suspense fallback={<p>Loading...</p>}>
-          <BlogLister />
+        <Suspense>
+          <RefreshingList
+            actionFunction={getAllWpPosts}
+            listerItemName="blog"
+            queryKey={["blog"]}
+            showRefrashedAt={true}
+            emptyListMessage="No blog posts found."
+            className="w-full"
+            ssr
+          />
         </Suspense>
       </section>
     </>

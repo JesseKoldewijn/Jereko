@@ -1,7 +1,7 @@
 "use client";
 
 import { m, stagger, useAnimate } from "framer-motion";
-import { memo, useEffect } from "react";
+import { useEffect } from "react";
 
 export const TextGen = ({
   words,
