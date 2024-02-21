@@ -3,18 +3,9 @@ import type { Metadata } from "next";
 import type { Revalidate } from "next/dist/server/lib/revalidate";
 import dynamic from "next/dynamic";
 
+import { RefreshingList } from "@/components/listers/refreshing/Root";
 import Avatar from "@/images/avatar.webp";
 import { getAllWpPosts } from "@/server/actions/wp-fetch";
-
-const RefreshingList = dynamic(
-  () =>
-    import("@/components/listers/refreshing/Root").then(
-      (mod) => mod.RefreshingList,
-    ),
-  {
-    ssr: true,
-  },
-);
 
 const HeroSection = dynamic(
   () => import("@/components/layout/sections/HeroSection"),
