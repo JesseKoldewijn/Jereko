@@ -52,7 +52,7 @@ export const InfiniteMovingCardsTechUsed = ({
     }
   };
 
-  const addAnimation = () => {
+  const addAnimation = async () => {
     if (containerRef.current && scrollerRef.current) {
       const scrollerContent = Array.from(scrollerRef.current.children);
 
