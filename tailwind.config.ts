@@ -1,8 +1,6 @@
 const { fontFamily } = require("tailwindcss/defaultTheme");
 
-const {
-  default: flattenColorPalette
-} = require("tailwindcss/lib/util/flattenColorPalette");
+const flattenColorPalette = require("./src/utils/tw/flattenColorPalette.cjs");
 
 const addVariablesForColors = ({
   addBase,
