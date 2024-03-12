@@ -1,6 +1,5 @@
-import parse from "node-html-parser";
-
 import { type PostsParams, fetchWP } from "@/server/wp-api";
+import { parseHtml } from "@/utils/htmlParser";
 
 export const getPostBySlug = async (slug: string[]) => {
   const wpPostsParams = {
@@ -14,8 +13,8 @@ export const getPostBySlug = async (slug: string[]) => {
   else {
     const post = WpPosts.find((post) => post.slug === slug[0]);
 
-    const postTitle = String(parse(post.title.rendered));
-    const postContent = String(parse(post.content.rendered));
+    const postTitle = parseHtml(post.title.rendered).text;
+    const postContent = parseHtml(post.content.rendered).text;
 
     const prettyTitle =
       postTitle.length > 20 ? postTitle.slice(0, 60) + "..." : postTitle;

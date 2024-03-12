@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { parse } from "node-html-parser";
 import { Suspense } from "react";
 
 import type { Revalidate } from "next/dist/server/lib/revalidate";
@@ -11,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import Avatar from "@/images/avatar.webp";
 import { getPostBySlug } from "@/server/handlers/post/getBySlug";
 import { fetchWP } from "@/server/wp-api";
+import { parseHtml } from "@/utils/htmlParser";
 
 const HeroSection = dynamic(
   () => import("@/components/layout/sections/HeroSection"),
@@ -54,8 +54,8 @@ export const generateMetadata = async ({ params: { slug } }: BlogPageArgs) => {
 
   const post = wpPost.data;
 
-  const postTitle = String(parse(post.title.rendered).text);
-  const postContent = String(parse(post.content.rendered).text);
+  const postTitle = parseHtml(post.title.rendered).text;
+  const postContent = parseHtml(post.content.rendered).text;
 
   const prettyTitle =
     postTitle.length > 20 ? postTitle.slice(0, 60) + "..." : postTitle;
@@ -80,8 +80,8 @@ const BlogPage = async ({ params: { slug } }: BlogPageArgs) => {
     notFound();
   }
 
-  const postDescWithoutHtml = parse(post.prettyContentShort).text;
-  const postContentWithoutHtml = parse(post.data.content.rendered).text;
+  const postDescWithoutHtml = parseHtml(post.prettyContentShort).text;
+  const postContentWithoutHtml = parseHtml(post.data.content.rendered).text;
 
   return (
     <>

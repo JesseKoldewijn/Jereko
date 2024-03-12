@@ -1,7 +1,8 @@
-import { parse } from "node-html-parser";
 import { LuMouse } from "react-icons/lu";
 
 import Link from "next/link";
+
+import { parseHtml } from "@/utils/htmlParser";
 
 import {
   Card,
@@ -36,7 +37,7 @@ const ProjectListerItem = ({ blog }: { blog: any }) => {
   if (!blog) return null;
 
   const postedOn = postedOnDate(blog.date);
-  const blogContent = parse(blog.content.rendered).text;
+  const blogContent = parseHtml(blog.content.rendered).text;
 
   const isTextOverflow = blogContent.length > 120;
   const prettyPreviewContent = isTextOverflow
