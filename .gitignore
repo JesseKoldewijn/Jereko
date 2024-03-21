@@ -51,3 +51,6 @@ yarn-error.log*
 
 # Storybook build output
 public/_storybook
+
+# Partytown lib files
+public/~partytown

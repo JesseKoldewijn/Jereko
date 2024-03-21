@@ -11,13 +11,9 @@ export const StorybookThemeWrapper = () => {
     useTheme();
 
     return (
-      <div className={`font-sans`}>
+      <div className="font-sans">
         <FontLoader />
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          disableTransitionOnChange
-        >
+        <ThemeProvider attribute="class" disableTransitionOnChange>
           <div className="relative inset-0 flex h-full w-full items-center justify-center bg-background  text-foreground">
             <div className="fixed inset-0 flex">
               <div className="m-auto">

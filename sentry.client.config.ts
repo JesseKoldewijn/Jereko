@@ -1,10 +1,10 @@
 // This file configures the initialization of Sentry on the client.
 // The config you add here will be used whenever a users loads a page in their browser.
 // https://docs.sentry.io/platforms/javascript/guides/nextjs/
-import * as Sentry from "@sentry/nextjs";
+import { init, replayIntegration } from "@sentry/nextjs";
 
 if (process.env.NODE_ENV !== "development") {
-  Sentry.init({
+  init({
     dsn: "https://6ba8f2825c3c927c7d25f02a4bf3dd36@o4506540526731264.ingest.sentry.io/4506540535250944",
 
     // Adjust this value in production, or use tracesSampler for greater control
@@ -25,7 +25,7 @@ if (process.env.NODE_ENV !== "development") {
 
     // You can remove this option if you're not planning to use the Sentry Session Replay feature:
     integrations: [
-      new Sentry.Replay({
+      replayIntegration({
         // Additional Replay configuration goes in here, for example:
         maskAllText: false,
         blockAllMedia: true,
