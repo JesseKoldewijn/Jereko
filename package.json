@@ -41,7 +41,7 @@
     "framer-motion": "^11.0.20",
     "geist": "^1.2.2",
     "js-cookie": "^3.0.5",
-    "next": "14.1.1-canary.77",
+    "next": "14.2.0-canary.35",
     "next-themes": "^0.2.1",
     "node-html-parser": "^6.1.12",
     "platformicons": "^5.10.4",
