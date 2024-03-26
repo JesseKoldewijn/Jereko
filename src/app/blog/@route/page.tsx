@@ -44,9 +44,9 @@ const BlogPage = async () => {
           actionFunction={getAllWpPosts}
           listerItemName="blog"
           queryKey={["blog"]}
-          showRefrashedAt={true}
           emptyListMessage="No blog posts found."
           className="flex flex-col gap-4 px-4"
+          showRefrashedAt
           ssr
         />
       </section>

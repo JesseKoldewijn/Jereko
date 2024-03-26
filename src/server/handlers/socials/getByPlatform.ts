@@ -9,11 +9,7 @@ export const getByPlatform = async (...platform: string[]) => {
       ? await db.query.Socials.findFirst({
           where: sql`${Socials.platform} = ${platform[0]}`,
         })
-      : await db.query.Socials.findMany({
-          with: {
-            platform: true,
-          },
-        });
+      : await db.query.Socials.findMany();
 
   const socialsArray =
     socials == undefined ? [] : Array.isArray(socials) ? socials : [socials];
