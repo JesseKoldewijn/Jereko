@@ -22,7 +22,7 @@ export async function generateStaticParams() {
 }
 
 const ApplicationPage = async ({
-  params: { application, slug },
+  params: { slug },
 }: {
   params: {
     application: string;
