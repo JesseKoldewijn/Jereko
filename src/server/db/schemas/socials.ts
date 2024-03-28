@@ -11,9 +11,9 @@ export const Socials = pgTable(
     created_at: date("created_at").defaultNow(),
     updated_at: date("updated_at").defaultNow(),
   },
-  (social) => {
+  (x) => {
     return {
-      uniqueIdx: uniqueIndex("unique_idx").on(social.label),
+      socIdx: uniqueIndex("soc_idx").on(x.label),
     };
   },
 );

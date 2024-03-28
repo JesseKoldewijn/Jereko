@@ -13,7 +13,7 @@ const ExperienceListerItem = ({ experience }: { experience: Experience }) => {
     experience.start_month !== "upcoming" &&
     experience.start_year !== "upcoming"
       ? new Date(
-          "01 " + experience.start_month + " " + experience.start_year,
+          experience.start_year + "/" + experience.start_month + " " + "01",
         ).toLocaleString("default", {
           month: "long",
           year: "numeric",
@@ -22,7 +22,7 @@ const ExperienceListerItem = ({ experience }: { experience: Experience }) => {
   const endDate =
     experience.end_month !== "current" && experience.end_year !== "current"
       ? new Date(
-          "01 " + experience.end_month + " " + experience.end_year,
+          experience.end_year + "/" + experience.end_month + "/01",
         ).toLocaleString("default", {
           month: "long",
           year: "numeric",

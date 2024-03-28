@@ -1,3 +1,4 @@
+import * as applications from "./applications";
 import * as events from "./events";
 import * as experience from "./experience";
 import * as projects from "./projects";
@@ -8,4 +9,5 @@ export const schema = {
   ...experience,
   ...projects,
   ...socials,
+  ...applications,
 };

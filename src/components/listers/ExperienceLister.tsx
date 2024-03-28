@@ -18,10 +18,10 @@ const ExperienceLister = async ({
           {experience
             .sort((a, b) => {
               const aDate = new Date(
-                "01 " + a.start_month + " " + a.start_year,
+                a.start_year + "/" + a.start_month + "/01",
               ).getTime();
               const bDate = new Date(
-                "01 " + b.start_month + " " + b.start_year,
+                b.start_year + "/" + b.start_month + "/01",
               ).getTime();
 
               return bDate - aDate;

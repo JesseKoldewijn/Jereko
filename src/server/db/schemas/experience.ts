@@ -23,9 +23,9 @@ export const Experiences = pgTable(
     created_at: date("created_at").defaultNow(),
     updated_at: date("updated_at").defaultNow(),
   },
-  (projects) => {
+  (x) => {
     return {
-      uniqueIdx: uniqueIndex("unique_idx").on(projects.title),
+      expIdx: uniqueIndex("exp_idx").on(x.title),
     };
   },
 );
