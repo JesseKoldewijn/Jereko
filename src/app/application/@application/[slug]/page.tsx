@@ -25,7 +25,6 @@ const ApplicationPage = async ({
   params: { slug },
 }: {
   params: {
-    application: string;
     slug: string;
   };
 }) => {
