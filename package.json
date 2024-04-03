@@ -24,6 +24,7 @@
     "@radix-ui/react-slot": "^1.0.2",
     "@radix-ui/react-toast": "^1.1.5",
     "@radix-ui/react-toggle": "^1.0.3",
+    "@react-three/fiber": "^8.16.1",
     "@sentry/nextjs": "^7.109.0",
     "@sentry/profiling-node": "^7.109.0",
     "@t3-oss/env-nextjs": "^0.7.3",
@@ -47,6 +48,7 @@
     "react-icons": "^5.0.1",
     "server-only": "^0.0.1",
     "sharp": "^0.33.3",
+    "three": "^0.163.0",
     "zod": "^3.22.4"
   },
   "devDependencies": {
