@@ -4,12 +4,11 @@ const config = {
   parserOptions: {
     project: true,
   },
-  plugins: ["@typescript-eslint", "jsx-a11y", "storybook"],
+  plugins: ["@typescript-eslint", "jsx-a11y"],
   extends: [
     "next/core-web-vitals",
     "plugin:jsx-a11y/recommended",
     "plugin:@typescript-eslint/stylistic-type-checked",
-    "plugin:storybook/recommended",
     "plugin:jsx-a11y/strict",
   ],
   rules: {
