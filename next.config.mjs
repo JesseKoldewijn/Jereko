@@ -11,6 +11,7 @@ const config = {
     remotePatterns: [{ hostname: "img.youtube.com", protocol: "https" }],
   },
   optimizeFonts: true,
+  transpilePackages: ["three"],
 };
 
 const withBundleAnalyzer = BundleAnalyzer({
