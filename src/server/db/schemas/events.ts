@@ -25,9 +25,9 @@ export const Events = pgTable(
     created_at: date("created_at").defaultNow(),
     updated_at: date("updated_at").defaultNow(),
   },
-  (projects) => {
+  (x) => {
     return {
-      uniqueIdx: uniqueIndex("unique_idx").on(projects.name),
+      eventIdx: uniqueIndex("event_idx").on(x.name),
     };
   },
 );

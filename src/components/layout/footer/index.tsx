@@ -52,7 +52,7 @@ const Footer = ({
                 target="_blank"
                 data-link-label={twitter.label ?? "twitter-link-footer"}
               >
-                <X width={21} height={21} className="m-auto" />
+                <X className="m-auto h-5 w-auto" />
                 <span className="sr-only">Link to X (Twitter) profile</span>
               </Link>
             )}
@@ -64,7 +64,7 @@ const Footer = ({
                 target="_blank"
                 data-link-label={github.label ?? "github-link-footer"}
               >
-                <LuGithub />
+                <LuGithub className="h-6 w-auto" />
                 <span className="sr-only">Link to Github profile</span>
               </Link>
             )}
@@ -76,7 +76,7 @@ const Footer = ({
                 target="_blank"
                 data-link-label={linkedin.label ?? "linkedin-link-footer"}
               >
-                <LuLinkedin />
+                <LuLinkedin className="h-6 w-auto" />
                 <span className="sr-only">Link to LinkedIn profile</span>
               </Link>
             )}

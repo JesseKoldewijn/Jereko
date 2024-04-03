@@ -1,3 +1,5 @@
+import { parse } from "node-html-parser";
+
 /**
  * The `parseHtml` function takes an HTML string as input, parses it using DOMParser, and returns an
  * object containing the inner HTML and text content of the parsed document's body.
@@ -10,11 +12,20 @@
  * an empty string.
  */
 export const parseHtml = (html: string) => {
-  const parser = new DOMParser();
-  const doc = parser.parseFromString(html, "text/html");
+  if (typeof window !== "undefined") {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, "text/html");
 
-  return {
-    html: doc.body.innerHTML,
-    text: doc.body.textContent ?? "",
-  };
+    return {
+      html: doc.body.innerHTML,
+      text: doc.body.textContent ? doc.body.textContent.trim() : "",
+    };
+  } else {
+    const doc = parse(html);
+
+    return {
+      html: doc.innerHTML,
+      text: doc.textContent.trim() ?? "",
+    };
+  }
 };
