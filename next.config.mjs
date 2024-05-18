@@ -3,6 +3,7 @@ import { withSentryConfig } from "@sentry/nextjs";
 import BundleAnalyzer from "@next/bundle-analyzer";
 
 import "./src/env.mjs";
+import "./src/utils/react19-log-drop.mjs";
 
 /** @type {import("next").NextConfig} */
 const config = {
@@ -11,6 +12,10 @@ const config = {
     remotePatterns: [{ hostname: "img.youtube.com", protocol: "https" }],
   },
   optimizeFonts: true,
+  experimental: {
+    reactCompiler: true,
+  },
+  transpilePackages: ["react-icons"],
 };
 
 const withBundleAnalyzer = BundleAnalyzer({

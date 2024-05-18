@@ -12,6 +12,8 @@ import { getByPlatform } from "@/server/handlers/socials/getByPlatform";
 import "@/styles/globals.css";
 import { base } from "@/utils/hostname";
 
+import "../utils/react19-log-drop.mjs";
+
 const CommandMenuProvider = dynamic(
   () => import("@/components/ui/command-menu"),
   {
