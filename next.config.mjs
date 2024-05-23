@@ -15,7 +15,7 @@ const config = {
   optimizeFonts: true,
   experimental: {
     reactCompiler: true,
-    ppr: true,
+    ppr: "incremental",
   },
   transpilePackages: ["react-icons"],
 };
