@@ -11,9 +11,11 @@ const config = {
   images: {
     remotePatterns: [{ hostname: "img.youtube.com", protocol: "https" }],
   },
+  compress: true,
   optimizeFonts: true,
   experimental: {
     reactCompiler: true,
+    ppr: true,
   },
   transpilePackages: ["react-icons"],
 };

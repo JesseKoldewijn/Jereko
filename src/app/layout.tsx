@@ -8,18 +8,12 @@ import { cookies } from "next/headers";
 
 import { usedTechnologies } from "@/config/tech";
 import { env } from "@/env.mjs";
+import { type Social } from "@/server/db/schemas/socials";
 import { getByPlatform } from "@/server/handlers/socials/getByPlatform";
 import "@/styles/globals.css";
 import { base } from "@/utils/hostname";
 
 import "../utils/react19-log-drop.mjs";
-
-const CommandMenuProvider = dynamic(
-  () => import("@/components/ui/command-menu"),
-  {
-    ssr: true,
-  },
-);
 
 const Navbar = dynamic(() => import("@/components/layout/navbar/navbar"), {
   ssr: true,
@@ -33,22 +27,84 @@ const NextThemeWrapper = dynamic(
 );
 
 const Footer = dynamic(() => import("@/components/layout/footer"), {
-  ssr: true,
+  ssr: false,
 });
 
 const QuadSection = dynamic(
   () => import("@/components/layout/footer/quad-section"),
   {
-    ssr: true,
+    ssr: false,
   },
 );
 
 const TechUsedSectionNew = dynamic(
   () => import("@/components/layout/footer/tech-used"),
   {
-    ssr: true,
+    ssr: false,
   },
 );
+
+const RootLayout = async ({ children }: { children: React.ReactNode }) => {
+  const cookieJar = cookies();
+  const cookieJarTheme = cookieJar.get("theme");
+
+  const socials = await getByPlatform("twitter", "github", "linkedin");
+
+  const CommandMenuProvider = dynamic(
+    () => import("@/components/ui/command-menu"),
+    {
+      ssr: false,
+      loading: () => {
+        return <PageContent innerChildren={children} socials={socials} />;
+      },
+    },
+  );
+
+  return (
+    <html
+      lang="en"
+      className={cookieJarTheme ? cookieJarTheme.value : ""}
+      suppressHydrationWarning
+    >
+      <head>
+        <meta name="theme-color" content="#000" />
+      </head>
+      <body
+        className={`font-sans ${GeistSans.variable} ${GeistMono.variable}`}
+        suppressHydrationWarning
+      >
+        <NextThemeWrapper>
+          <Navbar socials={socials} />
+          <CommandMenuProvider>
+            <PageContent innerChildren={children} socials={socials} />
+          </CommandMenuProvider>
+        </NextThemeWrapper>
+        {env.NODE_ENV !== "development" && <SpeedInsights />}
+      </body>
+    </html>
+  );
+};
+
+export default RootLayout;
+
+const PageContent = ({
+  innerChildren,
+  socials,
+}: {
+  innerChildren: React.ReactNode;
+  socials: Social[] | null;
+}) => {
+  return (
+    <>
+      <div className="pb-8">{innerChildren}</div>
+      <Footer
+        topSlot={<TechUsedSectionNew techUsed={usedTechnologies} />}
+        innerSlot={<QuadSection />}
+        socials={socials}
+      />
+    </>
+  );
+};
 
 export const metadata: Metadata = {
   title: {
@@ -96,41 +152,3 @@ export const metadata: Metadata = {
     url: "https://jereko.dev",
   },
 };
-
-const RootLayout = async ({ children }: { children: React.ReactNode }) => {
-  const cookieJar = cookies();
-  const cookieJarTheme = cookieJar.get("theme");
-
-  const socials = await getByPlatform("twitter", "github", "linkedin");
-
-  return (
-    <html
-      lang="en"
-      className={cookieJarTheme ? cookieJarTheme.value : ""}
-      suppressHydrationWarning
-    >
-      <head>
-        <meta name="theme-color" content="#000" />
-      </head>
-      <body
-        className={`font-sans ${GeistSans.variable} ${GeistMono.variable}`}
-        suppressHydrationWarning
-      >
-        <NextThemeWrapper>
-          <Navbar socials={socials} />
-          <CommandMenuProvider>
-            <div className="pb-8">{children}</div>
-            <Footer
-              topSlot={<TechUsedSectionNew techUsed={usedTechnologies} />}
-              innerSlot={<QuadSection />}
-              socials={socials}
-            />
-          </CommandMenuProvider>
-        </NextThemeWrapper>
-        {env.NODE_ENV !== "development" && <SpeedInsights />}
-      </body>
-    </html>
-  );
-};
-
-export default RootLayout;
