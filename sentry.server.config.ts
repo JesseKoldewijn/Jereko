@@ -2,7 +2,7 @@
 // The config you add here will be used whenever the server handles a request.
 // https://docs.sentry.io/platforms/javascript/guides/nextjs/
 import * as Sentry from "@sentry/nextjs";
-import { ProfilingIntegration } from "@sentry/profiling-node";
+import { nodeProfilingIntegration } from "@sentry/profiling-node";
 
 if (process.env.NODE_ENV !== "development") {
   Sentry.init({
@@ -20,7 +20,7 @@ if (process.env.NODE_ENV !== "development") {
     // This is an optional setting that allows you to sample traces by a given percentage.
     integrations: [
       // Add profiling integration to list of integrations
-      new ProfilingIntegration(),
+      nodeProfilingIntegration(),
     ],
   });
 }
