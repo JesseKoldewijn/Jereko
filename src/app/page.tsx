@@ -36,8 +36,6 @@ const HeroSection = dynamic(
 
 export const revalidate: Revalidate = 172800000; // 2 days in ms
 
-export const experimental_ppr = true;
-
 export const metadata: Metadata = {
   title: "Jereko - My personal website | Jesse Koldewijn",
   description:
