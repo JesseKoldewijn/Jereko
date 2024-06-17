@@ -40,6 +40,7 @@
     "next": "15.0.0-rc.0",
     "next-themes": "^0.3.0",
     "node-html-parser": "^6.1.13",
+    "pino": "^9.2.0",
     "platformicons": "^5.10.9",
     "react": "19.0.0-beta-26f2496093-20240514",
     "react-dom": "19.0.0-beta-26f2496093-20240514",
