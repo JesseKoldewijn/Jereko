@@ -7,9 +7,9 @@ export const env = createEnv({
    * Will throw if you access these variables on the client.
    */
   server: {
-    WP_API_URL: z.string().url(),
-    WP_API_USER: z.string(),
-    WP_API_KEY: z.string(),
+    NEO4J_URI: z.string().url(),
+    NEO4J_USER: z.string(),
+    NEO4J_PASSWORD: z.string(),
     POSTGRES_URL: z.string().url(),
     VERCEL_URL: z.string().optional(),
     NODE_ENV: z.string().optional(),
@@ -30,9 +30,9 @@ export const env = createEnv({
    * ---
    */
   runtimeEnv: {
-    WP_API_URL: process.env.WP_API_URL,
-    WP_API_USER: process.env.WP_API_USER,
-    WP_API_KEY: process.env.WP_API_KEY,
+    NEO4J_URI: process.env.NEO4J_URI,
+    NEO4J_USER: process.env.NEO4J_USER,
+    NEO4J_PASSWORD: process.env.NEO4J_PASSWORD,
     POSTGRES_URL: process.env.POSTGRES_URL,
     VERCEL_URL: process.env.VERCEL_URL,
     NODE_ENV: process.env.NODE_ENV,

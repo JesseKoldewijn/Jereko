@@ -1,6 +1,5 @@
 import { ImageResponse } from "next/og";
 
-import { getPostBySlug } from "@/server/handlers/post/getBySlug";
 import { base } from "@/utils/hostname";
 
 import { type BlogPageArgs } from "./page";
@@ -20,8 +19,11 @@ export const contentType = "image/png";
 export const revalidate = 3600; // revalidate at most every hour
 
 // Image generation
-export default async function Image({ params: { slug } }: BlogPageArgs) {
-  const post = await getPostBySlug(Array.isArray(slug) ? slug : Array(slug));
+export default async function Image({ params: { slug: _slug } }: BlogPageArgs) {
+  // const post = await getPostBySlug(Array.isArray(slug) ? slug : Array(slug));
+  const post = {
+    prettyTitle: "Blog",
+  };
 
   const title = post?.prettyTitle ?? "Blog";
 

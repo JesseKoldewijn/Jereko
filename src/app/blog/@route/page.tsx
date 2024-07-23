@@ -3,9 +3,8 @@ import type { Metadata } from "next";
 import type { Revalidate } from "next/dist/server/lib/revalidate";
 import dynamic from "next/dynamic";
 
-import { RefreshingList } from "@/components/listers/refreshing/Root";
+import BlogLister from "@/components/listers/BlogLister";
 import Avatar from "@/images/avatar.webp";
-import { getAllWpPosts } from "@/server/actions/wp-fetch";
 
 const HeroSection = dynamic(
   () => import("@/components/layout/sections/HeroSection"),
@@ -40,15 +39,7 @@ const BlogPage = async () => {
         }}
       />
       <section className="mx-auto flex w-full max-w-lg flex-col items-center text-center">
-        <RefreshingList
-          actionFunction={getAllWpPosts}
-          listerItemName="blog"
-          queryKey={["blog"]}
-          emptyListMessage="No blog posts found."
-          className="flex flex-col gap-4 px-4"
-          showRefrashedAt
-          ssr
-        />
+        <BlogLister />
       </section>
     </>
   );
