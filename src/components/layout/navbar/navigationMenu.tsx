@@ -79,11 +79,11 @@ export const listedEntry = {
       href: "/experience",
       description: "All my current and past work and educational experience.",
     },
-    {
-      title: "Blog",
-      href: "/blog",
-      description: "All my blog posts, ranging from tech to personal topics.",
-    },
+    // {
+    //   title: "Blog",
+    //   href: "/blog",
+    //   description: "All my blog posts, ranging from tech to personal topics.",
+    // },
   ],
 };
 
