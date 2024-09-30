@@ -16,7 +16,7 @@ const config = {
   experimental: {
     reactCompiler: true,
   },
-  transpilePackages: ["react-icons"],
+  transpilePackages: ["react-icons", "ckeditor5", "@ckeditor/ckeditor5-react"],
 };
 
 const withBundleAnalyzer = BundleAnalyzer({

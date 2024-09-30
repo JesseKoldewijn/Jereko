@@ -7,12 +7,9 @@ export const env = createEnv({
    * Will throw if you access these variables on the client.
    */
   server: {
-    NEO4J_URI: z.string().url(),
-    NEO4J_USER: z.string(),
-    NEO4J_PASSWORD: z.string(),
     POSTGRES_URL: z.string().url(),
     VERCEL_URL: z.string().optional(),
-    NODE_ENV: z.string().optional(),
+    NODE_ENV: z.enum(["development", "production", "test"]),
   },
   /*
    * Environment variables available on the client (and server).
@@ -29,14 +26,9 @@ export const env = createEnv({
    * 💡 You'll get type errors if not all variables from `server` & `client` are included here.
    * ---
    */
-  runtimeEnv: {
-    NEO4J_URI: process.env.NEO4J_URI,
-    NEO4J_USER: process.env.NEO4J_USER,
-    NEO4J_PASSWORD: process.env.NEO4J_PASSWORD,
-    POSTGRES_URL: process.env.POSTGRES_URL,
-    VERCEL_URL: process.env.VERCEL_URL,
-    NODE_ENV: process.env.NODE_ENV,
-    NEXT_PUBLIC_NODE_ENV: process.env.NODE_ENV,
+  // runtimeEnv: process.env,
+  experimental__runtimeEnv: {
+    NEXT_PUBLIC_NODE_ENV: process.env.NEXT_PUBLIC_NODE_ENV,
   },
   skipValidation: process.env.SKIP_ENV_VALIDATION !== undefined,
 });
