@@ -42,5 +42,5 @@ Give a ⭐️ if this project helped you!
 
 ## 📝 License
 
-Copyright © 2023 [Jesse Koldewijn](https://github.com/JesseKoldewijn).<br />
+Copyright © 2023-2024 [Jesse Koldewijn](https://github.com/JesseKoldewijn).<br />
 This project is [MIT](https://github.com/JesseKoldewijn/Jereko/blob/main/LICENCE) licensed.
