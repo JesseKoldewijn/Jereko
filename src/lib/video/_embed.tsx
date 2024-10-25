@@ -4,13 +4,17 @@ import { useEffect } from "react";
 
 import { Skeleton } from "@/components/ui/skeleton";
 
-interface EmbedProps {
+import { cn } from "../utils";
+
+interface EmbedProps extends React.HTMLAttributes<HTMLDivElement> {
   srcUrl: string;
   youtubeVideoID: string;
   playerID: string;
 }
 
-const Embed = ({ playerID, youtubeVideoID, srcUrl }: EmbedProps) => {
+const Embed = ({ playerID, youtubeVideoID, srcUrl, ...rest }: EmbedProps) => {
+  const { className, ...props } = rest;
+
   const startShowing = () => {
     const skeleton = document.getElementById(playerID + "-skeleton");
 
@@ -36,26 +40,26 @@ const Embed = ({ playerID, youtubeVideoID, srcUrl }: EmbedProps) => {
   }, [playerID]);
 
   return (
-    <>
+    <div className={cn("relative flex flex-col", className)} {...props}>
       <Skeleton
         id={playerID + "-skeleton"}
-        className="bg-neutral-322 absolute mx-auto my-auto h-full max-h-[182px] w-full max-w-[322px] dark:bg-neutral-700"
+        className="bg-neutral-322 absolute mx-auto my-auto h-full max-h-[182px] w-full dark:bg-neutral-700"
       />
       <div
         id={playerID}
-        className="-z-50 mx-auto my-auto h-auto max-h-[182px] min-h-[182px] w-full max-w-[322px]"
+        className="-z-50 mx-auto my-auto h-auto max-h-[182px] min-h-[182px] w-full"
         style={{ opacity: 0 }}
         data-elem-type="player-loader"
       >
         <embed
           key={youtubeVideoID}
           src={srcUrl}
-          className="mx-auto my-auto h-full max-h-[182px] min-h-[182px] w-full max-w-[322px]"
+          className="mx-auto my-auto h-full max-h-[182px] min-h-[182px] w-full"
           width={322}
           height={182}
         />
       </div>
-    </>
+    </div>
   );
 };
 

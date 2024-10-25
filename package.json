@@ -41,13 +41,13 @@
     "next": "15.0.2-canary.6",
     "next-themes": "^0.3.0",
     "node-html-parser": "^6.1.13",
+    "open-graph-scraper": "^6.8.2",
     "pino": "^9.5.0",
     "platformicons": "^7.0.1",
     "react": "19.0.0-rc-1631855f-20241023",
     "react-dom": "19.0.0-rc-1631855f-20241023",
     "react-icons": "^5.3.0",
     "server-only": "^0.0.1",
-    "sharp": "^0.33.5",
     "zod": "^3.23.8"
   },
   "devDependencies": {
@@ -75,6 +75,7 @@
     "postcss-preset-env": "^10.0.8",
     "prettier": "^3.3.3",
     "prettier-plugin-tailwindcss": "^0.6.8",
+    "sharp": "^0.33.5",
     "tailwind-config-viewer": "^2.0.4",
     "tailwind-merge": "^2.5.4",
     "tailwindcss": "^3.4.14",

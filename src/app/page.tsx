@@ -67,9 +67,7 @@ const Home = async () => {
         <p className="mt-4 px-2 text-neutral-600 dark:text-neutral-200">
           Down below is the latest event I&apos;ve attended
         </p>
-        <Suspense>
-          <LatestAttendedEventLazy />
-        </Suspense>
+        <LatestAttendedEventLazy />
       </section>
     </>
   );

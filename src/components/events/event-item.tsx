@@ -1,4 +1,5 @@
 import { env } from "@/env";
+import OpenGraphPreview from "@/lib/og/preview";
 import { YoutubePlayer } from "@/lib/video/player";
 import { type Event } from "@/server/db/schemas/events";
 
@@ -57,7 +58,7 @@ const EventItem = ({ title, event, isSkeleton }: EventItemProps) => {
       : null;
 
   return (
-    <Card className="min-h-[18rem] bg-neutral-100 dark:bg-neutral-900">
+    <Card className="flex min-h-[18rem] flex-col items-center justify-center bg-neutral-100 dark:bg-neutral-900">
       {title ? (
         <>
           <CardTitle className="pt-4">{title}</CardTitle>
@@ -72,7 +73,9 @@ const EventItem = ({ title, event, isSkeleton }: EventItemProps) => {
       <CardContent className="flex flex-1 flex-col">
         {event.url_type == "video" && event.url ? (
           <YoutubePlayer url={event.url} origin={origin} />
-        ) : null}
+        ) : (
+          <OpenGraphPreview event={event} />
+        )}
       </CardContent>
     </Card>
   );
