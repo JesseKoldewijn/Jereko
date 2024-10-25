@@ -6,7 +6,6 @@ import { LuPlay } from "react-icons/lu";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 
-import { Skeleton } from "@/components/ui/skeleton";
 import PlaceholderImage from "@/images/player-placeholder.webp";
 
 export const YoutubePlayer = ({
@@ -53,15 +52,7 @@ export const YoutubePlayer = ({
         </div>
       );
 
-    const Embed = dynamic(() => import("./_embed"), {
-      ssr: false,
-      loading: () => (
-        <Skeleton
-          id="loading-skeleton"
-          className="bg-neutral-322 absolute mx-auto my-auto h-full max-h-[182px] w-full max-w-[322px] dark:bg-neutral-700"
-        />
-      ),
-    });
+    const Embed = dynamic(() => import("./_embed"));
 
     return (
       <Embed

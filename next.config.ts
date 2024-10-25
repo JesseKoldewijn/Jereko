@@ -1,20 +1,37 @@
 import { withSentryConfig } from "@sentry/nextjs";
+import type { NextConfig } from "next";
 
 import BundleAnalyzer from "@next/bundle-analyzer";
 
-import "./src/env.mjs";
-import "./src/utils/react19-log-drop.mjs";
+import "./src/env";
+import "./src/utils/react19-log-drop";
 
-/** @type {import("next").NextConfig} */
-const config = {
+type CacheLife = {
+  [profile: string]: {
+    stale?: number;
+    revalidate?: number;
+    expire?: number;
+  };
+};
+
+const cacheLife: CacheLife = {
+  default: {
+    stale: 60,
+    revalidate: 60,
+    expire: 120,
+  },
+};
+
+const config: NextConfig = {
   reactStrictMode: true,
   images: {
     remotePatterns: [{ hostname: "img.youtube.com", protocol: "https" }],
   },
   compress: true,
-  optimizeFonts: true,
+  reactProductionProfiling: false,
   experimental: {
     reactCompiler: true,
+    cacheLife,
   },
   transpilePackages: ["react-icons", "ckeditor5", "@ckeditor/ckeditor5-react"],
 };

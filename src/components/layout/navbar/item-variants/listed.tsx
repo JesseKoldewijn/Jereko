@@ -23,7 +23,7 @@ const ListedNavSection = ({ triggerTitle, links }: ListItemProps) => {
     <NavigationMenuItem>
       <NavigationMenuTrigger>{triggerTitle}</NavigationMenuTrigger>
       <NavigationMenuContent>
-        <ul className="grid w-[400px] gap-3 bg-neutral-100 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] dark:bg-neutral-900">
+        <ul className="grid w-[400px] gap-3 bg-neutral-100 p-4 dark:bg-neutral-900 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
           {links.map((link, idx) => (
             <ListItem
               key={idx}

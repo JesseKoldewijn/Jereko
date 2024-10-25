@@ -10,7 +10,7 @@ interface EmbedProps {
   playerID: string;
 }
 
-const _Embed = ({ playerID, youtubeVideoID, srcUrl }: EmbedProps) => {
+const Embed = ({ playerID, youtubeVideoID, srcUrl }: EmbedProps) => {
   const startShowing = () => {
     const skeleton = document.getElementById(playerID + "-skeleton");
 
@@ -59,4 +59,4 @@ const _Embed = ({ playerID, youtubeVideoID, srcUrl }: EmbedProps) => {
   );
 };
 
-export default _Embed;
+export default Embed;

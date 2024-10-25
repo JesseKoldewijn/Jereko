@@ -7,57 +7,38 @@ import dynamic from "next/dynamic";
 import { cookies } from "next/headers";
 
 import { usedTechnologies } from "@/config/tech";
-import { env } from "@/env.mjs";
+import { env } from "@/env";
 import { type Social } from "@/server/db/schemas/socials";
 import { getByPlatform } from "@/server/handlers/socials/getByPlatform";
 import "@/styles/globals.css";
 import { base } from "@/utils/hostname";
 
-import "../utils/react19-log-drop.mjs";
+import "../utils/react19-log-drop";
 
-const Navbar = dynamic(() => import("@/components/layout/navbar/navbar"), {
-  ssr: true,
-});
+const Navbar = dynamic(() => import("@/components/layout/navbar/navbar"));
 
 const NextThemeWrapper = dynamic(
   () => import("@/components/next-theme/provider"),
-  {
-    ssr: true,
-  },
 );
 
-const Footer = dynamic(() => import("@/components/layout/footer"), {
-  ssr: false,
-});
+const Footer = dynamic(() => import("@/components/layout/footer"));
 
 const QuadSection = dynamic(
   () => import("@/components/layout/footer/quad-section"),
-  {
-    ssr: false,
-  },
 );
 
 const TechUsedSectionNew = dynamic(
   () => import("@/components/layout/footer/tech-used"),
-  {
-    ssr: false,
-  },
 );
 
 const RootLayout = async ({ children }: { children: React.ReactNode }) => {
-  const cookieJar = cookies();
+  const cookieJar = await cookies();
   const cookieJarTheme = cookieJar.get("theme");
 
   const socials = await getByPlatform("twitter", "github", "linkedin");
 
   const CommandMenuProvider = dynamic(
     () => import("@/components/ui/command-menu"),
-    {
-      ssr: false,
-      loading: () => {
-        return <PageContent innerChildren={children} socials={socials} />;
-      },
-    },
   );
 
   return (

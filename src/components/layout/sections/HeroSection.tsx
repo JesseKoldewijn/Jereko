@@ -2,27 +2,15 @@ import dynamic from "next/dynamic";
 import { type StaticImageData } from "next/image";
 
 import AnimatedGradientText from "@/components/animated/animated-grad-text";
-import { Skeleton } from "@/components/ui/skeleton";
 import { cn } from "@/lib/utils";
 
 import HeroSectionButtons from "./_HeroSectionButtons";
 
-const TextGen = dynamic(
-  () => import("@/components/animated/text-gen").then((mod) => mod.TextGen),
-  {
-    ssr: false,
-    loading: () => <div className="w-full py-10"></div>,
-  },
+const TextGen = dynamic(() =>
+  import("@/components/animated/text-gen").then((mod) => mod.TextGen),
 );
 
-const HeroSectionImage = dynamic(() => import("./_HeroSectionImage"), {
-  ssr: false,
-  loading: () => (
-    <div className="mx-auto min-h-[340px] min-w-[75%] md:min-h-[380px] md:min-w-[100%]">
-      <Skeleton className="h-full max-h-[90%] w-full rounded-full opacity-5" />
-    </div>
-  ),
-});
+const HeroSectionImage = dynamic(() => import("./_HeroSectionImage"));
 
 export interface HeroSectionProps {
   className?: string;

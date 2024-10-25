@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 
-import type { Revalidate } from "next/dist/server/lib/revalidate";
 import dynamic from "next/dynamic";
 
 import ExperienceLister from "@/components/listers/ExperienceLister";
@@ -13,8 +12,6 @@ const HeroSection = dynamic(
     ssr: true,
   },
 );
-
-export const revalidate: Revalidate = 172800000; // 2 days in ms
 
 export const metadata: Metadata = {
   title: "Experience",

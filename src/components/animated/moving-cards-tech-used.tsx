@@ -139,6 +139,8 @@ export const InfiniteMovingCardsTechUsed = ({
                   "relative h-[60px] w-auto flex-shrink-0 overflow-hidden object-cover object-center md:h-[80px] md:min-h-[80px] md:w-auto",
                 )}
                 src={item.icon}
+                width={200}
+                height={200}
                 loading="lazy"
               />
             </li>

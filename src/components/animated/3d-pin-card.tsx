@@ -159,9 +159,9 @@ export const PinPerspective = ({
 
         <>
           <m.div className="absolute bottom-1/2 right-1/2 h-20 w-px translate-y-[14px] bg-gradient-to-b from-transparent to-purple-500 blur-[2px] group-hover/pin:h-40" />
-          <m.div className="absolute bottom-1/2 right-1/2 h-20 w-px translate-y-[14px] bg-gradient-to-b from-transparent to-purple-500 group-hover/pin:h-40 " />
+          <m.div className="absolute bottom-1/2 right-1/2 h-20 w-px translate-y-[14px] bg-gradient-to-b from-transparent to-purple-500 group-hover/pin:h-40" />
           <m.div className="absolute bottom-1/2 right-1/2 z-40 h-[4px] w-[4px] translate-x-[1.5px] translate-y-[14px] rounded-full bg-purple-600 blur-[3px]" />
-          <m.div className="absolute bottom-1/2 right-1/2 z-40 h-[2px] w-[2px] translate-x-[0.5px] translate-y-[14px] rounded-full bg-purple-300 " />
+          <m.div className="absolute bottom-1/2 right-1/2 z-40 h-[2px] w-[2px] translate-x-[0.5px] translate-y-[14px] rounded-full bg-purple-300" />
         </>
       </div>
     </m.div>

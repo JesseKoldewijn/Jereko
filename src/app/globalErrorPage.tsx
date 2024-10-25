@@ -7,7 +7,7 @@ import { useEffect } from "react";
 
 import NextError from "next/error";
 
-import { env } from "@/env.mjs";
+import { env } from "@/env";
 
 const GlobalError = ({
   error,

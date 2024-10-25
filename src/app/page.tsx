@@ -1,30 +1,13 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 
-import type { Revalidate } from "next/dist/server/lib/revalidate";
 import dynamic from "next/dynamic";
 
-import EventItem from "@/components/events/event-item";
 import IntroSection from "@/components/layout/sections/IntroSection";
 import Avatar from "@/images/avatar.webp";
 
 const LatestAttendedEventLazy = dynamic(
   () => import("@/components/events/last-attended"),
-  {
-    ssr: false,
-    loading: () => (
-      <>
-        <div className="mx-auto mt-8 w-full max-w-md px-4 md:px-0">
-          <section
-            id="last-event"
-            className="my-4 flex flex-col gap-4 text-center"
-          >
-            <EventItem title="Latest Attended Event" isSkeleton />
-          </section>
-        </div>
-      </>
-    ),
-  },
 );
 
 const HeroSection = dynamic(
@@ -33,8 +16,6 @@ const HeroSection = dynamic(
     ssr: true,
   },
 );
-
-export const revalidate: Revalidate = 172800000; // 2 days in ms
 
 export const metadata: Metadata = {
   title: "Jereko - My personal website | Jesse Koldewijn",

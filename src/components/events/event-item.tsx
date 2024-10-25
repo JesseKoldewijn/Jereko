@@ -1,4 +1,4 @@
-import { env } from "@/env.mjs";
+import { env } from "@/env";
 import { YoutubePlayer } from "@/lib/video/player";
 import { type Event } from "@/server/db/schemas/events";
 
