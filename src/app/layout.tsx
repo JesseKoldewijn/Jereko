@@ -77,7 +77,7 @@ const PageContent = ({
 }) => {
   return (
     <>
-      <div className="pb-8">{innerChildren}</div>
+      <div className="min-h-[90svh] pb-8">{innerChildren}</div>
       <Footer
         topSlot={<TechUsedSectionNew techUsed={usedTechnologies} />}
         innerSlot={<QuadSection />}
