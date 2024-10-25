@@ -1,18 +1,9 @@
 import type { Metadata } from "next";
-import { Suspense } from "react";
-
-import dynamic from "next/dynamic";
 
 import LatestAttendedEventLazy from "@/components/events/last-attended";
+import HeroSection from "@/components/layout/sections/HeroSection";
 import IntroSection from "@/components/layout/sections/IntroSection";
 import Avatar from "@/images/avatar.webp";
-
-const HeroSection = dynamic(
-  () => import("@/components/layout/sections/HeroSection"),
-  {
-    ssr: true,
-  },
-);
 
 export const metadata: Metadata = {
   title: "Jereko - My personal website | Jesse Koldewijn",
@@ -53,9 +44,7 @@ const Home = async () => {
         <h2 className="text-md font-semibold md:text-xl">
           A short introduction about me
         </h2>
-        <Suspense>
-          <IntroSection />
-        </Suspense>
+        <IntroSection />
       </section>
       <section className="mx-auto flex w-full max-w-lg flex-col items-center text-center">
         <h3 className="text-md px-2 font-semibold md:text-xl">

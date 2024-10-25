@@ -2,13 +2,10 @@ import dynamic from "next/dynamic";
 import { type StaticImageData } from "next/image";
 
 import AnimatedGradientText from "@/components/animated/animated-grad-text";
+import { TextGen } from "@/components/animated/text-gen";
 import { cn } from "@/lib/utils";
 
 import HeroSectionButtons from "./_HeroSectionButtons";
-
-const TextGen = dynamic(() =>
-  import("@/components/animated/text-gen").then((mod) => mod.TextGen),
-);
 
 const HeroSectionImage = dynamic(() => import("./_HeroSectionImage"));
 
