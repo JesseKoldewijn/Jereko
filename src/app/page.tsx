@@ -3,12 +3,9 @@ import { Suspense } from "react";
 
 import dynamic from "next/dynamic";
 
+import LatestAttendedEventLazy from "@/components/events/last-attended";
 import IntroSection from "@/components/layout/sections/IntroSection";
 import Avatar from "@/images/avatar.webp";
-
-const LatestAttendedEventLazy = dynamic(
-  () => import("@/components/events/last-attended"),
-);
 
 const HeroSection = dynamic(
   () => import("@/components/layout/sections/HeroSection"),
