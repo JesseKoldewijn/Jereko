@@ -4,7 +4,7 @@ export const GET = async (req: Request) => {
   const reqUrl = new URL(decodeURIComponent(req.url));
   const ogUrl = reqUrl.searchParams.get("url");
 
-  if (!ogUrl || URL.canParse(ogUrl)) {
+  if (!ogUrl || !URL.canParse(ogUrl)) {
     return new Response("No valid url provided", {
       status: 400,
     });

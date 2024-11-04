@@ -11,18 +11,27 @@ type OpenGraphResult = Awaited<ReturnType<typeof openGraph>> | null;
 
 const getOg = async (url: string) => {
   const headersList = await headers();
-  const requestUrl = headersList.get("x-url");
+  const requestHost = headersList.get("x-forwarded-host");
+  const requestProto = headersList.get("x-forwarded-proto");
+  const requestUrl = `${requestProto}://${requestHost}`;
 
   if (!requestUrl) {
     return null;
   }
 
   const baseUrl = new URL(requestUrl).origin;
+
   const ogApiUrl = new URL(`/api/open-graph?url=${url}`, baseUrl);
 
-  return (await fetch(ogApiUrl.href)
-    .then((res) => res.json())
-    .catch(() => null)) as OpenGraphResult;
+  console.log("Open Graph API URL:", ogApiUrl.href);
+
+  const res = await fetch(ogApiUrl.href);
+
+  if (!res.ok) {
+    return null;
+  }
+
+  return (await res.json()) as OpenGraphResult;
 };
 
 export const OpenGraphPreview = async ({
@@ -36,6 +45,8 @@ export const OpenGraphPreview = async ({
   HTMLDivElement
 >) => {
   const data = event.url ? await getOg(event.url) : null;
+
+  console.log("Open Graph data:", data);
 
   if (!data) {
     return null;
