@@ -1,14 +1,22 @@
 // This file configures the initialization of Sentry on the client.
 // The config you add here will be used whenever a users loads a page in their browser.
 // https://docs.sentry.io/platforms/javascript/guides/nextjs/
-import { init, replayIntegration } from "@sentry/nextjs";
+import {
+  browserProfilingIntegration,
+  browserTracingIntegration,
+  init,
+  replayIntegration,
+} from "@sentry/nextjs";
 
 if (process.env.NODE_ENV !== "development") {
   init({
-    dsn: "https://6ba8f2825c3c927c7d25f02a4bf3dd36@o4506540526731264.ingest.sentry.io/4506540535250944",
+    dsn: process.env.NEXT_PUBLIC_SENTRY_DSN,
 
     // Adjust this value in production, or use tracesSampler for greater control
     tracesSampleRate: 1.0,
+
+    // Set `tracePropagationTargets` to control for which URLs trace propagation should be enabled
+    tracePropagationTargets: ["localhost", /^https:\/\/jereko\.dev/],
 
     // Setting this option to true will print useful information to the console while you're setting up Sentry.
     debug: false,
@@ -30,6 +38,14 @@ if (process.env.NODE_ENV !== "development") {
         maskAllText: false,
         blockAllMedia: true,
       }),
+      browserTracingIntegration(),
+      browserProfilingIntegration(),
     ],
+
+    // This function will be called for every sampled span
+    // to determine if it should be profiled
+    profilesSampler: (_samplingContext) => {
+      return 0.25;
+    },
   });
 }
