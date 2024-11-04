@@ -1,5 +1,5 @@
 import { env } from "@/env";
-import OpenGraphPreview from "@/lib/og/preview";
+import { OpenGraphPreview } from "@/lib/og/preview";
 import { YoutubePlayer } from "@/lib/video/player";
 import { type Event } from "@/server/db/schemas/events";
 

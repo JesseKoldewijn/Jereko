@@ -8,16 +8,17 @@ const validateInt = (value: string | null, defaultValue: number): number => {
 };
 
 export const GET = async (req: Request) => {
-  const demoUrl =
-    "http://localhost:3000/_next/image?url=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Fv1724341975%2Ffront%2Fnext-conf-2024%2Fog-card.png&w=750&q=100";
-
   const reqUrl = new URL(decodeURIComponent(req.url));
   const imageSrc = reqUrl.searchParams.get("url");
   const width = validateInt(reqUrl.searchParams.get("width"), 750);
   const height = validateInt(reqUrl.searchParams.get("height"), 100);
   const quality = validateInt(reqUrl.searchParams.get("quality"), 100);
 
-  const response = await fetch(imageSrc ?? demoUrl);
+  if (!imageSrc) {
+    return new Response("Missing url parameter", { status: 400 });
+  }
+
+  const response = await fetch(imageSrc);
 
   if (!response.ok) {
     const responseError = await response.text();

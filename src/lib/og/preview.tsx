@@ -1,5 +1,6 @@
-import openGraph from "open-graph-scraper";
+import type openGraph from "open-graph-scraper";
 
+import { headers } from "next/headers";
 import Image from "next/image";
 
 import type { Event } from "@/server/db/schemas/events";
@@ -8,7 +9,23 @@ import { cn } from "../utils";
 
 type OpenGraphResult = Awaited<ReturnType<typeof openGraph>> | null;
 
-const OpenGraphPreview = async ({
+const getOg = async (url: string) => {
+  const headersList = await headers();
+  const requestUrl = headersList.get("x-url");
+
+  if (!requestUrl) {
+    return null;
+  }
+
+  const baseUrl = new URL(requestUrl).origin;
+  const ogApiUrl = new URL(`/api/open-graph?url=${url}`, baseUrl);
+
+  return (await fetch(ogApiUrl.href)
+    .then((res) => res.json())
+    .catch(() => null)) as OpenGraphResult;
+};
+
+export const OpenGraphPreview = async ({
   event,
   className,
   ...rest
@@ -18,7 +35,7 @@ const OpenGraphPreview = async ({
   React.HTMLAttributes<HTMLDivElement>,
   HTMLDivElement
 >) => {
-  const data = event.url ? await openGraph({ url: event.url }) : null;
+  const data = event.url ? await getOg(event.url) : null;
 
   if (!data) {
     return null;
@@ -65,5 +82,3 @@ const OpenGraphPreviewComponent = ({ data }: { data: OpenGraphResult }) => {
     />
   );
 };
-
-export default OpenGraphPreview;
