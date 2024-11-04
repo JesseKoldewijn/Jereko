@@ -71,7 +71,6 @@ const EventItem = ({ title, event, isSkeleton }: EventItemProps) => {
         <CardTitle className="pt-4">{event.name}</CardTitle>
       )}
       <CardContent className="flex flex-1 flex-col">
-        {JSON.stringify(event.url)}
         {event.url_type === "video" && event.url ? (
           <YoutubePlayer url={event.url} origin={origin} />
         ) : (
