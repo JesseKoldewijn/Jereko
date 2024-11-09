@@ -34,6 +34,19 @@ const config: NextConfig = {
     cacheLife,
   },
   transpilePackages: ["react-icons", "ckeditor5", "@ckeditor/ckeditor5-react"],
+  headers: async () => {
+    return [
+      {
+        source: "/:path",
+        headers: [
+          {
+            key: "Document-Policy",
+            value: "js-profiling",
+          },
+        ],
+      },
+    ];
+  },
 };
 
 const withBundleAnalyzer = BundleAnalyzer({
