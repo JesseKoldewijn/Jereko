@@ -1,32 +1,34 @@
 import {
-  boolean,
-  date,
-  pgTable,
+  bigint,
+  mysqlTable,
   text,
+  timestamp,
   uniqueIndex,
-  uuid,
-  varchar,
-} from "drizzle-orm/pg-core";
+} from "drizzle-orm/mysql-core";
 
-export const Projects = pgTable(
+export const projects = mysqlTable(
   "projects",
   {
-    id: uuid("id").primaryKey().defaultRandom(),
-    title: text("name"),
+    id: bigint("id", {
+      mode: "number",
+    })
+      .primaryKey()
+      .autoincrement(),
+    title: text("title"),
     sub_title: text("sub_title"),
-    description: varchar("description"),
+    description: text("description"),
     link: text("link"),
     tags: text("tags"),
-    draft: boolean("draft").default(true),
-    created_at: date("created_at").defaultNow(),
-    updated_at: date("updated_at").defaultNow(),
+    draft: text("draft"),
+    created_at: timestamp("created_at").defaultNow(),
+    updated_at: timestamp("updated_at").defaultNow(),
   },
   (x) => {
     return {
-      projIdx: uniqueIndex("proj_idx").on(x.title),
+      titleIdx: uniqueIndex("title_idx").on(x.title),
     };
   },
 );
 
-export type Project = typeof Projects.$inferSelect;
-export type Projects = (typeof Projects.$inferSelect)[];
+export type Project = typeof projects.$inferSelect;
+export type Projects = (typeof projects.$inferSelect)[];

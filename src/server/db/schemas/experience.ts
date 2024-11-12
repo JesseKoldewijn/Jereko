@@ -1,27 +1,30 @@
 import {
-  date,
-  pgTable,
+  bigint,
+  mysqlTable,
   text,
+  timestamp,
   uniqueIndex,
-  uuid,
-  varchar,
-} from "drizzle-orm/pg-core";
+} from "drizzle-orm/mysql-core";
 
-export const Experiences = pgTable(
+export const experiences = mysqlTable(
   "experiences",
   {
-    id: uuid("id").primaryKey().defaultRandom(),
+    id: bigint("id", {
+      mode: "number",
+    })
+      .primaryKey()
+      .autoincrement(),
     title: text("job_title"),
     company_name: text("company_name"),
     location: text("location"),
-    description: varchar("description"),
+    description: text("description"),
     skills: text("skills"),
     start_year: text("start_year"),
     start_month: text("start_month"),
     end_year: text("end_year"),
     end_month: text("end_month"),
-    created_at: date("created_at").defaultNow(),
-    updated_at: date("updated_at").defaultNow(),
+    created_at: timestamp("created_at").defaultNow(),
+    updated_at: timestamp("updated_at").defaultNow(),
   },
   (x) => {
     return {
@@ -30,5 +33,5 @@ export const Experiences = pgTable(
   },
 );
 
-export type Experience = typeof Experiences.$inferSelect;
-export type Experiences = (typeof Experiences.$inferSelect)[];
+export type Experience = typeof experiences.$inferSelect;
+export type Experiences = (typeof experiences.$inferSelect)[];

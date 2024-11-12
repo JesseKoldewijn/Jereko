@@ -7,6 +7,10 @@ export const env = createEnv({
    * Will throw if you access these variables on the client.
    */
   server: {
+    MYSQL_DB_HOST: z.string().min(1),
+    MYSQL_DB_USER: z.string().min(1),
+    MYSQL_DB_PASSWORD: z.string().min(1),
+    MYSQL_DB_DATABASE: z.string().min(1),
     POSTGRES_URL: z.string().url(),
     VERCEL_URL: z.string().optional(),
     NODE_ENV: z.enum(["development", "production", "test"]),

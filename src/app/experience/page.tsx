@@ -1,17 +1,8 @@
 import type { Metadata } from "next";
-import { Suspense } from "react";
 
-import dynamic from "next/dynamic";
-
+import HeroSection from "@/components/layout/sections/HeroSection";
 import ExperienceLister from "@/components/listers/ExperienceLister";
 import BannerProjects from "@/images/banner-programming.webp";
-
-const HeroSection = dynamic(
-  () => import("@/components/layout/sections/HeroSection"),
-  {
-    ssr: true,
-  },
-);
 
 export const metadata: Metadata = {
   title: "Experience",
@@ -22,6 +13,8 @@ export const metadata: Metadata = {
     url: "https://jereko.dev",
   },
 };
+
+export const dynamic = "force-static";
 
 const ExperiencePage = () => {
   return (
@@ -38,9 +31,7 @@ const ExperiencePage = () => {
       />
       <div className="mx-auto mt-8 w-auto max-w-md px-4 md:w-full md:px-0">
         <section>
-          <Suspense>
-            <ExperienceLister />
-          </Suspense>
+          <ExperienceLister />
         </section>
       </div>
     </>

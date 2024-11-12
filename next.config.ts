@@ -4,7 +4,6 @@ import type { NextConfig } from "next";
 import BundleAnalyzer from "@next/bundle-analyzer";
 
 import "./src/env";
-import "./src/utils/react19-log-drop";
 
 type CacheLife = {
   [profile: string]: {
@@ -16,9 +15,9 @@ type CacheLife = {
 
 const cacheLife: CacheLife = {
   default: {
-    stale: 60,
-    revalidate: 60,
-    expire: 120,
+    stale: 60 * 24,
+    revalidate: 60 * 24,
+    expire: 120 * 12,
   },
 };
 
@@ -29,6 +28,7 @@ const config: NextConfig = {
   },
   compress: true,
   reactProductionProfiling: false,
+  poweredByHeader: false,
   experimental: {
     reactCompiler: true,
     cacheLife,
