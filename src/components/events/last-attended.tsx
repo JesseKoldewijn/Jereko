@@ -16,7 +16,11 @@ const LastAttendedEvent = async () => {
             <EventItem title="Latest Attended Event" event={latestEvent} />
           </section>
         </div>
-      ) : null}
+      ) : (
+        <p className="py-4 text-muted-foreground">
+          Nothing here for now, sorry
+        </p>
+      )}
     </>
   );
 };
