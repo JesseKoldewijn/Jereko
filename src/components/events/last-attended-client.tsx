@@ -49,7 +49,7 @@ const LastAttendedEvent = () => {
           </section>
         </div>
       ) : (
-        <p className="py-4 text-muted-foreground">
+        <p className="min-h-[352px] py-8 text-muted-foreground">
           Nothing here for now, sorry
         </p>
       )}

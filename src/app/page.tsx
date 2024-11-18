@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
-import LatestAttendedEventLazy from "@/components/events/last-attended-client";
+import dynamic_import from "next/dynamic";
+
 import HeroSection from "@/components/layout/sections/HeroSection";
-import IntroSection from "@/components/layout/sections/IntroSection";
 import Avatar from "@/images/avatar.webp";
 
 export const metadata: Metadata = {
@@ -15,6 +15,14 @@ export const metadata: Metadata = {
     url: "https://jereko.dev",
   },
 };
+
+const IntroSection = dynamic_import(
+  () => import("@/components/layout/sections/IntroSection"),
+);
+
+const LatestAttendedEvent = dynamic_import(
+  () => import("@/components/events/last-attended-client"),
+);
 
 export const dynamic = "force-static";
 
@@ -54,7 +62,7 @@ const Home = async () => {
         <p className="mt-4 px-2 text-neutral-600 dark:text-neutral-200">
           Down below is the latest event I&apos;ve attended
         </p>
-        <LatestAttendedEventLazy />
+        <LatestAttendedEvent />
       </section>
     </>
   );
