@@ -3,7 +3,6 @@ import type { Metadata } from "next";
 import HeroSection from "@/components/layout/sections/HeroSection";
 import ExperienceLister from "@/components/listers/ExperienceLister";
 import BannerProjects from "@/images/banner-programming.webp";
-import { daysToMs } from "@/utils/datetime";
 
 export const metadata: Metadata = {
   title: "Experience",

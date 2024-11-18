@@ -10,7 +10,7 @@ const ProjectsLister = async () => {
     <div className="flex flex-col gap-4">
       {_projects && _projects.length > 0 ? (
         <>
-          {_projects.flatMap((project) => {
+          {_projects.reverse().flatMap((project) => {
             return (
               <div key={project.id}>
                 <ProjectListerItem project={project} />
