@@ -31,6 +31,12 @@ const config: NextConfig = {
   poweredByHeader: false,
   experimental: {
     reactCompiler: true,
+    optimizePackageImports: [
+      "react",
+      "react-dom",
+      "@sentry/nextjs",
+      "@sentry/profiling-node",
+    ],
   },
   transpilePackages: ["react-icons", "ckeditor5", "@ckeditor/ckeditor5-react"],
 };

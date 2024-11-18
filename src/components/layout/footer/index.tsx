@@ -1,8 +1,11 @@
 "use client";
 
-import { LuArrowUp, LuGithub, LuLinkedin } from "react-icons/lu";
+import { LuArrowUp } from "react-icons/lu";
 
 import Link from "next/link";
+
+import { LuGithub } from "@/icons/lu/Github";
+import { LuLinkedin } from "@/icons/lu/LinkedIn";
 
 import X from "@/components/icons/Twitter-X";
 import { Button } from "@/components/ui/button";

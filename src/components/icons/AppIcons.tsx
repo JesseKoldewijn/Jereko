@@ -1,21 +1,31 @@
 import { type IconType } from "react-icons";
 import {
   LuComputer,
-  LuGithub,
   LuHand,
   LuHeartHandshake,
   LuHome,
-  LuLinkedin,
   LuList,
   LuListChecks,
 } from "react-icons/lu";
+
+import dynamic from "next/dynamic";
 
 import X from "@/components/icons/Twitter-X";
 
 const AppIcons = {
   socials: {
-    github: LuGithub,
-    linkedin: LuLinkedin,
+    github: dynamic(
+      () => import("@/icons/lu/Github").then((mod) => mod.LuGithub) as any,
+      {
+        ssr: true,
+      },
+    ),
+    linkedin: dynamic(
+      () => import("@/icons/lu/LinkedIn").then((mod) => mod.LuLinkedin) as any,
+      {
+        ssr: true,
+      },
+    ),
     twitter: X as IconType,
   },
   internal: {

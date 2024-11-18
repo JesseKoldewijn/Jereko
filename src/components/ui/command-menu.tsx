@@ -1,15 +1,12 @@
 "use client";
 
 import { createContext, useContext, useEffect, useState } from "react";
-import {
-  LuGithub,
-  LuLinkedin,
-  LuList,
-  LuListChecks,
-  LuUser,
-} from "react-icons/lu";
+import { LuList, LuListChecks, LuUser } from "react-icons/lu";
 
 import { useRouter } from "next/navigation";
+
+import { LuGithub } from "@/icons/lu/Github";
+import { LuLinkedin } from "@/icons/lu/LinkedIn";
 
 import X from "@/components/icons/Twitter-X";
 

@@ -1,8 +1,10 @@
 "use client";
 
-import { LuGithub, LuList, LuUser } from "react-icons/lu";
+import { LuList, LuUser } from "react-icons/lu";
 
 import dynamic from "next/dynamic";
+
+import { LuGithub } from "@/icons/lu/Github";
 
 import ListedNavSection from "./item-variants/listed";
 import ShowcaseNavSection from "./item-variants/showcase";
