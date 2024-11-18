@@ -23,8 +23,6 @@ const getOg = async (
 
   const ogApiUrl = new URL(`/api/open-graph?url=${url}`, baseUrl);
 
-  console.log("Open Graph API URL:", ogApiUrl.href);
-
   const res = await fetch(ogApiUrl.href);
 
   if (!res.ok) {
@@ -51,8 +49,6 @@ export const OpenGraphPreview = async ({
   const data = event.url
     ? await getOg(event.url, requestProto, requestHost)
     : null;
-
-  console.log("Open Graph data:", data);
 
   if (!data) {
     return null;

@@ -1,10 +1,24 @@
+import dynamic from "next/dynamic";
+
 import { env } from "@/env";
-import { OpenGraphPreview } from "@/lib/og/preview";
-import { YoutubePlayer } from "@/lib/video/player";
 import { type Event } from "@/server/db/schemas/events";
 
 import { Card, CardContent, CardDescription, CardTitle } from "../ui/card";
 import { Skeleton } from "../ui/skeleton";
+
+const OpenGraphPreview = dynamic(
+  () => import("@/lib/og/preview-client").then((x) => x.OpenGraphPreview),
+  {
+    ssr: true,
+  },
+);
+
+const YoutubePlayer = dynamic(
+  () => import("@/lib/video/player").then((x) => x.YoutubePlayer),
+  {
+    ssr: true,
+  },
+);
 
 type EventItemProps =
   | {

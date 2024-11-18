@@ -23,8 +23,6 @@ const getOg = async (url: string) => {
 
   const ogApiUrl = new URL(`/api/open-graph?url=${url}`, baseUrl);
 
-  console.log("Open Graph API URL:", ogApiUrl.href);
-
   const res = await fetch(ogApiUrl.href);
 
   if (!res.ok) {
