@@ -1,6 +1,8 @@
 import { type Metadata } from "next";
 import { Suspense } from "react";
 
+import { unstable_cacheLife } from "next/cache";
+
 const date = new Date(2021, 6, 1);
 
 const volunteeringSince = () => {
@@ -42,6 +44,9 @@ export const metadata: Metadata = {
 };
 
 const Volunteering = () => {
+  "use cache";
+  unstable_cacheLife("weeks");
+
   return (
     <>
       <section

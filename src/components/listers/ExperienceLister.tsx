@@ -1,3 +1,5 @@
+import { unstable_cache } from "next/cache";
+
 import { db } from "@/server/db/conn";
 import { type Experience, experiences } from "@/server/db/schemas/experience";
 
@@ -8,8 +10,11 @@ const ExperienceLister = async ({
 }: {
   experienceOverride?: Experience[];
 }) => {
-  const experience =
-    experienceOverride ?? (await db.select().from(experiences).execute());
+  const experiencePromise = unstable_cache(async () => {
+    if (experienceOverride) return experienceOverride;
+    return await db.select().from(experiences).execute();
+  });
+  const experience = await experiencePromise();
 
   return (
     <div className="flex flex-col gap-4">

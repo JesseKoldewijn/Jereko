@@ -1,5 +1,7 @@
 import { type Metadata } from "next";
 
+import { unstable_cacheLife } from "next/cache";
+
 import AnimatedGradientText from "@/components/animated/animated-grad-text";
 import GoToHeading from "@/components/page-elements/about-me/go-to-heading";
 
@@ -13,6 +15,9 @@ export const metadata: Metadata = {
 };
 
 const AboutMe = () => {
+  "use cache";
+  unstable_cacheLife("default");
+
   return (
     <>
       <section

@@ -5,21 +5,21 @@ import BundleAnalyzer from "@next/bundle-analyzer";
 
 import "./src/env";
 
-type CacheLife = {
-  [profile: string]: {
-    stale?: number;
-    revalidate?: number;
-    expire?: number;
-  };
-};
+// type CacheLife = {
+//   [profile: string]: {
+//     stale?: number;
+//     revalidate?: number;
+//     expire?: number;
+//   };
+// };
 
-const cacheLife: CacheLife = {
-  default: {
-    stale: 60 * 24,
-    revalidate: 60 * 24,
-    expire: 120 * 12,
-  },
-};
+// const cacheLife: CacheLife = {
+//   default: {
+//     stale: daysToMs(7),
+//     revalidate: daysToMs(14),
+//     expire: daysToMs(30),
+//   },
+// };
 
 const config: NextConfig = {
   reactStrictMode: true,
@@ -31,7 +31,6 @@ const config: NextConfig = {
   poweredByHeader: false,
   experimental: {
     reactCompiler: true,
-    cacheLife,
   },
   transpilePackages: ["react-icons", "ckeditor5", "@ckeditor/ckeditor5-react"],
 };

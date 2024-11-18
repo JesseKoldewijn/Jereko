@@ -2,9 +2,6 @@ import { ImageResponse } from "next/og";
 
 import { base } from "@/utils/hostname";
 
-// Route segment config
-export const runtime = "edge";
-
 // Image metadata
 export const alt = "My personal website - by Jesse Koldewijn";
 export const size = {

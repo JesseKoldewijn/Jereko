@@ -1,5 +1,7 @@
 import { type Metadata } from "next";
 
+import { unstable_cacheLife } from "next/cache";
+
 export const metadata: Metadata = {
   title: "Volunteering",
   description: "A page about my hobbies.",
@@ -11,6 +13,9 @@ export const metadata: Metadata = {
 };
 
 const Hobbies = () => {
+  "use cache";
+  unstable_cacheLife("weeks");
+
   return (
     <>
       <section

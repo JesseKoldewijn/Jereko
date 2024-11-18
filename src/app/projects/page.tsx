@@ -14,9 +14,9 @@ export const metadata: Metadata = {
   },
 };
 
-export const dynamic = "force-static";
+export const revalidate = 604800000;
 
-const ProjectsPage = () => {
+const ProjectsPage = async () => {
   return (
     <>
       <HeroSection
