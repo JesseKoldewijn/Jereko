@@ -37,7 +37,8 @@ const EventItem = ({ title, event, isSkeleton }: EventItemProps) => {
     );
   }
 
-  const origin = env.VERCEL_URL;
+  const isServer = typeof window === "undefined";
+  const origin = isServer ? env.VERCEL_URL : window.location.origin;
 
   if (!origin || !event) {
     console.error("event origin is undefined or invalid: ", origin);
@@ -57,6 +58,12 @@ const EventItem = ({ title, event, isSkeleton }: EventItemProps) => {
         })
       : null;
 
+  const requestProto = event.url?.startsWith("https://")
+    ? "https://"
+    : "http://";
+
+  const requestHost = event.url?.split("/")[2];
+
   return (
     <Card className="flex min-h-[18rem] flex-col items-center justify-center bg-neutral-100 dark:bg-neutral-900">
       {title ? (
@@ -74,7 +81,11 @@ const EventItem = ({ title, event, isSkeleton }: EventItemProps) => {
         {event.url_type === "video" && event.url ? (
           <YoutubePlayer url={event.url} origin={origin} />
         ) : (
-          <OpenGraphPreview event={event} />
+          <OpenGraphPreview
+            event={event}
+            requestProto={requestProto}
+            requestHost={requestHost!}
+          />
         )}
       </CardContent>
     </Card>

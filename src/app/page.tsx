@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import LatestAttendedEventLazy from "@/components/events/last-attended";
+import LatestAttendedEventLazy from "@/components/events/last-attended-client";
 import HeroSection from "@/components/layout/sections/HeroSection";
 import IntroSection from "@/components/layout/sections/IntroSection";
 import Avatar from "@/images/avatar.webp";
@@ -15,6 +15,8 @@ export const metadata: Metadata = {
     url: "https://jereko.dev",
   },
 };
+
+export const dynamic = "force-static";
 
 const Home = async () => {
   return (
