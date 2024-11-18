@@ -44,9 +44,6 @@ export const metadata: Metadata = {
 };
 
 const Volunteering = () => {
-  "use cache";
-  unstable_cacheLife("weeks");
-
   return (
     <>
       <section
