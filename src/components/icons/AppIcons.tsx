@@ -15,13 +15,13 @@ import X from "@/components/icons/Twitter-X";
 const AppIcons = {
   socials: {
     github: dynamic(
-      () => import("@/icons/lu/Github").then((mod) => mod.LuGithub) as any,
+      () => import("@/icons/lu/Github").then((mod) => mod.LuGithub),
       {
         ssr: true,
       },
     ),
     linkedin: dynamic(
-      () => import("@/icons/lu/LinkedIn").then((mod) => mod.LuLinkedin) as any,
+      () => import("@/icons/lu/LinkedIn").then((mod) => mod.LuLinkedin),
       {
         ssr: true,
       },
