@@ -2,12 +2,14 @@
 
 import { useQuery } from "@tanstack/react-query";
 
+import dynamic_import from "next/dynamic";
+
 import type { mostRecentEvent } from "@/server/handlers/events/getLatest";
 
-import EventItem from "./event-item";
+const EventItem = dynamic_import(() => import("./event-item"));
 
 const getData = async () => {
-  return await fetch("/api/event-latest", {
+  return await fetch("/api/events/latest", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",

@@ -20,8 +20,8 @@ const IntroSection = dynamic_import(
   () => import("@/components/layout/sections/IntroSection"),
 );
 
-const LatestAttendedEvent = dynamic_import(
-  () => import("@/components/events/last-attended-client"),
+const LatestAttendedWrapper = dynamic_import(
+  () => import("@/components/events/last-attended-client-wrapper"),
 );
 
 export const dynamic = "force-static";
@@ -55,15 +55,7 @@ const Home = async () => {
         </h2>
         <IntroSection />
       </section>
-      <section className="mx-auto flex w-full max-w-lg flex-col items-center text-center">
-        <h3 className="text-md px-2 font-semibold md:text-xl">
-          Speaking about events I&apos;ve attended...
-        </h3>
-        <p className="mt-4 px-2 text-neutral-600 dark:text-neutral-200">
-          Down below is the latest event I&apos;ve attended
-        </p>
-        <LatestAttendedEvent />
-      </section>
+      <LatestAttendedWrapper />
     </>
   );
 };

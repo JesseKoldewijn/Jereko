@@ -3,6 +3,8 @@
 import { m, stagger, useAnimate } from "framer-motion";
 import { useEffect } from "react";
 
+import { usePathname } from "next/navigation";
+
 export const TextGen = ({
   words,
   className,
@@ -10,6 +12,7 @@ export const TextGen = ({
   words: string;
   className?: string;
 }) => {
+  const pathName = usePathname();
   const [scope, animate] = useAnimate();
   const wordsArray = words.split(" ");
 
@@ -25,10 +28,10 @@ export const TextGen = ({
       },
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [scope.current]);
+  }, [scope.current, pathName]);
 
   return (
-    <div className={className}>
+    <div className={className} data-pathname-key={pathName}>
       <div className="mt-4">
         <div className="text-2xl leading-snug tracking-wide text-black dark:text-white">
           <RenderWords wordsArray={wordsArray} scope={scope} />
