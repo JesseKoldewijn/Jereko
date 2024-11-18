@@ -2,11 +2,9 @@
 
 import {
   createContext,
-  memo,
   useContext,
   useEffect,
   useLayoutEffect,
-  useMemo,
   useState,
 } from "react";
 import { LuList, LuListChecks, LuUser } from "react-icons/lu";
@@ -33,16 +31,6 @@ const CommandMenuContext = createContext<{
   open: boolean;
   setOpen: (open: boolean) => void;
 }>(null!);
-
-const dummyWindow = {
-  navigator: {
-    userAgent: "unknown",
-  },
-  window: {
-    innerWidth: 0,
-    innerHeight: 0,
-  },
-} as Window & typeof globalThis;
 
 export const CommandMenuOpenButton = (
   props: Omit<React.HTMLAttributes<HTMLParagraphElement>, "children">,
