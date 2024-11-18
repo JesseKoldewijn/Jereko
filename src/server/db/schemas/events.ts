@@ -1,29 +1,32 @@
 import {
-  date,
-  pgTable,
+  bigint,
+  mysqlTable,
   text,
+  timestamp,
   uniqueIndex,
-  uuid,
-  varchar,
-} from "drizzle-orm/pg-core";
+} from "drizzle-orm/mysql-core";
 
 type UrlType = "video" | "image" | "link";
 
-export const Events = pgTable(
+export const events = mysqlTable(
   "events",
   {
-    id: uuid("id").primaryKey().defaultRandom(),
+    id: bigint("id", {
+      mode: "number",
+    })
+      .primaryKey()
+      .autoincrement(),
     name: text("name"),
     location: text("location"),
-    description: varchar("description"),
+    description: text("description"),
     url: text("url"),
     url_type: text("url_type").$type<UrlType>(),
     skills: text("skills"),
     day: text("day"),
     month: text("month"),
     year: text("year"),
-    created_at: date("created_at").defaultNow(),
-    updated_at: date("updated_at").defaultNow(),
+    created_at: timestamp("created_at").defaultNow(),
+    updated_at: timestamp("updated_at").defaultNow(),
   },
   (x) => {
     return {
@@ -32,5 +35,5 @@ export const Events = pgTable(
   },
 );
 
-export type Event = typeof Events.$inferSelect;
-export type Events = (typeof Events.$inferSelect)[];
+export type Event = typeof events.$inferSelect;
+export type Events = (typeof events.$inferSelect)[];

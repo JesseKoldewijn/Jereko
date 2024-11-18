@@ -1,18 +1,18 @@
 import { sql } from "drizzle-orm";
 
 import { db } from "@/server/db/conn";
-import { type Social, Socials } from "@/server/db/schemas/socials";
+import { type Social, socials } from "@/server/db/schemas/socials";
 
 export const getByPlatform = async (...platform: string[]) => {
-  const socials =
+  const _socials =
     platform.length == 1
-      ? await db.query.Socials.findFirst({
-          where: sql`${Socials.platform} = ${platform[0]}`,
+      ? await db.query.socials.findFirst({
+          where: sql`${socials.platform} = ${platform[0]}`,
         })
-      : await db.query.Socials.findMany();
+      : await db.query.socials.findMany();
 
   const socialsArray =
-    socials == undefined ? [] : Array.isArray(socials) ? socials : [socials];
+    socials == undefined ? [] : Array.isArray(_socials) ? _socials : [_socials];
 
   const filteredSocials = socialsArray
     .filter((social) => {

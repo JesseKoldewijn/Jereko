@@ -4,23 +4,22 @@ import type { NextConfig } from "next";
 import BundleAnalyzer from "@next/bundle-analyzer";
 
 import "./src/env";
-import "./src/utils/react19-log-drop";
 
-type CacheLife = {
-  [profile: string]: {
-    stale?: number;
-    revalidate?: number;
-    expire?: number;
-  };
-};
+// type CacheLife = {
+//   [profile: string]: {
+//     stale?: number;
+//     revalidate?: number;
+//     expire?: number;
+//   };
+// };
 
-const cacheLife: CacheLife = {
-  default: {
-    stale: 60,
-    revalidate: 60,
-    expire: 120,
-  },
-};
+// const cacheLife: CacheLife = {
+//   default: {
+//     stale: daysToMs(7),
+//     revalidate: daysToMs(14),
+//     expire: daysToMs(30),
+//   },
+// };
 
 const config: NextConfig = {
   reactStrictMode: true,
@@ -29,9 +28,9 @@ const config: NextConfig = {
   },
   compress: true,
   reactProductionProfiling: false,
+  poweredByHeader: false,
   experimental: {
     reactCompiler: true,
-    cacheLife,
   },
   transpilePackages: ["react-icons", "ckeditor5", "@ckeditor/ckeditor5-react"],
 };

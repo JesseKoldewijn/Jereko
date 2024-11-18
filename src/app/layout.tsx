@@ -1,3 +1,4 @@
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
@@ -29,15 +30,19 @@ const TechUsedSectionNew = dynamic(
   () => import("@/components/layout/footer/tech-used"),
 );
 
+const CommandMenuProvider = dynamic(
+  () => import("@/components/ui/command-menu"),
+);
+
+const QueryProvider = dynamic(() => import("@/providers/QueryProvider"), {
+  ssr: true,
+});
+
 const RootLayout = async ({ children }: { children: React.ReactNode }) => {
   const cookieJar = await cookies();
   const cookieJarTheme = cookieJar.get("theme");
 
   const socials = await getByPlatform("twitter", "github", "linkedin");
-
-  const CommandMenuProvider = dynamic(
-    () => import("@/components/ui/command-menu"),
-  );
 
   return (
     <html
@@ -52,13 +57,15 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
         className={`font-sans ${GeistSans.variable} ${GeistMono.variable}`}
         suppressHydrationWarning
       >
-        <NextThemeWrapper>
-          <Navbar socials={socials} />
-          <CommandMenuProvider>
-            <PageContent innerChildren={children} socials={socials} />
-          </CommandMenuProvider>
-        </NextThemeWrapper>
-        {env.NODE_ENV !== "development" && <SpeedInsights />}
+        <QueryProvider>
+          <NextThemeWrapper>
+            <Navbar socials={socials} />
+            <CommandMenuProvider>
+              <PageContent innerChildren={children} socials={socials} />
+            </CommandMenuProvider>
+          </NextThemeWrapper>
+          {env.NODE_ENV !== "development" && <SpeedInsights />}
+        </QueryProvider>
       </body>
     </html>
   );

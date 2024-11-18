@@ -13,7 +13,7 @@ import {
 } from "../ui/card";
 
 const ProjectListerItem = ({ project }: { project: Project }) => {
-  if (project.draft == true) return;
+  if (project.draft == "true") return;
 
   const LinkWrapper = ({ children }: { children: React.ReactNode }) => {
     if (project.link !== null) {
