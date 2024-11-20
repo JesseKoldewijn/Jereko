@@ -41,9 +41,7 @@ export const metadata: Metadata = {
   },
 };
 
-export const dynamic = "force-static";
-
-const Volunteering = () => {
+const Volunteering = async () => {
   return (
     <>
       <section

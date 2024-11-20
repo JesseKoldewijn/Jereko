@@ -12,9 +12,7 @@ export const metadata: Metadata = {
   },
 };
 
-export const dynamic = "force-static";
-
-const AboutMe = () => {
+const AboutMe = async () => {
   return (
     <>
       <section

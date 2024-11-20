@@ -10,9 +10,7 @@ export const metadata: Metadata = {
   },
 };
 
-export const dynamic = "force-static";
-
-const Hobbies = () => {
+const Hobbies = async () => {
   return (
     <>
       <section
