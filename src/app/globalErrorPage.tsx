@@ -1,8 +1,6 @@
 import * as Sentry from "@sentry/nextjs";
 import { useEffect } from "react";
 
-import NextError from "next/error";
-
 const GlobalError = ({ error }: { error: Error & { digest?: string } }) => {
   useEffect(() => {
     const isLocalhost = window.location.hostname === "localhost";
@@ -12,8 +10,11 @@ const GlobalError = ({ error }: { error: Error & { digest?: string } }) => {
   }, [error]);
 
   return (
-    <div className="flex min-w-full max-w-sm">
-      <NextError statusCode={500} title={error.message} />
+    <div className="mt-20 flex h-full min-h-[65svh] flex-1 flex-col items-center justify-center px-4 py-2">
+      <div className="my-auto flex max-w-lg flex-col gap-6 text-center">
+        <h1 className="text-2xl font-semibold">500 | Server Error</h1>
+        <p>Something went wrong. Please try again later.</p>
+      </div>
     </div>
   );
 };
