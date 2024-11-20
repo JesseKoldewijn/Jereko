@@ -139,7 +139,6 @@ export const metadata: Metadata = {
       url: "/favicons/favicon.ico",
     },
   ],
-  manifest: "/site.webmanifest",
   openGraph: {
     title: "Jereko",
     description: "tbh idk what to put here yet",
