@@ -130,12 +130,6 @@ const CommandMenuProvider = ({ children }: { children: React.ReactNode }) => {
           setOpen(false);
           break;
         }
-        case "b": {
-          e.preventDefault();
-          router.push("/blog");
-          setOpen(false);
-          break;
-        }
         case "o": {
           window.open(appConfig.repo.href, "_blank");
           setOpen(false);
