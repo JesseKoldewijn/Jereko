@@ -1,9 +1,14 @@
 "use client";
 
-import { type DialogProps } from "@radix-ui/react-dialog";
+import {
+  Description,
+  type DialogProps,
+  DialogTitle,
+} from "@radix-ui/react-dialog";
 import { Command as CommandPrimitive } from "cmdk";
 import { forwardRef } from "react";
-import { LuSearch } from "react-icons/lu";
+
+import { LuSearch } from "@/icons/lu/Search";
 
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
@@ -29,6 +34,8 @@ interface CommandDialogProps extends DialogProps {}
 const CommandDialog = ({ children, ...props }: CommandDialogProps) => {
   return (
     <Dialog {...props}>
+      <DialogTitle />
+      <Description />
       <DialogContent className="overflow-hidden bg-neutral-100 p-0 shadow-lg dark:bg-neutral-900">
         <Command className="bg-neutral-100 dark:bg-neutral-900 [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:text-muted-foreground [&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0 [&_[cmdk-group]]:px-2 [&_[cmdk-input-wrapper]_svg]:h-5 [&_[cmdk-input-wrapper]_svg]:w-5 [&_[cmdk-input]]:h-12 [&_[cmdk-item]]:px-2 [&_[cmdk-item]]:py-3 [&_[cmdk-item]_svg]:h-5 [&_[cmdk-item]_svg]:w-5">
           {children}

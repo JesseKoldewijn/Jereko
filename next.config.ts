@@ -5,22 +5,6 @@ import BundleAnalyzer from "@next/bundle-analyzer";
 
 import "./src/env";
 
-// type CacheLife = {
-//   [profile: string]: {
-//     stale?: number;
-//     revalidate?: number;
-//     expire?: number;
-//   };
-// };
-
-// const cacheLife: CacheLife = {
-//   default: {
-//     stale: daysToMs(7),
-//     revalidate: daysToMs(14),
-//     expire: daysToMs(30),
-//   },
-// };
-
 const config: NextConfig = {
   reactStrictMode: true,
   images: {
@@ -31,14 +15,11 @@ const config: NextConfig = {
   poweredByHeader: false,
   experimental: {
     reactCompiler: true,
-    optimizePackageImports: [
-      "react",
-      "react-dom",
-      "@sentry/nextjs",
-      "@sentry/profiling-node",
-    ],
+    optimizePackageImports: ["@sentry/nextjs", "@sentry/profiling-node"],
   },
-  transpilePackages: ["react-icons", "ckeditor5", "@ckeditor/ckeditor5-react"],
+  transpilePackages: [
+    // "ckeditor5", "@ckeditor/ckeditor5-react"
+  ],
 };
 
 const withBundleAnalyzer = BundleAnalyzer({

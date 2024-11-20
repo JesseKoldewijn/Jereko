@@ -1,10 +1,11 @@
 "use client";
 
 import { Suspense, useState } from "react";
-import { LuPlay } from "react-icons/lu";
 
 import dynamic from "next/dynamic";
 import Image from "next/image";
+
+import { LuPlay } from "@/icons/lu/Play";
 
 import PlaceholderImage from "@/images/player-placeholder.webp";
 

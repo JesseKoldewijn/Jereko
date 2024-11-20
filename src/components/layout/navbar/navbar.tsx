@@ -1,3 +1,4 @@
+import dynamic from "next/dynamic";
 import Link from "next/link";
 
 import ThemeToggle from "@/components/ui/theme-toggle";
@@ -5,8 +6,18 @@ import { appConfig } from "@/config/app";
 import { cn } from "@/lib/utils";
 import { type Socials } from "@/server/db/schemas/socials";
 
-import NavMenuMobile from "./mobile/navMenuMobile";
-import NavbarMenu from "./navigationMenu";
+const NavbarMenu = dynamic(
+  () => import("@/components/layout/navbar/navigationMenu"),
+  {
+    ssr: true,
+  },
+);
+const NavMenuMobile = dynamic(
+  () => import("@/components/layout/navbar/mobile/navMenuMobile"),
+  {
+    ssr: true,
+  },
+);
 
 const Navbar = async ({ socials }: { socials: Socials | null }) => {
   return (

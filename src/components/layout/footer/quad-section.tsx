@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { appConfig } from "@/config/app";
 import Avatar from "@/images/profile.webp";
 import { cn } from "@/lib/utils";
 import { mostRecentExp } from "@/server/handlers/exp/getLatest";
@@ -24,7 +25,7 @@ const QuadSection = async () => {
       name: "Projects",
     },
     {
-      href: "https://github.com/JesseKoldewijn/Jereko",
+      href: appConfig.repo.href,
       name: "OpenSource",
     },
   ];

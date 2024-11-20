@@ -1,10 +1,12 @@
 "use client";
 
-import { LuList, LuUser } from "react-icons/lu";
-
 import dynamic from "next/dynamic";
 
 import { LuGithub } from "@/icons/lu/Github";
+import { LuList } from "@/icons/lu/List";
+import { LuUser } from "@/icons/lu/User";
+
+import { appConfig } from "@/config/app";
 
 import ListedNavSection from "./item-variants/listed";
 import ShowcaseNavSection from "./item-variants/showcase";
@@ -26,15 +28,14 @@ const NavigationMenuList = dynamic(
 export const showcaseEntry = {
   triggerTitle: (
     <>
-      <LuUser className="mr-2" />
+      <LuUser className="mr-2 h-5 w-auto" />
       About me
     </>
   ),
   showcase: {
     title: "Jesse Koldewijn",
     href: "/about-me",
-    description:
-      "Front-End Software Engineer, with a passion for software and tech.",
+    description: "Software Engineer, with a passion for software and tech.",
   },
   links: [
     {
@@ -59,7 +60,7 @@ export const showcaseEntry = {
 export const listedEntry = {
   triggerTitle: (
     <>
-      <LuList className="mr-2" />
+      <LuList className="mr-2 h-5 w-auto" />
       Pages
     </>
   ),
@@ -81,11 +82,6 @@ export const listedEntry = {
       href: "/experience",
       description: "All my current and past work and educational experience.",
     },
-    // {
-    //   title: "Blog",
-    //   href: "/blog",
-    //   description: "All my blog posts, ranging from tech to personal topics.",
-    // },
   ],
 };
 
@@ -95,8 +91,8 @@ const NavbarMenu = () => {
       <NavigationMenuList>
         <ShowcaseNavSection {...showcaseEntry} />
         <ListedNavSection {...listedEntry} />
-        <SingleItemSection href="https://github.com/JesseKoldewijn/Jereko">
-          <LuGithub className="mr-2" />
+        <SingleItemSection href={appConfig.repo.href}>
+          <LuGithub className="mr-2 h-5 w-auto" />
           OpenSource
         </SingleItemSection>
       </NavigationMenuList>

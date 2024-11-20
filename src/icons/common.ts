@@ -1,1 +1,2 @@
-export type CommonSvgAttributes = React.ButtonHTMLAttributes<HTMLOrSVGElement>;
+export type CommonSvgAttributes = React.ButtonHTMLAttributes<HTMLOrSVGElement> &
+  React.SVGProps<SVGSVGElement>;

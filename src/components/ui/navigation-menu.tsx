@@ -1,7 +1,8 @@
 import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu";
 import { cva } from "class-variance-authority";
 import { forwardRef } from "react";
-import { LuChevronDown } from "react-icons/lu";
+
+import { LuChevronDown } from "@/icons/lu/ChevronDown";
 
 import { cn } from "@/lib/utils";
 

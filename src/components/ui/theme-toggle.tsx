@@ -2,7 +2,9 @@
 
 import { animate } from "framer-motion";
 import { useTheme } from "next-themes";
-import { LuMoon, LuSun } from "react-icons/lu";
+
+import { LuMoon } from "@/icons/lu/Moon";
+import { LuSun } from "@/icons/lu/Sun";
 
 import { Button } from "./button";
 
@@ -32,7 +34,7 @@ const ThemeToggle = () => {
 
   return (
     <Button
-      className="rounded-full border p-2 hover:text-background"
+      className="h-10 w-10 rounded-full border p-2 hover:text-background"
       onClick={(e) => toggleTheme(e)}
     >
       <LuSun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />

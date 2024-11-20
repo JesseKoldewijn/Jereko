@@ -2,13 +2,17 @@
 
 import { useTheme } from "next-themes";
 import { useEffect, useRef, useState } from "react";
-import { LuList, LuMenu, LuX } from "react-icons/lu";
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import AppIcons from "@/components/icons/AppIcons";
+import AppIcons from "@/icons/custom/app-icons-collection";
+import { LuClose } from "@/icons/lu/Close";
+import { LuList } from "@/icons/lu/List";
+import { LuMenu } from "@/icons/lu/Menu";
+
 import { Button } from "@/components/ui/button";
+import { appConfig } from "@/config/app";
 import { cn } from "@/lib/utils";
 import { type Socials } from "@/server/db/schemas/socials";
 
@@ -60,7 +64,7 @@ const NavMenuMobile = ({ socials }: { socials: Socials | null }) => {
           }
         }}
       >
-        {showMenu ? <LuX /> : <LuMenu />}
+        {showMenu ? <LuClose /> : <LuMenu />}
         <span className="sr-only">Open mobile navigation menu</span>
       </Button>
       <div
@@ -115,7 +119,7 @@ const NavMenuMobile = ({ socials }: { socials: Socials | null }) => {
                 );
               })}
               <Link
-                href="https://github.com/JesseKoldewijn/Jereko"
+                href={appConfig.repo.href}
                 className="flex w-full items-center justify-center gap-2 rounded-lg border border-foreground p-2"
               >
                 <AppIcons.socials.github className="h-5" />

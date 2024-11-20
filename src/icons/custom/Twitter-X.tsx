@@ -4,7 +4,7 @@ interface XProps {
   className?: string;
 }
 
-const X = ({ height, width, ...rest }: XProps) => {
+export const X = ({ height, width, ...rest }: XProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -18,5 +18,3 @@ const X = ({ height, width, ...rest }: XProps) => {
     </svg>
   );
 };
-
-export default X;

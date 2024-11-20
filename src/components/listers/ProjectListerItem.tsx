@@ -1,6 +1,6 @@
-import { LuMouse } from "react-icons/lu";
-
 import Link from "next/link";
+
+import { LuMouse } from "@/icons/lu/Mouse";
 
 import { type Project } from "@/server/db/schemas/projects";
 
@@ -39,7 +39,8 @@ const ProjectListerItem = ({ project }: { project: Project }) => {
           </span>
           {project.link !== null && (
             <LuMouse
-              size={24}
+              height={24}
+              width={24}
               className="animate-pulse text-muted-foreground"
             />
           )}

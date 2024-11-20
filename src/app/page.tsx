@@ -24,8 +24,6 @@ const LatestAttendedWrapper = dynamic_import(
   () => import("@/components/events/last-attended-client-wrapper"),
 );
 
-export const dynamic = "force-static";
-
 const Home = async () => {
   return (
     <>

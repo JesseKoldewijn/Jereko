@@ -105,19 +105,14 @@ export const InfiniteMovingCardsTechUsed = ({
               key={`${item.name}-row-1-${idx}`}
               typeof="img"
               className={cn(
-                isDarkLogo
-                  ? "rounded-lg bg-neutral-900 dark:bg-neutral-100"
-                  : lightLogo
-                    ? "rounded-lg bg-neutral-950 dark:bg-neutral-100"
-                    : isDrizzleORM
-                      ? "inset-0 rounded-lg"
-                      : isVercel
-                        ? "pl-2"
-                        : isShadcn
-                          ? "rounded-lg bg-neutral-300"
-                          : isAceternity
-                            ? "rounded-lg bg-neutral-950 dark:bg-neutral-100"
-                            : "",
+                {
+                  "rounded-lg bg-neutral-900 dark:bg-neutral-100": isDarkLogo,
+                  "inset-0 rounded-lg": isDrizzleORM,
+                  "pl-2 pr-1": isVercel,
+                  "rounded-lg bg-neutral-300": isShadcn,
+                  "rounded-lg bg-neutral-950 dark:bg-neutral-100":
+                    isAceternity || lightLogo,
+                },
                 "relative h-[60px] md:h-[80px]",
               )}
             >

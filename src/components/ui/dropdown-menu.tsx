@@ -2,7 +2,10 @@
 
 import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
 import { forwardRef } from "react";
-import { LuCheck, LuChevronRight, LuCircle } from "react-icons/lu";
+
+import { LuCheck } from "@/icons/lu/Check";
+import { LuChevronRight } from "@/icons/lu/ChevronRight";
+import { LuCircle } from "@/icons/lu/Circle";
 
 import { cn } from "@/lib/utils";
 

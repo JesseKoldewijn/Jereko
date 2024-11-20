@@ -1,13 +1,12 @@
 "use client";
 
-import { LuArrowUp } from "react-icons/lu";
-
 import Link from "next/link";
 
+import { X } from "@/icons/custom/Twitter-X";
+import { LuArrowUp } from "@/icons/lu/ArrowUp";
 import { LuGithub } from "@/icons/lu/Github";
 import { LuLinkedin } from "@/icons/lu/LinkedIn";
 
-import X from "@/components/icons/Twitter-X";
 import { Button } from "@/components/ui/button";
 import { CommandMenuOpenButton } from "@/components/ui/command-menu";
 import { appConfig } from "@/config/app";
@@ -51,21 +50,23 @@ const Footer = ({
           <div className="mb-4 mt-4 flex gap-4">
             {twitter && (
               <Link
-                aria-label="X (Twitter)"
+                aria-label="X (formerly known as Twitter)"
                 className="flex rounded-lg p-1 text-neutral-800 hover:bg-neutral-100 dark:text-neutral-200 dark:hover:bg-neutral-700 dark:hover:text-neutral-300"
                 href={twitter.link ?? "#"}
                 target="_blank"
                 data-link-label={twitter.label ?? "twitter-link-footer"}
               >
                 <X className="m-auto h-5 w-auto" />
-                <span className="sr-only">Link to X (Twitter) profile</span>
+                <span className="sr-only">
+                  Link to X (formerly known as Twitter) profile
+                </span>
               </Link>
             )}
             {github && (
               <Link
                 aria-label="Instagram"
                 className="rounded-lg p-1 text-neutral-800 hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-700 dark:hover:text-neutral-400"
-                href="https://github.com/JesseKoldewijn"
+                href={github.link ?? "#"}
                 target="_blank"
                 data-link-label={github.label ?? "github-link-footer"}
               >
@@ -77,7 +78,7 @@ const Footer = ({
               <Link
                 aria-label="LinkedIn"
                 className="rounded-lg p-1 text-neutral-800 hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-700 dark:hover:text-neutral-400"
-                href="https://www.linkedin.com/in/jesse-koldewijn-5914531a3"
+                href={linkedin.link ?? "#"}
                 target="_blank"
                 data-link-label={linkedin.label ?? "linkedin-link-footer"}
               >

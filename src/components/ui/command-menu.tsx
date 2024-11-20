@@ -7,14 +7,18 @@ import {
   useLayoutEffect,
   useState,
 } from "react";
-import { LuList, LuListChecks, LuUser } from "react-icons/lu";
 
 import { usePathname, useRouter } from "next/navigation";
 
+import { X } from "@/icons/custom/Twitter-X";
 import { LuGithub } from "@/icons/lu/Github";
+import { LuHome } from "@/icons/lu/Home";
 import { LuLinkedin } from "@/icons/lu/LinkedIn";
+import { LuList } from "@/icons/lu/List";
+import { LuListChecks } from "@/icons/lu/ListChecks";
+import { LuUser } from "@/icons/lu/User";
 
-import X from "@/components/icons/Twitter-X";
+import { appConfig } from "@/config/app";
 
 import {
   CommandDialog,
@@ -133,25 +137,22 @@ const CommandMenuProvider = ({ children }: { children: React.ReactNode }) => {
           break;
         }
         case "o": {
-          window.open("https://github.com/JesseKoldewijn/Jereko", "_blank");
+          window.open(appConfig.repo.href, "_blank");
           setOpen(false);
           break;
         }
         case "x": {
-          window.open("https://x.com/dull_joker", "_blank");
+          window.open(appConfig.socials.twitter.href, "_blank");
           setOpen(false);
           break;
         }
         case "g": {
-          window.open("https://github.com/JesseKoldewijn", "_blank");
+          window.open(appConfig.socials.github.href, "_blank");
           setOpen(false);
           break;
         }
         case "l": {
-          window.open(
-            "https://www.linkedin.com/in/jesse-koldewijn-5914531a3",
-            "_blank",
-          );
+          window.open(appConfig.socials.linkedIn.href, "_blank");
           setOpen(false);
           break;
         }
@@ -175,7 +176,7 @@ const CommandMenuProvider = ({ children }: { children: React.ReactNode }) => {
           <CommandEmpty>No results found.</CommandEmpty>
           <CommandGroup heading="Pages">
             <CommandItem>
-              <LuUser className="mr-2 h-4 w-4" />
+              <LuHome className="mr-2 h-4 w-4" />
               <span>Home page</span>
               <CommandShortcut>⌘H</CommandShortcut>
             </CommandItem>
@@ -193,11 +194,6 @@ const CommandMenuProvider = ({ children }: { children: React.ReactNode }) => {
               <LuListChecks className="mr-2 h-4 w-4" />
               <span>My Experience</span>
               <CommandShortcut>⌘E</CommandShortcut>
-            </CommandItem>
-            <CommandItem>
-              <LuListChecks className="mr-2 h-4 w-4" />
-              <span>My Blog</span>
-              <CommandShortcut>⌘B</CommandShortcut>
             </CommandItem>
             <CommandItem>
               <LuListChecks className="mr-2 h-4 w-4" />
