@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
-import dynamic_import from "next/dynamic";
-
+import { LatestAttendedWrapperDynamic } from "@/components/events";
 import HeroSection from "@/components/layout/sections/HeroSection";
+import IntroSection from "@/components/layout/sections/IntroSection";
 import Avatar from "@/images/avatar.webp";
 
 export const metadata: Metadata = {
@@ -15,14 +15,6 @@ export const metadata: Metadata = {
     url: "https://jereko.dev",
   },
 };
-
-const IntroSection = dynamic_import(
-  () => import("@/components/layout/sections/IntroSection"),
-);
-
-const LatestAttendedWrapper = dynamic_import(
-  () => import("@/components/events/last-attended-client-wrapper"),
-);
 
 const Home = async () => {
   return (
@@ -53,7 +45,7 @@ const Home = async () => {
         </h2>
         <IntroSection />
       </section>
-      <LatestAttendedWrapper />
+      <LatestAttendedWrapperDynamic />
     </>
   );
 };

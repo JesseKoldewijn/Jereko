@@ -18,8 +18,29 @@ const config: NextConfig = {
     optimizePackageImports: ["@sentry/nextjs", "@sentry/profiling-node"],
   },
   transpilePackages: [
+    "@sentry/nextjs",
+    "@sentry/profiling-node",
     // "ckeditor5", "@ckeditor/ckeditor5-react"
   ],
+  webpack: (config) => {
+    const hasSplitChunks = config.optimization.splitChunks;
+
+    if (hasSplitChunks) {
+      config.optimization.splitChunks.cacheGroups = {
+        ...config.optimization.splitChunks.cacheGroups,
+        sentry: {
+          test: /[\\/]node_modules[\\/](@sentry|sentry)[\\/]/,
+          name: "sentry",
+          chunks: "all",
+          enforce: true,
+          minChunks: 1,
+          priority: -25,
+        },
+      };
+    }
+
+    return config;
+  },
 };
 
 const withBundleAnalyzer = BundleAnalyzer({
