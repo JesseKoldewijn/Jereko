@@ -55,10 +55,10 @@ const Volunteering = () => {
         </h2>
         <div className="flex flex-col gap-4">
           <p>
-            Since {`${volunteeringSince()}`} I have been a volunteer for Stack
-            Up as a GameLead. I am responsible for hosting and moderating the
-            Game Nights that I host which I&apos;ve been hosting once a week
-            (most of the time) for the past{" "}
+            Since <Suspense>{volunteeringSince()}</Suspense> I have been a
+            volunteer for Stack Up as a GameLead. I am responsible for hosting
+            and moderating the Game Nights that I host which I&apos;ve been
+            hosting once a week (most of the time) for the past{" "}
             <Suspense>{volunteeringForMonths()}</Suspense>.
           </p>
           <p>
