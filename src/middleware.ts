@@ -4,16 +4,11 @@ export const middleware = (request: NextRequest) => {
   // Clone the request headers
   const requestHeaders = new Headers(request.headers);
 
-  // set csp w/ nonce
-  const nonce = Buffer.from(crypto.randomUUID()).toString("base64");
-
-  // set nonce header
-  requestHeaders.set("x-nonce", nonce);
-
+  // create CSP cfg
   const cspHeader = `
     default-src 'self';
-    script-src 'self' 'nonce-${nonce}' 'strict-dynamic';
-    style-src 'self' 'nonce-${nonce}';
+    script-src 'self' 'unsafe-eval' 'unsafe-inline';
+    style-src 'self' 'unsafe-inline';
     img-src 'self' blob: data:;
     font-src 'self';
     object-src 'none';
@@ -22,6 +17,7 @@ export const middleware = (request: NextRequest) => {
     frame-ancestors 'none';
     upgrade-insecure-requests;
   `;
+
   // Replace newline characters and spaces
   const contentSecurityPolicyHeaderValue = cspHeader
     .replace(/\s{2,}/g, " ")
@@ -66,6 +62,13 @@ export const config = {
      * - _next/image (image optimization files)
      * - favicon.ico, sitemap.xml, robots.txt (metadata files)
      */
-    "/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt).*)",
+    {
+      source:
+        "/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt).*)",
+      missing: [
+        { type: "header", key: "next-router-prefetch" },
+        { type: "header", key: "purpose", value: "prefetch" },
+      ],
+    },
   ],
 };
