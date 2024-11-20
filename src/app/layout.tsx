@@ -6,6 +6,7 @@ import { type Metadata } from "next";
 import dynamic from "next/dynamic";
 import { cookies } from "next/headers";
 
+import Footer from "@/components/layout/footer";
 import { usedTechnologies } from "@/config/tech";
 import { env } from "@/env";
 import { type Social } from "@/server/db/schemas/socials";
@@ -13,30 +14,22 @@ import { getByPlatform } from "@/server/handlers/socials/getByPlatform";
 import "@/styles/globals.css";
 import { base } from "@/utils/hostname";
 
+import { TechUsedSectionNew } from "./layout_footer";
+
+const QuadSection = dynamic(
+  () => import("@/components/layout/footer/quad-section"),
+  {
+    // requires SSR
+    ssr: true,
+  },
+);
+
 const Navbar = dynamic(() => import("@/components/layout/navbar/navbar"), {
   ssr: true,
 });
 
 const NextThemeWrapper = dynamic(
   () => import("@/components/next-theme/provider"),
-  {
-    ssr: true,
-  },
-);
-
-const Footer = dynamic(() => import("@/components/layout/footer"), {
-  ssr: true,
-});
-
-const QuadSection = dynamic(
-  () => import("@/components/layout/footer/quad-section"),
-  {
-    ssr: true,
-  },
-);
-
-const TechUsedSectionNew = dynamic(
-  () => import("@/components/layout/footer/tech-used"),
   {
     ssr: true,
   },

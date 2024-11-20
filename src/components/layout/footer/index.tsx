@@ -1,18 +1,16 @@
-"use client";
-
 import Link from "next/link";
 
 import { X } from "@/icons/custom/Twitter-X";
-import { LuArrowUp } from "@/icons/lu/ArrowUp";
 import { LuGithub } from "@/icons/lu/Github";
 import { LuLinkedin } from "@/icons/lu/LinkedIn";
 
-import { Button } from "@/components/ui/button";
-import { CommandMenuOpenButton } from "@/components/ui/command-menu";
+import { CommandMenuOpenButton } from "@/components/ui/command-menu-open-button";
 import { appConfig } from "@/config/app";
 import { type Socials } from "@/server/db/schemas/socials";
 
-const Footer = ({
+import ToTopButton from "./to-top-button";
+
+const Footer = async ({
   topSlot,
   innerSlot,
   socials,
@@ -95,16 +93,7 @@ const Footer = ({
               {appConfig.branding.brandName}
             </span>
           </div>
-          <Button
-            className="rounded-lg px-2 py-1 text-neutral-800 hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-700 dark:hover:text-neutral-400"
-            variant="ghost"
-            onClick={() =>
-              typeof window && window.scrollTo({ top: 0, behavior: "smooth" })
-            }
-          >
-            <LuArrowUp className="m-auto h-5 w-5" height={5} width={5} />
-            <span className="sr-only">Back to top</span>
-          </Button>
+          <ToTopButton />
         </div>
       </footer>
     </div>
