@@ -7,7 +7,6 @@ import { cookies } from "next/headers";
 
 import Footer from "@/components/layout/footer";
 import { usedTechnologies } from "@/config/tech";
-import { env } from "@/env";
 import { type Social } from "@/server/db/schemas/socials";
 import { getByPlatform } from "@/server/handlers/socials/getByPlatform";
 import "@/styles/globals.css";
