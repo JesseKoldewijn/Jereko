@@ -1,4 +1,3 @@
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
@@ -72,7 +71,6 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
               <PageContent innerChildren={children} socials={socials} />
             </CommandMenuProvider>
           </NextThemeWrapper>
-          {env.NODE_ENV !== "development" && <SpeedInsights />}
         </QueryProvider>
       </body>
     </html>
