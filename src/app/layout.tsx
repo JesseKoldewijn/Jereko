@@ -40,6 +40,13 @@ const CommandMenuProvider = dynamic(
   },
 );
 
+const HeaderContextProvider = dynamic(
+  () => import("@/providers/HeaderProvider"),
+  {
+    ssr: true,
+  },
+);
+
 const QueryProvider = dynamic(() => import("@/providers/QueryProvider"), {
   ssr: true,
 });
@@ -65,10 +72,12 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
       >
         <QueryProvider>
           <NextThemeWrapper>
-            <Navbar socials={socials} />
-            <CommandMenuProvider>
-              <PageContent innerChildren={children} socials={socials} />
-            </CommandMenuProvider>
+            <HeaderContextProvider>
+              <Navbar socials={socials} />
+              <CommandMenuProvider>
+                <PageContent innerChildren={children} socials={socials} />
+              </CommandMenuProvider>
+            </HeaderContextProvider>
           </NextThemeWrapper>
         </QueryProvider>
       </body>

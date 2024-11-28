@@ -1,10 +1,11 @@
 import dynamic from "next/dynamic";
 import Link from "next/link";
 
-import ThemeToggle from "@/components/ui/theme-toggle";
 import { appConfig } from "@/config/app";
-import { cn } from "@/lib/utils";
 import { type Socials } from "@/server/db/schemas/socials";
+
+import { NavbarBackgroundWrapper, ThemeToggle } from "./_navbar-client-imports";
+import NavMenuMobile from "./mobile/navMenuMobile";
 
 const NavbarMenu = dynamic(
   () => import("@/components/layout/navbar/navigationMenu"),
@@ -12,20 +13,10 @@ const NavbarMenu = dynamic(
     ssr: true,
   },
 );
-const NavMenuMobile = dynamic(
-  () => import("@/components/layout/navbar/mobile/navMenuMobile"),
-  {
-    ssr: true,
-  },
-);
 
 const Navbar = async ({ socials }: { socials: Socials | null }) => {
   return (
-    <nav
-      className={cn(
-        "max-w-auto sticky top-0 z-50 flex w-full bg-[rgba(255,255,255,0.75)] px-6 py-4 dark:bg-[rgba(18,18,18,0.65)]",
-      )}
-    >
+    <NavbarBackgroundWrapper>
       <section className="my-auto mr-auto">
         <Link
           href="/"
@@ -42,7 +33,7 @@ const Navbar = async ({ socials }: { socials: Socials | null }) => {
         <NavMenuMobile socials={socials} />
         <ThemeToggle />
       </section>
-    </nav>
+    </NavbarBackgroundWrapper>
   );
 };
 

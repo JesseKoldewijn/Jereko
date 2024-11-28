@@ -14,17 +14,21 @@ import { LuMenu } from "@/icons/lu/Menu";
 import { Button } from "@/components/ui/button";
 import { appConfig } from "@/config/app";
 import { cn } from "@/lib/utils";
+import { useHeaderContext } from "@/providers/HeaderProvider";
 import { type Socials } from "@/server/db/schemas/socials";
 
 import { listedEntry, showcaseEntry } from "../navigationMenu";
 
 const NavMenuMobile = ({ socials }: { socials: Socials | null }) => {
+  const { setIsMobileMenuOpen } = useHeaderContext();
+
   const pathName = usePathname();
   const { theme } = useTheme();
   const [showMenu, setShowMenu] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
   const openMenu = () => {
+    setIsMobileMenuOpen(true);
     menuRef.current!.style.userSelect = "auto";
     menuRef.current!.style.cursor = "auto";
     menuRef.current!.style.opacity = "1";
@@ -36,6 +40,7 @@ const NavMenuMobile = ({ socials }: { socials: Socials | null }) => {
     menuRef.current!.style.cursor = "default";
     menuRef.current!.style.opacity = "0";
     setTimeout(() => {
+      setIsMobileMenuOpen(false);
       setShowMenu(false);
     }, 700);
   };
@@ -50,6 +55,7 @@ const NavMenuMobile = ({ socials }: { socials: Socials | null }) => {
 
   useEffect(() => {
     closeMenu();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathName]);
 
   return (
