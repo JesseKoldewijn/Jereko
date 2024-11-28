@@ -7,7 +7,7 @@ import BundleAnalyzer from "@next/bundle-analyzer";
 import "./src/env";
 
 const cspHeader = `
-    default-src 'self';
+    default-src 'self' https://vercel.live;
     script-src 'self' 'unsafe-eval' 'unsafe-inline' https://vercel.live;
     script-src-elem 'self' 'unsafe-eval' 'unsafe-inline' https://vercel.live;
     style-src 'self' 'unsafe-inline';
