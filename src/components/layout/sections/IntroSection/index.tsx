@@ -7,8 +7,12 @@ import {
   AnimatedIntroSection3,
 } from "./_imports";
 
+const year = 1999;
+const month = 2;
+const day = 15;
+
 const IntroSection = async () => {
-  const myAge = getAgeByDateString("1999-02-15");
+  const myAge = getAgeByDateString(new Date(year, month, day).toDateString());
   const latestExperience = await mostRecentExp();
 
   return (
