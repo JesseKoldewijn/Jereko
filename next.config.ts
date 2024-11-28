@@ -1,11 +1,25 @@
 import { withSentryConfig } from "@sentry/nextjs";
 import type { NextConfig } from "next";
+import { sentryRootConfig } from "sentry.root.config";
 
 import BundleAnalyzer from "@next/bundle-analyzer";
 
 import "./src/env";
 
-const config: NextConfig = {
+const cspHeader = `
+    default-src 'self';
+    script-src 'self' 'unsafe-eval' 'unsafe-inline';
+    style-src 'self' 'unsafe-inline';
+    img-src 'self' blob: data:;
+    font-src 'self';
+    object-src 'none';
+    base-uri 'self';
+    form-action 'self';
+    frame-ancestors 'none';
+    upgrade-insecure-requests;
+`;
+
+const nextConfig: NextConfig = {
   reactStrictMode: true,
   images: {
     remotePatterns: [{ hostname: "img.youtube.com", protocol: "https" }],
@@ -22,59 +36,34 @@ const config: NextConfig = {
     "@sentry/profiling-node",
     // "ckeditor5", "@ckeditor/ckeditor5-react"
   ],
-  webpack: (config) => {
-    const hasSplitChunks = config.optimization.splitChunks;
-
-    if (hasSplitChunks) {
-      config.optimization.splitChunks.cacheGroups = {
-        ...config.optimization.splitChunks.cacheGroups,
-        sentry: {
-          test: /[\\/]node_modules[\\/](@sentry|sentry)[\\/]/,
-          name: "sentry",
-          chunks: "all",
-          enforce: true,
-          minChunks: 1,
-          priority: -25,
-        },
-      };
-    }
-
-    return config;
+  async headers() {
+    return [
+      {
+        source: "/(.*)",
+        headers: [
+          {
+            key: "Content-Security-Policy",
+            value: cspHeader.replace(/\n/g, ""),
+          },
+        ],
+      },
+    ];
   },
 };
 
-const withBundleAnalyzer = BundleAnalyzer({
-  enabled: process.env.ANALYZE === "true",
-  analyzerMode: "static",
-});
+const isAnalyze = process.env.ANALYZE === "true";
 
-export default withSentryConfig(withBundleAnalyzer(config), {
-  // For all available options, see:
-  // https://github.com/getsentry/sentry-webpack-plugin#options
+let config: NextConfig;
 
-  // Suppresses source map uploading logs during build
-  silent: true,
-  org: "hardwarehulp",
-  project: "jereko",
+if (isAnalyze) {
+  const withBundleAnalyzer = BundleAnalyzer({
+    enabled: process.env.ANALYZE === "true",
+    analyzerMode: "static",
+  });
 
-  // For all available options, see:
-  // https://docs.sentry.io/platforms/javascript/guides/nextjs/manual-setup/
+  config = withSentryConfig(withBundleAnalyzer(nextConfig), sentryRootConfig);
+} else {
+  config = withSentryConfig(nextConfig, sentryRootConfig);
+}
 
-  // Upload a larger set of source maps for prettier stack traces (increases build time)
-  widenClientFileUpload: true,
-
-  // Routes browser requests to Sentry through a Next.js rewrite to circumvent ad-blockers (increases server load)
-  tunnelRoute: "/monitoring",
-
-  // Hides source maps from generated client bundles
-  hideSourceMaps: true,
-
-  // Automatically tree-shake Sentry logger statements to reduce bundle size
-  disableLogger: true,
-
-  // Enables automatic instrumentation of Vercel Cron Monitors.
-  // See the following for more information:
-  // https://docs.sentry.io/product/crons/
-  // https://vercel.com/docs/cron-jobs
-  automaticVercelMonitors: true,
-});
+export default config;

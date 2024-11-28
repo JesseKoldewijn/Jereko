@@ -1,8 +1,10 @@
-import { type SeverityLevel, captureMessage } from "@sentry/nextjs";
+import * as Sentry from "@sentry/nextjs";
 import pino from "pino";
 
+const { captureMessage } = Sentry;
+
 const logger = () => {
-  const logLevels: Record<SeverityLevel, (...args: any) => void> = {
+  const logLevels: Record<Sentry.SeverityLevel, (...args: any) => void> = {
     info: (...args: any) => {
       const _logger = pino({
         level: "info",

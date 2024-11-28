@@ -4,31 +4,6 @@ export const middleware = (request: NextRequest) => {
   // Clone the request headers
   const requestHeaders = new Headers(request.headers);
 
-  // create CSP cfg
-  const cspHeader = `
-    default-src 'self';
-    script-src 'self' 'unsafe-eval' 'unsafe-inline';
-    style-src 'self' 'unsafe-inline';
-    img-src 'self' blob: data:;
-    font-src 'self';
-    object-src 'none';
-    base-uri 'self';
-    form-action 'self';
-    frame-ancestors 'none';
-    upgrade-insecure-requests;
-  `;
-
-  // Replace newline characters and spaces
-  const contentSecurityPolicyHeaderValue = cspHeader
-    .replace(/\s{2,}/g, " ")
-    .trim();
-
-  // set CSP header
-  requestHeaders.set(
-    "Content-Security-Policy",
-    contentSecurityPolicyHeaderValue,
-  );
-
   // set header for Document Policy
   requestHeaders.set("Document-Policy", "js-profiling");
 
@@ -42,12 +17,6 @@ export const middleware = (request: NextRequest) => {
 
   // Set a new response header for Document Policy
   response.headers.set("Document-Policy", "js-profiling");
-
-  // set CSP header
-  response.headers.set(
-    "Content-Security-Policy",
-    contentSecurityPolicyHeaderValue,
-  );
 
   // return the response
   return response;
@@ -69,6 +38,22 @@ export const config = {
         { type: "header", key: "next-router-prefetch" },
         { type: "header", key: "purpose", value: "prefetch" },
       ],
+    },
+
+    {
+      source:
+        "/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt).*)",
+      has: [
+        { type: "header", key: "next-router-prefetch" },
+        { type: "header", key: "purpose", value: "prefetch" },
+      ],
+    },
+
+    {
+      source:
+        "/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt).*)",
+      has: [{ type: "header", key: "x-present" }],
+      missing: [{ type: "header", key: "x-missing", value: "prefetch" }],
     },
   ],
 };
