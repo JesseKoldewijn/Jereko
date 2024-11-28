@@ -32,11 +32,7 @@ const nextConfig: NextConfig = {
     reactCompiler: true,
     optimizePackageImports: ["@sentry/nextjs", "@sentry/profiling-node"],
   },
-  transpilePackages: [
-    "@sentry/nextjs",
-    "@sentry/profiling-node",
-    // "ckeditor5", "@ckeditor/ckeditor5-react"
-  ],
+  transpilePackages: ["@sentry/nextjs", "@sentry/profiling-node"],
   async headers() {
     return [
       {
