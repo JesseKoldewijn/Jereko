@@ -9,6 +9,7 @@ import "./src/env";
 const cspHeader = `
     default-src 'self';
     script-src 'self' 'unsafe-eval' 'unsafe-inline' https://vercel.live/_next-live;
+    script-src-elem 'self' 'unsafe-eval' 'unsafe-inline' https://vercel.live/_next-live;
     style-src 'self' 'unsafe-inline';
     worker-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob:;
     img-src 'self' blob: data:;
