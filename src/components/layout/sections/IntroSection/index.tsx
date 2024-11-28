@@ -18,7 +18,7 @@ const IntroSection = async () => {
       {`, I'm a ${myAge} year old gamer, software engineer and tech enthusiast `}
       {!!latestExperience && (
         <>
-          and currently working at
+          currently working at
           <AnimatedIntroSection2 latestExperience={latestExperience} />
           as a<br />
           <AnimatedIntroSection3 latestExperience={latestExperience} />
