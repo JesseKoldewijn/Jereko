@@ -39,8 +39,8 @@ const NavMenuMobile = ({ socials }: { socials: Socials | null }) => {
     menuRef.current!.style.userSelect = "none";
     menuRef.current!.style.cursor = "default";
     menuRef.current!.style.opacity = "0";
+    setIsMobileMenuOpen(false);
     setTimeout(() => {
-      setIsMobileMenuOpen(false);
       setShowMenu(false);
     }, 700);
   };
