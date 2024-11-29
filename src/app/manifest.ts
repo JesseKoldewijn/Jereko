@@ -1,7 +1,12 @@
 import type { MetadataRoute } from "next";
 
-export default function manifest(): MetadataRoute.Manifest {
-  return {
+interface Manifest extends MetadataRoute.Manifest {
+  iarc_rating_id?: string;
+}
+
+const rootManifest = () => {
+  const manifest: Manifest = {
+    // General Manifest Entries
     name: "Jereko",
     short_name: "Jereko",
     description:
@@ -22,8 +27,19 @@ export default function manifest(): MetadataRoute.Manifest {
     ],
     theme_color: "#000",
     background_color: "#DDD",
-    display: "standalone",
-    scope: "/",
+    // PWA specific
+    id: "jereko-dev",
+    dir: "ltr",
+    lang: "en",
+    scope: ".",
     start_url: "/",
+    display: "standalone",
+    orientation: "portrait",
+    categories: ["business", "social", "entertainment"], // app categories
+    prefer_related_applications: false,
+    iarc_rating_id: "13",
   };
-}
+  return manifest;
+};
+
+export default rootManifest;

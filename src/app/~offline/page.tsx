@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 
-import { LatestAttendedWrapperDynamic } from "@/components/events";
 import HeroSection from "@/components/layout/sections/HeroSection";
 import IntroSection from "@/components/layout/sections/IntroSection";
 import Avatar from "@/images/avatar.webp";
@@ -28,7 +27,7 @@ const Home = async () => {
       />
       <section className="mx-auto flex w-full max-w-lg flex-col items-center gap-8 px-4 pt-0 text-center md:pt-5 lg:pt-10">
         <h2 className="text-md font-semibold md:text-xl">
-          Thanks for the visit!
+          Thanks for the visit in offline mode!
         </h2>
         <p className="text-neutral-600 dark:text-neutral-200">
           This website is used to showcase my projects, experience and
@@ -42,7 +41,6 @@ const Home = async () => {
         </h2>
         <IntroSection />
       </section>
-      <LatestAttendedWrapperDynamic />
     </>
   );
 };

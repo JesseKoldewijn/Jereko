@@ -1,8 +1,9 @@
 import { withSentryConfig } from "@sentry/nextjs";
+import withSerwistInit from "@serwist/next";
 import type { NextConfig } from "next";
 import { sentryRootConfig } from "sentry.root.config";
 
-import BundleAnalyzer from "@next/bundle-analyzer";
+import type NextBundleAnalyzer from "@next/bundle-analyzer";
 
 import "./src/env";
 
@@ -21,6 +22,7 @@ const cspHeader = `
 `;
 
 const nextConfig: NextConfig = {
+  swcMinify: true,
   reactStrictMode: true,
   images: {
     remotePatterns: [{ hostname: "img.youtube.com", protocol: "https" }],
@@ -30,9 +32,18 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   experimental: {
     reactCompiler: true,
-    optimizePackageImports: ["@sentry/nextjs", "@sentry/profiling-node"],
+    optimizePackageImports: [
+      "@sentry/nextjs",
+      "@sentry/profiling-node",
+      "@serwist/next",
+    ],
+    esmExternals: true,
   },
-  transpilePackages: ["@sentry/nextjs", "@sentry/profiling-node"],
+  transpilePackages: [
+    "@sentry/nextjs",
+    "@sentry/profiling-node",
+    "@serwist/next",
+  ],
   async headers() {
     return [
       {
@@ -50,17 +61,33 @@ const nextConfig: NextConfig = {
 
 const isAnalyze = process.env.ANALYZE === "true";
 
-let config: NextConfig;
+const config = async () => {
+  let config: NextConfig;
 
-if (isAnalyze) {
-  const withBundleAnalyzer = BundleAnalyzer({
-    enabled: process.env.ANALYZE === "true",
-    analyzerMode: "static",
+  if (isAnalyze) {
+    const BundleAnalyzer: typeof NextBundleAnalyzer = (
+      await import("@next/bundle-analyzer")
+    ).default;
+
+    const withBundleAnalyzer = BundleAnalyzer({
+      enabled: process.env.ANALYZE === "true",
+      analyzerMode: "static",
+    });
+
+    config = withSentryConfig(withBundleAnalyzer(nextConfig), sentryRootConfig);
+  } else {
+    config = withSentryConfig(nextConfig, sentryRootConfig);
+  }
+
+  const withSerwist = withSerwistInit({
+    cacheOnNavigation: true,
+    swSrc: "src/app/app-worker.ts",
+    swDest: "public/app-worker.js",
+    swUrl: "/app-worker.js",
+    reloadOnOnline: true,
+    disable: process.env.NODE_ENV !== "production",
   });
 
-  config = withSentryConfig(withBundleAnalyzer(nextConfig), sentryRootConfig);
-} else {
-  config = withSentryConfig(nextConfig, sentryRootConfig);
-}
-
+  return withSerwist(config);
+};
 export default config;

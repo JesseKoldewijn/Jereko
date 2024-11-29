@@ -10,6 +10,7 @@ import { usedTechnologies } from "@/config/tech";
 import { type Social } from "@/server/db/schemas/socials";
 import { getByPlatform } from "@/server/handlers/socials/getByPlatform";
 import "@/styles/globals.css";
+import { getAgeByDateString } from "@/utils/age";
 import { base } from "@/utils/hostname";
 
 import { TechUsedSectionNew } from "./layout_footer";
@@ -60,6 +61,7 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
   return (
     <html
       lang="en"
+      dir="ltr"
       className={cookieJarTheme ? cookieJarTheme.value : ""}
       suppressHydrationWarning
     >
@@ -106,48 +108,53 @@ const PageContent = ({
   );
 };
 
-export const metadata: Metadata = {
-  title: {
-    absolute: "Jereko - My personal website | Jesse Koldewijn",
-    template: "%s | Jereko - My personal website | Jesse Koldewijn",
-  },
-  description:
-    "Jereko - My personal website | build and developed by Jesse Koldewijn",
-  metadataBase: new URL(base),
-  icons: [
-    {
-      rel: "icon",
-      sizes: "512x512",
-      url: "/favicons/android-chrome-512x512.png",
+export const generateMetadata = async () => {
+  const myAge = getAgeByDateString(new Date(1999, 2, 15));
+  const pageDesc = `Jereko | build and developed by Jesse Koldewijn, a ${myAge} y/o tech freak, software engineering fanatic and gamer.`;
+
+  const md: Metadata = {
+    title: {
+      absolute: "Jereko - My personal website | Jesse Koldewijn",
+      template: "%s | Jereko - My personal website | Jesse Koldewijn",
     },
-    {
-      rel: "icon",
-      sizes: "192x192",
-      url: "/favicons/android-chrome-192x192.png",
+    description: pageDesc,
+    metadataBase: new URL(base),
+    icons: [
+      {
+        rel: "icon",
+        sizes: "512x512",
+        url: "/favicons/android-chrome-512x512.png",
+      },
+      {
+        rel: "icon",
+        sizes: "192x192",
+        url: "/favicons/android-chrome-192x192.png",
+      },
+      {
+        rel: "apple-touch-icon",
+        url: "/favicons/apple-touch-icon.png",
+        sizes: "180x180",
+      },
+      {
+        rel: "icon",
+        sizes: "32x32",
+        url: "/favicons/favicon-32x32.png",
+      },
+      {
+        rel: "icon",
+        sizes: "16x16",
+        url: "/favicons/favicon-16x16.png",
+      },
+      {
+        rel: "icon",
+        url: "/favicons/favicon.ico",
+      },
+    ],
+    openGraph: {
+      title: "Jereko",
+      description: pageDesc,
+      url: "https://jereko.dev",
     },
-    {
-      rel: "apple-touch-icon",
-      url: "/favicons/apple-touch-icon.png",
-      sizes: "180x180",
-    },
-    {
-      rel: "icon",
-      sizes: "32x32",
-      url: "/favicons/favicon-32x32.png",
-    },
-    {
-      rel: "icon",
-      sizes: "16x16",
-      url: "/favicons/favicon-16x16.png",
-    },
-    {
-      rel: "icon",
-      url: "/favicons/favicon.ico",
-    },
-  ],
-  openGraph: {
-    title: "Jereko",
-    description: "tbh idk what to put here yet",
-    url: "https://jereko.dev",
-  },
+  };
+  return md;
 };
