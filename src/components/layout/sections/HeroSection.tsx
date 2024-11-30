@@ -2,7 +2,7 @@ import dynamic from "next/dynamic";
 import { type StaticImageData } from "next/image";
 
 import AnimatedGradientText from "@/components/animated/animated-grad-text";
-import { TextGen } from "@/components/animated/text-gen";
+import { TextGen } from "@/components/animated/text-gen-dynamic";
 import { cn } from "@/lib/utils";
 
 import HeroSectionButtons from "./_HeroSectionButtons";

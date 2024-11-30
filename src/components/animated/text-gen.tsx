@@ -1,11 +1,12 @@
 "use client";
 
-import { m, stagger, useAnimate } from "framer-motion";
+import { m, stagger } from "framer-motion";
+import { useAnimate } from "framer-motion/mini";
 import { useEffect } from "react";
 
 import { usePathname } from "next/navigation";
 
-export const TextGen = ({
+export const INTERNAL_TextGenComponent = ({
   words,
   className,
 }: {

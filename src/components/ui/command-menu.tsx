@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import { useRouter } from "next/navigation";
 
@@ -23,12 +23,7 @@ import {
   CommandList,
   CommandSeparator,
   CommandShortcut,
-} from "./command";
-
-const CommandMenuContext = createContext<{
-  open: boolean;
-  setOpen: (open: boolean) => void;
-}>(null!);
+} from "./command-menu-imports";
 
 const CommandMenuProvider = ({ children }: { children: React.ReactNode }) => {
   const router = useRouter();
@@ -105,7 +100,7 @@ const CommandMenuProvider = ({ children }: { children: React.ReactNode }) => {
   }, [open]);
 
   return (
-    <CommandMenuContext.Provider value={{ open, setOpen }}>
+    <>
       <CommandDialog open={open} onOpenChange={setOpen}>
         <CommandInput placeholder="Type a command or search..." />
         <CommandList>
@@ -158,18 +153,8 @@ const CommandMenuProvider = ({ children }: { children: React.ReactNode }) => {
         </CommandList>
       </CommandDialog>
       {children}
-    </CommandMenuContext.Provider>
+    </>
   );
 };
 
 export default CommandMenuProvider;
-
-export const useCommandMenu = () => {
-  const { open, setOpen } = useContext(CommandMenuContext);
-
-  if (!open || !setOpen) {
-    throw new Error("CommandMenu is not open");
-  }
-
-  return { open, setOpen };
-};
