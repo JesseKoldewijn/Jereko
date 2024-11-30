@@ -1,17 +1,21 @@
 import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
+import { memo } from "react";
 
 import dynamic from "next/dynamic";
-import { cookies } from "next/headers";
+import { cookies, headers } from "next/headers";
 
 import Footer from "@/components/layout/footer";
 import { usedTechnologies } from "@/config/tech";
+import { env } from "@/env";
 import { type Social } from "@/server/db/schemas/socials";
 import { getByPlatform } from "@/server/handlers/socials/getByPlatform";
+import RegisterPWA from "@/service-worker/register-worker";
 import "@/styles/globals.css";
 import { getAgeByDateString } from "@/utils/age";
 import { base } from "@/utils/hostname";
+import { deepEqual } from "@/utils/object";
 
 import { TechUsedSectionNew } from "./layout_footer";
 
@@ -54,9 +58,16 @@ const QueryProvider = dynamic(() => import("@/providers/QueryProvider"), {
 
 const RootLayout = async ({ children }: { children: React.ReactNode }) => {
   const cookieJar = await cookies();
+  const headersList = await headers();
+  const requestedUrl = headersList.get("x-url") ?? base;
+  const searchParams = new URL(requestedUrl).searchParams;
+
   const cookieJarTheme = cookieJar.get("theme");
 
   const socials = await getByPlatform("twitter", "github", "linkedin");
+
+  const swEnabled =
+    env.NODE_ENV == "production" || searchParams.get("sw") == "true";
 
   return (
     <html
@@ -78,6 +89,7 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
               <Navbar socials={socials} />
               <CommandMenuProvider>
                 <PageContent innerChildren={children} socials={socials} />
+                {swEnabled && <RegisterPWA />}
               </CommandMenuProvider>
             </HeaderContextProvider>
           </NextThemeWrapper>
@@ -89,24 +101,32 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
 
 export default RootLayout;
 
-const PageContent = ({
-  innerChildren,
-  socials,
-}: {
-  innerChildren: React.ReactNode;
-  socials: Social[] | null;
-}) => {
-  return (
-    <>
-      <main className="min-h-[90svh] pb-8">{innerChildren}</main>
-      <Footer
-        topSlot={<TechUsedSectionNew techUsed={usedTechnologies} />}
-        innerSlot={<QuadSection />}
-        socials={socials}
-      />
-    </>
-  );
-};
+const PageContent = memo(
+  ({
+    innerChildren,
+    socials,
+  }: {
+    innerChildren: React.ReactNode;
+    socials: Social[] | null;
+  }) => {
+    return (
+      <>
+        <main className="min-h-[90svh] pb-8">{innerChildren}</main>
+        <Footer
+          topSlot={<TechUsedSectionNew techUsed={usedTechnologies} />}
+          innerSlot={<QuadSection />}
+          socials={socials}
+        />
+      </>
+    );
+  },
+  (prev, next) => {
+    const prevChildrenMatch = deepEqual(prev.innerChildren, next.innerChildren);
+    const prevSocialsMatch = deepEqual(prev.socials, next.socials);
+    return prevChildrenMatch && prevSocialsMatch;
+  },
+);
+PageContent.displayName = "PageContent";
 
 export const generateMetadata = async () => {
   const myAge = getAgeByDateString(new Date(1999, 2, 15));

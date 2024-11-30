@@ -5,6 +5,8 @@ import { sentryRootConfig } from "sentry.root.config";
 
 import type NextBundleAnalyzer from "@next/bundle-analyzer";
 
+import { serwistInitConfig } from "@/config/pwa/server";
+
 import "./src/env";
 
 const cspHeader = `
@@ -22,7 +24,6 @@ const cspHeader = `
 `;
 
 const nextConfig: NextConfig = {
-  swcMinify: true,
   reactStrictMode: true,
   images: {
     remotePatterns: [{ hostname: "img.youtube.com", protocol: "https" }],
@@ -79,14 +80,7 @@ const config = async () => {
     config = withSentryConfig(nextConfig, sentryRootConfig);
   }
 
-  const withSerwist = withSerwistInit({
-    cacheOnNavigation: true,
-    swSrc: "src/app/app-worker.ts",
-    swDest: "public/app-worker.js",
-    swUrl: "/app-worker.js",
-    reloadOnOnline: true,
-    disable: process.env.NODE_ENV !== "production",
-  });
+  const withSerwist = withSerwistInit(serwistInitConfig);
 
   return withSerwist(config);
 };
