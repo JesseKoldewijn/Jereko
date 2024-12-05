@@ -4,6 +4,7 @@ import { type Metadata } from "next";
 
 import dynamic from "next/dynamic";
 import { cookies, headers } from "next/headers";
+import type { ReadonlyURLSearchParams } from "next/navigation";
 
 import { ReactScanLoader } from "@/utils/react-scan/dynamic";
 import { memo } from "react";
@@ -70,8 +71,7 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
 
   const swEnabled =
     env.NODE_ENV == "production" || searchParams.get("sw") == "true";
-  const rsEnabled =
-    env.NODE_ENV !== "production" && searchParams.get("rs") == "true";
+  const rsEnabled = searchParams.get("rs") == "true";
 
   return (
     <html
