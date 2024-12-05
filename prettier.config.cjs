@@ -8,7 +8,7 @@ module.exports = {
   importOrder: [
     "^next/(.*)$",
     "^@next/(.*)$",
-    "^react/(.*)$",
+    "react",
     "@/icons/(.*)$",
     "^@/(.*)$",
     "^@/(.css)$",

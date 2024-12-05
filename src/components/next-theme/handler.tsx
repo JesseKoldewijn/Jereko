@@ -2,6 +2,7 @@
 
 import cookies from "js-cookie";
 import { useTheme } from "next-themes";
+
 import { useEffect } from "react";
 
 const NextThemeHandler = ({ children }: { children: React.ReactNode }) => {

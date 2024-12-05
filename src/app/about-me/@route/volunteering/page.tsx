@@ -1,4 +1,5 @@
 import { type Metadata } from "next";
+
 import { Suspense } from "react";
 
 const date = new Date(2021, 6, 1);

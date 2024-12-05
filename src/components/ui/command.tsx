@@ -1,11 +1,12 @@
 "use client";
 
+import { Command as CommandPrimitive } from "cmdk";
+
 import {
   Description,
   type DialogProps,
   DialogTitle,
 } from "@radix-ui/react-dialog";
-import { Command as CommandPrimitive } from "cmdk";
 import { forwardRef } from "react";
 
 import { LuSearch } from "@/icons/lu/Search";

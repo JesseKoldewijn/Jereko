@@ -1,9 +1,10 @@
 "use client";
 
 import { useTheme } from "next-themes";
-import React from "react";
 
 import Link from "next/link";
+
+import React from "react";
 
 import AppIcons from "@/icons/custom/app-icons-collection";
 import { LuList } from "@/icons/lu/List";

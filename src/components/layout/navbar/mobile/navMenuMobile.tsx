@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-
 import { usePathname } from "next/navigation";
+
+import { useEffect, useRef, useState } from "react";
 
 import { LuClose } from "@/icons/lu/Close";
 import { LuMenu } from "@/icons/lu/Menu";

@@ -1,9 +1,9 @@
 "use client";
 
-import { Suspense, useState } from "react";
-
 import dynamic from "next/dynamic";
 import Image from "next/image";
+
+import { Suspense, useState } from "react";
 
 import { LuPlay } from "@/icons/lu/Play";
 

@@ -1,9 +1,10 @@
 "use client";
 
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
 
 import Image, { type StaticImageData } from "next/image";
+
+import { useEffect, useState } from "react";
 
 import { type HeroSectionProps } from "./HeroSection";
 

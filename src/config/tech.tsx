@@ -1,4 +1,5 @@
 import NextjsIcon from "platformicons/svg_80x80/nextjs.svg";
+
 import ReactIcon from "platformicons/svg_80x80/react.svg";
 
 import AceternityIcon from "@/images/technologies/aceternity-ui.png";

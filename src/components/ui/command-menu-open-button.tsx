@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useLayoutEffect, useState } from "react";
-
 import { usePathname } from "next/navigation";
+
+import { useEffect, useLayoutEffect, useState } from "react";
 
 export const CommandMenuOpenButton = (
   props: Omit<React.HTMLAttributes<HTMLParagraphElement>, "children">,

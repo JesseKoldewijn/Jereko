@@ -1,10 +1,11 @@
 import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
-import { memo } from "react";
 
 import dynamic from "next/dynamic";
 import { cookies, headers } from "next/headers";
+
+import { memo } from "react";
 
 import Footer from "@/components/layout/footer";
 import { usedTechnologies } from "@/config/tech";

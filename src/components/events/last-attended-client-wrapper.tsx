@@ -1,8 +1,8 @@
 "use client";
 
-import { useQuery } from "@tanstack/react-query";
-
 import dynamic_import from "next/dynamic";
+
+import { useQuery } from "@tanstack/react-query";
 
 import type { mostRecentEvent } from "@/server/handlers/events/getLatest";
 

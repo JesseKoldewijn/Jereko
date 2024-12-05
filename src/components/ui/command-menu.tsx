@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
-
 import { useRouter } from "next/navigation";
+
+import { useEffect, useState } from "react";
 
 import { X } from "@/icons/custom/Twitter-X";
 import { LuGithub } from "@/icons/lu/Github";
