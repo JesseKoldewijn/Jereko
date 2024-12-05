@@ -21,7 +21,9 @@ export const env = createEnv({
    * 💡 You'll get type errors if these are not prefixed with NEXT_PUBLIC_.
    */
   client: {
-    NEXT_PUBLIC_NODE_ENV: z.string().optional(),
+    NEXT_PUBLIC_NODE_ENV: z
+      .enum(["development", "production", "test"])
+      .optional(),
   },
   /*
    * Due to how Next.js bundles environment variables on Edge and Client,

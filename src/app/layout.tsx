@@ -57,6 +57,10 @@ const QueryProvider = dynamic(() => import("@/providers/QueryProvider"), {
   ssr: true,
 });
 
+const ReactScanLoader = dynamic(() => import("@/utils/react-scan"), {
+  ssr: false,
+});
+
 const RootLayout = async ({ children }: { children: React.ReactNode }) => {
   const cookieJar = await cookies();
   const headersList = await headers();
@@ -69,6 +73,8 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
 
   const swEnabled =
     env.NODE_ENV == "production" || searchParams.get("sw") == "true";
+  const rsEnabled =
+    env.NODE_ENV !== "production" && searchParams.get("rs") == "true";
 
   return (
     <html
@@ -91,6 +97,7 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
               <CommandMenuProvider>
                 <PageContent innerChildren={children} socials={socials} />
                 {swEnabled && <RegisterPWA />}
+                {rsEnabled && <ReactScanLoader />}
               </CommandMenuProvider>
             </HeaderContextProvider>
           </NextThemeWrapper>
