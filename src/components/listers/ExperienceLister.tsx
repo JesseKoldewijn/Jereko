@@ -12,15 +12,21 @@ const ExperienceLister = async ({
 }) => {
   const experiencePromise = unstable_cache(async () => {
     if (experienceOverride) return experienceOverride;
-    return await db.select().from(experiences).execute();
+    try {
+      return await db.select().from(experiences).execute();
+    } catch (error) {
+      console.error(error);
+      return [];
+    }
   });
-  const experience = await experiencePromise();
+
+  const _experiences = await experiencePromise();
 
   return (
     <div className="flex flex-col gap-4">
-      {experience && experience.length > 0 ? (
+      {_experiences && _experiences.length > 0 ? (
         <>
-          {experience
+          {_experiences
             .sort((a, b) => {
               const aDate = new Date(
                 a.start_year + "/" + a.start_month + "/01",

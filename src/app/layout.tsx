@@ -5,7 +5,6 @@ import { type Metadata } from "next";
 import dynamic from "next/dynamic";
 import { cookies, headers } from "next/headers";
 
-import { ReactScanLoader } from "@/utils/react-scan/dynamic";
 import { memo } from "react";
 
 import Footer from "@/components/layout/footer";
@@ -70,7 +69,6 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
 
   const swEnabled =
     env.NODE_ENV == "production" || searchParams.get("sw") == "true";
-  const rsEnabled = !!searchParams.get("rs");
 
   return (
     <html
@@ -93,7 +91,6 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
               <CommandMenuProvider>
                 <PageContent innerChildren={children} socials={socials} />
                 {swEnabled && <RegisterPWA />}
-                {rsEnabled && <ReactScanLoader />}
               </CommandMenuProvider>
             </HeaderContextProvider>
           </NextThemeWrapper>
