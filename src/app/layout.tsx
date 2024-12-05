@@ -5,6 +5,7 @@ import { type Metadata } from "next";
 import dynamic from "next/dynamic";
 import { cookies, headers } from "next/headers";
 
+import { ReactScanLoader } from "@/utils/react-scan/dynamic";
 import { memo } from "react";
 
 import Footer from "@/components/layout/footer";
@@ -55,10 +56,6 @@ const HeaderContextProvider = dynamic(
 
 const QueryProvider = dynamic(() => import("@/providers/QueryProvider"), {
   ssr: true,
-});
-
-const ReactScanLoader = dynamic(() => import("@/utils/react-scan"), {
-  ssr: false,
 });
 
 const RootLayout = async ({ children }: { children: React.ReactNode }) => {
