@@ -10,7 +10,7 @@ import { serwistInitConfig } from "@/config/pwa/server";
 import "./src/env";
 
 const cspHeader = `
-    default-src 'self' https://vercel.live;
+    default-src 'self' https://vercel.live https://vercel.app;
     script-src 'self' 'unsafe-eval' 'unsafe-inline' https://vercel.live;
     style-src 'self' 'unsafe-inline';
     worker-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob:;
