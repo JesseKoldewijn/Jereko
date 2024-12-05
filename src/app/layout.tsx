@@ -70,7 +70,7 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
 
   const swEnabled =
     env.NODE_ENV == "production" || searchParams.get("sw") == "true";
-  const rsEnabled = searchParams.get("rs") == "true";
+  const rsEnabled = !!searchParams.get("rs");
 
   return (
     <html

@@ -19,7 +19,7 @@ export const ReactScanLoader = () => {
       isEnabled ? "enabled" : "disabled",
     );
     setEnabled(isEnabled);
-  }, [searchParams]);
+  }, []);
 
   const ReactScanLoaderComponent = enabled
     ? dynamic(() => import("@/utils/react-scan"), {
