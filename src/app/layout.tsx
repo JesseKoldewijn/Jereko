@@ -4,7 +4,6 @@ import { type Metadata } from "next";
 
 import dynamic from "next/dynamic";
 import { cookies, headers } from "next/headers";
-import type { ReadonlyURLSearchParams } from "next/navigation";
 
 import { ReactScanLoader } from "@/utils/react-scan/dynamic";
 import { memo } from "react";
