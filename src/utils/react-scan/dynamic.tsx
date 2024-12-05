@@ -12,7 +12,7 @@ export const ReactScanLoader = () => {
   const [enabled, setEnabled] = useState(false);
 
   useLayoutEffect(() => {
-    const reactScanParam = searchParams.get("react-scan");
+    const reactScanParam = searchParams.get("rs");
     const isEnabled = reactScanParam == "true";
     console.log(
       "reactScan is currently %s",
