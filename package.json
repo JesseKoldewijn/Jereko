@@ -16,6 +16,11 @@
     "analyze": "ANALYZE=true next build"
   },
   "dependencies": {
+    "@justeattakeaway/pie-css": "^0.13.1",
+    "@justeattakeaway/pie-icons-webc": "^1.1.0",
+    "@justeattakeaway/pie-webc": "^0.5.56",
+    "@lit-labs/nextjs": "^0.2.0",
+    "@lit/react": "^1.0.6",
     "@radix-ui/react-dialog": "^1.1.2",
     "@radix-ui/react-dropdown-menu": "^2.1.2",
     "@radix-ui/react-navigation-menu": "^1.2.1",
@@ -55,8 +60,8 @@
     "@types/http-proxy": "^1.17.15",
     "@types/js-cookie": "^3.0.6",
     "@types/node": "^22.9.1",
-    "@types/react": "^18.3.14",
-    "@types/react-dom": "^18.3.2",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
     "@typescript-eslint/eslint-plugin": "^7.18.0",
     "@typescript-eslint/parser": "^7.18.0",
     "autoprefixer": "^10.4.20",
