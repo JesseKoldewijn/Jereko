@@ -26,13 +26,15 @@ const openMenu = (
 };
 
 const closeMenu = (
-  menuRef: React.RefObject<HTMLDivElement>,
+  menuRef: React.RefObject<HTMLDivElement | null>,
   setIsMobileMenuOpen: (_open: boolean) => void,
   setShowMenu: React.Dispatch<React.SetStateAction<boolean>>,
 ) => {
-  menuRef.current!.style.userSelect = "none";
-  menuRef.current!.style.cursor = "default";
-  menuRef.current!.style.opacity = "0";
+  if (!menuRef.current) return;
+
+  menuRef.current.style.userSelect = "none";
+  menuRef.current.style.cursor = "default";
+  menuRef.current.style.opacity = "0";
   setIsMobileMenuOpen(false);
   setTimeout(() => {
     setShowMenu(false);
@@ -65,9 +67,9 @@ const NavMenuMobile = ({ socials }: { socials: Socials | null }) => {
         className="rounded-lg border p-2"
         onClick={() => {
           if (showMenu) {
-            closeMenu(menuRef, setIsMobileMenuOpen, setShowMenu);
+            closeMenu(menuRef as any, setIsMobileMenuOpen, setShowMenu);
           } else {
-            openMenu(menuRef, setIsMobileMenuOpen, setShowMenu);
+            openMenu(menuRef as any, setIsMobileMenuOpen, setShowMenu);
           }
         }}
       >
