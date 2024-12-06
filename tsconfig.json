@@ -36,7 +36,7 @@
     "typeRoots": [
       "./node_modules/@types",
       "./src/types"
-    ],
+    ]
   },
   "include": [
     ".eslintrc.cjs",
@@ -47,4 +47,7 @@
     "**/*.mjs",
     ".next/types/**/*.ts"
   ],
+  "exclude": [
+    "node_modules"
+  ]
 }
