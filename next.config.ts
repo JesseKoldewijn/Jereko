@@ -38,6 +38,9 @@ const nextConfig: NextConfig = {
       "@sentry/nextjs",
       "@sentry/profiling-node",
       "@serwist/next",
+      "@lit-labs/ssr-react",
+      "@lit-labs/nextjs",
+      "@lit/react",
     ],
     esmExternals: true,
   },
@@ -45,8 +48,9 @@ const nextConfig: NextConfig = {
     "@sentry/nextjs",
     "@sentry/profiling-node",
     "@serwist/next",
+    "@justeattakeaway/pie-webc",
+    "@justeattakeaway/pie-icons-webc",
   ],
-  serverExternalPackages: ["@lit-labs/ssr-react", "@lit/react"],
   async headers() {
     return [
       {

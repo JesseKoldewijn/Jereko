@@ -1,11 +1,7 @@
-import { JetLoadingSpinner } from "@/components/just-eat-takeaway/utils/spinner";
+import JetJobPageContent from "./page-content";
 
 const JobJustEatTakeawayPage = () => {
-  return (
-    <>
-      <JetLoadingSpinner />
-    </>
-  );
+  return <JetJobPageContent />;
 };
 
 export default JobJustEatTakeawayPage;

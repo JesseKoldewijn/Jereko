@@ -7,15 +7,21 @@ import { usePathname } from "next/navigation";
 
 import { useEffect } from "react";
 
+import { cn } from "@/lib/utils";
+
 export const INTERNAL_TextGenComponent = ({
   words,
   className,
+  childClassName,
 }: {
   words: string;
   className?: string;
+  childClassName?: string;
+  staggerSync?: boolean;
 }) => {
   const pathName = usePathname();
   const [scope, animate] = useAnimate();
+
   const wordsArray = words.split(" ");
 
   useEffect(() => {
@@ -34,10 +40,13 @@ export const INTERNAL_TextGenComponent = ({
 
   return (
     <div className={className} data-pathname-key={pathName}>
-      <div className="mt-4">
-        <div className="text-2xl leading-snug tracking-wide text-black dark:text-white">
-          <RenderWords wordsArray={wordsArray} scope={scope} />
-        </div>
+      <div
+        className={cn(
+          "mt-4 text-2xl leading-snug tracking-wide text-black dark:text-white",
+          childClassName,
+        )}
+      >
+        <RenderWords wordsArray={wordsArray} scope={scope} />
       </div>
     </div>
   );

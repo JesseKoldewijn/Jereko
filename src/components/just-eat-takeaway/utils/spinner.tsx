@@ -1,8 +1,9 @@
 "use client";
 
+import dynamic from "next/dynamic";
+
 import {
   type DefaultProps,
-  PieSpinner as Spinner,
   defaultProps,
 } from "@justeattakeaway/pie-webc/react/spinner.js";
 
@@ -10,6 +11,16 @@ import { cn } from "@/lib/utils";
 
 import type { JetCommonComponentProps } from "../common-component";
 import "../pie-common.css";
+
+const Spinner = dynamic(
+  () =>
+    import("@justeattakeaway/pie-webc/react/spinner.js").then(
+      (mod) => mod.PieSpinner,
+    ),
+  {
+    ssr: false,
+  },
+);
 
 export const JetLoadingSpinner = (
   props: JetCommonComponentProps<HTMLDivElement> & {
