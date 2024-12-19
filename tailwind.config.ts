@@ -73,6 +73,12 @@ module.exports = {
           DEFAULT: "var(--card)",
           foreground: "var(--card-foreground)",
         },
+        company: {
+          justeat: {
+            product: "var(--justeat-theme-product)",
+            brand: "var(--justeat-theme-brand)",
+          },
+        },
       },
       borderRadius: {
         lg: "var(--radius)",

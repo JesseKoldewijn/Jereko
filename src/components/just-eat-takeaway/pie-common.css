@@ -1,1 +1,6 @@
 @import "node_modules/@justeattakeaway/pie-css/dist/index.css";
+
+:root {
+  --justeat-theme-brand: #ff8000;
+  --justeat-theme-product: #f75e28;
+}

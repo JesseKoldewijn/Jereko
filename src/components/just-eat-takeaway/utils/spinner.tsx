@@ -10,7 +10,6 @@ import {
 import { cn } from "@/lib/utils";
 
 import type { JetCommonComponentProps } from "../common-component";
-import "../pie-common.css";
 
 const Spinner = dynamic(
   () =>

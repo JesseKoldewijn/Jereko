@@ -1,7 +1,7 @@
-import JetJobPageContent from "./page-content";
+import JetJobPageContentLayout from "./page-content";
 
 const JobJustEatTakeawayPage = () => {
-  return <JetJobPageContent />;
+  return <JetJobPageContentLayout />;
 };
 
 export default JobJustEatTakeawayPage;
