@@ -1,3 +1,4 @@
+import withLitSSRInit from "@lit-labs/nextjs/index";
 import { withSentryConfig } from "@sentry/nextjs";
 import withSerwistInit from "@serwist/next";
 import type { NextConfig } from "next";
@@ -37,6 +38,9 @@ const nextConfig: NextConfig = {
       "@sentry/nextjs",
       "@sentry/profiling-node",
       "@serwist/next",
+      "@lit-labs/ssr-react",
+      "@lit-labs/nextjs",
+      "@lit/react",
     ],
     esmExternals: true,
   },
@@ -44,6 +48,8 @@ const nextConfig: NextConfig = {
     "@sentry/nextjs",
     "@sentry/profiling-node",
     "@serwist/next",
+    "@justeattakeaway/pie-webc",
+    "@justeattakeaway/pie-icons-webc",
   ],
   async headers() {
     return [
@@ -81,7 +87,10 @@ const config = async () => {
   }
 
   const withSerwist = withSerwistInit(serwistInitConfig);
+  const litSsrConfig = withLitSSRInit({
+    addDeclarativeShadowDomPolyfill: false,
+  }) as (config: NextConfig) => NextConfig;
 
-  return withSerwist(config);
+  return withSerwist(litSsrConfig(config));
 };
 export default config;

@@ -1,8 +1,10 @@
+import React from "react";
+
 import type { CommonSvgAttributes } from "./common";
 
-type LucideIcon = (props: CommonSvgAttributes) => JSX.Element;
+type LucideIcon = (props: CommonSvgAttributes) => React.ReactNode;
 
-export const buildLucideIcon = (name: string, svgContent: JSX.Element) => {
+export const buildLucideIcon = (name: string, svgContent: React.ReactNode) => {
   const component = (props: CommonSvgAttributes) => {
     const defaults = {
       width: "24",
