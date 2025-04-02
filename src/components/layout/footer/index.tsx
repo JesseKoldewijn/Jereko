@@ -4,7 +4,6 @@ import { X } from "@/icons/custom/Twitter-X";
 import { LuGithub } from "@/icons/lu/Github";
 import { LuLinkedin } from "@/icons/lu/LinkedIn";
 
-import { CommandMenuOpenButton } from "@/components/ui/command-menu-open-button";
 import { appConfig } from "@/config/app";
 import { type Socials } from "@/server/db/schemas/socials";
 
@@ -44,7 +43,6 @@ const Footer = async ({
       <footer className="mx-4 flex w-auto flex-col gap-10 rounded-t-2xl border-x border-t border-neutral-300 bg-neutral-100 px-4 py-10 dark:border-neutral-700 dark:bg-neutral-900 md:px-6 lg:mx-8 lg:gap-20 lg:py-16">
         {innerSlot}
         <div className="mx-5 flex flex-col items-center justify-center px-8 text-sm">
-          <CommandMenuOpenButton className="font-md flex items-center justify-center gap-2 border-b-2 pb-4 pt-2" />
           <div className="mb-4 mt-4 flex gap-4">
             {twitter && (
               <Link
