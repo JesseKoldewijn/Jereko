@@ -91,9 +91,9 @@ const NavbarMenu = () => {
       <NavigationMenuList>
         <ShowcaseNavSection {...showcaseEntry} />
         <ListedNavSection {...listedEntry} />
-        <SingleItemSection href={appConfig.repo.href}>
+        <SingleItemSection href={appConfig.repo.href} className="flex">
           <LuGithub className="mr-2 h-5 w-auto" />
-          OpenSource
+          <span>OpenSource</span>
         </SingleItemSection>
       </NavigationMenuList>
     </NavigationMenu>

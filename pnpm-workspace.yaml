@@ -1,0 +1,6 @@
+onlyBuiltDependencies:
+  - '@sentry/cli'
+  - '@sentry/profiling-node'
+  - es5-ext
+  - esbuild
+  - sharp

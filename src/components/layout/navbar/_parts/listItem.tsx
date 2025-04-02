@@ -1,14 +1,15 @@
 "use client";
 
-import { forwardRef } from "react";
-
 import { NavigationMenuLink } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
 
-const ListItem = forwardRef<
-  React.ElementRef<"a">,
-  React.ComponentPropsWithoutRef<"a">
->(({ className, title, children, ...props }, ref) => {
+const ListItem = ({
+  className,
+  title,
+  children,
+  ref,
+  ...props
+}: React.ComponentPropsWithRef<"a">) => {
   return (
     <li>
       <NavigationMenuLink asChild>
@@ -28,7 +29,7 @@ const ListItem = forwardRef<
       </NavigationMenuLink>
     </li>
   );
-});
+};
 ListItem.displayName = "ListItem";
 
 export default ListItem;

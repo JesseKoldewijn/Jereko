@@ -1,37 +1,23 @@
-import Link from "next/link";
+import { NavigationMenuLink } from "@/components/ui/navigation-menu";
+import { cn } from "@/lib/utils";
 
-import {
-  NavigationMenuItem,
-  NavigationMenuLink,
-  navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu";
-import { base } from "@/utils/hostname";
-
-interface SingleItemSectionProps {
-  children: React.ReactNode;
-  href: string;
-}
-
-const SingleItemSection = ({ children, href }: SingleItemSectionProps) => {
+const SingleItemSection = ({
+  children,
+  className,
+  ...rest
+}: React.ComponentPropsWithRef<"a">) => {
   return (
-    <NavigationMenuItem>
-      <Link
-        href={href}
-        target={
-          !href.startsWith("/")
-            ? !href.includes(base)
-              ? "_blank"
-              : undefined
-            : undefined
-        }
-        legacyBehavior
-        passHref
+    <NavigationMenuLink asChild>
+      <a
+        className={cn(
+          "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+          className,
+        )}
+        {...rest}
       >
-        <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-          {children}
-        </NavigationMenuLink>
-      </Link>
-    </NavigationMenuItem>
+        {children}
+      </a>
+    </NavigationMenuLink>
   );
 };
 

@@ -44,7 +44,7 @@ const NavMenuMobile = ({ socials }: { socials: Socials | null }) => {
 
   const pathName = usePathname();
   const [showMenu, setShowMenu] = useState(false);
-  const menuRef = useRef<HTMLDivElement>(null);
+  const menuRef = useRef<HTMLDivElement>(null as any as HTMLDivElement);
 
   useEffect(() => {
     if (showMenu) {

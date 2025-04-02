@@ -51,10 +51,12 @@ const HeroSection = ({
             )}
           />
 
-          <TextGen
-            words={bannerContent.description}
-            className="max-w-2xl font-light text-neutral-500 dark:text-neutral-200 md:text-lg lg:mb-8 lg:text-xl"
-          />
+          <div className="flex min-h-20">
+            <TextGen
+              words={bannerContent.description}
+              className="max-w-2xl font-light text-neutral-500 dark:text-neutral-200 md:text-lg lg:text-xl"
+            />
+          </div>
 
           <HeroSectionButtons bannerContent={bannerContent} />
         </div>
