@@ -2,6 +2,7 @@ import { allEvents } from "./getAll";
 
 export const mostRecentEvent = async () => {
   const events = await allEvents();
+  console.log(events);
 
   if (!events.length) return null;
 

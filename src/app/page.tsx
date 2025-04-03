@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 
+import { cache } from "react";
+
 import { LatestAttendedWrapperDynamic } from "@/components/events";
 import HeroSection from "@/components/layout/sections/HeroSection";
 import IntroSection from "@/components/layout/sections/IntroSection";
@@ -13,7 +15,20 @@ export const generateMetadata = async () => {
   return md;
 };
 
+const showEventsMessage = cache(() => {
+  const showEventsDisabledMessage = [
+    "[DEBUG]:",
+    "Events are disabled for now.",
+    "This is currently turned off in a hardcoded fashion.",
+  ];
+  return `console.debug('${showEventsDisabledMessage.join(" ")}')`.trim();
+});
+
 const Home = async () => {
+  const showEvents = false;
+
+  const showEventsScript = showEventsMessage();
+
   return (
     <>
       <HeroSection
@@ -42,7 +57,14 @@ const Home = async () => {
         </h2>
         <IntroSection />
       </section>
-      <LatestAttendedWrapperDynamic />
+      {showEvents && <LatestAttendedWrapperDynamic />}
+      {!showEvents && (
+        <script
+          dangerouslySetInnerHTML={{
+            __html: showEventsScript,
+          }}
+        />
+      )}
     </>
   );
 };
