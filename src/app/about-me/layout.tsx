@@ -1,6 +1,6 @@
 import AboutMeHeader from "@/components/page-elements/about-me/page-heading";
 
-const AboutMeLayout = ({
+const AboutMeLayout = async ({
   route,
 }: {
   children: React.ReactNode;

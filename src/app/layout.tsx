@@ -79,6 +79,11 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
     >
       <head>
         <meta name="theme-color" content="#000" />
+        <link
+          rel="shortcut icon"
+          href="/favicons/favicon.ico"
+          type="image/x-icon"
+        />
       </head>
       <body
         className={`font-sans ${GeistSans.variable} ${GeistMono.variable}`}
@@ -139,7 +144,6 @@ export const generateMetadata = async () => {
       template: "%s | Jereko - My personal website | Jesse Koldewijn",
     },
     description: pageDesc,
-    metadataBase: new URL(base),
     icons: [
       {
         rel: "icon",
