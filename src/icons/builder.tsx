@@ -1,3 +1,5 @@
+import type { JSX } from "react";
+
 import type { CommonSvgAttributes } from "./common";
 
 type LucideIcon = (props: CommonSvgAttributes) => JSX.Element;

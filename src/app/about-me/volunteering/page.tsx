@@ -2,6 +2,8 @@ import { type Metadata } from "next";
 
 import { Suspense } from "react";
 
+import AboutMeLayout from "../_layout";
+
 const date = new Date(2021, 6, 1);
 
 const volunteeringSince = () => {
@@ -44,7 +46,7 @@ export const metadata: Metadata = {
 
 const Volunteering = async () => {
   return (
-    <>
+    <AboutMeLayout>
       <section
         id="about-me-overview"
         className="flex w-auto max-w-md flex-col gap-4 text-center"
@@ -92,7 +94,7 @@ const Volunteering = async () => {
           </p>
         </div>
       </section>
-    </>
+    </AboutMeLayout>
   );
 };
 

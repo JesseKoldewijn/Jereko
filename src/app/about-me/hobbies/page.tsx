@@ -1,5 +1,7 @@
 import { type Metadata } from "next";
 
+import AboutMeLayout from "../_layout";
+
 export const metadata: Metadata = {
   title: "Volunteering",
   description: "A page about my hobbies.",
@@ -12,7 +14,7 @@ export const metadata: Metadata = {
 
 const Hobbies = async () => {
   return (
-    <>
+    <AboutMeLayout>
       <section
         id="about-me-overview"
         className="flex w-auto max-w-md flex-col gap-4 text-center xs:mb-auto"
@@ -69,7 +71,7 @@ const Hobbies = async () => {
           </p>
         </div>
       </section>
-    </>
+    </AboutMeLayout>
   );
 };
 

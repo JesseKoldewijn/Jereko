@@ -3,6 +3,8 @@ import { type Metadata } from "next";
 import AnimatedGradientText from "@/components/animated/animated-grad-text";
 import GoToHeading from "@/components/page-elements/about-me/go-to-heading";
 
+import AboutMeLayout from "./_layout";
+
 export const metadata: Metadata = {
   title: "About me",
   openGraph: {
@@ -14,7 +16,7 @@ export const metadata: Metadata = {
 
 const AboutMe = async () => {
   return (
-    <>
+    <AboutMeLayout>
       <section
         id="about-me-overview"
         className="flex w-auto max-w-md flex-col gap-4 text-center"
@@ -88,7 +90,7 @@ const AboutMe = async () => {
           </p>
         </div>
       </section>
-    </>
+    </AboutMeLayout>
   );
 };
 
