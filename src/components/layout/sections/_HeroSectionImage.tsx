@@ -6,14 +6,19 @@ import Image, { type StaticImageData } from "next/image";
 
 import { useEffect, useState } from "react";
 
+import { appConfig } from "@/config/app";
+
 import { type HeroSectionProps } from "./HeroSection";
 
 const HeroSectionImage = ({
   bannerImage,
+  bannerFallbackImage,
   bannerID,
 }: Omit<HeroSectionProps, "bannerContent"> & {
   bannerID?: string;
 }) => {
+  const [isError, setIsError] = useState(false);
+
   const { systemTheme, theme } = useTheme();
   const actualCurrentTheme = theme == "system" ? systemTheme : theme;
 
@@ -23,6 +28,16 @@ const HeroSectionImage = ({
       : actualCurrentTheme == "light"
         ? bannerImage.light
         : bannerImage.dark,
+  );
+
+  const [currentFallbackBannerImage, setCurrentFallbackBannerImage] = useState<
+    StaticImageData | undefined
+  >(
+    actualCurrentTheme == "dark"
+      ? bannerFallbackImage?.dark
+      : actualCurrentTheme == "light"
+        ? bannerFallbackImage?.light
+        : bannerFallbackImage?.dark,
   );
 
   useEffect(() => {
@@ -35,8 +50,58 @@ const HeroSectionImage = ({
           ? bannerImage.light
           : bannerImage.dark,
     );
+
+    if (bannerFallbackImage) {
+      setCurrentFallbackBannerImage(
+        actualCurrentTheme == "dark"
+          ? bannerFallbackImage.dark
+          : actualCurrentTheme == "light"
+            ? bannerFallbackImage.light
+            : bannerFallbackImage.dark,
+      );
+    }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [theme]);
+
+  if (isError && currentFallbackBannerImage) {
+    if (
+      !currentFallbackBannerImage.src.startsWith(appConfig.cdn.openCdn.baseUrl)
+    ) {
+      return (
+        <Image
+          id={bannerID}
+          src={currentFallbackBannerImage}
+          className="-top-[0%] my-auto ml-auto mr-auto block max-h-[300px] w-auto scale-[calc(100%+2%)] rounded-full bg-neutral-100 bg-clip-content dark:bg-neutral-900 lg:mr-0 lg:max-h-[500px]"
+          alt="hero image"
+          priority
+        />
+      );
+    }
+
+    return (
+      <Image
+        id={bannerID}
+        src={currentFallbackBannerImage}
+        className="-top-[0%] my-auto ml-auto mr-auto block max-h-[300px] w-auto scale-[calc(100%+2%)] rounded-full bg-neutral-100 bg-clip-content dark:bg-neutral-900 lg:mr-0 lg:max-h-[500px]"
+        alt="hero image"
+        priority
+      />
+    );
+  }
+
+  if (!currentBannerImage.src.startsWith(appConfig.cdn.openCdn.baseUrl)) {
+    return (
+      <Image
+        id={bannerID}
+        src={currentBannerImage}
+        className="-top-[0%] my-auto ml-auto mr-auto block max-h-[300px] w-auto scale-[calc(100%+2%)] rounded-full bg-neutral-100 bg-clip-content dark:bg-neutral-900 lg:mr-0 lg:max-h-[500px]"
+        alt="hero image"
+        onError={() => setIsError(true)}
+        priority
+      />
+    );
+  }
 
   return (
     <Image

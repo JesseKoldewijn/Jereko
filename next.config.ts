@@ -10,23 +10,29 @@ import { serwistInitConfig } from "@/config/pwa/server";
 import "./src/env";
 
 const cspHeader = `
-    default-src 'self' https://vercel.live;
-    script-src 'self' 'unsafe-eval' 'unsafe-inline' https://vercel.live;
-    style-src 'self' 'unsafe-inline';
-    worker-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob:;
-    img-src 'self' blob: data:;
-    font-src 'self';
-    object-src 'none';
-    base-uri 'self';
-    form-action 'self';
-    frame-ancestors 'none';
-    upgrade-insecure-requests;
+  default-src 'self' https://vercel.live https://cdn.jereko.dev;
+  script-src 'self' 'unsafe-eval' 'unsafe-inline' https://vercel.live https://cdn.jereko.dev;
+  style-src 'self' 'unsafe-inline';
+  worker-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob:;
+  img-src 'self' blob: data: https://cdn.jereko.dev;
+  font-src 'self';
+  object-src 'none';
+  base-uri 'self';
+  form-action 'self';
+  frame-ancestors 'none';
+  upgrade-insecure-requests;
 `;
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   images: {
-    remotePatterns: [{ hostname: "img.youtube.com", protocol: "https" }],
+    remotePatterns: [
+      { hostname: "img.youtube.com", protocol: "https" },
+      {
+        hostname: "cdn.jereko.dev",
+        protocol: "https",
+      },
+    ],
   },
   compress: true,
   reactProductionProfiling: false,

@@ -6,6 +6,7 @@ import { LatestAttendedWrapperDynamic } from "@/components/events";
 import HeroSection from "@/components/layout/sections/HeroSection";
 import IntroSection from "@/components/layout/sections/IntroSection";
 import Avatar from "@/images/avatar.webp";
+import { createOpenCdnUrl } from "@/lib/cdn";
 
 export const generateMetadata = async () => {
   const md: Metadata = {
@@ -29,10 +30,37 @@ const Home = async () => {
 
   const showEventsScript = showEventsMessage();
 
+  const bannerImages = {
+    dark: createOpenCdnUrl({
+      imageUrl: Avatar.src,
+      queryType: "direct-query",
+      imageOptions: {
+        width: 520,
+        height: 390,
+        quality: 75,
+        format: "webp",
+      },
+    }).toStaticImageAsset(),
+    light: createOpenCdnUrl({
+      imageUrl: Avatar.src,
+      queryType: "direct-query",
+      imageOptions: {
+        width: 520,
+        height: 390,
+        quality: 75,
+        format: "webp",
+      },
+    }).toStaticImageAsset(),
+  };
+
   return (
     <>
       <HeroSection
         bannerImage={{
+          dark: bannerImages.dark,
+          light: bannerImages.light,
+        }}
+        bannerFallbackImage={{
           dark: Avatar,
           light: Avatar,
         }}

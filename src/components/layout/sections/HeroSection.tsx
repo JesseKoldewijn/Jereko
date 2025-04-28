@@ -2,12 +2,14 @@ import dynamic from "next/dynamic";
 import { type StaticImageData } from "next/image";
 
 import AnimatedGradientText from "@/components/animated/animated-grad-text";
-import { TextGen } from "@/components/animated/text-gen-dynamic";
 import { cn } from "@/lib/utils";
 
 import HeroSectionButtons from "./_HeroSectionButtons";
 
 const HeroSectionImage = dynamic(() => import("./_HeroSectionImage"));
+const TextGen = dynamic(() =>
+  import("@/components/animated/text-gen-dynamic").then((mod) => mod.TextGen),
+);
 
 export interface HeroSectionProps {
   className?: string;
@@ -29,10 +31,15 @@ export interface HeroSectionProps {
     dark: StaticImageData;
     light: StaticImageData;
   };
+  bannerFallbackImage?: {
+    dark: StaticImageData;
+    light: StaticImageData;
+  };
 }
 
 const HeroSection = ({
   bannerImage,
+  bannerFallbackImage,
   bannerContent,
   className,
 }: HeroSectionProps) => {
@@ -61,7 +68,11 @@ const HeroSection = ({
           <HeroSectionButtons bannerContent={bannerContent} />
         </div>
         <div className="order-first mb-8 flex max-h-[300px] min-h-[300px] transition-opacity md:mb-16 md:max-h-[500px] lg:order-last lg:col-span-5 lg:mb-0 lg:mt-0">
-          <HeroSectionImage bannerImage={bannerImage} bannerID={bannerID} />
+          <HeroSectionImage
+            bannerImage={bannerImage}
+            bannerFallbackImage={bannerFallbackImage}
+            bannerID={bannerID}
+          />
         </div>
       </div>
     </section>

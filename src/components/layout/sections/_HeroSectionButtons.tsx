@@ -6,7 +6,10 @@ import { type HeroSectionProps } from "./HeroSection";
 
 const HeroSectionButtons = ({
   bannerContent,
-}: Omit<HeroSectionProps, "bannerID" | "bannerImage">) => {
+}: Omit<
+  HeroSectionProps,
+  "bannerID" | "bannerImage" | "bannerFallbackImage"
+>) => {
   return (
     <>
       {bannerContent.ctas && bannerContent.ctas.length == 2 ? (
