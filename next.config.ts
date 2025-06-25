@@ -10,13 +10,13 @@ import { serwistInitConfig } from "@/config/pwa/server";
 import "./src/env";
 
 const cspHeader = `
-  default-src 'self' https://vercel.live https://cdn.jereko.dev;
-  script-src 'self' 'unsafe-eval' 'unsafe-inline' https://vercel.live https://cdn.jereko.dev;
+  default-src 'self' https://vercel.live https://cdn.jereko.dev https://www.youtube.com;
+  script-src 'self' 'unsafe-eval' 'unsafe-inline' https://vercel.live https://cdn.jereko.dev https://www.youtube.com;
   style-src 'self' 'unsafe-inline';
   worker-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob:;
-  img-src 'self' blob: data: https://cdn.jereko.dev;
+  img-src 'self' blob: data: https://cdn.jereko.dev https://www.youtube.com;
   font-src 'self';
-  object-src 'none';
+  object-src 'self' https://cdn.jereko.dev https://www.youtube.com;
   base-uri 'self';
   form-action 'self';
   frame-ancestors 'none';

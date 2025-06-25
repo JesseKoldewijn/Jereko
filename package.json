@@ -10,6 +10,7 @@
     "db:gen": "dotenv drizzle-kit generate:mysql",
     "db:push": "dotenv drizzle-kit push:mysql",
     "db:studio": "dotenv drizzle-kit studio --host 127.0.0.1",
+    "db:seed": "dotenv pnpm dlx tsx ./db.seeder.ts",
     "lint": "next lint",
     "prettier": "prettier --write .",
     "twconfig": "tailwind-config-viewer --port 6002 --config ./tailwind.config.cjs",

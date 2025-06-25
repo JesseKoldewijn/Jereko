@@ -16,3 +16,4 @@ export const socials = mysqlTable("socials", {
 
 export type Social = typeof socials.$inferSelect;
 export type Socials = (typeof socials.$inferSelect)[];
+export type SocialInsert = typeof socials.$inferInsert;

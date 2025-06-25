@@ -2,7 +2,8 @@ import { mostRecentEvent } from "@/server/handlers/events/getLatest";
 
 import EventItem from "./event-item";
 
-const LastAttendedEvent = async () => {
+export const LastAttendedEvent = async () => {
+  await new Promise((resolve) => setTimeout(resolve, 1000)); // Simulate loading delay
   const latestEvent = await mostRecentEvent();
 
   return (
@@ -24,5 +25,3 @@ const LastAttendedEvent = async () => {
     </>
   );
 };
-
-export default LastAttendedEvent;

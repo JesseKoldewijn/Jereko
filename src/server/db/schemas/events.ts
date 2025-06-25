@@ -37,3 +37,5 @@ export const events = mysqlTable(
 
 export type Event = typeof events.$inferSelect;
 export type Events = (typeof events.$inferSelect)[];
+
+export type EventInsert = typeof events.$inferInsert;

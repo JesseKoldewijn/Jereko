@@ -14,6 +14,7 @@ export const experiences = mysqlTable(
     })
       .primaryKey()
       .autoincrement(),
+    exp_key: text("exp_key").notNull(),
     title: text("job_title"),
     company_name: text("company_name"),
     location: text("location"),
@@ -35,3 +36,5 @@ export const experiences = mysqlTable(
 
 export type Experience = typeof experiences.$inferSelect;
 export type Experiences = (typeof experiences.$inferSelect)[];
+
+export type ExperienceInsert = typeof experiences.$inferInsert;

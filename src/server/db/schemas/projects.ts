@@ -32,3 +32,4 @@ export const projects = mysqlTable(
 
 export type Project = typeof projects.$inferSelect;
 export type Projects = (typeof projects.$inferSelect)[];
+export type ProjectInsert = typeof projects.$inferInsert;
