@@ -1,3 +1,6 @@
+import Link from "next/link";
+
+import { cn } from "@/lib/utils";
 import { type Experience } from "@/server/db/schemas/experience";
 
 import {
@@ -29,8 +32,12 @@ const ExperienceListerItem = ({ experience }: { experience: Experience }) => {
         })
       : "Current";
 
-  return (
-    <Card className="w-full max-w-md bg-neutral-100 p-5 dark:bg-neutral-900">
+  const shouldHaveLink = experience.company_name === "Just Eat Takeaway.com";
+
+  const link = shouldHaveLink && "/experiences/just-eat-takeaway";
+
+  const content = (
+    <>
       <CardTitle>{experience.title}</CardTitle>
       <CardDescription>
         {experience.company_name} | {experience.location}
@@ -51,6 +58,23 @@ const ExperienceListerItem = ({ experience }: { experience: Experience }) => {
           );
         })}
       </CardFooter>
+    </>
+  );
+
+  return (
+    <Card
+      className={cn("w-full max-w-md bg-neutral-100 p-5 dark:bg-neutral-900", {
+        "cursor-pointer hover:bg-neutral-200 dark:hover:bg-neutral-800": link,
+      })}
+      asChild={shouldHaveLink}
+    >
+      {shouldHaveLink && link ? (
+        <Link href={link} className="flex flex-col">
+          {content}
+        </Link>
+      ) : (
+        content
+      )}
     </Card>
   );
 };

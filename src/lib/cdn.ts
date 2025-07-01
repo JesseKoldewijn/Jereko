@@ -1,7 +1,5 @@
 import type { StaticImageData } from "next/image";
 
-import { use } from "react";
-
 const buildDirectQueryUrl = (
   baseUrl: string,
   imageUrl: string,

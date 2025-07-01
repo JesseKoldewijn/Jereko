@@ -1,10 +1,18 @@
+import { Slot } from "@radix-ui/react-slot";
 import { forwardRef } from "react";
 
 import { cn } from "@/lib/utils";
 
-const Card = forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
-  ({ className, ...props }, ref) => (
-    <div
+const Card = forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement> & {
+    asChild?: boolean;
+  }
+>(({ className, asChild, ...props }, ref) => {
+  const Comp = asChild ? Slot : "div";
+
+  return (
+    <Comp
       ref={ref}
       className={cn(
         "rounded-lg border bg-card text-card-foreground shadow-sm",
@@ -12,8 +20,8 @@ const Card = forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
       )}
       {...props}
     />
-  ),
-);
+  );
+});
 Card.displayName = "Card";
 
 const CardHeader = forwardRef<

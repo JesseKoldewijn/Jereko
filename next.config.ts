@@ -9,6 +9,8 @@ import { serwistInitConfig } from "@/config/pwa/server";
 
 import "./src/env";
 
+const withLitSSR = require("@lit-labs/nextjs")();
+
 const cspHeader = `
   default-src 'self' https://vercel.live https://cdn.jereko.dev https://www.youtube.com;
   script-src 'self' 'unsafe-eval' 'unsafe-inline' https://vercel.live https://cdn.jereko.dev https://www.youtube.com;
@@ -88,6 +90,12 @@ const config = async () => {
 
   const withSerwist = withSerwistInit(serwistInitConfig);
 
-  return withSerwist(config);
+  const pwaConf = withSerwist(config);
+  const withLit = withLitSSR(pwaConf);
+
+  return {
+    ...withLit,
+    images: nextConfig.images,
+  };
 };
 export default config;

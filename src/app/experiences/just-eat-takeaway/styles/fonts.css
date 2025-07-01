@@ -1,0 +1,12 @@
+.jet-sans-digital-base {
+  font-family: var(--font-jet-sans-digital-regular);
+}
+
+.jet-sans-digital-extended {
+  font-family: var(--font-jet-sans-digital-extended);
+}
+
+[data-theme="just-eat-takeaway"],
+[data-theme="just-eat-takeaway"] > * {
+  font-family: var(--font-jet-sans-digital-regular) !important;
+}

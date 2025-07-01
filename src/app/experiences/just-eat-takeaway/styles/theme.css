@@ -1,0 +1,13 @@
+.jet-bg {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background: #ff8000;
+  background: linear-gradient(
+    151deg,
+    rgba(181, 91, 0, 1) 0%,
+    rgba(255, 128, 0, 1) 49%,
+    rgba(255, 195, 135, 1) 100%
+  );
+}
