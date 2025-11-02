@@ -7,7 +7,6 @@ import LatestEventSkeleton from "@/components/events/latest-event-skeleton";
 import HeroSection from "@/components/layout/sections/HeroSection";
 import IntroSection from "@/components/layout/sections/IntroSection";
 import Avatar from "@/images/avatar.webp";
-import { createOpenCdnUrl } from "@/lib/cdn";
 
 export const generateMetadata = async () => {
   const md: Metadata = {
@@ -17,36 +16,13 @@ export const generateMetadata = async () => {
   return md;
 };
 
-const bannerImages = {
-  dark: createOpenCdnUrl({
-    imageUrl: Avatar.src,
-    queryType: "direct-query",
-    imageOptions: {
-      width: 520,
-      height: 390,
-      quality: 75,
-      format: "webp",
-    },
-  }).toStaticImageAsset(),
-  light: createOpenCdnUrl({
-    imageUrl: Avatar.src,
-    queryType: "direct-query",
-    imageOptions: {
-      width: 520,
-      height: 390,
-      quality: 75,
-      format: "webp",
-    },
-  }).toStaticImageAsset(),
-};
-
 const Home = async () => {
   return (
     <>
       <HeroSection
         bannerImage={{
-          dark: bannerImages.dark,
-          light: bannerImages.light,
+          dark: Avatar,
+          light: Avatar,
         }}
         bannerFallbackImage={{
           dark: Avatar,

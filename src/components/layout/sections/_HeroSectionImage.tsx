@@ -73,19 +73,23 @@ const HeroSectionImage = ({
           id={bannerID}
           src={currentFallbackBannerImage}
           className="-top-[0%] my-auto ml-auto mr-auto block max-h-[300px] w-auto scale-[calc(100%+2%)] rounded-full bg-neutral-100 bg-clip-content dark:bg-neutral-900 lg:mr-0 lg:max-h-[500px]"
-          alt="hero image"
+          alt="hero"
+          onError={() => setIsError(true)}
           priority
         />
       );
     }
 
     return (
-      <Image
+      <img
         id={bannerID}
-        src={currentFallbackBannerImage}
+        src={currentFallbackBannerImage.src}
+        width={currentFallbackBannerImage.width}
+        height={currentFallbackBannerImage.height}
         className="-top-[0%] my-auto ml-auto mr-auto block max-h-[300px] w-auto scale-[calc(100%+2%)] rounded-full bg-neutral-100 bg-clip-content dark:bg-neutral-900 lg:mr-0 lg:max-h-[500px]"
-        alt="hero image"
-        priority
+        alt="hero"
+        onError={() => setIsError(true)}
+        loading="eager"
       />
     );
   }
@@ -96,7 +100,7 @@ const HeroSectionImage = ({
         id={bannerID}
         src={currentBannerImage}
         className="-top-[0%] my-auto ml-auto mr-auto block max-h-[300px] w-auto scale-[calc(100%+2%)] rounded-full bg-neutral-100 bg-clip-content dark:bg-neutral-900 lg:mr-0 lg:max-h-[500px]"
-        alt="hero image"
+        alt="hero"
         onError={() => setIsError(true)}
         priority
       />
@@ -104,12 +108,15 @@ const HeroSectionImage = ({
   }
 
   return (
-    <Image
+    <img
       id={bannerID}
-      src={currentBannerImage}
+      src={currentBannerImage.src}
+      width={currentBannerImage.width}
+      height={currentBannerImage.height}
       className="-top-[0%] my-auto ml-auto mr-auto block max-h-[300px] w-auto scale-[calc(100%+2%)] rounded-full bg-neutral-100 bg-clip-content dark:bg-neutral-900 lg:mr-0 lg:max-h-[500px]"
-      alt="hero image"
-      priority
+      alt="hero"
+      onError={() => setIsError(true)}
+      loading="eager"
     />
   );
 };

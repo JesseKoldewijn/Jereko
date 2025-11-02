@@ -37,8 +37,8 @@ const nextConfig: NextConfig = {
   compress: true,
   reactProductionProfiling: false,
   poweredByHeader: false,
+  reactCompiler: true,
   experimental: {
-    reactCompiler: true,
     optimizePackageImports: [
       "@sentry/nextjs",
       "@sentry/profiling-node",

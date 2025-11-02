@@ -15,6 +15,14 @@ export const ThemeToggle = dynamic(
   },
 );
 
+export const NavbarMenu = dynamic(
+  () => import("@/components/layout/navbar/navigationMenu"),
+  {
+    ssr: false,
+    loading: () => <div className="mt-2 h-full w-full flex-1 py-4 md:mt-3" />,
+  },
+);
+
 export const NavbarBackgroundWrapper = ({
   children,
 }: {

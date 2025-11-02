@@ -103,7 +103,6 @@ export const InfiniteMovingCardsTechUsed = ({
           return (
             <li
               key={`${item.name}-row-1-${idx}`}
-              typeof="img"
               className={cn(
                 {
                   "rounded-lg bg-neutral-900 dark:bg-neutral-100": isDarkLogo,
