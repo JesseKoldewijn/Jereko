@@ -1,8 +1,6 @@
-import Link from "next/link";
-
 import { LuMouse } from "@/icons/lu/Mouse";
 
-import { type Project } from "@/server/db/schemas/projects";
+import { type Project } from "@/data/projects";
 
 import {
   Card,
@@ -13,18 +11,19 @@ import {
 } from "../ui/card";
 
 const ProjectListerItem = ({ project }: { project: Project }) => {
-  if (project.draft == "true") return;
+  if (String(project.draft) === "true") return;
 
   const LinkWrapper = ({ children }: { children: React.ReactNode }) => {
-    if (project.link !== null) {
+    if (project.link) {
       return (
-        <Link
+        <a
           href={project.link}
           target="_blank"
+          rel="noopener noreferrer"
           className="flex rounded-lg border border-neutral-300 transition-colors duration-500 hover:border-neutral-500 dark:border-neutral-800 hover:dark:border-neutral-200"
         >
           {children}
-        </Link>
+        </a>
       );
     }
     return <>{children}</>;
@@ -37,7 +36,7 @@ const ProjectListerItem = ({ project }: { project: Project }) => {
           <span className="block w-full max-w-[270px] overflow-hidden text-ellipsis whitespace-nowrap md:max-w-[300px]">
             {project.title}
           </span>
-          {project.link !== null && (
+          {project.link && (
             <LuMouse
               height={24}
               width={24}
@@ -51,7 +50,7 @@ const ProjectListerItem = ({ project }: { project: Project }) => {
           {project.tags?.split(",").flatMap((tag, idx) => {
             return (
               <div
-                key={`${idx}_${tag}_${project.id}}`}
+                key={`${idx}_${tag}_${project.title}`}
                 className="rounded-full border bg-gray-300 px-2 py-1 text-neutral-950 dark:border-neutral-300 dark:bg-neutral-700 dark:text-neutral-300"
               >
                 {tag}

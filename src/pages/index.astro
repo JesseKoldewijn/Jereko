@@ -1,0 +1,43 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { LastAttendedEvent } from "@/components/events/last-attended";
+import HeroSection from "@/components/layout/sections/HeroSection";
+import IntroSection from "@/components/layout/sections/IntroSection";
+import avatarUrl from "@/images/avatar.webp";
+const bannerImg =
+  typeof avatarUrl === "string"
+    ? { src: avatarUrl, width: 400, height: 400 }
+    : { src: (avatarUrl as { src: string }).src, width: 400, height: 400 };
+---
+
+<Layout title="Jereko - My personal website | Jesse Koldewijn">
+  <div transition:name="hero" transition:animate="fade">
+    <HeroSection
+      client:load
+      bannerImage={{ dark: bannerImg, light: bannerImg }}
+      bannerContent={{
+        title: "Jereko",
+        description: "Hi, My name is Jesse!",
+      }}
+    />
+  </div>
+  <section
+    transition:name="home-blurb"
+    transition:animate="fade"
+    class="mx-auto flex w-full max-w-lg flex-col items-center gap-8 px-4 pt-0 text-center md:pt-5 lg:pt-10"
+  >
+    <h2 class="text-md font-semibold md:text-xl">Thanks for the visit!</h2>
+    <p class="text-neutral-600 dark:text-neutral-200">
+      This website is used to showcase my projects, experience and volunteering work. I also use this website to showcase my skills in engineering and events I've attended.
+    </p>
+  </section>
+  <section
+    transition:name="home-intro"
+    transition:animate="fade"
+    class="mx-auto flex w-full max-w-lg flex-col items-center gap-8 px-4 py-20 text-center"
+  >
+    <h2 class="text-md font-semibold md:text-xl">A short introduction about me</h2>
+    <IntroSection client:load />
+  </section>
+  <LastAttendedEvent client:load />
+</Layout>

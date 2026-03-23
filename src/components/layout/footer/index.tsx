@@ -1,15 +1,13 @@
-import Link from "next/link";
-
 import { X } from "@/icons/custom/Twitter-X";
 import { LuGithub } from "@/icons/lu/Github";
 import { LuLinkedin } from "@/icons/lu/LinkedIn";
 
 import { appConfig } from "@/config/app";
-import { type Socials } from "@/server/db/schemas/socials";
+import { type Socials } from "@/data/socials";
 
 import ToTopButton from "./to-top-button";
 
-const Footer = async ({
+const Footer = ({
   topSlot,
   innerSlot,
   socials,
@@ -45,42 +43,45 @@ const Footer = async ({
         <div className="mx-5 flex flex-col items-center justify-center px-8 text-sm">
           <div className="mb-4 mt-4 flex gap-4">
             {twitter && (
-              <Link
+              <a
                 aria-label="X (formerly known as Twitter)"
                 className="flex rounded-lg p-1 text-neutral-800 hover:bg-neutral-100 dark:text-neutral-200 dark:hover:bg-neutral-700 dark:hover:text-neutral-300"
                 href={twitter.link ?? "#"}
                 target="_blank"
+                rel="noopener noreferrer"
                 data-link-label={twitter.label ?? "twitter-link-footer"}
               >
                 <X className="m-auto h-5 w-auto" />
                 <span className="sr-only">
                   Link to X (formerly known as Twitter) profile
                 </span>
-              </Link>
+              </a>
             )}
             {github && (
-              <Link
-                aria-label="Instagram"
+              <a
+                aria-label="GitHub"
                 className="rounded-lg p-1 text-neutral-800 hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-700 dark:hover:text-neutral-400"
                 href={github.link ?? "#"}
                 target="_blank"
+                rel="noopener noreferrer"
                 data-link-label={github.label ?? "github-link-footer"}
               >
                 <LuGithub className="h-6 w-auto" />
                 <span className="sr-only">Link to Github profile</span>
-              </Link>
+              </a>
             )}
             {linkedin && (
-              <Link
+              <a
                 aria-label="LinkedIn"
                 className="rounded-lg p-1 text-neutral-800 hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-700 dark:hover:text-neutral-400"
                 href={linkedin.link ?? "#"}
                 target="_blank"
+                rel="noopener noreferrer"
                 data-link-label={linkedin.label ?? "linkedin-link-footer"}
               >
                 <LuLinkedin className="h-6 w-auto" />
                 <span className="sr-only">Link to LinkedIn profile</span>
-              </Link>
+              </a>
             )}
           </div>
           <div className="mb-4 mt-3 flex gap-2">

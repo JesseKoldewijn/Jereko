@@ -1,15 +1,11 @@
-import dynamic from "next/dynamic";
-import { type StaticImageData } from "next/image";
-
 import AnimatedGradientText from "@/components/animated/animated-grad-text";
+import { TextGen } from "@/components/animated/text-gen-dynamic";
 import { cn } from "@/lib/utils";
 
 import HeroSectionButtons from "./_HeroSectionButtons";
+import HeroSectionImage from "./_HeroSectionImage";
 
-const HeroSectionImage = dynamic(() => import("./_HeroSectionImage"));
-const TextGen = dynamic(() =>
-  import("@/components/animated/text-gen-dynamic").then((mod) => mod.TextGen),
-);
+export type BannerImage = { src: string; width?: number; height?: number };
 
 export interface HeroSectionProps {
   className?: string;
@@ -28,12 +24,12 @@ export interface HeroSectionProps {
     ];
   };
   bannerImage: {
-    dark: StaticImageData;
-    light: StaticImageData;
+    dark: BannerImage;
+    light: BannerImage;
   };
   bannerFallbackImage?: {
-    dark: StaticImageData;
-    light: StaticImageData;
+    dark: BannerImage;
+    light: BannerImage;
   };
 }
 

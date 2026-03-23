@@ -1,29 +1,18 @@
 "use client";
 
-import dynamic from "next/dynamic";
-
 import { LuGithub } from "@/icons/lu/Github";
 import { LuList } from "@/icons/lu/List";
 import { LuUser } from "@/icons/lu/User";
 
+import {
+  NavigationMenu,
+  NavigationMenuList,
+} from "@/components/ui/navigation-menu";
 import { appConfig } from "@/config/app";
 
 import ListedNavSection from "./item-variants/listed";
 import ShowcaseNavSection from "./item-variants/showcase";
 import SingleItemSection from "./item-variants/singleItem";
-
-const NavigationMenu = dynamic(
-  () =>
-    import("@/components/ui/navigation-menu").then((mod) => mod.NavigationMenu),
-  { ssr: true },
-);
-const NavigationMenuList = dynamic(
-  () =>
-    import("@/components/ui/navigation-menu").then(
-      (mod) => mod.NavigationMenuList,
-    ),
-  { ssr: true },
-);
 
 export const showcaseEntry = {
   triggerTitle: (

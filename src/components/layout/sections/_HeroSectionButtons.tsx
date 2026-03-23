@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 import { Button } from "@/components/ui/button";
 
 import { type HeroSectionProps } from "./HeroSection";
@@ -15,9 +13,19 @@ const HeroSectionButtons = ({
       {bannerContent.ctas && bannerContent.ctas.length == 2 ? (
         <>
           <Button className="mr-4 inline-flex items-center justify-center rounded-lg border px-5 py-3 text-center text-base font-medium hover:bg-neutral-900 hover:text-neutral-100 focus:ring-4 dark:hover:bg-neutral-100 dark:hover:text-neutral-900">
-            <Link
+            <a
               href={bannerContent.ctas[0].url}
               className="inline-flex items-center justify-center"
+              target={
+                bannerContent.ctas[0].url.startsWith("http")
+                  ? "_blank"
+                  : undefined
+              }
+              rel={
+                bannerContent.ctas[0].url.startsWith("http")
+                  ? "noopener noreferrer"
+                  : undefined
+              }
             >
               {bannerContent.ctas[0].title}
               <svg
@@ -32,12 +40,24 @@ const HeroSectionButtons = ({
                   clipRule="evenodd"
                 ></path>
               </svg>
-            </Link>
+            </a>
           </Button>
           <Button className="inline-flex items-center justify-center rounded-lg border px-5 py-3 text-center text-base font-medium hover:bg-neutral-900 hover:text-neutral-100 focus:ring-4 dark:hover:bg-neutral-100 dark:hover:text-neutral-900">
-            <Link href={bannerContent.ctas[1].url}>
+            <a
+              href={bannerContent.ctas[1].url}
+              target={
+                bannerContent.ctas[1].url.startsWith("http")
+                  ? "_blank"
+                  : undefined
+              }
+              rel={
+                bannerContent.ctas[1].url.startsWith("http")
+                  ? "noopener noreferrer"
+                  : undefined
+              }
+            >
               {bannerContent.ctas[1].title}
-            </Link>
+            </a>
           </Button>
         </>
       ) : null}

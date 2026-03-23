@@ -2,13 +2,9 @@
 
 import { useTheme } from "next-themes";
 
-import Image, { type StaticImageData } from "next/image";
-
 import { useEffect, useState } from "react";
 
-import { appConfig } from "@/config/app";
-
-import { type HeroSectionProps } from "./HeroSection";
+import { type BannerImage, type HeroSectionProps } from "./HeroSection";
 
 const HeroSectionImage = ({
   bannerImage,
@@ -22,7 +18,7 @@ const HeroSectionImage = ({
   const { systemTheme, theme } = useTheme();
   const actualCurrentTheme = theme == "system" ? systemTheme : theme;
 
-  const [currentBannerImage, setCurrentBannerImage] = useState<StaticImageData>(
+  const [currentBannerImage, setCurrentBannerImage] = useState<BannerImage>(
     actualCurrentTheme == "dark"
       ? bannerImage.dark
       : actualCurrentTheme == "light"
@@ -31,7 +27,7 @@ const HeroSectionImage = ({
   );
 
   const [currentFallbackBannerImage, setCurrentFallbackBannerImage] = useState<
-    StaticImageData | undefined
+    BannerImage | undefined
   >(
     actualCurrentTheme == "dark"
       ? bannerFallbackImage?.dark
@@ -64,45 +60,20 @@ const HeroSectionImage = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [theme]);
 
-  if (isError && currentFallbackBannerImage) {
-    if (
-      !currentFallbackBannerImage.src.startsWith(appConfig.cdn.openCdn.baseUrl)
-    ) {
-      return (
-        <Image
-          id={bannerID}
-          src={currentFallbackBannerImage}
-          className="-top-[0%] my-auto ml-auto mr-auto block max-h-[300px] w-auto scale-[calc(100%+2%)] rounded-full bg-neutral-100 bg-clip-content dark:bg-neutral-900 lg:mr-0 lg:max-h-[500px]"
-          alt="hero"
-          onError={() => setIsError(true)}
-          priority
-        />
-      );
-    }
+  const imgClass =
+    "-top-[0%] my-auto ml-auto mr-auto block max-h-[300px] w-auto scale-[calc(100%+2%)] rounded-full bg-neutral-100 bg-clip-content dark:bg-neutral-900 lg:mr-0 lg:max-h-[500px]";
 
+  if (isError && currentFallbackBannerImage) {
     return (
       <img
         id={bannerID}
         src={currentFallbackBannerImage.src}
         width={currentFallbackBannerImage.width}
         height={currentFallbackBannerImage.height}
-        className="-top-[0%] my-auto ml-auto mr-auto block max-h-[300px] w-auto scale-[calc(100%+2%)] rounded-full bg-neutral-100 bg-clip-content dark:bg-neutral-900 lg:mr-0 lg:max-h-[500px]"
+        className={imgClass}
         alt="hero"
         onError={() => setIsError(true)}
         loading="eager"
-      />
-    );
-  }
-
-  if (!currentBannerImage.src.startsWith(appConfig.cdn.openCdn.baseUrl)) {
-    return (
-      <Image
-        id={bannerID}
-        src={currentBannerImage}
-        className="-top-[0%] my-auto ml-auto mr-auto block max-h-[300px] w-auto scale-[calc(100%+2%)] rounded-full bg-neutral-100 bg-clip-content dark:bg-neutral-900 lg:mr-0 lg:max-h-[500px]"
-        alt="hero"
-        onError={() => setIsError(true)}
-        priority
       />
     );
   }
@@ -113,7 +84,7 @@ const HeroSectionImage = ({
       src={currentBannerImage.src}
       width={currentBannerImage.width}
       height={currentBannerImage.height}
-      className="-top-[0%] my-auto ml-auto mr-auto block max-h-[300px] w-auto scale-[calc(100%+2%)] rounded-full bg-neutral-100 bg-clip-content dark:bg-neutral-900 lg:mr-0 lg:max-h-[500px]"
+      className={imgClass}
       alt="hero"
       onError={() => setIsError(true)}
       loading="eager"

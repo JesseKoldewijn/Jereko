@@ -1,22 +1,19 @@
-import { db } from "@/server/db/conn";
-import { projects } from "@/server/db/schemas/projects";
+import { allProjects } from "@/data/queries";
 
 import ProjectListerItem from "./ProjectListerItem";
 
-const ProjectsLister = async () => {
-  const _projects = await db.select().from(projects).execute();
+const ProjectsLister = () => {
+  const _projects = allProjects();
 
   return (
     <div className="flex flex-col gap-4">
       {_projects && _projects.length > 0 ? (
         <>
-          {_projects.flatMap((project) => {
-            return (
-              <div key={project.id}>
-                <ProjectListerItem project={project} />
-              </div>
-            );
-          })}
+          {_projects.map((project, i) => (
+            <div key={`${project.title}-${i}`}>
+              <ProjectListerItem project={project} />
+            </div>
+          ))}
         </>
       ) : (
         <>No projects found</>

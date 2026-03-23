@@ -1,7 +1,6 @@
 "use client";
 
-import { useRouter } from "next/navigation";
-
+import { navigate as viewTransitionNavigate } from "astro:transitions/client";
 import { useEffect, useState } from "react";
 
 import { X } from "@/icons/custom/Twitter-X";
@@ -25,8 +24,13 @@ import {
   CommandShortcut,
 } from "./command-menu-imports";
 
+const navigate = (path: string) => {
+  void viewTransitionNavigate(path).catch(() => {
+    window.location.assign(path);
+  });
+};
+
 const CommandMenuProvider = ({ children }: { children: React.ReactNode }) => {
-  const router = useRouter();
   const [open, setOpen] = useState(false);
 
   const down = (e: KeyboardEvent) => {
@@ -45,25 +49,25 @@ const CommandMenuProvider = ({ children }: { children: React.ReactNode }) => {
       switch (keyMatch(e.key)) {
         case "h": {
           e.preventDefault();
-          router.push("/");
+          navigate("/");
           setOpen(false);
           break;
         }
         case "m": {
           e.preventDefault();
-          router.push("/about-me");
+          navigate("/about-me");
           setOpen(false);
           break;
         }
         case "p": {
           e.preventDefault();
-          router.push("/projects");
+          navigate("/projects");
           setOpen(false);
           break;
         }
         case "e": {
           e.preventDefault();
-          router.push("/experience");
+          navigate("/experience");
           setOpen(false);
           break;
         }
@@ -106,27 +110,52 @@ const CommandMenuProvider = ({ children }: { children: React.ReactNode }) => {
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>
           <CommandGroup heading="Pages">
-            <CommandItem>
+            <CommandItem
+              onSelect={() => {
+                navigate("/");
+                setOpen(false);
+              }}
+            >
               <LuHome className="mr-2 h-4 w-4" />
               <span>Home page</span>
               <CommandShortcut>⌘H</CommandShortcut>
             </CommandItem>
-            <CommandItem>
+            <CommandItem
+              onSelect={() => {
+                navigate("/about-me");
+                setOpen(false);
+              }}
+            >
               <LuUser className="mr-2 h-4 w-4" />
               <span>About Me</span>
               <CommandShortcut>⌘M</CommandShortcut>
             </CommandItem>
-            <CommandItem>
+            <CommandItem
+              onSelect={() => {
+                navigate("/projects");
+                setOpen(false);
+              }}
+            >
               <LuList className="mr-2 h-4 w-4" />
               <span>My Projects</span>
               <CommandShortcut>⌘P</CommandShortcut>
             </CommandItem>
-            <CommandItem>
+            <CommandItem
+              onSelect={() => {
+                navigate("/experience");
+                setOpen(false);
+              }}
+            >
               <LuListChecks className="mr-2 h-4 w-4" />
               <span>My Experience</span>
               <CommandShortcut>⌘E</CommandShortcut>
             </CommandItem>
-            <CommandItem>
+            <CommandItem
+              onSelect={() => {
+                window.open(appConfig.repo.href, "_blank");
+                setOpen(false);
+              }}
+            >
               <LuListChecks className="mr-2 h-4 w-4" />
               <span>OpenSource</span>
               <CommandShortcut>⌘O</CommandShortcut>
@@ -134,17 +163,32 @@ const CommandMenuProvider = ({ children }: { children: React.ReactNode }) => {
           </CommandGroup>
           <CommandSeparator />
           <CommandGroup heading="Socials">
-            <CommandItem>
+            <CommandItem
+              onSelect={() => {
+                window.open(appConfig.socials.twitter.href, "_blank");
+                setOpen(false);
+              }}
+            >
               <X className="ml-[.15rem] mr-2 !h-4 !w-4" />
               <span>X/Twitter</span>
               <CommandShortcut>⌘X</CommandShortcut>
             </CommandItem>
-            <CommandItem>
+            <CommandItem
+              onSelect={() => {
+                window.open(appConfig.socials.github.href, "_blank");
+                setOpen(false);
+              }}
+            >
               <LuGithub className="mr-2 h-4 w-4" />
               <span>Github</span>
               <CommandShortcut>⌘G</CommandShortcut>
             </CommandItem>
-            <CommandItem>
+            <CommandItem
+              onSelect={() => {
+                window.open(appConfig.socials.linkedIn.href, "_blank");
+                setOpen(false);
+              }}
+            >
               <LuLinkedin className="mr-2 h-4 w-4" />
               <span>LinkedIn</span>
               <CommandShortcut>⌘L</CommandShortcut>

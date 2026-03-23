@@ -1,24 +1,8 @@
-import dynamic from "next/dynamic";
-
-import { env } from "@/env";
-import { type Event } from "@/server/db/schemas/events";
+import { type Event } from "@/data/events";
+import { YoutubePlayer } from "@/lib/video/player";
 
 import { Card, CardContent, CardDescription, CardTitle } from "../ui/card";
 import { Skeleton } from "../ui/skeleton";
-
-const OpenGraphPreview = dynamic(
-  () => import("@/lib/og/preview-client").then((x) => x.OpenGraphPreview),
-  {
-    ssr: true,
-  },
-);
-
-const YoutubePlayer = dynamic(
-  () => import("@/lib/video/player").then((x) => x.YoutubePlayer),
-  {
-    ssr: true,
-  },
-);
 
 type EventItemProps =
   | {
@@ -52,7 +36,11 @@ const EventItem = ({ title, event, isSkeleton }: EventItemProps) => {
   }
 
   const isServer = typeof window === "undefined";
-  const origin = isServer ? env.VERCEL_URL : window.location.origin;
+  const origin = isServer
+    ? typeof import.meta.env?.SITE === "string"
+      ? new URL(import.meta.env.SITE).origin
+      : "https://jereko.dev"
+    : window.location.origin;
 
   if (!origin || !event) {
     console.error("event origin is undefined or invalid: ", origin);
@@ -72,12 +60,6 @@ const EventItem = ({ title, event, isSkeleton }: EventItemProps) => {
         })
       : null;
 
-  const requestProto = event.url?.startsWith("https://")
-    ? "https://"
-    : "http://";
-
-  const requestHost = event.url?.split("/")[2];
-
   return (
     <Card className="flex min-h-[18rem] flex-col items-center justify-center bg-neutral-100 dark:bg-neutral-900">
       {title ? (
@@ -92,14 +74,21 @@ const EventItem = ({ title, event, isSkeleton }: EventItemProps) => {
         <CardTitle className="pt-4">{event.name}</CardTitle>
       )}
       <CardContent className="flex flex-1 flex-col">
-        {event.url_type === "video" && event.url ? (
+        {"url" in event && event.url && event.url_type === "video" ? (
           <YoutubePlayer url={event.url} origin={origin} />
+        ) : "url" in event && event.url ? (
+          <a
+            href={event.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="my-auto flex h-full min-h-[182px] w-full max-w-[322px] items-center justify-center text-sm text-muted-foreground underline"
+          >
+            View link
+          </a>
         ) : (
-          <OpenGraphPreview
-            event={event}
-            requestProto={requestProto}
-            requestHost={requestHost!}
-          />
+          <span className="my-auto flex h-full min-h-[182px] w-full max-w-[322px] items-center justify-center text-sm text-muted-foreground">
+            No preview available
+          </span>
         )}
       </CardContent>
     </Card>

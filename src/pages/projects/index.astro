@@ -1,0 +1,35 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import HeroSection from "@/components/layout/sections/HeroSection";
+import ProjectsLister from "@/components/listers/ProjectsLister";
+import bannerImage from "@/images/banner-programming.webp";
+const bannerImg =
+  typeof bannerImage === "string"
+    ? { src: bannerImage, width: 400, height: 400 }
+    : { src: (bannerImage as { src: string }).src, width: 400, height: 400 };
+---
+
+<Layout
+  title="Projects | Jereko"
+  description="A list of projects I've worked on."
+>
+  <div transition:name="hero" transition:animate="fade">
+    <HeroSection
+      client:load
+      bannerImage={{ dark: bannerImg, light: bannerImg }}
+      bannerContent={{
+        title: "Projects",
+        description: "A list of projects I've worked on.",
+      }}
+    />
+  </div>
+  <div
+    transition:name="page-content"
+    transition:animate="fade"
+    class="mx-auto mt-8 w-auto max-w-md px-4 md:w-full md:px-0"
+  >
+    <section>
+      <ProjectsLister client:load />
+    </section>
+  </div>
+</Layout>

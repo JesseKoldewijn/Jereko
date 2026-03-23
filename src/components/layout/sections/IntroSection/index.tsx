@@ -1,4 +1,4 @@
-import { mostRecentExp } from "@/server/handlers/exp/getLatest";
+import { mostRecentExp } from "@/data/queries";
 import { getAgeByDateString } from "@/utils/age";
 
 import {
@@ -11,9 +11,9 @@ const year = 1999;
 const month = 2;
 const day = 15;
 
-const IntroSection = async () => {
+const IntroSection = () => {
   const myAge = getAgeByDateString(new Date(year, month, day).toDateString());
-  const latestExperience = await mostRecentExp();
+  const latestExperience = mostRecentExp();
 
   return (
     <p className="w-full text-balance text-neutral-600 dark:text-neutral-200">
