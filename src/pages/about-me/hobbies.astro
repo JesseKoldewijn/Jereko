@@ -1,0 +1,215 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import AboutMeHeader from "@/components/page-elements/about-me/AboutMeHeaderAstro";
+import AnimatedGradientText from "@/components/animated/animated-grad-text";
+import avatarUrl from "@/images/avatar.webp";
+const bannerImg =
+  typeof avatarUrl === "string"
+    ? { src: avatarUrl, width: 400, height: 400 }
+    : { src: (avatarUrl as { src: string }).src, width: 400, height: 400 };
+---
+
+<Layout title="Hobbies | Jereko" description="A page about my hobbies.">
+  <div transition:name="hero" transition:animate="fade">
+    <AboutMeHeader
+      client:load
+      pathname="/about-me/hobbies"
+      bannerImage={{ dark: bannerImg, light: bannerImg }}
+      title="Hobbies"
+      description="What do I do in my free time?"
+    />
+  </div>
+  <div
+    transition:name="about-body"
+    transition:animate="fade"
+    class="mx-4 flex flex-col items-center justify-center gap-8 lg:mx-2 lg:flex-row"
+  >
+    <section
+      id="about-me-overview"
+      class="flex w-auto max-w-md flex-col gap-4 text-center xs:mb-auto"
+    >
+      <h2 class="text-center text-2xl font-bold">What are my hobbies?</h2>
+      <div class="flex flex-col gap-4">
+        <p>
+          In general. I love to play
+          <AnimatedGradientText
+            client:load
+            className="mx-1 font-semibold"
+            variant="span"
+            text="video games"
+            noSplit
+          />
+          , work on personal
+          <AnimatedGradientText
+            client:load
+            className="mx-1 font-semibold"
+            variant="span"
+            text="side-projects"
+            noSplit
+          />
+          , experiment with new tech (hardware, software, frameworks & programming
+          languages). I also love to learn new things, especially when it comes
+          to programming. I'm always looking for new things to try out and
+          experiment with. Things like
+          <AnimatedGradientText
+            client:load
+            className="mx-1 font-semibold"
+            variant="span"
+            text="low-level programming"
+            noSplit
+          />
+          ,
+          <AnimatedGradientText
+            client:load
+            className="mx-1 font-semibold"
+            variant="span"
+            text="game development"
+            noSplit
+          />
+          , and such are things I've been experimenting with for a while now.
+        </p>
+        <p>
+          One of the things in tech that I've picked up just from self-study and
+          experimentation is
+          <AnimatedGradientText
+            client:load
+            className="mx-1 font-semibold"
+            variant="span"
+            text="React.js"
+            noSplit
+          />
+          and
+          <AnimatedGradientText
+            client:load
+            className="mx-1 font-semibold"
+            variant="span"
+            text="TypeScript"
+            noSplit
+          />
+          . Which by now help me day-to-day to build cool stuff for the web and
+          native (using
+          <AnimatedGradientText
+            client:load
+            className="mx-1 font-semibold"
+            variant="span"
+            text="Tauri.rs"
+            noSplit
+          />
+          for instance)
+        </p>
+      </div>
+    </section>
+    <section
+      id="about-me-overview"
+      class="flex w-auto max-w-md flex-col gap-4 text-center xs:mb-auto"
+    >
+      <h2 class="text-center text-2xl font-bold">So, what games do I play?</h2>
+      <div class="flex flex-col gap-4">
+        <p>
+          Games I've been coming back to the most over the years are
+          <AnimatedGradientText
+            client:load
+            className="mx-1 font-semibold"
+            variant="span"
+            text="Rainbow Six"
+            noSplit
+          />
+          ,
+          <AnimatedGradientText
+            client:load
+            className="mx-1 font-semibold"
+            variant="span"
+            text="God of War"
+            noSplit
+          />
+          ,
+          <AnimatedGradientText
+            client:load
+            className="mx-1 font-semibold"
+            variant="span"
+            text="Assassins Creed"
+            noSplit
+          />
+          ,
+          <AnimatedGradientText
+            client:load
+            className="mx-1 font-semibold"
+            variant="span"
+            text="Watch Dogs"
+            noSplit
+          />
+          , and
+          <AnimatedGradientText
+            client:load
+            className="mx-1 font-semibold"
+            variant="span"
+            text="Smite"
+            noSplit
+          />
+          . As you can see from that little list, I play a large variety of
+          games. I don't really have a specific genre that I play the most. I just
+          play whatever I feel like playing at that moment or whatever people
+          invite me for to play with them.
+        </p>
+        <p>
+          The more technical side of
+          <AnimatedGradientText
+            client:load
+            className="mx-1 font-semibold"
+            variant="span"
+            text="gaming"
+            noSplit
+          />
+          is something I've been really interested in for a while now. I've been
+          experimenting with tech like
+          <AnimatedGradientText
+            client:load
+            className="mx-1 font-semibold"
+            variant="span"
+            text="Unreal Engine (4 & 5)"
+            noSplit
+          />
+          ,
+          <AnimatedGradientText
+            client:load
+            className="mx-1 font-semibold"
+            variant="span"
+            text="Unity"
+            noSplit
+          />
+          and custom stuff using
+          <AnimatedGradientText
+            client:load
+            className="mx-1 font-semibold"
+            variant="span"
+            text="SDL2"
+            noSplit
+          />
+          for instance.
+        </p>
+        <p>
+          So, what do I like this much about gaming? Well, I love the way it
+          <AnimatedGradientText
+            client:load
+            className="mx-1 font-semibold"
+            variant="span"
+            text="brings people together"
+            noSplit
+          />
+          . I love the way it can help people escape from reality for a little
+          while. I love the way it can help people with stress, anxiety, and
+          depression. But for me personally, I love the way it can help me
+          <AnimatedGradientText
+            client:load
+            className="mx-1 font-semibold"
+            variant="span"
+            text="relax"
+            noSplit
+          />
+          and find joy with others while also finding interests in the technical
+          solutions they picked, build, and use.
+        </p>
+      </div>
+    </section>
+  </div>
+</Layout>

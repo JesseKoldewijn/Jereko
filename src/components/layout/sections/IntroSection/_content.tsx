@@ -1,7 +1,7 @@
 "use client";
 
 import AnimatedGradientText from "@/components/animated/animated-grad-text";
-import type { Experience } from "@/server/db/schemas/experience";
+import type { Experience } from "@/data/experiences";
 
 export const AnimatedIntroSection1 = () => (
   <AnimatedGradientText

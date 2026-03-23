@@ -1,15 +1,13 @@
 "use client";
 
-import { usePathname } from "next/navigation";
-
 import { useEffect, useRef, useState } from "react";
 
 import { LuClose } from "@/icons/lu/Close";
 import { LuMenu } from "@/icons/lu/Menu";
 
 import { Button } from "@/components/ui/button";
+import { type Socials } from "@/data/socials";
 import { useHeaderContext } from "@/providers/HeaderProvider";
-import { type Socials } from "@/server/db/schemas/socials";
 
 import NavMenuMobileContent from "./navMenuMobileContent";
 
@@ -42,7 +40,10 @@ const closeMenu = (
 const NavMenuMobile = ({ socials }: { socials: Socials | null }) => {
   const { setIsMobileMenuOpen } = useHeaderContext();
 
-  const pathName = usePathname();
+  const [pathName, setPathName] = useState("");
+  useEffect(() => {
+    setPathName(typeof window !== "undefined" ? window.location.pathname : "");
+  }, []);
   const [showMenu, setShowMenu] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null as any as HTMLDivElement);
 

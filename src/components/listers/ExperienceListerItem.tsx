@@ -1,4 +1,7 @@
-import { type Experience } from "@/server/db/schemas/experience";
+import {
+  type Experience,
+  type ExperienceRole,
+} from "@/data/experiences";
 
 import {
   Card,
@@ -8,10 +11,69 @@ import {
   CardTitle,
 } from "../ui/card";
 
-const ExperienceListerItem = ({ experience }: { experience: Experience }) => {
+function formatDateRange(role: ExperienceRole): string {
   const startDate =
-    experience.start_month !== "upcoming" &&
-    experience.start_year !== "upcoming"
+    String(role.start_month) !== "upcoming" &&
+    String(role.start_year) !== "upcoming"
+      ? new Date(
+          role.start_year + "/" + role.start_month + " " + "01",
+        ).toLocaleString("default", {
+          month: "long",
+          year: "numeric",
+        })
+      : "Upcoming";
+  const endDate =
+    String(role.end_month) !== "current" && String(role.end_year) !== "current"
+      ? new Date(
+          role.end_year + "/" + role.end_month + "/01",
+        ).toLocaleString("default", {
+          month: "long",
+          year: "numeric",
+        })
+      : "Current";
+  return `${startDate} - ${endDate}`;
+}
+
+function RoleBlock({ role, expKey }: { role: ExperienceRole; expKey: string }) {
+  return (
+    <div className="border-l-2 border-neutral-300 pl-4 dark:border-neutral-600">
+      <p className="font-medium">{role.title}</p>
+      <p className="text-muted-foreground text-sm">{formatDateRange(role)}</p>
+      <p className="mt-2">{role.description}</p>
+      <div className="mt-3 flex flex-wrap gap-2">
+        {role.skills?.split(",").map((skill, idx) => (
+          <span
+            key={`${idx}_${skill}_${expKey}`}
+            className="rounded-full border bg-gray-300 px-2 py-1 text-neutral-950 dark:border-neutral-300 dark:bg-neutral-700 dark:text-neutral-300"
+          >
+            {skill}
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+const ExperienceListerItem = ({ experience }: { experience: Experience }) => {
+  const isMultiRole = "roles" in experience && experience.roles;
+
+  if (isMultiRole && experience.roles) {
+    return (
+      <Card className="w-full max-w-md bg-neutral-100 p-5 dark:bg-neutral-900">
+        <CardTitle>{experience.company_name}</CardTitle>
+        <CardDescription>{experience.location}</CardDescription>
+        <CardContent className="space-y-6 px-2 pt-4">
+          {experience.roles.map((role, i) => (
+            <RoleBlock key={`${role.title}-${i}`} role={role} expKey={experience.exp_key} />
+          ))}
+        </CardContent>
+      </Card>
+    );
+  }
+
+  const startDate =
+    String(experience.start_month) !== "upcoming" &&
+    String(experience.start_year) !== "upcoming"
       ? new Date(
           experience.start_year + "/" + experience.start_month + " " + "01",
         ).toLocaleString("default", {
@@ -20,7 +82,8 @@ const ExperienceListerItem = ({ experience }: { experience: Experience }) => {
         })
       : "Upcoming";
   const endDate =
-    experience.end_month !== "current" && experience.end_year !== "current"
+    String(experience.end_month) !== "current" &&
+    String(experience.end_year) !== "current"
       ? new Date(
           experience.end_year + "/" + experience.end_month + "/01",
         ).toLocaleString("default", {
@@ -43,7 +106,7 @@ const ExperienceListerItem = ({ experience }: { experience: Experience }) => {
         {experience.skills?.split(",").flatMap((skill, idx) => {
           return (
             <div
-              key={`${idx}_${skill}_${experience.id}}`}
+              key={`${idx}_${skill}_${experience.exp_key}`}
               className="rounded-full border bg-gray-300 px-2 py-1 text-neutral-950 dark:border-neutral-300 dark:bg-neutral-700 dark:text-neutral-300"
             >
               {skill}

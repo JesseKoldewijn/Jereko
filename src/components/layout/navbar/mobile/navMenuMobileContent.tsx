@@ -2,16 +2,14 @@
 
 import { useTheme } from "next-themes";
 
-import Link from "next/link";
-
 import React from "react";
 
 import AppIcons from "@/icons/custom/app-icons-collection";
 import { LuList } from "@/icons/lu/List";
 
 import { appConfig } from "@/config/app";
+import type { Socials } from "@/data/socials";
 import { cn } from "@/lib/utils";
-import type { Socials } from "@/server/db/schemas/socials";
 
 import { listedEntry, showcaseEntry } from "../navigationMenu";
 
@@ -48,23 +46,25 @@ const NavMenuMobileContent = ({ socials }: { socials: Socials | null }) => {
             )?.[1] ?? LuList;
 
           return (
-            <Link
+            <a
               href={entry.href}
               key={entry.title}
               className="flex w-full items-center justify-center gap-2 rounded-lg border border-foreground p-2"
             >
               <Icon className="h5" />
               {entry.title}
-            </Link>
+            </a>
           );
         })}
-        <Link
+        <a
           href={appConfig.repo.href}
+          target="_blank"
+          rel="noopener noreferrer"
           className="flex w-full items-center justify-center gap-2 rounded-lg border border-foreground p-2"
         >
           <AppIcons.socials.github className="h-5" />
           OpenSource
-        </Link>
+        </a>
         <strong>About Me</strong>
         {showcaseEntry.links.flatMap((entry) => {
           const pathName =
@@ -76,14 +76,14 @@ const NavMenuMobileContent = ({ socials }: { socials: Socials | null }) => {
             )?.[1] ?? LuList;
 
           return (
-            <Link
+            <a
               href={entry.href}
               key={entry.title}
               className="flex w-full items-center justify-center gap-2 rounded-lg border border-foreground p-2"
             >
               <Icon className="h-5" />
               {entry.title}
-            </Link>
+            </a>
           );
         })}
         {socials && (
@@ -96,14 +96,16 @@ const NavMenuMobileContent = ({ socials }: { socials: Socials | null }) => {
                 )?.[1] ?? LuList;
 
               return (
-                <Link
+                <a
                   href={social.link ?? "#"}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   key={social.label ?? `social-${idx}`}
                   className="flex w-full items-center justify-center gap-2 rounded-lg border border-foreground p-2"
                 >
                   <Icon className="h-5" />
                   {social.label}
-                </Link>
+                </a>
               );
             })}
           </>

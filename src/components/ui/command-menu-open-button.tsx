@@ -1,13 +1,14 @@
 "use client";
 
-import { usePathname } from "next/navigation";
-
 import { useEffect, useLayoutEffect, useState } from "react";
 
 export const CommandMenuOpenButton = (
   props: Omit<React.HTMLAttributes<HTMLParagraphElement>, "children">,
 ) => {
-  const pathName = usePathname();
+  const [pathName, setPathName] = useState("");
+  useEffect(() => {
+    setPathName(typeof window !== "undefined" ? window.location.pathname : "");
+  }, []);
 
   const [windowSize, setWindowSize] = useState(0);
   const [isDesktop, setIsDesktop] = useState(false);

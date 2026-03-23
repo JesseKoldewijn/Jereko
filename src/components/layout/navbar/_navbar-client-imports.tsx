@@ -1,27 +1,11 @@
 "use client";
 
-import dynamic from "next/dynamic";
-
+import NavbarMenu from "@/components/layout/navbar/navigationMenu";
+import ThemeToggle from "@/components/ui/theme-toggle";
 import { cn } from "@/lib/utils";
 import { useHeaderContext } from "@/providers/HeaderProvider";
 
-export const ThemeToggle = dynamic(
-  () => import("@/components/ui/theme-toggle"),
-  {
-    ssr: false,
-    loading: () => (
-      <div className="h-10 w-10 rounded-full bg-foreground opacity-30 dark:opacity-10" />
-    ),
-  },
-);
-
-export const NavbarMenu = dynamic(
-  () => import("@/components/layout/navbar/navigationMenu"),
-  {
-    ssr: false,
-    loading: () => <div className="mt-2 h-full w-full flex-1 py-4 md:mt-3" />,
-  },
-);
+export { ThemeToggle, NavbarMenu };
 
 export const NavbarBackgroundWrapper = ({
   children,

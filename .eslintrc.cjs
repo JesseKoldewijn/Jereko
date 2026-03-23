@@ -1,15 +1,28 @@
 /** @type {import("eslint").Linter.Config} */
 const config = {
+  root: true,
   parser: "@typescript-eslint/parser",
   parserOptions: {
     project: true,
+    extraFileExtensions: [".astro"],
   },
-  plugins: ["@typescript-eslint", "jsx-a11y"],
+  plugins: ["@typescript-eslint", "jsx-a11y", "astro"],
   extends: [
-    "next/core-web-vitals",
-    "plugin:jsx-a11y/recommended",
+    "eslint:recommended",
     "plugin:@typescript-eslint/stylistic-type-checked",
+    "plugin:jsx-a11y/recommended",
     "plugin:jsx-a11y/strict",
+    "plugin:astro/recommended",
+  ],
+  overrides: [
+    {
+      files: ["*.astro"],
+      parser: "astro-eslint-parser",
+      parserOptions: {
+        parser: "@typescript-eslint/parser",
+        extraFileExtensions: [".astro"],
+      },
+    },
   ],
   rules: {
     // These rules are only disabled because of the openapi-typescript schema gen output.

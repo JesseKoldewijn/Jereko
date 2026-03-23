@@ -2,8 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "Geist";
+  src: url("/fonts/geist-sans/Geist-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Geist Mono";
+  src: url("/fonts/geist-mono/GeistMono-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 @layer base {
   :root {
+    --font-geist-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
+    --font-geist-mono: "Geist Mono", ui-monospace, monospace;
     --background: rgba(255, 255, 255, 1);
     --foreground: rgba(50, 50, 50, 1);
 
@@ -141,5 +159,20 @@
   }
   to {
     transform: translateX(calc(-100% - var(--gap)));
+  }
+}
+
+/* Tech footer marquee: shift is set in JS as scrollWidth / copy count (exact loop). */
+.tech-marquee-track {
+  animation-name: tech-marquee;
+  animation-duration: var(--marquee-duration, 40s);
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: var(--marquee-anim-direction, normal);
+}
+
+@keyframes tech-marquee {
+  to {
+    transform: translateX(calc(-1 * var(--tech-marquee-shift, 0px)));
   }
 }

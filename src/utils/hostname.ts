@@ -1,6 +1,6 @@
 export const base =
-  typeof process.env.VERCEL_URL !== "undefined" && process.env.VERCEL_URL !== ""
-    ? process.env.NODE_ENV === "development"
-      ? "http://localhost:3000"
-      : "https://" + process.env.VERCEL_URL
-    : "http://localhost:3000";
+  typeof window !== "undefined"
+    ? window.location.origin
+    : typeof import.meta.env?.SITE === "string"
+      ? new URL(import.meta.env.SITE).origin
+      : "https://jereko.dev";

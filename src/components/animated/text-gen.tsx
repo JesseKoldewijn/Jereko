@@ -3,9 +3,7 @@
 import { m, stagger } from "framer-motion";
 import { useAnimate } from "framer-motion/mini";
 
-import { usePathname } from "next/navigation";
-
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export const INTERNAL_TextGenComponent = ({
   words,
@@ -14,7 +12,10 @@ export const INTERNAL_TextGenComponent = ({
   words: string;
   className?: string;
 }) => {
-  const pathName = usePathname();
+  const [pathName, setPathName] = useState("");
+  useEffect(() => {
+    setPathName(typeof window !== "undefined" ? window.location.pathname : "");
+  }, []);
   const [scope, animate] = useAnimate();
   const wordsArray = words.split(" ");
 

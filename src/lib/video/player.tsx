@@ -1,8 +1,5 @@
 "use client";
 
-import dynamic from "next/dynamic";
-import Image from "next/image";
-
 import { Suspense, useState } from "react";
 
 import { LuPlay } from "@/icons/lu/Play";
@@ -10,8 +7,7 @@ import { LuPlay } from "@/icons/lu/Play";
 import PlaceholderImage from "@/images/player-placeholder.webp";
 
 import { cn } from "../utils";
-
-const Embed = dynamic(() => import("./_embed"));
+import Embed from "./_embed";
 
 export const YoutubePlayer = ({
   key,
@@ -29,7 +25,7 @@ export const YoutubePlayer = ({
     key !== undefined ? `-${key}` : ""
   }`;
 
-  const srcUrl = `https://www.youtube.com/embed/${youtubeVideoID}?autoplay=1&mute=1&enablejsapi=0&controls=0&origin=${origin}'`;
+  const srcUrl = `https://www.youtube.com/embed/${youtubeVideoID}?autoplay=1&mute=1&enablejsapi=0&controls=0&origin=${origin}`;
   const thumbnailUrl = `https://img.youtube.com/vi/${youtubeVideoID}/hqdefault.jpg`;
 
   const Player = () => (
@@ -41,18 +37,20 @@ export const YoutubePlayer = ({
     />
   );
 
+  const placeholderSrc =
+    typeof PlaceholderImage === "string"
+      ? PlaceholderImage
+      : ((PlaceholderImage as { src?: string }).src ?? "");
+
   const Thumbnail = () => (
     <>
-      <Image
+      <img
         className="sm mx-auto my-auto aspect-video h-full max-h-[182px] w-full max-w-[322px] object-cover"
         src={thumbnailUrl}
         alt="video thumbnail"
-        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         onError={(e) => {
-          e.currentTarget.src = PlaceholderImage.src;
+          e.currentTarget.src = placeholderSrc;
         }}
-        priority={true}
-        fill={true}
       />
       <button
         onClick={() => setClicked(true)}

@@ -1,14 +1,11 @@
-import Image from "next/image";
-import Link from "next/link";
-
 import { appConfig } from "@/config/app";
+import { mostRecentExp } from "@/data/queries";
 import Avatar from "@/images/profile.webp";
 import { cn } from "@/lib/utils";
-import { mostRecentExp } from "@/server/handlers/exp/getLatest";
 import { getAgeByDateString } from "@/utils/age";
 
-const QuadSection = async () => {
-  const latestExp = await mostRecentExp();
+const QuadSection = () => {
+  const latestExp = mostRecentExp();
   const isLatestExpCurrent = latestExp?.end_month == "current";
 
   const pagesLinks = [
@@ -34,16 +31,17 @@ const QuadSection = async () => {
     const isExternalLink = !href.startsWith("/");
 
     return (
-      <Link
+      <a
         href={href}
         className={cn(
           "flex h-[48px] rounded-md border border-neutral-500 p-2",
           "sm:list-item sm:h-auto sm:border-0 sm:p-0 sm:hover:underline",
         )}
         target={isExternalLink ? "_blank" : undefined}
+        rel={isExternalLink ? "noopener noreferrer" : undefined}
       >
         <span className="mx-auto my-auto sm:mx-0 sm:my-0">{name}</span>
-      </Link>
+      </a>
     );
   };
 
@@ -67,9 +65,13 @@ const QuadSection = async () => {
                 Peekaboo!
               </div>
             </div>
-            <Image
+            <img
               alt="Profile picture of Jesse Koldewijn"
-              src={Avatar}
+              src={
+                typeof Avatar === "string"
+                  ? Avatar
+                  : (Avatar as { src: string }).src
+              }
               loading="lazy"
               className="absolute aspect-square rounded-full"
             />
