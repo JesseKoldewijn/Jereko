@@ -8,6 +8,7 @@ import PlaceholderImage from "@/images/player-placeholder.webp";
 
 import { cn } from "../utils";
 import Embed from "./_embed";
+import { getYoutubeVideoId } from "./youtube-id";
 
 export const YoutubePlayer = ({
   key,
@@ -20,13 +21,19 @@ export const YoutubePlayer = ({
 }) => {
   const [clicked, setClicked] = useState(false);
 
-  const youtubeVideoID = url.split("v=")[1]!;
+  const youtubeVideoID = getYoutubeVideoId(url);
+  if (!youtubeVideoID) {
+    return null;
+  }
+
   const playerID = `youtube-player-[${youtubeVideoID}]${
     key !== undefined ? `-${key}` : ""
   }`;
 
   const srcUrl = `https://www.youtube.com/embed/${youtubeVideoID}?autoplay=1&mute=1&enablejsapi=0&controls=0&origin=${origin}`;
-  const thumbnailUrl = `https://img.youtube.com/vi/${youtubeVideoID}/hqdefault.jpg`;
+  /** Built by `yarn fetch-external-images` before production build. */
+  const localThumbnailSrc = `/images/external/youtube/${youtubeVideoID}.jpg`;
+  const remoteThumbnailSrc = `https://img.youtube.com/vi/${youtubeVideoID}/hqdefault.jpg`;
 
   const Player = () => (
     <Embed
@@ -46,10 +53,17 @@ export const YoutubePlayer = ({
     <>
       <img
         className="sm mx-auto my-auto aspect-video h-full max-h-[182px] w-full max-w-[322px] object-cover"
-        src={thumbnailUrl}
+        src={localThumbnailSrc}
         alt="video thumbnail"
         onError={(e) => {
-          e.currentTarget.src = placeholderSrc;
+          const el = e.currentTarget;
+          const step = el.dataset.thumbStep ?? "local";
+          if (step === "local") {
+            el.dataset.thumbStep = "remote";
+            el.src = remoteThumbnailSrc;
+            return;
+          }
+          el.src = placeholderSrc;
         }}
       />
       <button

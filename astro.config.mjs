@@ -14,7 +14,8 @@ export default defineConfig({
     AstroPWA({
       registerType: "autoUpdate",
       workbox: {
-        navigateFallback: "/offline/",
+        // Must match precache URL (Workbox lists `offline` → https://origin/offline, not /offline/).
+        navigateFallback: "/offline",
         globPatterns: ["**/*.{js,css,html,ico,png,svg,webp,avif,woff2}"],
         // Astro emits /404.html; Workbox maps it to URL "404" which is not served (404).
         globIgnores: ["**/404.html", "404.html"],

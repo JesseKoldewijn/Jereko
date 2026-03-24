@@ -6,7 +6,7 @@ import { useEffect } from "react";
  * Bump when you need every client to drop the current SW + Workbox caches once
  * (e.g. bad precache manifest, breaking SW change).
  */
-const PWA_MIGRATION_VERSION = "precache-404-fix-v1";
+const PWA_MIGRATION_VERSION = "navigate-fallback-offline-path-v2";
 const PWA_MIGRATION_KEY = "jereko-pwa-migration";
 
 /** Ensures migration + `registerSW` run once per tab (Strict Mode runs effects twice in dev). */

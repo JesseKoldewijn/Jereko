@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "fetch-external-images": "node scripts/fetch-external-images.mjs",
+    "build": "yarn fetch-external-images && astro build",
     "preview": "astro preview",
     "test": "vitest run",
     "test:watch": "vitest",
