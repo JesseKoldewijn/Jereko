@@ -16,7 +16,7 @@ const SingleItemSection = ({
         <a
           className={cn(
             navigationMenuTriggerStyle(),
-            "no-underline transition-none text-foreground [&_svg]:transition-none",
+            "text-foreground no-underline transition-none [&_svg]:transition-none",
             className,
           )}
           {...rest}

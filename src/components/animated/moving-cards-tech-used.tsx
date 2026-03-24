@@ -30,11 +30,9 @@ function TechLogoLi({ item }: { item: TechItem }) {
       <img
         alt={`${item.name} Logo`}
         className={cn(
-          isShadcn &&
-            "bg-neutral-950 invert-0 dark:bg-neutral-100 dark:invert",
+          isShadcn && "bg-neutral-950 invert-0 dark:bg-neutral-100 dark:invert",
           isAceternity && "invert-0 dark:invert",
-          lightLogo &&
-            "hue-rotate-180 invert dark:hue-rotate-0 dark:invert-0",
+          lightLogo && "hue-rotate-180 invert dark:hue-rotate-0 dark:invert-0",
           !isTwLogo && "aspect-square",
           "rounded-lg",
           "relative h-[60px] w-auto flex-shrink-0 overflow-hidden object-cover object-center md:h-[80px] md:min-h-[80px] md:w-auto",
@@ -117,10 +115,7 @@ export const InfiniteMovingCardsTechUsed = ({
       >
         {Array.from({ length: MARQUEE_COPY_COUNT }, (_, pass) =>
           items.map((item, idx) => (
-            <TechLogoLi
-              key={`${item.name}-p${pass}-${idx}`}
-              item={item}
-            />
+            <TechLogoLi key={`${item.name}-p${pass}-${idx}`} item={item} />
           )),
         ).flat()}
       </ul>

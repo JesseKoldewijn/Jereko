@@ -72,7 +72,7 @@ export const experiences = [
           "Redux",
           "Go",
           "Rust",
-          "Swift", 
+          "Swift",
           "SwiftUI",
           "UIKit",
           "PHP",
@@ -111,3 +111,18 @@ export const experiences = [
 
 export type Experience = (typeof experiences)[number];
 export type Experiences = readonly Experience[];
+
+/** JET-style entry with multiple roles under one company. */
+export type MultiRoleExperience = Extract<
+  Experience,
+  { roles: readonly ExperienceRole[] }
+>;
+
+/** Single role at top level (iungo, dnz, …). */
+export type SingleRoleExperience = Exclude<Experience, MultiRoleExperience>;
+
+export function isMultiRoleExperience(
+  exp: Experience,
+): exp is MultiRoleExperience {
+  return "roles" in exp;
+}

@@ -2,7 +2,10 @@
 import Layout from "@/layouts/Layout.astro";
 ---
 
-<Layout title="Offline - Jereko" description="You appear to be offline. Check your connection and try again.">
+<Layout
+  title="Offline - Jereko"
+  description="You appear to be offline. Check your connection and try again."
+>
   <div
     transition:name="simple-page"
     transition:animate="fade"
@@ -10,7 +13,8 @@ import Layout from "@/layouts/Layout.astro";
   >
     <h1 class="text-2xl font-bold md:text-3xl">You're offline</h1>
     <p class="text-muted-foreground max-w-md">
-      Check your connection and try again. When you're back online, refresh the page.
+      Check your connection and try again. When you're back online, refresh the
+      page.
     </p>
     <button
       type="button"

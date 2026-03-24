@@ -11,6 +11,7 @@
     "test:e2e": "yarn build && vitest run e2e",
     "start": "astro preview",
     "lint": "astro check",
+    "sync": "astro sync",
     "prettier": "prettier --write .",
     "twconfig": "tailwind-config-viewer --port 6002 --config ./tailwind.config.ts"
   },
@@ -60,6 +61,7 @@
     "postcss": "^8.5.6",
     "postcss-preset-env": "^10.4.0",
     "prettier": "^3.6.2",
+    "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.7.1",
     "tailwind-config-viewer": "^2.0.4",
     "tailwind-merge": "^3.3.1",
@@ -69,6 +71,9 @@
     "vite-plugin-pwa": "^1.2.0",
     "vite-tsconfig-paths": "^6.1.1",
     "vitest": "^4.1.1"
+  },
+  "engines": {
+    "node": ">=20 <27"
   },
   "browserslist": [
     "defaults and fully supports es6-module",

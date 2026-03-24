@@ -36,7 +36,10 @@ const bannerImg =
     : { src: (avatarUrl as { src: string }).src, width: 400, height: 400 };
 ---
 
-<Layout title="Volunteering | Jereko" description="A page about my volunteering experience.">
+<Layout
+  title="Volunteering | Jereko"
+  description="A page about my volunteering experience."
+>
   <div transition:name="hero" transition:animate="fade">
     <AboutMeHeader
       client:load
@@ -55,7 +58,9 @@ const bannerImg =
       id="about-me-overview"
       class="flex w-auto max-w-md flex-col gap-4 text-center"
     >
-      <h2 class="text-center text-2xl font-bold">In what way do I volunteer?</h2>
+      <h2 class="text-center text-2xl font-bold">
+        In what way do I volunteer?
+      </h2>
       <div class="flex flex-col gap-4">
         <p>
           Since {volunteeringSince()} I have been a volunteer for
@@ -82,8 +87,8 @@ const bannerImg =
             text="Game Nights"
             noSplit
           />
-          that I host which I've been hosting once a week (most of the time) for
-          the past {volunteeringForMonths()}.
+          that I host which I've been hosting once a week (most of the time) for the
+          past {volunteeringForMonths()}.
         </p>
         <p>
           What are Game Nights?{" "}
@@ -94,9 +99,9 @@ const bannerImg =
             text="Game Nights"
             noSplit
           />
-          are a way for Stack Up to bring people together from all over the
-          world to play video games and socialize with one another. We host Game
-          Nights for a wide variety of games, from
+          are a way for Stack Up to bring people together from all over the world
+          to play video games and socialize with one another. We host Game Nights
+          for a wide variety of games, from
           <AnimatedGradientText
             client:load
             className="mx-1 font-semibold"
@@ -143,9 +148,9 @@ const bannerImg =
             text="Stack Up"
             noSplit
           />
-          , a 501(c)(3) non-profit that supports Active, Veteran service members
-          and civilians from the U.S. and allied nations by promoting positive
-          mental health and combat (mainly veteran) suicide through
+          , a 501(c)(3) non-profit that supports Active, Veteran service members and
+          civilians from the U.S. and allied nations by promoting positive mental
+          health and combat (mainly veteran) suicide through
           <AnimatedGradientText
             client:load
             className="mx-1 font-semibold"
@@ -164,8 +169,8 @@ const bannerImg =
             text="Veterans"
             noSplit
           />
-          and Active service members, but just about anybody is welcome to join
-          the community as long as their over 18 years old.
+          and Active service members, but just about anybody is welcome to join the
+          community as long as their over 18 years old.
         </p>
       </div>
     </section>

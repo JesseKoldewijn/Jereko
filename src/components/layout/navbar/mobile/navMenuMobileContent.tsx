@@ -13,7 +13,17 @@ import { cn } from "@/lib/utils";
 
 import { listedEntry, showcaseEntry } from "../navigationMenu";
 
-const NavMenuMobileContent = ({ socials }: { socials: Socials | null }) => {
+const NavMenuMobileContent = ({
+  socials,
+  onActivateLink,
+}: {
+  socials: Socials | null;
+  onActivateLink: (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string,
+    external: boolean,
+  ) => void;
+}) => {
   const { theme } = useTheme();
 
   return (
@@ -50,6 +60,7 @@ const NavMenuMobileContent = ({ socials }: { socials: Socials | null }) => {
               href={entry.href}
               key={entry.title}
               className="flex w-full items-center justify-center gap-2 rounded-lg border border-foreground p-2"
+              onClick={(e) => onActivateLink(e, entry.href, false)}
             >
               <Icon className="h5" />
               {entry.title}
@@ -61,6 +72,7 @@ const NavMenuMobileContent = ({ socials }: { socials: Socials | null }) => {
           target="_blank"
           rel="noopener noreferrer"
           className="flex w-full items-center justify-center gap-2 rounded-lg border border-foreground p-2"
+          onClick={(e) => onActivateLink(e, appConfig.repo.href, true)}
         >
           <AppIcons.socials.github className="h-5" />
           OpenSource
@@ -80,6 +92,7 @@ const NavMenuMobileContent = ({ socials }: { socials: Socials | null }) => {
               href={entry.href}
               key={entry.title}
               className="flex w-full items-center justify-center gap-2 rounded-lg border border-foreground p-2"
+              onClick={(e) => onActivateLink(e, entry.href, false)}
             >
               <Icon className="h-5" />
               {entry.title}
@@ -95,13 +108,16 @@ const NavMenuMobileContent = ({ socials }: { socials: Socials | null }) => {
                   (icon) => icon[0] === social.platform,
                 )?.[1] ?? LuList;
 
+              const href = social.link ?? "#";
+
               return (
                 <a
-                  href={social.link ?? "#"}
+                  href={href}
                   target="_blank"
                   rel="noopener noreferrer"
                   key={social.label ?? `social-${idx}`}
                   className="flex w-full items-center justify-center gap-2 rounded-lg border border-foreground p-2"
+                  onClick={(e) => onActivateLink(e, href, true)}
                 >
                   <Icon className="h-5" />
                   {social.label}

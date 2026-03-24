@@ -5,7 +5,6 @@
 import { execSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
-
 import { beforeAll, describe, expect, it } from "vitest";
 
 const DIST_DIR = path.join(process.cwd(), "dist");
@@ -33,9 +32,9 @@ describe("static site e2e", () => {
       expect(fs.existsSync(path.join(DIST_DIR, "projects", "index.html"))).toBe(
         true,
       );
-      expect(fs.existsSync(path.join(DIST_DIR, "experience", "index.html"))).toBe(
-        true,
-      );
+      expect(
+        fs.existsSync(path.join(DIST_DIR, "experience", "index.html")),
+      ).toBe(true);
       expect(fs.existsSync(path.join(DIST_DIR, "about-me", "index.html"))).toBe(
         true,
       );
@@ -88,9 +87,10 @@ describe("static site e2e", () => {
     it("generates web manifest", () => {
       const manifestPath = path.join(DIST_DIR, "manifest.webmanifest");
       expect(fs.existsSync(manifestPath)).toBe(true);
-      const manifest = JSON.parse(
-        fs.readFileSync(manifestPath, "utf-8"),
-      ) as { name?: string; short_name?: string };
+      const manifest = JSON.parse(fs.readFileSync(manifestPath, "utf-8")) as {
+        name?: string;
+        short_name?: string;
+      };
       expect(manifest.name ?? manifest.short_name).toBeDefined();
     });
   });

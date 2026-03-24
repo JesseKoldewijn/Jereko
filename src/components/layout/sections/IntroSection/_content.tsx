@@ -1,7 +1,7 @@
 "use client";
 
 import AnimatedGradientText from "@/components/animated/animated-grad-text";
-import type { Experience } from "@/data/experiences";
+import type { FlattenedExperience } from "@/data/queries";
 
 export const AnimatedIntroSection1 = () => (
   <AnimatedGradientText
@@ -14,7 +14,7 @@ export const AnimatedIntroSection1 = () => (
 export const AnimatedIntroSection2 = ({
   latestExperience,
 }: {
-  latestExperience: Experience;
+  latestExperience: FlattenedExperience;
 }) => (
   <AnimatedGradientText
     variant="span"
@@ -26,7 +26,7 @@ export const AnimatedIntroSection2 = ({
 export const AnimatedIntroSection3 = ({
   latestExperience,
 }: {
-  latestExperience: Experience;
+  latestExperience: FlattenedExperience;
 }) => (
   <AnimatedGradientText
     variant="span"

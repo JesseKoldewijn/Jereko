@@ -1,7 +1,7 @@
 import type { Event } from "@/data/events";
 import { events } from "@/data/events";
 import type { Experience } from "@/data/experiences";
-import { experiences } from "@/data/experiences";
+import { experiences, isMultiRoleExperience } from "@/data/experiences";
 import type { Project } from "@/data/projects";
 import { projects } from "@/data/projects";
 import type { Social } from "@/data/socials";
@@ -31,25 +31,59 @@ export function allProjects(): Project[] {
 }
 
 export function getExperienceStartDate(exp: Experience): string {
-  if ("roles" in exp && exp.roles) {
+  if (isMultiRoleExperience(exp)) {
     const r = exp.roles[0]!;
     return `${r.start_year}/${r.start_month}/01`;
   }
   return `${exp.start_year}/${exp.start_month}/01`;
 }
 
-function flattenExperience(exp: Experience): Experience & { title: string; description: string; skills: string; start_year: string; start_month: string; end_year: string; end_month: string } {
-  if ("roles" in exp && exp.roles) {
-    const currentRole = exp.roles.find((r) => r.end_month === "current") ?? exp.roles[0]!;
+/** Top-level role fields merged with company identity (used for “current job” copy). */
+export type FlattenedExperience = {
+  exp_key: Experience["exp_key"];
+  company_name: string;
+  location: string;
+  title: string;
+  description: string;
+  skills: string;
+  start_year: string;
+  start_month: string;
+  end_year: string;
+  end_month: string;
+};
+
+function flattenExperience(exp: Experience): FlattenedExperience {
+  if (isMultiRoleExperience(exp)) {
+    const currentRole =
+      exp.roles.find((r) => r.end_month === "current") ?? exp.roles[0]!;
     return {
-      ...exp,
-      ...currentRole,
-    } as Experience & typeof currentRole;
+      exp_key: exp.exp_key,
+      company_name: exp.company_name,
+      location: exp.location,
+      title: currentRole.title,
+      description: currentRole.description,
+      skills: currentRole.skills,
+      start_year: currentRole.start_year,
+      start_month: currentRole.start_month,
+      end_year: currentRole.end_year,
+      end_month: currentRole.end_month,
+    };
   }
-  return exp as Experience & { title: string; description: string; skills: string; start_year: string; start_month: string; end_year: string; end_month: string };
+  return {
+    exp_key: exp.exp_key,
+    company_name: exp.company_name,
+    location: exp.location,
+    title: exp.title,
+    description: exp.description,
+    skills: exp.skills,
+    start_year: exp.start_year,
+    start_month: exp.start_month,
+    end_year: exp.end_year,
+    end_month: exp.end_month,
+  };
 }
 
-export function mostRecentExp(): (Experience & { title: string; description: string; skills: string; start_year: string; start_month: string; end_year: string; end_month: string }) | null {
+export function mostRecentExp(): FlattenedExperience | null {
   const exps = allExperiences();
   if (!exps.length) return null;
   const mostRecent = exps.reduce((prev, current) => {

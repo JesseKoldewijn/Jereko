@@ -42,7 +42,9 @@ describe("queries", () => {
 
     it("includes JET with multi-role structure", () => {
       const result = allExperiences();
-      const jet = result.find((e) => e.company_name === "Just Eat Takeaway.com");
+      const jet = result.find(
+        (e) => e.company_name === "Just Eat Takeaway.com",
+      );
       expect(jet).toBeDefined();
       expect("roles" in jet! && jet.roles).toBeTruthy();
       expect(jet!.roles).toHaveLength(2);

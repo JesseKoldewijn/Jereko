@@ -1,6 +1,7 @@
 "use client";
 
 import { navigate as viewTransitionNavigate } from "astro:transitions/client";
+
 import { useEffect, useState } from "react";
 
 import { X } from "@/icons/custom/Twitter-X";

@@ -5,13 +5,7 @@ export const projects = [
     description:
       "Rust rewrite of LocalStack Community Edition. You get an API-compatible local stack for AWS-style workflows, available as a Docker image or a native binary. Many services are covered, including S3, Lambda, DynamoDB, and IAM.",
     link: "https://github.com/JesseKoldewijn/openstack",
-    tags: [
-      "Rust",
-      "AWS",
-      "Docker",
-      "LocalStack",
-      "Axum",
-    ].toString(),
+    tags: ["Rust", "AWS", "Docker", "LocalStack", "Axum"].toString(),
     draft: "false",
   },
   {

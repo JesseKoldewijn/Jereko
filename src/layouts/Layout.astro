@@ -14,7 +14,10 @@ interface Props {
   description?: string;
 }
 
-const { title = "Jereko - My personal website | Jesse Koldewijn", description } = Astro.props;
+const {
+  title = "Jereko - My personal website | Jesse Koldewijn",
+  description,
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -23,7 +26,11 @@ const { title = "Jereko - My personal website | Jesse Koldewijn", description } 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000" />
-    <link rel="shortcut icon" href="/favicons/favicon.ico" type="image/x-icon" />
+    <link
+      rel="shortcut icon"
+      href="/favicons/favicon.ico"
+      type="image/x-icon"
+    />
     <title>{title}</title>
     {description && <meta name="description" content={description} />}
     <ClientRouter />
@@ -32,9 +39,15 @@ const { title = "Jereko - My personal website | Jesse Koldewijn", description } 
       (function () {
         function applyStoredTheme() {
           const theme = localStorage.getItem("theme");
-          const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+          const systemDark = window.matchMedia(
+            "(prefers-color-scheme: dark)",
+          ).matches;
           const resolved =
-            theme === "system" || !theme ? (systemDark ? "dark" : "light") : theme;
+            theme === "system" || !theme
+              ? systemDark
+                ? "dark"
+                : "light"
+              : theme;
           const root = document.documentElement;
           root.classList.remove("light", "dark");
           root.classList.add(resolved);
@@ -47,10 +60,22 @@ const { title = "Jereko - My personal website | Jesse Koldewijn", description } 
   </head>
   <body class="font-sans min-h-screen">
     <PwaRegister client:load />
-    <AppWrapper socials={socials} client:load transition:persist="shell-navbar" />
-    <main class="min-h-[90svh] pb-8" transition:name="main" transition:animate="fade">
+    <AppWrapper
+      socials={socials}
+      client:load
+      transition:persist="shell-navbar"
+    />
+    <main
+      class="min-h-[90svh] pb-8"
+      transition:name="main"
+      transition:animate="fade"
+    >
       <slot />
     </main>
-    <FooterWithSlots client:load socials={socials} transition:persist="shell-footer" />
+    <FooterWithSlots
+      client:load
+      socials={socials}
+      transition:persist="shell-footer"
+    />
   </body>
 </html>

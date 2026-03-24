@@ -1,5 +1,7 @@
 "use client";
 
+import { navigate } from "astro:transitions/client";
+
 import { useEffect, useRef, useState } from "react";
 
 import { LuClose } from "@/icons/lu/Close";
@@ -11,30 +13,52 @@ import { useHeaderContext } from "@/providers/HeaderProvider";
 
 import NavMenuMobileContent from "./navMenuMobileContent";
 
+const FAST_CLOSE_MS = 64;
+
 const openMenu = (
-  menuRef: React.RefObject<HTMLDivElement>,
+  menuRef: React.RefObject<HTMLDivElement | null>,
   setIsMobileMenuOpen: (_open: boolean) => void,
   setShowMenu: React.Dispatch<React.SetStateAction<boolean>>,
 ) => {
   setIsMobileMenuOpen(true);
-  menuRef.current!.style.userSelect = "auto";
-  menuRef.current!.style.cursor = "auto";
-  menuRef.current!.style.opacity = "1";
+  const el = menuRef.current;
+  if (!el) return;
+  el.style.userSelect = "auto";
+  el.style.cursor = "auto";
+  el.style.opacity = "1";
   setShowMenu(true);
 };
 
 const closeMenu = (
-  menuRef: React.RefObject<HTMLDivElement>,
+  menuRef: React.RefObject<HTMLDivElement | null>,
   setIsMobileMenuOpen: (_open: boolean) => void,
   setShowMenu: React.Dispatch<React.SetStateAction<boolean>>,
 ) => {
-  menuRef.current!.style.userSelect = "none";
-  menuRef.current!.style.cursor = "default";
-  menuRef.current!.style.opacity = "0";
+  const el = menuRef.current;
+  if (!el) return;
+  el.style.userSelect = "none";
+  el.style.cursor = "default";
+  el.style.opacity = "0";
   setIsMobileMenuOpen(false);
   setTimeout(() => {
     setShowMenu(false);
   }, 700);
+};
+
+const closeMenuFast = (
+  menuRef: React.RefObject<HTMLDivElement | null>,
+  setIsMobileMenuOpen: (_open: boolean) => void,
+  setShowMenu: React.Dispatch<React.SetStateAction<boolean>>,
+) => {
+  const el = menuRef.current;
+  if (!el) return;
+  el.style.userSelect = "none";
+  el.style.cursor = "default";
+  el.style.opacity = "0";
+  setIsMobileMenuOpen(false);
+  setTimeout(() => {
+    setShowMenu(false);
+  }, FAST_CLOSE_MS);
 };
 
 const NavMenuMobile = ({ socials }: { socials: Socials | null }) => {
@@ -45,7 +69,7 @@ const NavMenuMobile = ({ socials }: { socials: Socials | null }) => {
     setPathName(typeof window !== "undefined" ? window.location.pathname : "");
   }, []);
   const [showMenu, setShowMenu] = useState(false);
-  const menuRef = useRef<HTMLDivElement>(null as any as HTMLDivElement);
+  const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (showMenu) {
@@ -59,6 +83,22 @@ const NavMenuMobile = ({ socials }: { socials: Socials | null }) => {
     closeMenu(menuRef, setIsMobileMenuOpen, setShowMenu);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathName]);
+
+  const handleActivateLink = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string,
+    external: boolean,
+  ) => {
+    if (external) {
+      closeMenuFast(menuRef, setIsMobileMenuOpen, setShowMenu);
+      return;
+    }
+    e.preventDefault();
+    closeMenuFast(menuRef, setIsMobileMenuOpen, setShowMenu);
+    window.setTimeout(() => {
+      void navigate(href);
+    }, FAST_CLOSE_MS);
+  };
 
   return (
     <div className="flex max-w-full flex-col items-center justify-center md:hidden">
@@ -84,7 +124,12 @@ const NavMenuMobile = ({ socials }: { socials: Socials | null }) => {
           cursor: "default",
         }}
       >
-        {showMenu && <NavMenuMobileContent socials={socials} />}
+        {showMenu && (
+          <NavMenuMobileContent
+            socials={socials}
+            onActivateLink={handleActivateLink}
+          />
+        )}
       </div>
     </div>
   );
