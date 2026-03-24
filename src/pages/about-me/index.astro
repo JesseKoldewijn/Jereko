@@ -10,7 +10,10 @@ const bannerImg =
     : { src: (avatarUrl as { src: string }).src, width: 400, height: 400 };
 ---
 
-<Layout title="About me | Jereko" description="A page about me.">
+<Layout
+  title="About me | Jereko"
+  description="Learn more about Jesse Koldewijn, his background in tech, and the interests that shaped his path in software engineering."
+>
   <div transition:name="hero" transition:animate="fade">
     <AboutMeHeader
       client:load
