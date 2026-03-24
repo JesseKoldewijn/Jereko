@@ -13,6 +13,38 @@ export default defineConfig({
     tailwind(),
     AstroPWA({
       registerType: "autoUpdate",
+      manifest: {
+        name: "Jereko",
+        short_name: "Jereko",
+        description:
+          "Jesse Koldewijn — personal site: projects, experience, and events.",
+        lang: "en",
+        start_url: "/",
+        scope: "/",
+        display: "standalone",
+        theme_color: "#000000",
+        background_color: "#fafafa",
+        icons: [
+          {
+            src: "/favicons/android-chrome-192x192.png",
+            sizes: "192x192",
+            type: "image/png",
+            purpose: "any",
+          },
+          {
+            src: "/favicons/android-chrome-512x512.png",
+            sizes: "512x512",
+            type: "image/png",
+            purpose: "any",
+          },
+          {
+            src: "/favicons/android-chrome-512x512.png",
+            sizes: "512x512",
+            type: "image/png",
+            purpose: "maskable",
+          },
+        ],
+      },
       workbox: {
         // Must match precache URL (Workbox lists `offline` → https://origin/offline, not /offline/).
         navigateFallback: "/offline",

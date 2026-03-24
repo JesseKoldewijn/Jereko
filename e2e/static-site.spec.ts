@@ -90,8 +90,14 @@ describe("static site e2e", () => {
       const manifest = JSON.parse(fs.readFileSync(manifestPath, "utf-8")) as {
         name?: string;
         short_name?: string;
+        icons?: { src?: string; sizes?: string }[];
       };
       expect(manifest.name ?? manifest.short_name).toBeDefined();
+      const sizes = new Set(
+        (manifest.icons ?? []).map((i) => i.sizes).filter(Boolean),
+      );
+      expect(sizes.has("192x192")).toBe(true);
+      expect(sizes.has("512x512")).toBe(true);
     });
   });
 });
