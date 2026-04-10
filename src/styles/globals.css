@@ -1,7 +1,11 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@plugin "tailwindcss-animate";
+@plugin "@tailwindcss/typography";
 
+/* Class-based dark mode — .dark is on <html>, so we need ancestor selector */
+@custom-variant dark (.dark &);
+
+/* Self-hosted variable fonts */
 @font-face {
   font-family: "Geist";
   src: url("/fonts/geist-sans/Geist-Variable.woff2") format("woff2");
@@ -18,10 +22,55 @@
   font-display: swap;
 }
 
+/*
+  Inline theme — utility classes reference the design-system CSS vars directly.
+  e.g. `bg-primary` compiles to `background-color: var(--primary)`.
+*/
+@theme inline {
+  /* Typography */
+  --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, monospace;
+
+  /* Custom breakpoint */
+  --breakpoint-xs: 440px;
+
+  /* Semantic color tokens */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Radius tokens */
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  /* Keyframe animations */
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+  --animate-moving-bg: moving-background 0.2s ease-in-out infinite;
+  --animate-scroll-x: scroll-x var(--animation-duration, 40s)
+    var(--animation-direction, forwards) linear infinite;
+}
+
+/* Design-system token values */
 @layer base {
   :root {
-    --font-geist-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
-    --font-geist-mono: "Geist Mono", ui-monospace, monospace;
     --background: rgba(255, 255, 255, 1);
     --foreground: rgba(50, 50, 50, 1);
 
@@ -86,26 +135,27 @@
 
 @layer base {
   * {
-    @apply border-border font-sans;
+    @apply border-border;
+    font-family: var(--font-sans);
   }
-  /* width */
+
+  /* Scrollbar width */
   *::-webkit-scrollbar {
     width: 10px;
   }
 
-  /* Track */
+  /* Scrollbar track */
   *::-webkit-scrollbar-track {
-    background: #f1f1f1;
     @apply bg-transparent;
   }
 
-  /* Handle */
+  /* Scrollbar thumb */
   *::-webkit-scrollbar-thumb {
     @apply bg-neutral-400 dark:bg-neutral-600;
     border-radius: 5px;
   }
 
-  /* Handle on hover */
+  /* Scrollbar thumb on hover */
   *::-webkit-scrollbar-thumb:hover {
     @apply bg-neutral-500 dark:bg-neutral-500;
   }
@@ -120,6 +170,54 @@
   }
 }
 
+/* Custom container utility (replaces v3 theme.container config) */
+@utility container {
+  margin-inline: auto;
+  padding-inline: 2rem;
+
+  @media (width >= 1400px) {
+    max-width: 1400px;
+  }
+}
+
+/* Keyframes */
+@keyframes accordion-down {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
+}
+
+@keyframes moving-background {
+  from {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  to {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes scroll-x {
+  to {
+    transform: translate(calc(-50% - 0.5rem));
+  }
+}
+
+/* Infinite scroll marquee */
 .infinite-scroll-mask {
   mask-image: linear-gradient(
     90deg,

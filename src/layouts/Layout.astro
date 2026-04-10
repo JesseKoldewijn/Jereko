@@ -16,8 +16,11 @@ interface Props {
 
 const {
   title = "Jereko - My personal website | Jesse Koldewijn",
-  description,
+  description = "Personal website of Jesse Koldewijn showcasing projects, experience, volunteering work, and events attended.",
 } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL("/favicons/android-chrome-512x512.png", Astro.site);
 ---
 
 <!doctype html>
@@ -31,8 +34,22 @@ const {
       href="/favicons/favicon.ico"
       type="image/x-icon"
     />
+    <link rel="preload" href="/fonts/geist-sans/Geist-Variable.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="/fonts/geist-mono/GeistMono-Variable.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
     <title>{title}</title>
-    {description && <meta name="description" content={description} />}
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
     <ClientRouter />
     {pwaInfo && <Fragment set:html={pwaInfo.webManifest.linkTag} />}
     <script is:inline>
@@ -59,7 +76,7 @@ const {
     </script>
   </head>
   <body class="font-sans min-h-screen">
-    <PwaRegister client:load />
+    <PwaRegister client:idle />
     <AppWrapper
       socials={socials}
       client:load
@@ -73,7 +90,7 @@ const {
       <slot />
     </main>
     <FooterWithSlots
-      client:load
+      client:visible
       socials={socials}
       transition:persist="shell-footer"
     />

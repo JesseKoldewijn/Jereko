@@ -3,11 +3,10 @@ import Layout from "@/layouts/Layout.astro";
 import { LastAttendedEvent } from "@/components/events/last-attended";
 import HeroSection from "@/components/layout/sections/HeroSection";
 import IntroSection from "@/components/layout/sections/IntroSection";
-import avatarUrl from "@/images/avatar.webp";
-const bannerImg =
-  typeof avatarUrl === "string"
-    ? { src: avatarUrl, width: 400, height: 400 }
-    : { src: (avatarUrl as { src: string }).src, width: 400, height: 400 };
+import { getImage } from "astro:assets";
+import avatarSrc from "@/images/avatar.webp";
+const avatarOptimized = await getImage({ src: avatarSrc, width: 400, height: 400, format: "webp" });
+const bannerImg = { src: avatarOptimized.src, width: 400, height: 400 };
 ---
 
 <Layout
@@ -44,7 +43,7 @@ const bannerImg =
     <h2 class="text-md font-semibold md:text-xl">
       A short introduction about me
     </h2>
-    <IntroSection client:load />
+    <IntroSection client:visible />
   </section>
-  <LastAttendedEvent client:load />
+  <LastAttendedEvent client:visible />
 </Layout>

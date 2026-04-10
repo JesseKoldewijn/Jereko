@@ -1,10 +1,17 @@
 "use client";
 
-import { useTheme } from "next-themes";
-
 import { useEffect, useState } from "react";
 
+import { cn } from "@/lib/utils";
+
 import { type BannerImage, type HeroSectionProps } from "./HeroSection";
+
+/** Read current theme directly from the DOM — works across Astro island boundaries. */
+const getDOMTheme = () =>
+  typeof document !== "undefined" &&
+  document.documentElement.classList.contains("dark")
+    ? "dark"
+    : "light";
 
 const HeroSectionImage = ({
   bannerImage,
@@ -14,81 +21,91 @@ const HeroSectionImage = ({
   bannerID?: string;
 }) => {
   const [isError, setIsError] = useState(false);
+  // Lazy initializer: reads the DOM class on first client render so the correct
+  // theme is known before useEffect fires — avoids an initial dark→light flash.
+  const [domTheme, setDomTheme] = useState<"dark" | "light">(() =>
+    typeof document !== "undefined" ? getDOMTheme() : "dark",
+  );
 
-  const { systemTheme, theme } = useTheme();
-  const actualCurrentTheme = theme == "system" ? systemTheme : theme;
+  // Watch for class mutations on <html> (e.g. next-themes toggling .dark/.light).
+  // Debounced with setTimeout(0) so we only read the *final* settled classList
+  // after next-themes' synchronous remove+add cycle, preventing a spurious
+  // dark→light→dark flash in dark mode.
+  useEffect(() => {
+    let debounce: ReturnType<typeof setTimeout>;
+
+    const observer = new MutationObserver(() => {
+      clearTimeout(debounce);
+      debounce = setTimeout(() => setDomTheme(getDOMTheme()), 0);
+    });
+
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+
+    return () => {
+      observer.disconnect();
+      clearTimeout(debounce);
+    };
+  }, []);
 
   const [currentBannerImage, setCurrentBannerImage] = useState<BannerImage>(
-    actualCurrentTheme == "dark"
-      ? bannerImage.dark
-      : actualCurrentTheme == "light"
-        ? bannerImage.light
-        : bannerImage.dark,
+    bannerImage.dark,
   );
 
   const [currentFallbackBannerImage, setCurrentFallbackBannerImage] = useState<
     BannerImage | undefined
-  >(
-    actualCurrentTheme == "dark"
-      ? bannerFallbackImage?.dark
-      : actualCurrentTheme == "light"
-        ? bannerFallbackImage?.light
-        : bannerFallbackImage?.dark,
-  );
+  >(bannerFallbackImage?.dark);
 
   useEffect(() => {
-    const actualCurrentTheme = theme == "system" ? systemTheme : theme;
-
     setCurrentBannerImage(
-      actualCurrentTheme == "dark"
-        ? bannerImage.dark
-        : actualCurrentTheme == "light"
-          ? bannerImage.light
-          : bannerImage.dark,
+      domTheme === "dark" ? bannerImage.dark : bannerImage.light,
     );
 
     if (bannerFallbackImage) {
       setCurrentFallbackBannerImage(
-        actualCurrentTheme == "dark"
+        domTheme === "dark"
           ? bannerFallbackImage.dark
-          : actualCurrentTheme == "light"
-            ? bannerFallbackImage.light
-            : bannerFallbackImage.dark,
+          : bannerFallbackImage.light,
       );
     }
+  }, [domTheme]);
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [theme]);
+  const imgClass = cn(
+    "aboslute !top-[(50%-50px)] left-1/2 -mt-5 max-h-75 w-auto rounded-b-full object-fill",
+  );
 
-  const imgClass =
-    "-top-[0%] my-auto ml-auto mr-auto block max-h-[300px] w-auto scale-[calc(100%+2%)] rounded-full bg-neutral-100 bg-clip-content dark:bg-neutral-900 lg:mr-0 lg:max-h-[500px]";
+  const isFallback = isError && !!currentFallbackBannerImage;
+  const imageSrc = isFallback
+    ? currentFallbackBannerImage!.src
+    : currentBannerImage.src;
 
-  if (isError && currentFallbackBannerImage) {
-    return (
-      <img
-        id={bannerID}
-        src={currentFallbackBannerImage.src}
-        width={currentFallbackBannerImage.width}
-        height={currentFallbackBannerImage.height}
-        className={imgClass}
-        alt="hero"
-        onError={() => setIsError(true)}
-        loading="eager"
-      />
-    );
-  }
-
-  return (
+  const component = (
     <img
       id={bannerID}
-      src={currentBannerImage.src}
-      width={currentBannerImage.width}
-      height={currentBannerImage.height}
+      src={imageSrc}
+      width={
+        isFallback
+          ? currentFallbackBannerImage!.width
+          : currentBannerImage.width
+      }
+      height={
+        isFallback
+          ? currentFallbackBannerImage!.height
+          : currentBannerImage.height
+      }
       className={imgClass}
       alt="hero"
       onError={() => setIsError(true)}
       loading="eager"
     />
+  );
+
+  return (
+    <div className="relative my-auto mr-auto ml-auto h-auto max-h-75 w-auto scale-[calc(100%+2%)] rounded-full lg:mr-0 lg:max-h-125 dark:bg-neutral-900">
+      {component}
+    </div>
   );
 };
 

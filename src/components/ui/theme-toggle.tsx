@@ -1,6 +1,6 @@
 "use client";
 
-import { animate } from "framer-motion";
+import { animate } from "motion/react";
 import { useTheme } from "next-themes";
 
 import { LuMoon } from "@/icons/lu/Moon";

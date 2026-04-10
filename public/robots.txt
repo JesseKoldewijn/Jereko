@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jereko.dev/sitemap-index.xml

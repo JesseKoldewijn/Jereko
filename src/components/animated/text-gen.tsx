@@ -1,7 +1,8 @@
 "use client";
 
-import { m, stagger } from "framer-motion";
-import { useAnimate } from "framer-motion/mini";
+import * as m from "motion/react-m";
+import { stagger } from "motion/react";
+import { useAnimate } from "motion/react-mini";
 
 import { useEffect, useState } from "react";
 

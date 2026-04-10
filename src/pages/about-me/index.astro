@@ -3,11 +3,10 @@ import Layout from "@/layouts/Layout.astro";
 import AboutMeHeader from "@/components/page-elements/about-me/AboutMeHeaderAstro";
 import AnimatedGradientText from "@/components/animated/animated-grad-text";
 import GoToHeading from "@/components/page-elements/about-me/go-to-heading";
-import avatarUrl from "@/images/avatar.webp";
-const bannerImg =
-  typeof avatarUrl === "string"
-    ? { src: avatarUrl, width: 400, height: 400 }
-    : { src: (avatarUrl as { src: string }).src, width: 400, height: 400 };
+import { getImage } from "astro:assets";
+import avatarSrc from "@/images/avatar.webp";
+const avatarOptimized = await getImage({ src: avatarSrc, width: 400, height: 400, format: "webp" });
+const bannerImg = { src: avatarOptimized.src, width: 400, height: 400 };
 ---
 
 <Layout
@@ -37,7 +36,7 @@ const bannerImg =
         <p>
           To start off, my background and interests has been mainly in/towards
           <AnimatedGradientText
-            client:load
+            client:visible
             className="ml-1 font-semibold"
             variant="span"
             text="IT"
@@ -45,7 +44,7 @@ const bannerImg =
           />
           ,
           <AnimatedGradientText
-            client:load
+            client:visible
             className="mx-1 font-semibold"
             variant="span"
             text="Tech (in general)"
@@ -53,7 +52,7 @@ const bannerImg =
           />
           and
           <AnimatedGradientText
-            client:load
+            client:visible
             className="mx-1 font-semibold"
             variant="span"
             text="Gaming"
@@ -66,7 +65,7 @@ const bannerImg =
           One of the earliest tech-related memories I can remember is that when
           I was around the age of
           <AnimatedGradientText
-            client:load
+            client:visible
             className="ml-1 font-semibold"
             variant="span"
             text="12"
@@ -74,7 +73,7 @@ const bannerImg =
           />
           , I completely disassembled the
           <AnimatedGradientText
-            client:load
+            client:visible
             className="mx-1 font-semibold"
             variant="span"
             text="PC"
@@ -96,7 +95,7 @@ const bannerImg =
         <p>
           Feel free to check out any of the sub-sections in the navigation
           <GoToHeading
-            client:load
+            client:visible
             className="ml-1 cursor-pointer underline-offset-2 hover:underline"
           >
             above

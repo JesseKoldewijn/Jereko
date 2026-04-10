@@ -2,7 +2,8 @@
 import Layout from "@/layouts/Layout.astro";
 import AboutMeHeader from "@/components/page-elements/about-me/AboutMeHeaderAstro";
 import AnimatedGradientText from "@/components/animated/animated-grad-text";
-import avatarUrl from "@/images/avatar.webp";
+import { getImage } from "astro:assets";
+import avatarSrc from "@/images/avatar.webp";
 
 const date = new Date(2021, 6, 1);
 
@@ -30,10 +31,8 @@ const volunteeringForMonths = () => {
   return String(difference);
 };
 
-const bannerImg =
-  typeof avatarUrl === "string"
-    ? { src: avatarUrl, width: 400, height: 400 }
-    : { src: (avatarUrl as { src: string }).src, width: 400, height: 400 };
+const avatarOptimized = await getImage({ src: avatarSrc, width: 400, height: 400, format: "webp" });
+const bannerImg = { src: avatarOptimized.src, width: 400, height: 400 };
 ---
 
 <Layout
@@ -65,7 +64,7 @@ const bannerImg =
         <p>
           Since {volunteeringSince()} I have been a volunteer for
           <AnimatedGradientText
-            client:load
+            client:visible
             className="mx-1 font-semibold"
             variant="span"
             text="Stack Up"
@@ -73,7 +72,7 @@ const bannerImg =
           />
           as a
           <AnimatedGradientText
-            client:load
+            client:visible
             className="mx-1 font-semibold"
             variant="span"
             text="GameLead"
@@ -81,7 +80,7 @@ const bannerImg =
           />
           . I am responsible for hosting and moderating the
           <AnimatedGradientText
-            client:load
+            client:visible
             className="mx-1 font-semibold"
             variant="span"
             text="Game Nights"
@@ -93,7 +92,7 @@ const bannerImg =
         <p>
           What are Game Nights?{" "}
           <AnimatedGradientText
-            client:load
+            client:visible
             className="mx-1 font-semibold"
             variant="span"
             text="Game Nights"
@@ -103,7 +102,7 @@ const bannerImg =
           to play video games and socialize with one another. We host Game Nights
           for a wide variety of games, from
           <AnimatedGradientText
-            client:load
+            client:visible
             className="mx-1 font-semibold"
             variant="span"
             text="Call of Duty"
@@ -111,7 +110,7 @@ const bannerImg =
           />
           to
           <AnimatedGradientText
-            client:load
+            client:visible
             className="mx-1 font-semibold"
             variant="span"
             text="Dungeons & Dragons"
@@ -124,7 +123,7 @@ const bannerImg =
           fun, make new friends, and to help combat isolation and loneliness by
           providing a
           <AnimatedGradientText
-            client:load
+            client:visible
             className="mx-1 font-semibold"
             variant="span"
             text="safe and welcoming"
@@ -142,7 +141,7 @@ const bannerImg =
       <div class="flex flex-col gap-4">
         <p>
           <AnimatedGradientText
-            client:load
+            client:visible
             className="font-semibold"
             variant="span"
             text="Stack Up"
@@ -152,7 +151,7 @@ const bannerImg =
           civilians from the U.S. and allied nations by promoting positive mental
           health and combat (mainly veteran) suicide through
           <AnimatedGradientText
-            client:load
+            client:visible
             className="mx-1 font-semibold"
             variant="span"
             text="gaming and geek culture"
@@ -163,7 +162,7 @@ const bannerImg =
         <p>
           The main focus of Stack Up is directed towards
           <AnimatedGradientText
-            client:load
+            client:visible
             className="mx-1 font-semibold"
             variant="span"
             text="Veterans"
