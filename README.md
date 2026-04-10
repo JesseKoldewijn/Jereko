@@ -9,8 +9,7 @@
   </a>
 </p>
 
-> Blazingly fast Astro.js application used as my personal (portfolio) website. Some of the features in this project are experimental/future features within Next.js or React.js and might not work on all devices or browsers.
-
+> Blazingly fast Astro.js application used as my personal (portfolio) website.
 ## Install
 
 ```sh
