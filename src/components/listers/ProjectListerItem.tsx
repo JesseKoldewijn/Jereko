@@ -40,7 +40,7 @@ const ProjectListerItem = ({ project }: { project: Project }) => {
             <LuMouse
               height={24}
               width={24}
-              className="animate-pulse text-muted-foreground"
+              className="text-muted-foreground animate-pulse"
             />
           )}
         </CardTitle>

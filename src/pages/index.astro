@@ -5,7 +5,12 @@ import HeroSection from "@/components/layout/sections/HeroSection";
 import IntroSection from "@/components/layout/sections/IntroSection";
 import { getImage } from "astro:assets";
 import avatarSrc from "@/images/avatar.webp";
-const avatarOptimized = await getImage({ src: avatarSrc, width: 400, height: 400, format: "webp" });
+const avatarOptimized = await getImage({
+  src: avatarSrc,
+  width: 400,
+  height: 400,
+  format: "webp",
+});
 const bannerImg = { src: avatarOptimized.src, width: 400, height: 400 };
 ---
 

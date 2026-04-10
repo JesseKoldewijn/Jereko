@@ -4,7 +4,12 @@ import AboutMeHeader from "@/components/page-elements/about-me/AboutMeHeaderAstr
 import AnimatedGradientText from "@/components/animated/animated-grad-text";
 import { getImage } from "astro:assets";
 import avatarSrc from "@/images/avatar.webp";
-const avatarOptimized = await getImage({ src: avatarSrc, width: 400, height: 400, format: "webp" });
+const avatarOptimized = await getImage({
+  src: avatarSrc,
+  width: 400,
+  height: 400,
+  format: "webp",
+});
 const bannerImg = { src: avatarOptimized.src, width: 400, height: 400 };
 ---
 

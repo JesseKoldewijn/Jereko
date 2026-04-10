@@ -31,7 +31,12 @@ const volunteeringForMonths = () => {
   return String(difference);
 };
 
-const avatarOptimized = await getImage({ src: avatarSrc, width: 400, height: 400, format: "webp" });
+const avatarOptimized = await getImage({
+  src: avatarSrc,
+  width: 400,
+  height: 400,
+  format: "webp",
+});
 const bannerImg = { src: avatarOptimized.src, width: 400, height: 400 };
 ---
 

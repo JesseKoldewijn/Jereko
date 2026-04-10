@@ -103,7 +103,7 @@ const HeroSectionImage = ({
   );
 
   return (
-    <div className="relative my-auto mr-auto ml-auto h-auto max-h-75 w-auto scale-[calc(100%+2%)] rounded-full lg:mr-0 lg:max-h-125 dark:bg-neutral-900">
+    <div className="relative my-auto mr-auto ml-auto h-auto max-h-75 w-auto scale-[calc(100%+2%)] rounded-full bg-neutral-100 lg:mr-0 lg:max-h-125 dark:bg-neutral-900">
       {component}
     </div>
   );

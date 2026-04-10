@@ -17,7 +17,7 @@ export const LastAttendedEvent = () => {
           </section>
         </div>
       ) : (
-        <p className="py-4 text-muted-foreground">
+        <p className="text-muted-foreground py-4">
           Nothing here for now, sorry
         </p>
       )}

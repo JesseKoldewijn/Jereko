@@ -1,20 +1,28 @@
+import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
 import AstroPWA from "@vite-pwa/astro";
 import { defineConfig } from "astro/config";
-import tsconfigPaths from "vite-tsconfig-paths";
-import sitemap from "@astrojs/sitemap";
 import { visualizer } from "rollup-plugin-visualizer";
+import tsconfigPaths from "vite-tsconfig-paths";
 
 import react from "@astrojs/react";
 
 export default defineConfig({
   output: "static",
   site: "https://jereko.dev",
+  prefetch: {
+    defaultStrategy: "viewport",
+    prefetchAll: true,
+  },
   image: {
-    domains: ["cdn.jereko.dev", "img.youtube.com"],
+    domains: ["img.youtube.com"],
   },
   integrations: [
-    react(),
+    react({
+      babel: {
+        plugins: ["babel-plugin-react-compiler"],
+      },
+    }),
     sitemap(),
     AstroPWA({
       registerType: "autoUpdate",
@@ -67,7 +75,13 @@ export default defineConfig({
     plugins: [
       tailwindcss(),
       tsconfigPaths(),
-      /** @type {any} */ (visualizer({ filename: "dist/bundle-stats.html", open: false, gzipSize: true })),
+      /** @type {any} */ (
+        visualizer({
+          filename: "dist/bundle-stats.html",
+          open: false,
+          gzipSize: true,
+        })
+      ),
     ],
   },
 });

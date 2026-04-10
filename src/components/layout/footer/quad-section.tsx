@@ -50,7 +50,7 @@ const QuadSection = () => {
       <div className="container grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4">
         <div className="flex flex-col-reverse justify-start gap-4 sm:justify-end lg:flex-col lg:items-center lg:justify-start lg:gap-8">
           <div className="flex w-full flex-col justify-center">
-            <span className="text-lg font-bold [background-size:30%]">
+            <span className="[background-size:30%] text-lg font-bold">
               Jereko
             </span>
             <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-200">
@@ -61,7 +61,7 @@ const QuadSection = () => {
           </div>
           <div className="relative mx-auto mb-4 block h-24 w-24 rounded-full object-cover lg:mx-0 lg:mb-0">
             <div className="absolute inset-0 -z-50 rotate-90 rounded-full bg-[rgba(0,0,0,0.5)] opacity-0 transition-all hover:rotate-0 hover:opacity-100 md:z-10">
-              <div className="inset-0 flex h-full w-full select-none items-center justify-center">
+              <div className="inset-0 flex h-full w-full items-center justify-center select-none">
                 Peekaboo!
               </div>
             </div>
@@ -80,7 +80,7 @@ const QuadSection = () => {
         <div className="flex flex-col justify-start sm:justify-end lg:justify-start">
           <span className="text-lg font-bold">Pages</span>
           <div
-            className="mt-4 flex flex-col gap-4 text-base text-neutral-600 dark:text-neutral-200 sm:mt-2 sm:list-inside sm:gap-2"
+            className="mt-4 flex flex-col gap-4 text-base text-neutral-600 sm:mt-2 sm:list-inside sm:gap-2 dark:text-neutral-200"
             data-device="desktop"
           >
             {pagesLinks.map((page) => (

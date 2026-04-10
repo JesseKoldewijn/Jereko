@@ -4,7 +4,12 @@ import HeroSection from "@/components/layout/sections/HeroSection";
 import ProjectsLister from "@/components/listers/ProjectsLister";
 import { getImage } from "astro:assets";
 import bannerImageSrc from "@/images/banner-programming.webp";
-const bannerOptimized = await getImage({ src: bannerImageSrc, width: 400, height: 400, format: "webp" });
+const bannerOptimized = await getImage({
+  src: bannerImageSrc,
+  width: 400,
+  height: 400,
+  format: "webp",
+});
 const bannerImg = { src: bannerOptimized.src, width: 400, height: 400 };
 ---
 

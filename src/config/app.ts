@@ -19,9 +19,4 @@ export const appConfig = {
       href: "https://x.com/dull_joker",
     },
   },
-  cdn: {
-    openCdn: {
-      baseUrl: "https://cdn.jereko.dev",
-    },
-  },
 } as const;

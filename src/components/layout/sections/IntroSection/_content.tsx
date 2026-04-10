@@ -30,7 +30,7 @@ export const AnimatedIntroSection3 = ({
 }) => (
   <AnimatedGradientText
     variant="span"
-    className="font-bold [background-size:105%]"
+    className="[background-size:105%] font-bold"
     text={latestExperience?.title ?? ""}
   />
 );

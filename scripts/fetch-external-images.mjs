@@ -12,8 +12,7 @@ const root = join(__dirname, "..");
 const eventsPath = join(root, "src/data/events.ts");
 const outDir = join(root, "public/images/external/youtube");
 
-const YOUTUBE_THUMB = (id) =>
-  `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
+const YOUTUBE_THUMB = (id) => `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
 
 function collectYoutubeIdsFromEventsSource(source) {
   const ids = new Set();
@@ -40,7 +39,9 @@ async function fetchThumbnail(id) {
   }
   const buf = Buffer.from(await res.arrayBuffer());
   if (buf.length < 500) {
-    throw new Error(`GET ${url} -> suspiciously small body (${buf.length} bytes)`);
+    throw new Error(
+      `GET ${url} -> suspiciously small body (${buf.length} bytes)`,
+    );
   }
   return buf;
 }
