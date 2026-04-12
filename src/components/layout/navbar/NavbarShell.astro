@@ -90,19 +90,13 @@ interface Props {
 </nav>
 
 <script>
-  function setupMobileToggle() {
-    const btn = document.querySelector<HTMLButtonElement>(
-      "[data-mobile-menu-toggle]",
-    );
-    if (!btn || btn.dataset.mobileToggleBound === "true") return;
+  import { setupMobileToggleButton } from "@/components/layout/navbar/mobile-nav";
 
-    btn.dataset.mobileToggleBound = "true";
-    btn.addEventListener("click", () => {
-      const dialog =
-        document.querySelector<HTMLDialogElement>("#mobile-nav-dialog");
-      if (dialog?.open) dialog.close();
-      else dialog?.showModal();
-    });
+  function setupMobileToggle() {
+    setupMobileToggleButton(
+      document.querySelector<HTMLButtonElement>("[data-mobile-menu-toggle]"),
+      () => document.querySelector<HTMLDialogElement>("#mobile-nav-dialog"),
+    );
   }
 
   setupMobileToggle();
