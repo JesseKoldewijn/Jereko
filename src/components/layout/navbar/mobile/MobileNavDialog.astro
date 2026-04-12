@@ -176,17 +176,21 @@ const linkClass =
   function setupMobileNavDialog() {
     const dialog =
       document.querySelector<HTMLDialogElement>("#mobile-nav-dialog");
+    if (!dialog || dialog.dataset.mobileNavDialogBound === "true") return;
+
+    dialog.dataset.mobileNavDialogBound = "true";
+
     const closeBtn = document.querySelector<HTMLButtonElement>(
       "#mobile-nav-dialog-close",
     );
 
     // Explicit close button inside the dialog (needed because showModal() traps focus)
-    closeBtn?.addEventListener("click", () => dialog?.close());
+    closeBtn?.addEventListener("click", () => dialog.close());
 
     // Clicking the ::backdrop area fires a click on the dialog element itself
     // (e.target === dialog). Use this to close when tapping outside the content.
-    dialog?.addEventListener("click", (e) => {
-      if (e.target === dialog) dialog?.close();
+    dialog.addEventListener("click", (e) => {
+      if (e.target === dialog) dialog.close();
     });
   }
 

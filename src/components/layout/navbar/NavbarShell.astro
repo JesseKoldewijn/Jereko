@@ -94,7 +94,9 @@ interface Props {
     const btn = document.querySelector<HTMLButtonElement>(
       "[data-mobile-menu-toggle]",
     );
-    if (!btn) return;
+    if (!btn || btn.dataset.mobileToggleBound === "true") return;
+
+    btn.dataset.mobileToggleBound = "true";
     btn.addEventListener("click", () => {
       const dialog =
         document.querySelector<HTMLDialogElement>("#mobile-nav-dialog");
