@@ -20,12 +20,12 @@ const EventItem = ({ title, event, isSkeleton }: EventItemProps) => {
   if (isSkeleton) {
     return (
       <Card className="min-h-[18rem] bg-neutral-100 !pb-8 dark:bg-neutral-900">
-        <CardTitle className="my-3 !mb-1 mt-2 flex flex-col gap-6 !pt-3">
+        <CardTitle className="my-3 mt-2 !mb-1 flex flex-col gap-6 !pt-3">
           <Skeleton className="bg-neutral-322 mx-auto my-auto h-4 w-4/6 dark:bg-neutral-700" />
           <Skeleton className="bg-neutral-322 relative mx-auto my-auto h-3 w-5/6 dark:bg-neutral-700" />
         </CardTitle>
 
-        <CardContent className="!mb-2 mt-4 flex flex-1 flex-col items-center !pb-2">
+        <CardContent className="mt-4 !mb-2 flex flex-1 flex-col items-center !pb-2">
           <Skeleton
             id="loading-skeleton"
             className="bg-neutral-322 absolute mx-auto my-auto h-full max-h-[182px] w-full max-w-[322px] dark:bg-neutral-700"
@@ -81,12 +81,12 @@ const EventItem = ({ title, event, isSkeleton }: EventItemProps) => {
             href={event.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="my-auto flex h-full min-h-[182px] w-full max-w-[322px] items-center justify-center text-sm text-muted-foreground underline"
+            className="text-muted-foreground my-auto flex h-full min-h-[182px] w-full max-w-[322px] items-center justify-center text-sm underline"
           >
             View link
           </a>
         ) : (
-          <span className="my-auto flex h-full min-h-[182px] w-full max-w-[322px] items-center justify-center text-sm text-muted-foreground">
+          <span className="text-muted-foreground my-auto flex h-full min-h-[182px] w-full max-w-[322px] items-center justify-center text-sm">
             No preview available
           </span>
         )}

@@ -50,20 +50,20 @@ const HeroSection = ({
             text={bannerContent.title}
             variant="h1"
             className={cn(
-              "max-w-2xl text-4xl font-extrabold leading-none tracking-tight md:text-5xl xl:text-6xl",
+              "max-w-2xl text-4xl leading-none font-extrabold tracking-tight md:text-5xl xl:text-6xl",
             )}
           />
 
           <div className="flex min-h-20">
             <TextGen
               words={bannerContent.description}
-              className="max-w-2xl font-light text-neutral-500 dark:text-neutral-200 md:text-lg lg:text-xl"
+              className="max-w-2xl font-light text-neutral-500 md:text-lg lg:text-xl dark:text-neutral-200"
             />
           </div>
 
           <HeroSectionButtons bannerContent={bannerContent} />
         </div>
-        <div className="order-first mb-8 flex max-h-[300px] min-h-[300px] transition-opacity md:mb-16 md:max-h-[500px] lg:order-last lg:col-span-5 lg:mb-0 lg:mt-0">
+        <div className="order-first mb-8 flex max-h-[300px] min-h-[300px] transition-opacity md:mb-16 md:max-h-[500px] lg:order-last lg:col-span-5 lg:mt-0 lg:mb-0">
           <HeroSectionImage
             bannerImage={bannerImage}
             bannerFallbackImage={bannerFallbackImage}

@@ -2,11 +2,15 @@
 import Layout from "@/layouts/Layout.astro";
 import AboutMeHeader from "@/components/page-elements/about-me/AboutMeHeaderAstro";
 import AnimatedGradientText from "@/components/animated/animated-grad-text";
-import avatarUrl from "@/images/avatar.webp";
-const bannerImg =
-  typeof avatarUrl === "string"
-    ? { src: avatarUrl, width: 400, height: 400 }
-    : { src: (avatarUrl as { src: string }).src, width: 400, height: 400 };
+import { getImage } from "astro:assets";
+import avatarSrc from "@/images/avatar.webp";
+const avatarOptimized = await getImage({
+  src: avatarSrc,
+  width: 400,
+  height: 400,
+  format: "webp",
+});
+const bannerImg = { src: avatarOptimized.src, width: 400, height: 400 };
 ---
 
 <Layout
@@ -36,7 +40,7 @@ const bannerImg =
         <p>
           In general. I love to play
           <AnimatedGradientText
-            client:load
+            client:visible
             className="mx-1 font-semibold"
             variant="span"
             text="video games"
@@ -44,7 +48,7 @@ const bannerImg =
           />
           , work on personal
           <AnimatedGradientText
-            client:load
+            client:visible
             className="mx-1 font-semibold"
             variant="span"
             text="side-projects"
@@ -55,7 +59,7 @@ const bannerImg =
           programming. I'm always looking for new things to try out and experiment
           with. Things like
           <AnimatedGradientText
-            client:load
+            client:visible
             className="mx-1 font-semibold"
             variant="span"
             text="low-level programming"
@@ -63,7 +67,7 @@ const bannerImg =
           />
           ,
           <AnimatedGradientText
-            client:load
+            client:visible
             className="mx-1 font-semibold"
             variant="span"
             text="game development"
@@ -75,7 +79,7 @@ const bannerImg =
           One of the things in tech that I've picked up just from self-study and
           experimentation is
           <AnimatedGradientText
-            client:load
+            client:visible
             className="mx-1 font-semibold"
             variant="span"
             text="React.js"
@@ -83,7 +87,7 @@ const bannerImg =
           />
           and
           <AnimatedGradientText
-            client:load
+            client:visible
             className="mx-1 font-semibold"
             variant="span"
             text="TypeScript"
@@ -92,7 +96,7 @@ const bannerImg =
           . Which by now help me day-to-day to build cool stuff for the web and native
           (using
           <AnimatedGradientText
-            client:load
+            client:visible
             className="mx-1 font-semibold"
             variant="span"
             text="Tauri.rs"
@@ -111,7 +115,7 @@ const bannerImg =
         <p>
           Games I've been coming back to the most over the years are
           <AnimatedGradientText
-            client:load
+            client:visible
             className="mx-1 font-semibold"
             variant="span"
             text="Rainbow Six"
@@ -119,7 +123,7 @@ const bannerImg =
           />
           ,
           <AnimatedGradientText
-            client:load
+            client:visible
             className="mx-1 font-semibold"
             variant="span"
             text="God of War"
@@ -127,7 +131,7 @@ const bannerImg =
           />
           ,
           <AnimatedGradientText
-            client:load
+            client:visible
             className="mx-1 font-semibold"
             variant="span"
             text="Assassins Creed"
@@ -135,7 +139,7 @@ const bannerImg =
           />
           ,
           <AnimatedGradientText
-            client:load
+            client:visible
             className="mx-1 font-semibold"
             variant="span"
             text="Watch Dogs"
@@ -143,7 +147,7 @@ const bannerImg =
           />
           , and
           <AnimatedGradientText
-            client:load
+            client:visible
             className="mx-1 font-semibold"
             variant="span"
             text="Smite"
@@ -157,7 +161,7 @@ const bannerImg =
         <p>
           The more technical side of
           <AnimatedGradientText
-            client:load
+            client:visible
             className="mx-1 font-semibold"
             variant="span"
             text="gaming"
@@ -166,7 +170,7 @@ const bannerImg =
           is something I've been really interested in for a while now. I've been experimenting
           with tech like
           <AnimatedGradientText
-            client:load
+            client:visible
             className="mx-1 font-semibold"
             variant="span"
             text="Unreal Engine (4 & 5)"
@@ -174,7 +178,7 @@ const bannerImg =
           />
           ,
           <AnimatedGradientText
-            client:load
+            client:visible
             className="mx-1 font-semibold"
             variant="span"
             text="Unity"
@@ -182,7 +186,7 @@ const bannerImg =
           />
           and custom stuff using
           <AnimatedGradientText
-            client:load
+            client:visible
             className="mx-1 font-semibold"
             variant="span"
             text="SDL2"
@@ -193,7 +197,7 @@ const bannerImg =
         <p>
           So, what do I like this much about gaming? Well, I love the way it
           <AnimatedGradientText
-            client:load
+            client:visible
             className="mx-1 font-semibold"
             variant="span"
             text="brings people together"
@@ -203,7 +207,7 @@ const bannerImg =
           I love the way it can help people with stress, anxiety, and depression.
           But for me personally, I love the way it can help me
           <AnimatedGradientText
-            client:load
+            client:visible
             className="mx-1 font-semibold"
             variant="span"
             text="relax"

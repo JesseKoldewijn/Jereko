@@ -29,7 +29,7 @@ export default function AboutMeHeader({
       />
       <div
         id="about-me-navigation"
-        className="flex flex-col items-center justify-center gap-4 px-4 pb-8 xs:flex-row xs:gap-8 xs:px-0"
+        className="xs:flex-row xs:gap-8 xs:px-0 flex flex-col items-center justify-center gap-4 px-4 pb-8"
       >
         {navItems.map(({ href, label }) => (
           <a
@@ -39,7 +39,7 @@ export default function AboutMeHeader({
               pathname === href
                 ? "bg-neutral-100 text-neutral-900 sm:dark:hover:border-neutral-200 sm:dark:hover:bg-transparent sm:dark:hover:text-neutral-200"
                 : "sm:hover:bg-neutral-100 sm:hover:text-neutral-900",
-              "w-full rounded-lg border border-neutral-200 px-3 py-2 text-center xs:w-auto sm:hover:bg-neutral-100 sm:hover:text-neutral-900",
+              "xs:w-auto w-full rounded-lg border border-neutral-200 px-3 py-2 text-center sm:hover:bg-neutral-100 sm:hover:text-neutral-900",
             )}
           >
             {label}

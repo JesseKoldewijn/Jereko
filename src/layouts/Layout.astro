@@ -1,8 +1,9 @@
 ---
 import "@/styles/globals.css";
 import PwaRegister from "@/components/PwaRegister";
-import AppWrapper from "@/components/layout/AppWrapper";
 import FooterWithSlots from "@/components/layout/FooterWithSlots";
+import MobileNavDialog from "@/components/layout/navbar/mobile/MobileNavDialog.astro";
+import NavbarShell from "@/components/layout/navbar/NavbarShell.astro";
 import { getSocialsByPlatform } from "@/data/queries";
 import { ClientRouter } from "astro:transitions";
 import { pwaInfo } from "virtual:pwa-info";
@@ -16,8 +17,11 @@ interface Props {
 
 const {
   title = "Jereko - My personal website | Jesse Koldewijn",
-  description,
+  description = "Personal website of Jesse Koldewijn showcasing projects, experience, volunteering work, and events attended.",
 } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL("/favicons/android-chrome-512x512.png", Astro.site);
 ---
 
 <!doctype html>
@@ -31,8 +35,34 @@ const {
       href="/favicons/favicon.ico"
       type="image/x-icon"
     />
+    <link
+      rel="preload"
+      href="/fonts/geist-sans/Geist-Variable.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="preload"
+      href="/fonts/geist-mono/GeistMono-Variable.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
     <title>{title}</title>
-    {description && <meta name="description" content={description} />}
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
     <ClientRouter />
     {pwaInfo && <Fragment set:html={pwaInfo.webManifest.linkTag} />}
     <script is:inline>
@@ -57,14 +87,30 @@ const {
         document.addEventListener("astro:page-load", applyStoredTheme);
       })();
     </script>
+    <script>
+      /* Close the mobile nav dialog before Astro swaps the page */
+      document.addEventListener("astro:before-swap", () => {
+        const dialog =
+          document.querySelector<HTMLDialogElement>("#mobile-nav-dialog");
+        if (dialog?.open) dialog.close();
+      });
+      /* On desktop resize, close the dialog if it's somehow open */
+      window.addEventListener("resize", () => {
+        if (window.innerWidth >= 768) {
+          const dialog =
+            document.querySelector<HTMLDialogElement>("#mobile-nav-dialog");
+          if (dialog?.open) dialog.close();
+        }
+      });
+    </script>
   </head>
   <body class="font-sans min-h-screen">
-    <PwaRegister client:load />
-    <AppWrapper
-      socials={socials}
-      client:load
-      transition:persist="shell-navbar"
-    />
+    <PwaRegister client:idle />
+    <NavbarShell socials={socials} />
+    {
+      /* Native <dialog> mobile menu — outside the React island, always in DOM */
+    }
+    <MobileNavDialog socials={socials} />
     <main
       class="min-h-[90svh] pb-8"
       transition:name="main"
@@ -73,7 +119,7 @@ const {
       <slot />
     </main>
     <FooterWithSlots
-      client:load
+      client:visible
       socials={socials}
       transition:persist="shell-footer"
     />

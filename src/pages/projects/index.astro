@@ -2,11 +2,15 @@
 import Layout from "@/layouts/Layout.astro";
 import HeroSection from "@/components/layout/sections/HeroSection";
 import ProjectsLister from "@/components/listers/ProjectsLister";
-import bannerImage from "@/images/banner-programming.webp";
-const bannerImg =
-  typeof bannerImage === "string"
-    ? { src: bannerImage, width: 400, height: 400 }
-    : { src: (bannerImage as { src: string }).src, width: 400, height: 400 };
+import { getImage } from "astro:assets";
+import bannerImageSrc from "@/images/banner-programming.webp";
+const bannerOptimized = await getImage({
+  src: bannerImageSrc,
+  width: 400,
+  height: 400,
+  format: "webp",
+});
+const bannerImg = { src: bannerOptimized.src, width: 400, height: 400 };
 ---
 
 <Layout
@@ -29,7 +33,7 @@ const bannerImg =
     class="mx-auto mt-8 w-auto max-w-md px-4 md:w-full md:px-0"
   >
     <section>
-      <ProjectsLister client:load />
+      <ProjectsLister client:visible />
     </section>
   </div>
 </Layout>

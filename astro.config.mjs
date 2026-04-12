@@ -1,6 +1,8 @@
-import tailwind from "@astrojs/tailwind";
+import sitemap from "@astrojs/sitemap";
+import tailwindcss from "@tailwindcss/vite";
 import AstroPWA from "@vite-pwa/astro";
 import { defineConfig } from "astro/config";
+import { visualizer } from "rollup-plugin-visualizer";
 import tsconfigPaths from "vite-tsconfig-paths";
 
 import react from "@astrojs/react";
@@ -8,9 +10,20 @@ import react from "@astrojs/react";
 export default defineConfig({
   output: "static",
   site: "https://jereko.dev",
+  prefetch: {
+    defaultStrategy: "viewport",
+    prefetchAll: true,
+  },
+  image: {
+    domains: ["img.youtube.com"],
+  },
   integrations: [
-    react(),
-    tailwind(),
+    react({
+      babel: {
+        plugins: ["babel-plugin-react-compiler"],
+      },
+    }),
+    sitemap(),
     AstroPWA({
       registerType: "autoUpdate",
       manifest: {
@@ -59,6 +72,16 @@ export default defineConfig({
     }),
   ],
   vite: {
-    plugins: [tsconfigPaths()],
+    plugins: [
+      tailwindcss(),
+      tsconfigPaths(),
+      /** @type {any} */ (
+        visualizer({
+          filename: "dist/bundle-stats.html",
+          open: false,
+          gzipSize: true,
+        })
+      ),
+    ],
   },
 });

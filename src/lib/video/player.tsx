@@ -68,7 +68,7 @@ export const YoutubePlayer = ({
       />
       <button
         onClick={() => setClicked(true)}
-        className="absolute left-1/2 top-1/2 z-10 flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 transform items-center justify-items-center rounded-full bg-[rgba(255,0,0,0.75)] align-middle hover:bg-[rgba(0,0,0,0.75)]"
+        className="absolute top-1/2 left-1/2 z-10 flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 transform items-center justify-items-center rounded-full bg-[rgba(255,0,0,0.75)] align-middle hover:bg-[rgba(0,0,0,0.75)]"
       >
         <LuPlay className="mx-auto fill-white text-white" />
         <span className="sr-only">Click here to play video</span>
@@ -81,7 +81,7 @@ export const YoutubePlayer = ({
       <div
         className={cn(
           !clicked && "relative",
-          "flex max-h-[182px] min-h-[182px] w-full min-w-[calc(100svw-6rem)] max-w-[322px] items-center xs:min-w-[350px]",
+          "xs:min-w-[350px] flex max-h-[182px] min-h-[182px] w-full max-w-[322px] min-w-[calc(100svw-6rem)] items-center",
         )}
       >
         <Suspense>{clicked ? <Player /> : <Thumbnail />}</Suspense>

@@ -38,10 +38,10 @@ const Footer = ({
   return (
     <div className="mt-20">
       {topSlot}
-      <footer className="mx-4 flex w-auto flex-col gap-10 rounded-t-2xl border-x border-t border-neutral-300 bg-neutral-100 px-4 py-10 dark:border-neutral-700 dark:bg-neutral-900 md:px-6 lg:mx-8 lg:gap-20 lg:py-16">
+      <footer className="mx-4 flex w-auto flex-col gap-10 rounded-t-2xl border-x border-t border-neutral-300 bg-neutral-100 px-4 py-10 md:px-6 lg:mx-8 lg:gap-20 lg:py-16 dark:border-neutral-700 dark:bg-neutral-900">
         {innerSlot}
         <div className="mx-5 flex flex-col items-center justify-center px-8 text-sm">
-          <div className="mb-4 mt-4 flex gap-4">
+          <div className="mt-4 mb-4 flex gap-4">
             {twitter && (
               <a
                 aria-label="X (formerly known as Twitter)"
@@ -84,7 +84,7 @@ const Footer = ({
               </a>
             )}
           </div>
-          <div className="mb-4 mt-3 flex gap-2">
+          <div className="mt-3 mb-4 flex gap-2">
             <span className="border-r-2 pr-2 text-neutral-800 dark:text-neutral-300">
               {getYear()}
             </span>

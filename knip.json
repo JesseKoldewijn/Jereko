@@ -1,0 +1,12 @@
+{
+  "$schema": "https://unpkg.com/knip@6/schema.json",
+  "entry": ["src/layouts/Layout.astro"],
+  "project": ["src/**/*.{ts,tsx,astro,mjs}"],
+  "ignoreDependencies": [
+    "tailwindcss",
+    "@tailwindcss/typography",
+    "tailwindcss-animate",
+    "postcss",
+    "babel-plugin-react-compiler"
+  ]
+}

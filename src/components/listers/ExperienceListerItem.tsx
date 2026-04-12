@@ -40,7 +40,7 @@ function RoleBlock({ role, expKey }: { role: ExperienceRole; expKey: string }) {
   return (
     <div className="border-l-2 border-neutral-300 pl-4 dark:border-neutral-600">
       <p className="font-medium">{role.title}</p>
-      <p className="text-sm text-muted-foreground">{formatDateRange(role)}</p>
+      <p className="text-muted-foreground text-sm">{formatDateRange(role)}</p>
       <p className="mt-2">{role.description}</p>
       <div className="mt-3 flex flex-wrap gap-2">
         {role.skills?.split(",").map((skill, idx) => (

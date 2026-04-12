@@ -1,8 +1,8 @@
 "use client";
 
-import { m, stagger } from "framer-motion";
-import { useAnimate } from "framer-motion/mini";
-
+import { stagger } from "motion/react";
+import * as m from "motion/react-m";
+import { useAnimate } from "motion/react-mini";
 import { useEffect, useState } from "react";
 
 export const INTERNAL_TextGenComponent = ({
