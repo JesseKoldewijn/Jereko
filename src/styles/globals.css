@@ -301,7 +301,6 @@ body:has(#mobile-nav-dialog[open]) {
   z-index: 40;
   background-color: rgba(245, 245, 245, 0.3);
   backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.2s ease;

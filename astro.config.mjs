@@ -63,7 +63,7 @@ export default defineConfig({
         navigateFallback: "/offline",
         globPatterns: ["**/*.{js,css,html,ico,png,svg,webp,avif,woff2}"],
         // Astro emits /404.html; Workbox maps it to URL "404" which is not served (404).
-        globIgnores: ["**/404.html", "404.html"],
+        globIgnores: ["**/404.html", "404.html", "**/bundle-stats.html"],
         cleanupOutdatedCaches: true,
         skipWaiting: true,
         clientsClaim: true,

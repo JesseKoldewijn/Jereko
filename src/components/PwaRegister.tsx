@@ -58,12 +58,7 @@ export default function PwaRegister() {
         window.location.reload();
         return;
       }
-      registerSW({
-        immediate: true,
-        onRegisteredSW(_url, registration) {
-          registration?.update().catch(() => {});
-        },
-      });
+      registerSW({ immediate: true });
     })();
   }, []);
   return null;
