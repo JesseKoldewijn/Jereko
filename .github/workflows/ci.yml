@@ -13,10 +13,10 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Setup Volta
-        uses: volta-cli/action@v4.2.1
+        uses: volta-cli/action@v5.0.0
         with:
-          node-version: "25"
-          yarn-version: "4.5.3"
+          node-version: "26.5.0"
+          yarn-version: "4.17.1"
 
       - name: Enable Corepack
         run: corepack enable

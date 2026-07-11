@@ -3,7 +3,6 @@ import tailwindcss from "@tailwindcss/vite";
 import AstroPWA from "@vite-pwa/astro";
 import { defineConfig } from "astro/config";
 import { visualizer } from "rollup-plugin-visualizer";
-import tsconfigPaths from "vite-tsconfig-paths";
 
 import react from "@astrojs/react";
 
@@ -74,7 +73,6 @@ export default defineConfig({
   vite: {
     plugins: [
       tailwindcss(),
-      tsconfigPaths(),
       /** @type {any} */ (
         visualizer({
           filename: "dist/bundle-stats.html",
